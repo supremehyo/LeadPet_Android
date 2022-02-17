@@ -1,30 +1,10 @@
-object Versions {
-    const val KOTLIN_VERSION = "1.5.21"
-    const val KOTLINX_COROUTINES = "1.5.0"
-    const val BUILD_GRADLE = "4.2.1"
-    const val COMPILE_SDK_VERSION = 31
-    const val BUILD_TOOLS_VERSION = "31.0.0"
-    const val MIN_SDK_VERSION = 23
-    const val TARGET_SDK_VERSION = 31
 
-    const val CORE_KTX = "1.5.0"
-    const val APP_COMPAT = "1.3.0"
-    const val ACTIVITY_KTX = "1.1."
-    const val FRAGMENT_KTX = "1.4.0"
-    const val LIFECYCLE_KTX = "2.2.0"
-    const val ROOM = "2.3.0"
-
-    const val HILT = "2.38.1"
-    const val MATERIAL = "1.3.0"
-
-    const val RETROFIT = "2.7.1"
-    const val OKHTTP = "4.3.1"
-
-    const val JUNIT = "4.13.2"
-    const val ANDROID_JUNIT = "1.1.1"
-    const val ESPRESSO_CORE = "3.2.0"
-
+object PluginVersion {
+    const val GRADLE = "7.1.0-beta05"
+    const val KOTLIN = "1.6.10"
+    const val GRADLE_PLUGIN = "0.41.0"
 }
+
 
 object Kotlin {
     const val KOTLIN_STDLIB      = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN_VERSION}"
@@ -51,16 +31,16 @@ object AndroidX {
 object Google {
     const val HILT_ANDROID          = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
-
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+    //CRASHLYTICS
+    const val GOOGLE_CORE = "com.google.android.play:core-ktx:1.8.1"
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:29.1.0"
+    const val CRASHLYTICS = "com.google.firebase:firebase-crashlytics-ktx"
+    const val ANALYTICS = "com.google.firebase:firebase-crashlytics-ktx"
+
 }
 
-object Libraries {
-    const val RETROFIT                   = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
-    const val RETROFIT_CONVERTER_GSON    = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
-    const val OKHTTP                     = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
-    const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}"
-}
+
 
 object UnitTest {
     const val JUNIT         = "junit:junit:${Versions.JUNIT}"
@@ -69,4 +49,27 @@ object UnitTest {
 object AndroidTest {
     const val ANDROID_JUNIT = "androidx.test.ext:junit:${Versions.ANDROID_JUNIT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+}
+
+//네트워크 관련
+object Network {
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:2.9.0"
+    const val GSON = "com.squareup.retrofit2:converter-gson:2.9.0"
+    const val SCALAR = "com.squareup.retrofit2:converter-scalars:2.9.0"
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
+    const val OKHTTP3 = "com.squareup.okhttp3:logging-interceptor:4.9.1"
+}
+
+//Flipper 디버깅 편리하게 해주는 라이브러리
+object Flipper {
+
+    const val FLIPPER = "com.facebook.flipper:flipper:0.135.0"
+    const val SOLOADER = "com.facebook.soloader:soloader:0.10.1"
+    const val LEAK_FLIPPER =  "com.facebook.flipper:flipper-leakcanary2-plugin:0.135.0"
+}
+
+//메모리 누수 잡는 라이브러리
+object Memory {
+    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.8.1"
+
 }
