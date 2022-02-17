@@ -1,9 +1,5 @@
 
-object PluginVersion {
-    const val GRADLE = "7.1.0-beta05"
-    const val KOTLIN = "1.6.10"
-    const val GRADLE_PLUGIN = "0.41.0"
-}
+
 
 
 object Kotlin {
@@ -32,6 +28,7 @@ object Google {
     const val HILT_ANDROID          = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+
     //CRASHLYTICS
     const val GOOGLE_CORE = "com.google.android.play:core-ktx:1.8.1"
     const val FIREBASE_BOM = "com.google.firebase:firebase-bom:29.1.0"

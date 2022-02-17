@@ -62,10 +62,10 @@ dependencies {
 
 
     //retrofit2
-    implementation(Libraries.OKHTTP)
-    implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
-    implementation(Libraries.RETROFIT)
-    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Network.OKHTTP)
+    implementation(Network.OKHTTP3)
+    implementation(Network.RETROFIT)
+    implementation(Network.GSON)
 
     implementation(Google.MATERIAL)
     implementation(Google.HILT_ANDROID)
@@ -78,6 +78,5 @@ dependencies {
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
     //멀티모듈 관리
-//    implementation(project(":api"))
-//    implementation(project(":data"))
+
 }
