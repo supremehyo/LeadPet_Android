@@ -11,7 +11,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
         maven ( "https://jitpack.io" )
     }
 }
@@ -22,3 +21,4 @@ include (":data")
 include (":domain")
 
 include(":features:login")
+include(":features:join")

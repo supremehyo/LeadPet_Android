@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LeadPet</string>
     <string name="title_login">login</string>
+    <string name="title_join">Join</string>
 </resources>

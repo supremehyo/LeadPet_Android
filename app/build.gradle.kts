@@ -43,7 +43,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    dynamicFeatures += setOf(":login", ":features:login")
+    dynamicFeatures += setOf(":features:login", ":features:join")
 }
 
 dependencies {

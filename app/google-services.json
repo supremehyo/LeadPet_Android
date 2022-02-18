@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18772755543",
+    "project_id": "leadpet-8edba",
+    "storage_bucket": "leadpet-8edba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18772755543:android:29186c38bfb6af65350f12",
+        "android_client_info": {
+          "package_name": "com.dev6.LeadPet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18772755543-q3fh72h2t6ke8ojobtca8pifv01ophgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCchyE3nCjZRcmTNWTDxOcpOUYcCZsL6-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18772755543-q3fh72h2t6ke8ojobtca8pifv01ophgl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
