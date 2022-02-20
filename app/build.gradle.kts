@@ -72,12 +72,6 @@ dependencies {
     // implementation (Google.HILT_ANDROID_COMPILER)
     kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
     implementation("androidx.appcompat:appcompat:1.4.0")
-
-    implementation(Google.GOOGLE_CORE)
-    implementation(platform(Google.FIREBASE_BOM))
-    implementation(Google.CRASHLYTICS)
-    implementation(Google.ANALYTICS)
-
     testImplementation(UnitTest.JUNIT)
 
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
