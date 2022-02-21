@@ -69,9 +69,14 @@ dependencies {
 
     implementation(Google.MATERIAL)
     implementation(Google.HILT_ANDROID)
+  //  implementation(Google.HILT_COMMON)
+   // implementation(Google.HILT_LIFECYCLE)
     // implementation (Google.HILT_ANDROID_COMPILER)
-    kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
+    kapt(Google.HILT_ANDROID_COMPILER)
+    annotationProcessor("androidx.hilt:hilt-compiler:1.0.0-alpha01")
     implementation("androidx.appcompat:appcompat:1.4.0")
+
 
     implementation(Google.GOOGLE_CORE)
     implementation(platform(Google.FIREBASE_BOM))
