@@ -48,10 +48,10 @@ android {
 
 dependencies {
 
+    //Android Core
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)
-
     implementation(AndroidX.CORE_KTX)
     implementation(AndroidX.APP_COMPAT)
     implementation(AndroidX.ACTIVITY_KTX)
@@ -78,8 +78,8 @@ dependencies {
     implementation(Google.CRASHLYTICS)
     implementation(Google.ANALYTICS)
 
-    testImplementation(UnitTest.JUNIT)
 
+    testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
