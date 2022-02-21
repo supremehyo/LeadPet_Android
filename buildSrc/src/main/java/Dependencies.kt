@@ -1,7 +1,3 @@
-
-
-
-
 object Kotlin {
     const val KOTLIN_STDLIB      = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN_VERSION}"
     const val COROUTINES_CORE    = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLINX_COROUTINES}"
@@ -27,6 +23,10 @@ object AndroidX {
 object Google {
     const val HILT_ANDROID          = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+    const val HILT_COMMON = "androidx.hilt:hilt-common:${Versions.HILT_EXTENTION}"
+    const val HILT_LIFECYCLE = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_EXTENTION}"
+    const val HILT_COMPILER = "androidx.hilt:hilt-compiler:1.0.0-alpha01"
+
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
 
     //CRASHLYTICS

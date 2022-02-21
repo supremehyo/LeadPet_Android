@@ -21,6 +21,6 @@ dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:${PluginVersion.GRADLE_PLUGIN}")
     implementation( "com.google.gms:google-services:4.3.10")
     implementation( "com.google.firebase:firebase-crashlytics-gradle:2.8.1")
-    implementation("com.google.dagger:hilt-android-gradle-plugin:2.40.2")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.28-alpha")
 
 }
