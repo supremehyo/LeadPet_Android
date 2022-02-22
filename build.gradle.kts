@@ -4,8 +4,13 @@ subprojects {
         mavenCentral()
         maven("https://jitpack.io")
         gradlePluginPortal()
-
     }
+
+    afterEvaluate {
+        project.apply("$rootDir/gradle/common.gradle")
+    }
+
+
 }
 
 

@@ -12,6 +12,8 @@ plugins {
 android {
     compileSdk = Versions.COMPILE_SDK_VERSION
     buildToolsVersion = Versions.BUILD_TOOLS_VERSION
+    buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
 
     defaultConfig {
         applicationId = "com.dev6.LeadPet"
@@ -33,8 +35,7 @@ android {
             )
         }
     }
-    buildFeatures.dataBinding = true
-    buildFeatures.viewBinding = true
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -43,7 +44,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    dynamicFeatures += setOf(":features:login", ":features:join")
 }
 
 dependencies {
