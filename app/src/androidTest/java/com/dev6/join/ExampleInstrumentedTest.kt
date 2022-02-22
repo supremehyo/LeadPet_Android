@@ -1,4 +1,4 @@
-package com.dev6.LeadPet
+package com.dev6.join
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
