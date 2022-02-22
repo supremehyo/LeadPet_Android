@@ -1,4 +1,4 @@
-package com.dev6.LeadPet
+package com.dev6.join
 
 import org.junit.Test
 

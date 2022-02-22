@@ -22,3 +22,4 @@ include (":domain")
 
 include(":features:login")
 include(":features:join")
+include(":features:join:join")

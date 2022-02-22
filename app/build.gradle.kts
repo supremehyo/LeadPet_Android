@@ -69,7 +69,7 @@ dependencies {
 
     implementation(Google.MATERIAL)
     implementation(Google.HILT_ANDROID)
-  //  implementation(Google.HILT_COMMON)
+    //  implementation(Google.HILT_COMMON)
    // implementation(Google.HILT_LIFECYCLE)
     // implementation (Google.HILT_ANDROID_COMPILER)
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
