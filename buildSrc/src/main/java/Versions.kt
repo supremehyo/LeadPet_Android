@@ -14,6 +14,8 @@ object Versions {
     const val LIFECYCLE_KTX = "2.2.0"
     const val ROOM = "2.3.0"
 
+    const val NAVIGATION = "2.4.0"
+
     const val HILT = "2.38.1"
     const val HILT_EXTENTION = "1.0.0-alpha02"
     const val MATERIAL = "1.6.0-alpha02"

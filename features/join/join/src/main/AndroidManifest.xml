@@ -5,7 +5,8 @@
     <application>
         <activity
             android:name=".JoinActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication"/>
     </application>
 
 </manifest>

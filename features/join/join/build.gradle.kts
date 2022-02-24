@@ -49,6 +49,11 @@ dependencies {
     implementation(AndroidX.LIFECYCLE_EXTENSIONNS)
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
+    //Navigation
+    implementation(AndroidX.NAVIGATION)
+    implementation(AndroidX.NAVIGATION_KTX)
+
     implementation (project(":core"))
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
 }
