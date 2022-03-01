@@ -1,54 +1,46 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
-    id("com.github.ben-manes.versions")
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
+    id("kotlin-kapt")
 }
 
-
 android {
-    compileSdk = Versions.COMPILE_SDK_VERSION
-    buildToolsVersion = Versions.BUILD_TOOLS_VERSION
-    buildFeatures.dataBinding = true
-    buildFeatures.viewBinding = true
+    compileSdk = 31
 
     defaultConfig {
-        applicationId = "com.dev6.LeadPet"
-        minSdk = Versions.MIN_SDK_VERSION
-        targetSdk = Versions.TARGET_SDK_VERSION
-        vectorDrawables.useSupportLibrary = true
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = 21
+        targetSdk = 31
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
+        release {
+            isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile(
-                    "proguard-android-optimize.txt"
-                ),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
-
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
 }
 
 dependencies {
-
-    //Android Core
+    implementation (project(":core"))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)
@@ -83,7 +75,4 @@ dependencies {
     testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
-
-    //멀티모듈 관리
-
 }
