@@ -1,4 +1,4 @@
-package com.dev6.core.util
+package com.dev6.domain.util
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

@@ -11,5 +11,6 @@
     <color name="grey5">#323232</color>
     <color name="grey4">#A7A7A7</color>
     <color name="hintColor">#D8D9DE</color>
+    <color name="subTitle2">#C4C4C4</color>
     <color name="subTitle">#8D8D8D</color>
 </resources>
