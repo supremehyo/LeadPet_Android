@@ -1,4 +1,4 @@
-package com.dev6.domain
+package com.dev6.core
 
 import org.junit.Test
 

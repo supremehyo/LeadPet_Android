@@ -40,10 +40,6 @@ object Google {
 
 }
 
-object Image{
-    const val GLIDE = "com.github.bumptech.glide:glide:4.12.0"
-    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:4.12.0"
-}
 
 
 object UnitTest {
