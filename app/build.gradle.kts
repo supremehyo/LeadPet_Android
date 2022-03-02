@@ -47,6 +47,8 @@ android {
 }
 
 dependencies {
+    implementation (project(":core"))
+    implementation (project(":features:login"))
 
     //Android Core
     implementation(Kotlin.KOTLIN_STDLIB)
@@ -83,6 +85,10 @@ dependencies {
     testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+
+    //디버그용
+    implementation(Debug.TIMBER)
+
 
     //멀티모듈 관리
 

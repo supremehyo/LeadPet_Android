@@ -3,40 +3,14 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
-    compileSdk = 31
-
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 31
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
         viewBinding = true
         dataBinding = true
     }
-
 }
 
 dependencies {
@@ -61,6 +35,8 @@ dependencies {
 
     implementation(Google.MATERIAL)
     implementation(Google.HILT_ANDROID)
+    implementation(Google.AUTH)
+    implementation("com.google.android.gms:play-services-auth:19.0.0")
     kapt(Google.HILT_ANDROID_COMPILER)
     annotationProcessor(Google.HILT_COMPILER)
     implementation("androidx.appcompat:appcompat:1.4.0")
@@ -75,4 +51,7 @@ dependencies {
     testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+
+    //디버그용
+    implementation(Debug.TIMBER)
 }

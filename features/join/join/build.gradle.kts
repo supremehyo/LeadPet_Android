@@ -51,4 +51,7 @@ dependencies {
 
     implementation (project(":core"))
 
+    //디버그용
+    implementation(Debug.TIMBER)
+
 }

@@ -20,6 +20,9 @@ object AndroidX {
     const val ROOM_COMPILER           = "androidx.room:room-compiler:${Versions.ROOM}"
 }
 
+
+
+
 object Google {
     const val HILT_ANDROID          = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
@@ -34,13 +37,13 @@ object Google {
     const val FIREBASE_BOM = "com.google.firebase:firebase-bom:29.1.0"
     const val CRASHLYTICS = "com.google.firebase:firebase-crashlytics-ktx"
     const val ANALYTICS = "com.google.firebase:firebase-crashlytics-ktx"
-
+    const val AUTH =  "com.google.firebase:firebase-auth-ktx:21.0.1"
 }
 
 
 
 object UnitTest {
-    const val JUNIT         = "junit:junit:${Versions.JUNIT}"
+    const val JUNIT= "junit:junit:${Versions.JUNIT}"
 }
 
 object AndroidTest {
@@ -58,8 +61,8 @@ object Network {
 }
 
 //Flipper 디버깅 편리하게 해주는 라이브러리
-object Flipper {
-
+object Debug {
+    const val TIMBER = "com.jakewharton.timber:timber:5.0.1"
     const val FLIPPER = "com.facebook.flipper:flipper:0.135.0"
     const val SOLOADER = "com.facebook.soloader:soloader:0.10.1"
     const val LEAK_FLIPPER =  "com.facebook.flipper:flipper-leakcanary2-plugin:0.135.0"
@@ -68,5 +71,10 @@ object Flipper {
 //메모리 누수 잡는 라이브러리
 object Memory {
     const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.8.1"
+
+}
+
+object Kakao {
+    const val LOGIN =  "com.kakao.sdk:v2-user:2.8.6"
 
 }

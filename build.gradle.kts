@@ -1,4 +1,6 @@
 buildscript {
+    dependencies {
+    }
 }
 
 
