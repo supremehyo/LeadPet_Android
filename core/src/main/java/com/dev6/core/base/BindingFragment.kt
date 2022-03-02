@@ -26,6 +26,18 @@ abstract class BindingFragment<T : ViewDataBinding>(
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initViewModel()
+        initListener()
+        afterViewCreated()
+    }
+    protected open fun initView() {}
+    protected open fun initViewModel() {}
+    protected open fun initListener() {}
+    protected open fun afterViewCreated() {}
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

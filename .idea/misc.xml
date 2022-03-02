@@ -4,8 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProject/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.159375" />
-        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.15729166666666666" />
+        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/drawable/bottom_sheet_background.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/drawable/edittext_rounded_corner_rectangle.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/layout/bottom_sheet_laytout.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_email_join.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_terms.xml" value="0.25" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/drawable/round_button.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.33" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/bottom_sheet_laytout.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_email_join.xml" value="0.22" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_join_type.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.22" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_shelter_donate.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_shelter_user_join.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_shelter_user_more.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/LeadPet_Android/features/join/join/src/main/res/layout/fragment_terms.xml" value="0.35052083333333334" />
       </map>
     </option>
   </component>

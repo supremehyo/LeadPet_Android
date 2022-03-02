@@ -14,6 +14,18 @@ abstract class BindingActivity<T : ViewDataBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutRes)
+        initView()
+        initViewModel()
+        initListener()
+        afterOnCreate()
+
         binding.lifecycleOwner = this
     }
+
+    protected open fun beforeSetContentView() {}
+    protected open fun initView() {}
+    protected open fun initViewModel() {}
+    protected open fun initListener() {}
+    protected open fun afterOnCreate() {}
+
 }

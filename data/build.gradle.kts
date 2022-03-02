@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -10,6 +12,17 @@ android {
 }
 
 dependencies {
+
+    implementation (project(":domain"))
+
+    //retrofit2
+    implementation(Network.OKHTTP)
+    implementation(Network.OKHTTP3)
+    implementation(Network.RETROFIT)
+    implementation(Network.GSON)
+
+    implementation(Google.HILT_ANDROID)
+    kapt          (Google.HILT_ANDROID_COMPILER)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")

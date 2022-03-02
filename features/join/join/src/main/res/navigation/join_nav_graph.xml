@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/emailJoinFragment">
+
+    <fragment
+        android:id="@+id/emailJoinFragment"
+        android:name="com.dev6.join.EmailJoinFragment"
+        tools:layout="@layout/fragment_email_join">
+
+        <action
+            android:id="@+id/emailJoinFragment_to_termsFragment"
+            app:destination="@id/termsFragment"
+            app:popUpTo="@+id/termsFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_emailJoinFragment_to_joinTypeFragment"
+            app:destination="@id/joinTypeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.dev6.join.TermsFragment"
+        tools:layout="@layout/fragment_terms">
+    </fragment>
+
+    <fragment
+        android:id="@+id/joinTypeFragment"
+        android:name="com.dev6.join.JoinTypeFragment"
+        tools:layout="@layout/fragment_join_type">
+
+        <argument
+            app:nullable="true"
+            android:name="email"
+            app:argType="string">
+        </argument>
+
+        <argument
+            app:nullable="true"
+            android:name="password"
+            app:argType="string">
+        </argument>
+        <action
+            android:id="@+id/action_joinTypeFragment_to_normalUserJoinFragment"
+            app:destination="@id/normalUserJoinFragment" />
+        <action
+            android:id="@+id/action_joinTypeFragment_to_shelterUserJoinFragment"
+            app:destination="@id/shelterUserJoinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/normalUserJoinFragment"
+        android:name="com.dev6.join.NormalUserJoinFragment"
+        tools:layout="@layout/fragment_normal_user_join">
+    </fragment>
+
+    <fragment
+        android:id="@+id/shelterUserJoinFragment"
+        android:name="com.dev6.join.ShelterUserJoinFragment"
+        tools:layout="@layout/fragment_shelter_user_join">
+        <action
+            android:id="@+id/action_shelterUserJoinFragment_to_shelterUserMoreFragment"
+            app:destination="@id/shelterUserMoreFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shelterUserMoreFragment"
+        android:name="com.dev6.join.ShelterUserMoreFragment"
+        tools:layout="@layout/fragment_shelter_user_more">
+        <action
+            android:id="@+id/action_shelterUserMoreFragment_to_shelterDonateFragment"
+            app:destination="@id/shelterDonateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shelterDonateFragment"
+        android:name="com.dev6.join.ShelterDonateFragment"
+        tools:layout="@layout/fragment_shelter_donate">
+    </fragment>
+</navigation>

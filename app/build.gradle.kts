@@ -67,14 +67,10 @@ dependencies {
     implementation(Network.RETROFIT)
     implementation(Network.GSON)
 
-    implementation(Google.MATERIAL)
     implementation(Google.HILT_ANDROID)
-    //  implementation(Google.HILT_COMMON)
-   // implementation(Google.HILT_LIFECYCLE)
-    // implementation (Google.HILT_ANDROID_COMPILER)
-    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
-    kapt(Google.HILT_ANDROID_COMPILER)
-    annotationProcessor("androidx.hilt:hilt-compiler:1.0.0-alpha01")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    kapt          (Google.HILT_ANDROID_COMPILER)
+
     implementation("androidx.appcompat:appcompat:1.4.0")
 
 
@@ -88,6 +84,9 @@ dependencies {
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
-    //멀티모듈 관리
+    implementation (project(":data"))
+    implementation (project(":domain"))
+    implementation (project(":core"))
+    implementation(project(":features:join:join"))
 
 }

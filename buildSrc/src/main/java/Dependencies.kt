@@ -15,6 +15,9 @@ object AndroidX {
     const val LIFECYCLE_LIVEDATA_KTX  = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE_KTX}"
     const val LIFECYCLE_EXTENSIONNS = "androidx.lifecycle:lifecycle-extensions:2.1.0-alpha01"
 
+    const val NAVIGATION = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
+    const val NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
+
     const val ROOM_RUNTIME            = "androidx.room:room-runtime:${Versions.ROOM}"
     const val ROOM_KTX                = "androidx.room:room-ktx:${Versions.ROOM}"
     const val ROOM_COMPILER           = "androidx.room:room-compiler:${Versions.ROOM}"
@@ -37,6 +40,10 @@ object Google {
 
 }
 
+object Image{
+    const val GLIDE = "com.github.bumptech.glide:glide:4.12.0"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:4.12.0"
+}
 
 
 object UnitTest {
