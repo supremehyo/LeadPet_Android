@@ -15,5 +15,6 @@ class LeaPetApplication: Application() {
         if(BuildConfig.DEBUG){
             Timber.plant(LeadPetDebugTree())
         }
+        Timber.d("timber Initalized")
     }
 }
