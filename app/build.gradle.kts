@@ -90,6 +90,7 @@ dependencies {
     implementation(Debug.TIMBER)
 
 
-    //멀티모듈 관리
+    implementation(Kakao.LOGIN)
+
 
 }

@@ -4,6 +4,7 @@ import com.dev6.core.util.LeadPetDebugTree
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import com.dev6.join.BuildConfig
+import com.kakao.sdk.common.KakaoSdk
 
 //Hilt Android App 초기화
 @HiltAndroidApp
@@ -16,5 +17,6 @@ class LeaPetApplication: Application() {
             Timber.plant(LeadPetDebugTree())
         }
         Timber.d("timber Initalized")
+        KakaoSdk.init(this,getString(R.string.NATIVE_APP_KEY) )
     }
 }

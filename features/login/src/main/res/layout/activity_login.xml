@@ -11,13 +11,56 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_button"
-        android:layout_width="300dp"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="92dp"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="104dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintVertical_bias="0.942" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/kakao_login_medium_wide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/some_id"
+        android:textColor="@color/login_text_color"
+        android:textSize="13sp"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="677dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="676dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이메일로 회원가입"
+        android:textColor="@color/login_text_color"
+        android:textSize="13sp"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="679dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
