@@ -106,5 +106,5 @@ lint/tmp/
 
 
 # build src
-buildSrc/.gradle
-buildSrc/build
+buildSrc/.gradle/
+buildSrc/build/
