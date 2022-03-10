@@ -34,13 +34,17 @@ dependencies {
     implementation(Network.GSON)
 
     implementation(Google.MATERIAL)
-    implementation(Google.HILT_ANDROID)
+
     implementation(Google.AUTH)
     implementation("com.google.android.gms:play-services-auth:19.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    kapt(Google.HILT_ANDROID_COMPILER)
-    annotationProcessor(Google.HILT_COMPILER)
+
+
     implementation("androidx.appcompat:appcompat:1.4.0")
+
+    implementation(Google.HILT_ANDROID)
+    annotationProcessor(Google.HILT_COMPILER)
+    kapt(Google.HILT_ANDROID_COMPILER)
 
 
     implementation(Google.GOOGLE_CORE)
@@ -52,6 +56,9 @@ dependencies {
     testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+
+    implementation(AndroidX.NAVIGATION)
+    implementation(AndroidX.NAVIGATION_KTX)
 
     //디버그용
     implementation(Debug.TIMBER)

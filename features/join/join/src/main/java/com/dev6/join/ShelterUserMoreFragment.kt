@@ -18,7 +18,7 @@ import com.dev6.join.databinding.FragmentShelterUserMoreBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 
-
+@AndroidEntryPoint
 class ShelterUserMoreFragment : BindingFragment<FragmentShelterUserMoreBinding>(R.layout.fragment_shelter_user_more) {
 
     private val PICK_IMAGE_REQUEST = 1
