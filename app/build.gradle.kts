@@ -47,6 +47,8 @@ android {
 }
 
 dependencies {
+    implementation (project(":core"))
+    implementation (project(":features:login"))
 
     //Android Core
     implementation(Kotlin.KOTLIN_STDLIB)
@@ -68,8 +70,11 @@ dependencies {
     implementation(Network.GSON)
 
     implementation(Google.HILT_ANDROID)
+
+
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    kapt          (Google.HILT_ANDROID_COMPILER)
+    kapt(Google.HILT_ANDROID_COMPILER)
+    annotationProcessor(Google.HILT_COMPILER)
 
     implementation("androidx.appcompat:appcompat:1.4.0")
 
@@ -84,9 +89,18 @@ dependencies {
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
+
     implementation (project(":data"))
     implementation (project(":domain"))
     implementation (project(":core"))
     implementation(project(":features:join:join"))
+
+    //디버그용
+    implementation(Debug.TIMBER)
+
+
+    implementation(Kakao.LOGIN)
+
+
 
 }

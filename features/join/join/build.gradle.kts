@@ -75,4 +75,7 @@ dependencies {
     implementation (project(":core"))
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
+    //디버그용
+    implementation(Debug.TIMBER)
+
 }
