@@ -20,7 +20,7 @@ dependencies {
     implementation(Network.GSON)
 
     implementation(Google.HILT_ANDROID)
-    kapt          (Google.HILT_ANDROID_COMPILER)
+    kapt(Google.HILT_ANDROID_COMPILER)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
