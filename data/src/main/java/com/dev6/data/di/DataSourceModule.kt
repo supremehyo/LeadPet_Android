@@ -1,4 +1,4 @@
-package com.dev6.LeadPet.di
+package com.dev6.data.di
 
 import com.dev6.data.remote.JoinRemoteSource
 import com.dev6.data.remote.JoinRemoteSourceImpl

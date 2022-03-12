@@ -1,4 +1,4 @@
-package com.dev6.LeadPet.di
+package com.dev6.data.di
 
 import com.dev6.data.repositoryImple.JoinRepositoryImple
 import com.dev6.domain.repository.JoinRepository
@@ -11,6 +11,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
+
+
     @Singleton
     @Binds
     abstract fun bindsJoinRepository(repository: JoinRepositoryImple): JoinRepository

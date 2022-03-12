@@ -5,10 +5,10 @@ import retrofit2.http.Query
 
 interface LoginAPI {
 
-    @GET("pokemon")
-    suspend fun fetchPokemonList(
-        @Query("limit") limit: Int = 20,
-        @Query("offset") offset: Int = 0
-    ): ApiResponse<PokemonResponse>
+//    @GET("pokemon")
+//    suspend fun fetchPokemonList(
+//        @Query("limit") limit: Int = 20,
+//        @Query("offset") offset: Int = 0
+//    ): ApiResponse<PokemonResponse>
 
 }
