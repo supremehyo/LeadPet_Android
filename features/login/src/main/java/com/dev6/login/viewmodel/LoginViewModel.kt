@@ -1,4 +1,11 @@
 package com.dev6.login.viewmodel
 
-class LoginViewModel {
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+
+) :ViewModel(){
 }
