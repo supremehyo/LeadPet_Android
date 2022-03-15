@@ -1,10 +1,10 @@
 package com.dev6.data.entity
 
-import com.dev6.domain.entitiyRepo.UserEntityRepo
+import com.dev6.domain.entitiyRepo.LoginEntityRepo
 
-data class UserEntitiy(
+data class LoginEntitiy(
     override val type: String ,
     override val uid : String ,
     override val email : String?,
      override val password : String?
-) : UserEntityRepo
+) : LoginEntityRepo
