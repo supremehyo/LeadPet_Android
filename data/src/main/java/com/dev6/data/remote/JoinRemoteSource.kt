@@ -1,10 +1,10 @@
 package com.dev6.data.remote
 
-import com.dev6.data.entity.JoinEntitiy
 import com.dev6.data.service.JoinAPI
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import javax.inject.Inject
 
+//E
 interface JoinRemoteSource {
     suspend fun signUp(joinEntitiy: JoinEntitiyRepo): String
 }

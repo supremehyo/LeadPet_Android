@@ -13,8 +13,8 @@ android {
 }
 
 dependencies {
-
     implementation (project(":domain"))
+
 
     //retrofit2
     implementation(Network.OKHTTP)

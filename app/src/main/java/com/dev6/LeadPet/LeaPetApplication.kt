@@ -18,6 +18,7 @@ class LeaPetApplication: Application() {
             Timber.plant(LeadPetDebugTree())
         }
         Timber.d("timber Initalized")
+
         KakaoSdk.init(this,getString(R.string.NATIVE_APP_KEY) )
     }
 
