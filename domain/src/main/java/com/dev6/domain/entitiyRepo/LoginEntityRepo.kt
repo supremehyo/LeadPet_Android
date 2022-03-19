@@ -1,8 +1,10 @@
 package com.dev6.domain.entitiyRepo
 
+import com.dev6.core.enum.LoginType
+
 interface LoginEntityRepo {
-         val type: String
-         val uid : String
-         val email : String?
-         val password : String?
+         var type: LoginType
+         var uid :  String?
+         var email : String?
+         var password : String?
 }

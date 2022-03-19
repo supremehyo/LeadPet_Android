@@ -15,6 +15,8 @@ android {
 
 dependencies {
     implementation (project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)
@@ -43,6 +45,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.0")
 
     implementation(Google.HILT_ANDROID)
+
     annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 

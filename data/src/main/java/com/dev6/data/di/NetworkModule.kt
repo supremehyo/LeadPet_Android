@@ -16,6 +16,7 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
+    const val BASE_URL = "http://127.0.0.1:8080"
 
     @Provides
     @Singleton
@@ -32,7 +33,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://pokeapi.co/api/v2/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

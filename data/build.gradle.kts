@@ -23,6 +23,7 @@ dependencies {
     implementation(Network.GSON)
 
     implementation(Google.HILT_ANDROID)
+    implementation(project(mapOf("path" to ":core")))
     annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 
