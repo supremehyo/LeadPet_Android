@@ -2,10 +2,8 @@ package com.dev6.join
 
 import android.util.Log
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.dev6.core.base.BindingFragment
 import com.dev6.join.databinding.FragmentJoinTypeBinding
-import dagger.hilt.android.AndroidEntryPoint
 
 class JoinTypeFragment : BindingFragment<FragmentJoinTypeBinding>(R.layout.fragment_join_type){
 

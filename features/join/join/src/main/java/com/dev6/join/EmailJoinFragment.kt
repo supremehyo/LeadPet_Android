@@ -6,15 +6,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.join.databinding.FragmentEmailJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class EmailJoinFragment : BindingFragment<FragmentEmailJoinBinding>(R.layout.fragment_email_join) {
 

@@ -2,63 +2,70 @@ package com.dev6.data.entity
 
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class JoinEntitiy(
-    @SerializedName("type")
-    var _type: String,
-    @SerializedName("uid")
-    var _uid : String,
     @SerializedName("email")
-    var _email : String?,
-    @SerializedName("password")
-    var _password : String?,
-    @SerializedName("profileImage")
-    var _profileImage : String?,
+    val email : String?,
     @SerializedName("name")
-    var _name : String,
-    @SerializedName("shelterName")
-    var _shelterName : String,
+    val name : String,
+    @SerializedName("password")
+    val password : String?,
+    @SerializedName("profileImage")
+    val profileImage : String?,
     @SerializedName("shelterAddress")
-    var _shelterAddress : String,
-    @SerializedName("shelterPhoneNumber")
-    var _shelterPhoneNumber : String,
-    @SerializedName("shelterManager")
-    var _shelterManager : String,
+    val shelterAddress : String,
     @SerializedName("shelterHomePage")
-    var _shelterHomePage : String,
-) : JoinEntitiyRepo {
-    override var type: String
-        get() = _type
-        set(value) {type = value}
-    override var uid: String
-        get() = _uid
+    val shelterHomePage : String,
+    @SerializedName("shelterManager")
+    val shelterManager : String,
+    @SerializedName("shelterName")
+    val shelterName : String,
+    @SerializedName("shelterPhoneNumber")
+    val shelterPhoneNumber : String,
+    @SerializedName("type")
+    val type: String,
+    @SerializedName("uid")
+    val uid : String,
+    @SerializedName("userType")
+    val userType : String
+) : JoinEntitiyRepo , Serializable{
+    override var _type: String
+        get() = type
         set(value) {}
-    override var email: String?
-        get() = _email
+    override var _uid: String
+        get() = uid
         set(value) {}
-    override var password: String?
-        get() = _password
+    override var _email: String?
+        get() = email
         set(value) {}
-    override var profileImage: String?
-        get() = _profileImage
+    override var _password: String?
+        get() = password
         set(value) {}
-    override var name: String
-        get() = _name
+    override var _profileImage: String?
+        get() = profileImage
         set(value) {}
-    override var shelterName: String
-        get() = _shelterName
+    override var _name: String
+        get() = name
         set(value) {}
-    override var shelterAddress: String
-        get() = _shelterAddress
+    override var _shelterName: String
+        get() = shelterName
         set(value) {}
-    override var shelterPhoneNumber: String
-        get() = _shelterPhoneNumber
+    override var _shelterAddress: String
+        get() = shelterAddress
         set(value) {}
-    override var shelterManager: String
-        get() = _shelterManager
+    override var _shelterPhoneNumber: String
+        get() = shelterPhoneNumber
         set(value) {}
-    override var shelterHomePage: String
-        get() = _shelterHomePage
+    override var _shelterManager: String
+        get() = shelterManager
         set(value) {}
+    override var _shelterHomePage: String
+        get() = shelterHomePage
+        set(value) {}
+    override var _userType: String
+        get() = userType
+        set(value) {}
+
 
 }

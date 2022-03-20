@@ -5,6 +5,14 @@
       <map>
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/features/login/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_email_join.xml" value="0.19166666666666668" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_join_type.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_shelter_donate.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_shelter_user_join.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_shelter_user_more.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_terms.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.9385416666666667" />
         <entry key="features/login/src/main/res/drawable/button_round.xml" value="0.815" />
         <entry key="features/login/src/main/res/layout/activity_login.xml" value="0.5" />
@@ -15,6 +23,7 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

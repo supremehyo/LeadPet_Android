@@ -22,7 +22,7 @@ class JoinViewModel
     val joinDTOData =  _joinDTOData.asSharedFlow()
 
 
-    fun signUp(joinEntitiyRepo: JoinEntitiyRepo) {
+    fun signUp(joinEntitiyRepo: JoinEntitiy) {
         viewModelScope.launch {
             joinReposUseCase.signUp(joinEntitiyRepo).collectLatest {
                 _joinDataFlow.emit(it)
