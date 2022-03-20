@@ -26,8 +26,8 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
        if(response.isSuccessful){
            //Body가 없을경우, exception
            val userEntityRepo =  response.body() ?: throw Exception()
-
-
+       }else{
+//           response.body() ?: throw Exception()
        }
 
 

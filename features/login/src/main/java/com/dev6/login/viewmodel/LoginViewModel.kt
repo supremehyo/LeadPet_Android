@@ -23,7 +23,8 @@ class LoginViewModel @Inject constructor(private val   loginRepoUseCase : LoginR
     private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(type = LoginType.email))
     val loginDto =  _loginDto.asStateFlow()
 
-    private val _loginFlow= loginRepoUseCase.login(loginDto.value)
+//    private val _LodingFlow  = MutableStateFlow<LoginEntitiy>(LoginEntitiy(type = LoginType.email))
+//    val loginDto =  _loginDto.asStateFlow()
 
 
      fun getlogin(){
