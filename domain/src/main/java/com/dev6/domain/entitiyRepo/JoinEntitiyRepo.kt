@@ -1,7 +1,7 @@
 package com.dev6.domain.entitiyRepo
 
 interface  JoinEntitiyRepo {
-    var _type: String
+    var _loginMethod: String
     var _uid : String
     var _email : String?
     var _password : String?

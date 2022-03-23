@@ -23,15 +23,15 @@ data class JoinEntitiy(
     val shelterName : String,
     @SerializedName("shelterPhoneNumber")
     val shelterPhoneNumber : String,
-    @SerializedName("type")
-    val type: String,
+    @SerializedName("loginMethod")
+    val loginMethod: String,
     @SerializedName("uid")
     val uid : String,
     @SerializedName("userType")
     val userType : String
 ) : JoinEntitiyRepo , Serializable{
-    override var _type: String
-        get() = type
+    override var _loginMethod: String
+        get() = loginMethod
         set(value) {}
     override var _uid: String
         get() = uid
