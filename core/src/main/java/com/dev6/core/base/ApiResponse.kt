@@ -3,7 +3,6 @@ package com.dev6.core.base
 data class ApiResponse<T> (
     val result: T,
     val error :Error
-
     )
 
 

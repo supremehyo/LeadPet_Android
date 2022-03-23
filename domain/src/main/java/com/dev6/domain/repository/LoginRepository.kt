@@ -6,5 +6,5 @@ import com.dev6.domain.entitiyRepo.UserEntityRepo
 import retrofit2.Response
 
 interface LoginRepository {
-    suspend fun login(loginEntity : LoginEntityRepo)  : Response<ApiResponse<UserEntityRepo>>
+    suspend fun login(loginEntity : LoginEntityRepo)  : Response<UserEntityRepo>
 }

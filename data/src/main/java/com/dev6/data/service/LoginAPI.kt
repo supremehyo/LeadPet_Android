@@ -12,7 +12,7 @@ interface LoginAPI {
 
     @POST("/v1/user/login")
     // Repo
-    suspend fun login(@Body loginEntitiy: LoginEntityRepo): Response<ApiResponse<UserEntityRepo>>
+    suspend fun login(@Body loginEntitiy: LoginEntityRepo): Response<UserEntityRepo>
 
 
 }

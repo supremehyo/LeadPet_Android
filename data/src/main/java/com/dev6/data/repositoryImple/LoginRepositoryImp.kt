@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class LoginRepositoryImp  @Inject constructor(private val loginRemoteSource: LoginRemoteSource) : LoginRepository{
 
-    override suspend fun login(loginEntity: LoginEntityRepo): Response<ApiResponse<UserEntityRepo>> = loginRemoteSource.login(loginEntitiy = loginEntity)
+    override suspend fun login(loginEntity: LoginEntityRepo): Response<UserEntityRepo> = loginRemoteSource.login(loginEntitiy = loginEntity)
 
 
 

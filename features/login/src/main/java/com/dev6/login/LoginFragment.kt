@@ -1,8 +1,11 @@
 package com.dev6.login
 
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.os.Bundle
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.login.databinding.FragmentLoginBinding
@@ -24,19 +27,20 @@ import timber.log.Timber
 @AndroidEntryPoint
 class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
-    companion object {
-        private const val RC_SIGN_IN = 9001
-    }
+
+
 
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    private lateinit var activityLauncher: ActivityResultLauncher<Intent>
 
 
 
     override fun initListener() {
         super.initListener()
+
+
 
         //todo 데이터 바인딩을 통해 viewmodel로 옮기게될 로직들
         binding.imageButton.setOnClickListener {
@@ -48,24 +52,28 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         findNavController().navigate(R.id.action_loginFragment_to_emailLoginFragment)
         }
 
+        binding.googleButton.setOnClickListener {
+            signIn()
+        }
+
     }
 
     private fun kakaoLogin() {
 
-        UserApiClient.instance.me { user, error ->
-            if (error != null) {
-                Log.e(TAG, "사용자 정보 요청 실패", error)
-            }
-            else if (user != null) {
-                //todo 회원 번호 id 는 uuid?  
-                user.id
-                Log.i(TAG, "사용자 정보 요청 성공" +
-                        "\n회원번호: ${user.id}" +
-                        "\n이메일: ${user.kakaoAccount?.email}" +
-                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
-            }
-        }
+//        UserApiClient.instance.me { user, error ->
+//            if (error != null) {
+//                Log.e(TAG, "사용자 정보 요청 실패", error)
+//            }
+//            else if (user != null) {
+//                //todo 회원 번호 id 는 uuid?
+//                user.id
+//                Log.i(TAG, "사용자 정보 요청 성공" +
+//                        "\n회원번호: ${user.id}" +
+//                        "\n이메일: ${user.kakaoAccount?.email}" +
+//                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+//                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+//            }
+//        }
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
@@ -102,8 +110,16 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
+
+    }
+
     override fun afterViewCreated() {
         super.afterViewCreated()
+
+
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -113,29 +129,24 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         auth = Firebase.auth
         googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
-    }
+        activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result: ActivityResult ->
+            if (result.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
 
-    private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+                try {
+                    val account = task.getResult(ApiException::class.java)!!
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                Timber.d("firebaseAuthWithGoogle: $account.id")
-//                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Timber.w("Google sign in failed", e)
+                    Timber.d("GoogleLogin", "firebaseAuthWithGoogle: " + account.id)
+                } catch (e: ApiException) {
+                    Timber.d("GoogleLogin", "Google sign in failed: " + e.message)
+                }
             }
         }
+
     }
+
+    private fun signIn() = activityLauncher.launch(googleSignInClient!!.signInIntent)
+
 }
