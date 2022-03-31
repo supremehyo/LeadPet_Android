@@ -1,10 +1,9 @@
 package com.dev6.domain.usecase
 
 import com.dev6.domain.repository.AccessTokenRepository
+import javax.inject.Inject
 
-class GetKakaoAccessTokenUseCase(private val accessToken : AccessTokenRepository){
+class GetKakaoAccessTokenUseCase@Inject constructor(private val accessToken : AccessTokenRepository){
 
-    //todo LoginRepoUseCase
-
-    // LoginRepoUseCase.Login
+    suspend operator  fun invoke() = runCatching { accessToken.getKakao()}
 }

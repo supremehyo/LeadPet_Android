@@ -5,9 +5,10 @@ import android.content.Context
 import com.dev6.domain.repository.AccessTokenRepository
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.coroutines.suspendCancellableCoroutine
+import javax.inject.Inject
 import kotlin.coroutines.resume
 
-class AccessTokenRepositoryImp(private val context: Context) : AccessTokenRepository {
+class AccessTokenRepositoryImp @Inject constructor(private val context: Context) : AccessTokenRepository {
 
     override suspend fun getNaver(): String {
         TODO("Not yet implemented")

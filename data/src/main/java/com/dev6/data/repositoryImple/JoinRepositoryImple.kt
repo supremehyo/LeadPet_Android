@@ -9,7 +9,7 @@ class JoinRepositoryImple
 @Inject constructor(private val joinRemoteSource: JoinRemoteSource ) : JoinRepository {
 
     override suspend fun signUp(userEntitiy: JoinEntitiyRepo): String {
-        return joinRemoteSource.signUp(userEntitiy) // 수정필요
+        return joinRemoteSource.signUp(userEntitiy) // 수정필요 as Entity로 캐스팅 필요
     }
 
 }

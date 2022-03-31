@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <data>
+
     <variable
         name="viewModel"
         type="com.dev6.login.viewmodel.LoginViewModel" />
@@ -46,7 +47,6 @@
             android:background="@drawable/button_round"
             android:backgroundTint="@color/login_button_color"
             android:text="@string/text_login"
-            android:onClick="@{() -> viewModel.getlogin()}"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />

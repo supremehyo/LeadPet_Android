@@ -1,7 +1,9 @@
 package com.dev6.data.di
 
+import com.dev6.data.repositoryImple.AccessTokenRepositoryImp
 import com.dev6.data.repositoryImple.JoinRepositoryImple
 import com.dev6.data.repositoryImple.LoginRepositoryImp
+import com.dev6.domain.repository.AccessTokenRepository
 import com.dev6.domain.repository.JoinRepository
 import com.dev6.domain.repository.LoginRepository
 import dagger.Binds
@@ -24,6 +26,8 @@ abstract class RepositoryModule {
     @ViewModelScoped
     abstract fun bindsLoginRepository(repository: LoginRepositoryImp): LoginRepository
 
-
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsAccessTokenRepository(repository: AccessTokenRepositoryImp): AccessTokenRepository
 }
 

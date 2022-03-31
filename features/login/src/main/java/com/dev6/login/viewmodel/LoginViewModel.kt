@@ -4,12 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
 import com.dev6.core.enum.LoginType
-import com.dev6.core.exception.NotFoundException
-import com.dev6.core.util.EventFlow
+import com.dev6.core.exception.*
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.data.entity.LoginEntitiy
-import com.dev6.domain.entitiyRepo.UserEntityRepo
+import com.dev6.domain.entitiyRepo.LoginEntitiy
+import com.dev6.domain.entitiyRepo.UserEntity
+import com.dev6.domain.usecase.GetKakaoAccessTokenUseCase
 import com.dev6.domain.usecase.LoginRepoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,12 +20,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepoUseCase: LoginRepoUseCase
+    private val loginRepoUseCase: LoginRepoUseCase,
+    private val getKakaoAccessTokenUseCase: GetKakaoAccessTokenUseCase
 ) : ViewModel() {
 
     //    private val _id = MutableSharedFlow<String>()
 //    val joinDataFlow = _joinDataFlow.asSharedFlow()
-    private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(type = LoginType.email))
+    private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(loginMethod = LoginType.email))
     val loginDto = _loginDto.asStateFlow()
 
     private val _lodingFlow = MutableStateFlow<Boolean>(false)
@@ -34,26 +35,42 @@ class LoginViewModel @Inject constructor(
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
+    fun setloginDto(loginEntitiy: LoginEntitiy){
+        _loginDto.value = loginEntitiy
+    }
 
 
 
-    fun getlogin() {
+    fun getlogin(loginType: LoginType) {
         viewModelScope.launch {
-            Timber.d("로그인 들어옴")
+
+            //여기서 카카오 로그인, 네이버 로그인일경우, 토큰값을 가져온다 (구글일경우 미리 넣어놓고온다.)
+
+            if(loginType==LoginType.kakao){
+                getKakaoAccessTokenUseCase().onSuccess {accessToken->
+                    _loginDto.value = LoginEntitiy(LoginType.kakao,accessToken)
+
+                }.onFailure {
+                Timber.d("오류야")
+                }
+            }
+
+
+
             loginRepoUseCase.login(loginDto.value).collect { uiState ->
 
                 when (uiState) {
-                    is UiState.Success<UserEntityRepo> -> {
+                    is UiState.Success<UserEntity> -> {
                         _lodingFlow.value = false
                         Timber.d(uiState.data.toString())
                     }
                     is UiState.Error -> {
                         _lodingFlow.value = false
                         Timber.d(uiState.error?.message)
+
                         when(uiState.error){
-                            is NotFoundException ->{
-                                event(Event.JoinEvent("계정을 찾을수 없습니다."))
-                            }
+                            is JoinException  -> event(Event.JoinEvent(loginDto.value))
+                            is NotFoundException -> event(Event.ErrorEvent("계정을 찾을수 없습니다."))
                         }
 
                     }
@@ -71,6 +88,10 @@ class LoginViewModel @Inject constructor(
 
     sealed class Event {
         data class JoinEvent(
+            val loginDto: LoginEntitiy
+        ) : Event()
+
+        data class ErrorEvent(
             val text: String
         ) : Event()
     }
