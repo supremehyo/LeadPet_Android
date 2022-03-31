@@ -11,12 +11,15 @@ import com.dev6.domain.entitiyRepo.LoginEntitiy
 import com.dev6.domain.entitiyRepo.UserEntity
 import com.dev6.domain.usecase.GetKakaoAccessTokenUseCase
 import com.dev6.domain.usecase.LoginRepoUseCase
+import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import timber.log.Timber
 import javax.inject.Inject
+import kotlin.coroutines.resume
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
@@ -26,7 +29,7 @@ class LoginViewModel @Inject constructor(
 
     //    private val _id = MutableSharedFlow<String>()
 //    val joinDataFlow = _joinDataFlow.asSharedFlow()
-    private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(loginMethod = LoginType.email))
+    private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(loginMethod = LoginType.EMAIL))
     val loginDto = _loginDto.asStateFlow()
 
     private val _lodingFlow = MutableStateFlow<Boolean>(false)
@@ -41,19 +44,21 @@ class LoginViewModel @Inject constructor(
 
 
 
-    fun getlogin(loginType: LoginType) {
+    fun getlogin() {
         viewModelScope.launch {
 
             //여기서 카카오 로그인, 네이버 로그인일경우, 토큰값을 가져온다 (구글일경우 미리 넣어놓고온다.)
 
-            if(loginType==LoginType.kakao){
-                getKakaoAccessTokenUseCase().onSuccess {accessToken->
-                    _loginDto.value = LoginEntitiy(LoginType.kakao,accessToken)
-
-                }.onFailure {
-                Timber.d("오류야")
-                }
-            }
+//            if(loginType==LoginType.KAKAO){
+//                getKakaoAccessTokenUseCase().onSuccess {accessToken->
+//                    _loginDto.value = LoginEntitiy(LoginType.KAKAO,accessToken)
+//
+//                }.onFailure {
+//                Timber.d("카카오 오류 ")
+//                    event(Event.ErrorEvent("카카오 계정을 찾을수 없습니다."))
+//                    return@launch
+//                }
+//            }
 
 
 

@@ -20,7 +20,7 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
 
 
 
-        if(loginEntityRepo.loginMethod== LoginType.email) {
+        if(loginEntityRepo.loginMethod== LoginType.EMAIL) {
             if (loginEntityRepo.email.isNullOrEmpty()) throw Exception()
             if (loginEntityRepo.password.isNullOrEmpty()) throw Exception()
         }
@@ -40,7 +40,7 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
             when (response.code()) {
                 404 -> {
 
-                    if(loginEntityRepo.loginMethod == LoginType.email) throw  NotFoundException(response.message()) else throw  JoinException(response.message() , loginEntityRepo )
+                    if(loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(response.message()) else throw  JoinException(response.message())
 
                 }
                 else -> {
