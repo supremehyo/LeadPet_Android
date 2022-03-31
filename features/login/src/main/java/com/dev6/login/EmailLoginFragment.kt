@@ -32,29 +32,16 @@ class EmailLoginFragment : BindingFragment<FragmentEmailLoginBinding>(R.layout.f
         super.initView()
         with(binding){
         viewModel = loginViewModel
-            loginViewModel.loginDto.value.email = "hoho"
 
         }
-        repeatOnStarted {
-                loginViewModel.eventFlow.collect { event ->
-                    handleEvent(event)
-                }
 
-            }
 
     }
 
 
 
 
-    fun handleEvent(event: LoginViewModel.Event) = when (event) {
-        is LoginViewModel.Event.JoinEvent -> {
-            val joinIntent = Intent(this.context , JoinActivity::class.java)
-            joinIntent.
-        }
 
-        is LoginViewModel.Event.ErrorEvent -> Toast.makeText(requireContext(), event.text , Toast.LENGTH_SHORT).show()
-    }
 
 
 }
