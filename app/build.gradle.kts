@@ -47,8 +47,13 @@ android {
 }
 
 dependencies {
-    implementation (project(":core"))
+
     implementation (project(":features:login"))
+    implementation (project(":data"))
+    implementation (project(":domain"))
+    implementation (project(":core"))
+    implementation(project(":features:join:join"))
+
 
     //Android Core
     implementation(Kotlin.KOTLIN_STDLIB)
@@ -90,10 +95,6 @@ dependencies {
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
 
-    implementation (project(":data"))
-    implementation (project(":domain"))
-    implementation (project(":core"))
-    implementation(project(":features:join:join"))
 
     //디버그용
     implementation(Debug.TIMBER)

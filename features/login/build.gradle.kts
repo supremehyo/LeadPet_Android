@@ -15,6 +15,8 @@ android {
 
 dependencies {
     implementation (project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)
@@ -35,14 +37,19 @@ dependencies {
 
     implementation(Google.MATERIAL)
 
+    //로그인
     implementation(Google.AUTH)
-    implementation("com.google.android.gms:play-services-auth:19.0.0")
+    implementation("com.google.firebase:firebase-auth-ktx:21.0.2")
+    implementation("com.google.android.gms:play-services-auth:20.1.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-
+    implementation(Kakao.LOGIN)
 
     implementation("androidx.appcompat:appcompat:1.4.0")
 
     implementation(Google.HILT_ANDROID)
+    implementation(project(mapOf("path" to ":features:join:join")))
+
+
     annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 
@@ -63,6 +70,6 @@ dependencies {
     //디버그용
     implementation(Debug.TIMBER)
 
-    implementation(Kakao.LOGIN)
+
 
 }

@@ -3,6 +3,7 @@
     package="com.dev6.LeadPet">
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:name="com.dev6.LeadPet.LeaPetApplication"
         android:icon="@mipmap/ic_launcher"

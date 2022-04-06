@@ -8,6 +8,12 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 abstract class BindingFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int
@@ -33,6 +39,7 @@ abstract class BindingFragment<T : ViewDataBinding>(
         initListener()
         afterViewCreated()
     }
+
     protected open fun initView() {}
     protected open fun initViewModel() {}
     protected open fun initListener() {}
@@ -41,5 +48,11 @@ abstract class BindingFragment<T : ViewDataBinding>(
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun LifecycleOwner.repeatOnStartedFragment(block: suspend CoroutineScope.() -> Unit) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED, block)
+        }
     }
 }
