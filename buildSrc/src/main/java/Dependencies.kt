@@ -21,6 +21,8 @@ object AndroidX {
     const val ROOM_RUNTIME            = "androidx.room:room-runtime:${Versions.ROOM}"
     const val ROOM_KTX                = "androidx.room:room-ktx:${Versions.ROOM}"
     const val ROOM_COMPILER           = "androidx.room:room-compiler:${Versions.ROOM}"
+
+    const val PAGING                   ="androidx.paging:paging-runtime:${Versions.PAGING}"
 }
 
 

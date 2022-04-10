@@ -23,7 +23,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 loginViewModel.eventFlow.collect { event ->
                     handleEvent(event)
                 }
-
         }
     }
 

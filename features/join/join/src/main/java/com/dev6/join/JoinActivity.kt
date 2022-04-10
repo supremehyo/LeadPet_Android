@@ -12,11 +12,21 @@ import kotlinx.coroutines.launch
 class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join) {
 
     private  val joinViewModel : JoinViewModel by viewModels()
+    lateinit var loginMethod : String
+    lateinit var uuid : String
 
     override fun initView() {
         super.initView()
+
+        loginMethod = intent.getStringExtra("loginMethod")!!
+        uuid = intent.getStringExtra("uuid")!!
+
         binding.apply {
             joinViewModel.joinDTOData
+        }
+
+        lifecycleScope.launch {
+
         }
     }
 
