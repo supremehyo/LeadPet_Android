@@ -11,7 +11,7 @@ android {
 }
 
 dependencies {
-
+    implementation (project(":core"))
 
     //retrofit2
     implementation(Network.OKHTTP)

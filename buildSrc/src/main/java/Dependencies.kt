@@ -37,10 +37,10 @@ object Google {
 
     //CRASHLYTICS
     const val GOOGLE_CORE = "com.google.android.play:core-ktx:1.8.1"
-    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:29.1.0"
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:29.2.1"
     const val CRASHLYTICS = "com.google.firebase:firebase-crashlytics-ktx"
     const val ANALYTICS = "com.google.firebase:firebase-crashlytics-ktx"
-    const val AUTH =  "com.google.firebase:firebase-auth-ktx:21.0.1"
+    const val AUTH =  "com.google.android.gms:play-services-auth:20.1.0"
 }
 
 object Image{

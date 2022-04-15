@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "18772755543-3safdi50nql5geo2r6807mrqbvaluetb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev6.LeadPet",
+            "certificate_hash": "024a3e863d79b188b002ff178fed02fd4f4b6cd8"
+          }
+        },
+        {
+          "client_id": "18772755543-g1r10cvivjtclqqons545la71dq8q28n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev6.LeadPet",
+            "certificate_hash": "dea14e417d9f9efdc11b26960837b3deeb518c04"
+          }
+        },
+        {
           "client_id": "18772755543-q3fh72h2t6ke8ojobtca8pifv01ophgl.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -27,7 +43,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "18772755543-q3fh72h2t6ke8ojobtca8pifv01ophgl.apps.googleusercontent.com",
+              "client_id": "18772755543-9j7afe50bkulgmmbcuubppbtruiefb0j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

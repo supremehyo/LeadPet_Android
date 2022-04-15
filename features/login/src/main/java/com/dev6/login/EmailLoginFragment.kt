@@ -1,19 +1,37 @@
 package com.dev6.login
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.enum.LoginType
 import com.dev6.login.databinding.FragmentEmailLoginBinding
+import com.dev6.login.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
-
 
 
 @AndroidEntryPoint
 class EmailLoginFragment : BindingFragment<FragmentEmailLoginBinding>(R.layout.fragment_email_login) {
+
+    private  val loginViewModel : LoginViewModel by activityViewModels()
+    override fun initListener() {
+        super.initListener()
+
+        binding.button.setOnClickListener {
+            loginViewModel.getlogin()
+
+        }
+
+    }
+
+    override fun initView() {
+        super.initView()
+        with(binding){
+        viewModel = loginViewModel
+
+        }
+
+
+    }
+
 
 
 

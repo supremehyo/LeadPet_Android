@@ -1,31 +1,32 @@
 package com.dev6.data.entity
 
+
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import com.google.gson.annotations.SerializedName
 
 data class JoinEntitiy(
     @SerializedName("type")
-    var _type: String,
+    val _type: String,
     @SerializedName("uid")
-    var _uid : String,
+    val _uid : String,
     @SerializedName("email")
-    var _email : String?,
+    val _email : String?,
     @SerializedName("password")
-    var _password : String?,
+    val _password : String?,
     @SerializedName("profileImage")
-    var _profileImage : String?,
+    val _profileImage : String?,
     @SerializedName("name")
-    var _name : String,
+    val _name : String,
     @SerializedName("shelterName")
-    var _shelterName : String,
+    val _shelterName : String,
     @SerializedName("shelterAddress")
-    var _shelterAddress : String,
+    val _shelterAddress : String,
     @SerializedName("shelterPhoneNumber")
-    var _shelterPhoneNumber : String,
+    val _shelterPhoneNumber : String,
     @SerializedName("shelterManager")
-    var _shelterManager : String,
+    val _shelterManager : String,
     @SerializedName("shelterHomePage")
-    var _shelterHomePage : String,
+    val _shelterHomePage : String,
 ) : JoinEntitiyRepo {
     override var type: String
         get() = _type

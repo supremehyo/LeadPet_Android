@@ -1,14 +1,16 @@
 package com.dev6.data.service
 
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.dev6.domain.entitiyRepo.LoginEntitiy
+import com.dev6.domain.entitiyRepo.UserEntity
+import retrofit2.Response
+import retrofit2.http.*
 
 interface LoginAPI {
 
-//    @GET("pokemon")
-//    suspend fun fetchPokemonList(
-//        @Query("limit") limit: Int = 20,
-//        @Query("offset") offset: Int = 0
-//    ): ApiResponse<PokemonResponse>
+
+    @POST("/v1/user/login")
+    // Repo
+    suspend fun login(@Body loginEntitiy: LoginEntitiy): Response<UserEntity>
+
 
 }
