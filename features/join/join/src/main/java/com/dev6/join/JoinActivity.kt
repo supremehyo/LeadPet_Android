@@ -3,6 +3,8 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.dev6.core.base.BindingActivity
+import com.dev6.core.enum.LoginType
+import com.dev6.data.entity.JoinEntitiy
 import com.dev6.join.databinding.ActivityJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,22 +14,22 @@ import kotlinx.coroutines.launch
 class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join) {
 
     private  val joinViewModel : JoinViewModel by viewModels()
-    lateinit var loginMethod : String
+    lateinit var loginMethod : LoginType
     lateinit var uuid : String
 
     override fun initView() {
         super.initView()
 
-        loginMethod = intent.getStringExtra("loginMethod")!!
+
+
+        loginMethod = intent.getSerializableExtra("loginMethod") as LoginType
         uuid = intent.getStringExtra("uuid")!!
 
-        binding.apply {
-            joinViewModel.joinDTOData
-        }
+        val dto  = JoinEntitiy(loginMethod.toString(),uuid,"","",
+            "","","","",""
+        ,"","" , "")
 
-        lifecycleScope.launch {
-
-        }
+        joinViewModel.setJoinDTOData(dto)
     }
 
     override fun initViewModel() {
@@ -37,7 +39,5 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
                 Log.v("joinresponse", it)
             }
         }
-
-
     }
 }

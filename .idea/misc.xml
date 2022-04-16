@@ -9,7 +9,8 @@
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_donation.xml" value="0.1522289766970618" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_feed.xml" value="0.27713625866050806" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/menu/bottome_menu.xml" value="0.1111111111111111" />
-        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.1" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.25" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.9385416666666667" />
         <entry key="features/join/join/src/main/res/layout/activity_join.xml" value="0.2921195652173913" />
         <entry key="features/join/join/src/main/res/layout/fragment_email_join.xml" value="0.28976697061803447" />

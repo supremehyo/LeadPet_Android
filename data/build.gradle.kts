@@ -20,6 +20,7 @@ dependencies {
     implementation(Network.OKHTTP)
     implementation(Network.OKHTTP3)
     implementation(Network.RETROFIT)
+    implementation(Network.SCALAR)
     implementation(Network.GSON)
 
     implementation(Google.HILT_ANDROID)

@@ -4,12 +4,13 @@ import com.dev6.data.entity.JoinEntitiy
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import retrofit2.http.Body
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface  JoinAPI {
 
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json")
     @POST("v1/user/signup")
-    suspend fun signUp(@Body userEntitiy: JoinEntitiyRepo): String
+    suspend fun signUp(@Body userEntitiy: JoinEntitiy): String
 
 }
