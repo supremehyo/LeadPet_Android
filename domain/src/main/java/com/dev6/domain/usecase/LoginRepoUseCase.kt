@@ -38,23 +38,13 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
             emit(UiState.Success(userEntityRepo))
         } else {
             when (response.code()) {
-                404 -> {
-
-                    if(loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(response.message()) else throw  JoinException(response.message())
-
-                }
-                else -> {
-
-                }
-
-
+                404 -> if(loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(response.message()) else throw  JoinException(response.message())
+                else -> { }
             }
-
         }
+
     }.catch { error ->
         emit(UiState.Error(error))
         Timber.d("에러에염 $error")
-
     }
-
 }

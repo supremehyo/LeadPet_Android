@@ -1,1 +1,13 @@
-<resources></resources>
+<resources>
+    <string name="post_title">게시글 제목</string>
+    <string name="hint_title">게시글의 제목을 입력해주세요</string>
+    <string name="hint_life_content">보호소 일상에 대해서 이야기 해주세요</string>
+    <string name="title_introduce">소개글</string>
+    <string name="title_post_week">게시 기간</string>
+    <string name="title_animal_choice">동물 선택</string>
+    <string name="title_kind">품종</string>
+    <string name="title_age">나이</string>
+    <string name="tv_neutering">중성화 여부</string>
+    <string name="title_disease">질병상태</string>
+    <string name="title_camera_necessary">사진 필수</string>
+</resources>

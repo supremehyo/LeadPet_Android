@@ -28,14 +28,5 @@ class EmailLoginFragment : BindingFragment<FragmentEmailLoginBinding>(R.layout.f
         viewModel = loginViewModel
 
         }
-
-
     }
-
-
-
-
-
-
-
 }

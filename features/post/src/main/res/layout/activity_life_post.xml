@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LifePostActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/inclue_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gi_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_end="16dp" />
+
+    <View
+        android:id="@+id/v_camera"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_camera_round"
+        android:backgroundTint="#C4C4C4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include">
+
+    </View>
+
+    <ImageView
+        android:id="@+id/iv_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toEndOf="@id/v_camera"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toTopOf="@id/v_camera"
+        app:srcCompat="@drawable/ic_camera" />
+
+    <TextView
+        android:id="@+id/tv_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp"
+        android:text="0/10"
+        android:textSize="@dimen/font_content"
+        app:layout_constraintBottom_toBottomOf="@id/v_camera"
+        app:layout_constraintEnd_toEndOf="@id/v_camera"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/iv_camera"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/v_line1"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/color_line"
+        app:layout_constraintBottom_toTopOf="@id/til_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_camera" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="@id/v_line1"
+        app:layout_constraintStart_toStartOf="@id/v_line1"
+        app:layout_constraintTop_toBottomOf="@id/v_line1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/hint_title"
+            android:textSize="@dimen/font_content"
+            app:layout_constraintEnd_toEndOf="@id/v_line1"
+            app:layout_constraintStart_toStartOf="@id/v_line1"
+            app:layout_constraintTop_toBottomOf="@id/v_line1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+        android:id="@+id/v_line2"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/color_line"
+        app:layout_constraintBottom_toTopOf="@id/til_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/v_line1"
+        app:layout_constraintStart_toStartOf="@id/v_line1"
+        app:layout_constraintTop_toBottomOf="@id/v_line2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="@string/hint_life_content"
+            android:inputType="text"
+            android:textSize="@dimen/font_content"
+            app:layout_constraintEnd_toEndOf="@id/v_line1"
+            app:layout_constraintStart_toStartOf="@id/v_line1"
+            app:layout_constraintTop_toBottomOf="@id/v_line1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

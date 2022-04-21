@@ -6,4 +6,189 @@
     android:layout_height="match_parent"
     tools:context=".PetAdoptPostActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/inclue_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/v_camera2"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/button_camera_round"
+        android:backgroundTint="#C4C4C4"
+        app:layout_constraintStart_toStartOf="@+id/tv_camera_necessary"
+        app:layout_constraintTop_toBottomOf="@+id/tv_camera_necessary">
+
+    </View>
+
+    <ImageView
+        android:id="@+id/iv_camera2"
+        android:layout_width="28dp"
+        android:layout_height="29dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/v_camera2"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="@+id/v_camera2"
+        app:layout_constraintTop_toTopOf="@+id/v_camera2"
+        app:srcCompat="@drawable/ic_camera" />
+
+    <TextView
+        android:id="@+id/tv_camera2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp"
+        android:text="0/10"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
+        app:layout_constraintEnd_toEndOf="@+id/v_camera2"
+        app:layout_constraintStart_toStartOf="@+id/v_camera2"
+        app:layout_constraintTop_toBottomOf="@+id/iv_camera2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_left2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gi_light2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_end="16dp" />
+
+    <View
+        android:id="@+id/v_line1"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="16dp"
+        android:background="#E1E1E1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_camera2" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/post_title"
+        android:textColorHighlight="@color/color_title"
+        app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/v_camera2"
+        app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+    <TextView
+        android:id="@+id/tv_title_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_introduce"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        tools:layout_editor_absoluteY="300dp" />
+
+    <TextView
+        android:id="@+id/tv_post_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_post_week"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_introduce"
+        tools:layout_editor_absoluteY="361dp" />
+
+    <TextView
+        android:id="@+id/tv_animal_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_animal_choice"
+        app:layout_constraintStart_toStartOf="@+id/tv_post_week"
+        tools:layout_editor_absoluteY="437dp" />
+
+    <TextView
+        android:id="@+id/tv_animal_kind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_kind"
+        app:layout_constraintStart_toStartOf="@+id/tv_animal_type"
+        tools:layout_editor_absoluteY="516dp" />
+
+    <TextView
+        android:id="@+id/tv_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_age"
+        app:layout_constraintStart_toStartOf="@+id/tv_animal_kind"
+        tools:layout_editor_absoluteY="577dp" />
+
+    <TextView
+        android:id="@+id/tv_neutering"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_neutering"
+        app:layout_constraintStart_toStartOf="@+id/tv_age"
+        tools:layout_editor_absoluteY="641dp" />
+
+    <TextView
+        android:id="@+id/tv_disease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_disease"
+        app:layout_constraintStart_toStartOf="@+id/tv_neutering"
+        tools:layout_editor_absoluteY="751dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="337dp"
+        android:layout_height="33dp"
+        android:hint="hint"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="910dp" />
+
+    <TextView
+        android:id="@+id/tv_camera_necessary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/title_camera_necessary"
+        android:textColorHighlight="@color/color_camera"
+        android:textSize="@dimen/font_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/button_camera_round"
+        android:backgroundTint="@color/color_border_in"
+        app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+        app:layout_constraintStart_toStartOf="@+id/gl_left2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
