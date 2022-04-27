@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_line">#E1E1E1</color>
+    <color name="color_C4">#C4C4C4</color>
+    <color name="color_title">#323232</color>
+    <color name="color_border">#A7A7A7</color>
+    <color name="color_border_in">#F9F9F9</color>
+    <color name="color_bd">#BDBDBD</color>
+    <color name="color_8B">#8B8B8B</color>
+    <color name="color_EA">#EAEAEA</color>
+    <color name="color_black">#000000</color>
+
+</resources>

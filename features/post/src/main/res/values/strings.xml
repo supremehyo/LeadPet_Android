@@ -1,6 +1,6 @@
 <resources>
     <string name="post_title">게시글 제목</string>
-    <string name="hint_title">게시글의 제목을 입력해주세요</string>
+    <string name="hint_title">제목을 입력해주세요</string>
     <string name="hint_life_content">보호소 일상에 대해서 이야기 해주세요</string>
     <string name="title_introduce">소개글</string>
     <string name="title_post_week">게시 기간</string>
@@ -10,4 +10,16 @@
     <string name="tv_neutering">중성화 여부</string>
     <string name="title_disease">질병상태</string>
     <string name="title_camera_necessary">사진 필수</string>
+    <string name="hint_adapt_title">예시) 예쁜 살구가 가족을 찾고 있어요!</string>
+    <string name="hint_introduce">예시) 유기동물 소개글 작성</string>
+    <string name="title_euthanasia">안락사예정일 (비공개)</string>
+    <string name="explain_euthanasia">* 안락사가 예정되어있다면 예정일을 알려주세요. 입양 게시글을 우선순위로 위차 할 수 있습니다.</string>
+    <string name="hint_age">1살</string>
+    <string name="hint_disease">예시) 늦은 구조로 인해 피부병이 있지만 빠른 회복이 가능한 질병이에요!</string>
+    <string name="text_dog">강아지</string>
+    <string name="text_cat">고양이</string>
+    <string name="text_ok">있음</string>
+    <string name="text_no">없음</string>
+
+    <string name="text_ems_1000">%d/1000</string>
 </resources>

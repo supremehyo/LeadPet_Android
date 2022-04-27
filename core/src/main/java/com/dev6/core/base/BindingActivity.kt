@@ -18,7 +18,6 @@ abstract class  BindingActivity<T : ViewDataBinding>(
         initViewModel()
         initListener()
         afterOnCreate()
-
         binding.lifecycleOwner = this
     }
 

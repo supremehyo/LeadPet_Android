@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/features/login/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="app/src/main/res/font/custom_font_family.xml" value="0.2838541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.9385416666666667" />
         <entry key="core/src/main/res/drawable/backspace.xml" value="0.276" />
+        <entry key="core/src/main/res/drawable/ic_camera.xml" value="0.305" />
+        <entry key="core/src/main/res/drawable/ic_chevron_down.xml" value="0.305" />
+        <entry key="core/src/main/res/drawable/ic_keyboard_backspace.xml" value="0.305" />
+        <entry key="core/src/main/res/font/custom_font_family.xml" value="0.23229166666666667" />
+        <entry key="core/src/main/res/layout/font_style.xml" value="0.20208333333333334" />
         <entry key="core/src/main/res/layout/inclue_top.xml" value="0.67" />
         <entry key="features/join/join/src/main/res/layout/activity_join.xml" value="0.2921195652173913" />
         <entry key="features/join/join/src/main/res/layout/fragment_email_join.xml" value="0.28976697061803447" />
@@ -24,8 +31,12 @@
         <entry key="features/login/src/main/res/layout/fragment_first.xml" value="0.1743659420289855" />
         <entry key="features/login/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="features/login/src/main/res/layout/fragment_second.xml" value="0.9385416666666667" />
+        <entry key="features/post/src/main/res/drawable/btn_radio.xml" value="0.3375" />
         <entry key="features/post/src/main/res/drawable/button_camera_round.xml" value="0.3615" />
-        <entry key="features/post/src/main/res/layout/activity_life_post.xml" value="0.18" />
+        <entry key="features/post/src/main/res/drawable/edit_text_round.xml" value="0.305" />
+        <entry key="features/post/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.246" />
+        <entry key="features/post/src/main/res/drawable/selector_stroke.xml" value="0.245" />
+        <entry key="features/post/src/main/res/layout/activity_life_post.xml" value="0.25" />
         <entry key="features/post/src/main/res/layout/activity_pet_adopt_post.xml" value="0.25" />
       </map>
     </option>
