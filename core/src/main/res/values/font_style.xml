@@ -2,7 +2,7 @@
 <resources>
     <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/custom_font_family</item>
-        <item name="android:color">@color/color_C4</item>
+        <item name="android:color">@color/Gray_06</item>
     </style>
 
     <style name="customButtonFontStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
@@ -11,7 +11,7 @@
 
     <style name="EditTextFontStyle_title" parent="@android:style/Widget.DeviceDefault.EditText">
         <item name="android:fontFamily">@font/custom_font_family</item>
-        <item name="android:color">@color/color_C4</item>
+        <item name="android:color">@color/Gray_06</item>
         <item name="android:textColor">@color/color_black</item>
         <item name="android:background">@null</item>
         <item name="android:textSize">14sp</item>
@@ -36,6 +36,15 @@
         <item name="android:textColorHint">@color/text_color_hint</item>
         <item name="hintTextColor">@color/color_8B</item>
     </style>
+
+
+    <style name="SpinnerTextViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:textColor">@color/Gray_03</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
 
 
 

@@ -45,22 +45,19 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
 
     override fun initListener() {
         super.initListener()
-
-
-        //todo 데이터 바인딩을 통해 viewmodel로 옮기게될 로직들
-        binding.imageButton.setOnClickListener {
-            kakaoLogin()
+        with(binding) {
+            //todo 데이터 바인딩을 통해 viewmodel로 옮기게될 로직들
+            imageButton.setOnClickListener {
+                kakaoLogin()
+            }
+            //todo navigation 적용을 통해 사라질 로직
+            someId.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_emailLoginFragment)
+            }
+            googleButton.setOnClickListener {
+                signIn()
+            }
         }
-
-        //todo navigation 적용을 통해 사라질 로직
-        binding.someId.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_emailLoginFragment)
-        }
-
-        binding.googleButton.setOnClickListener {
-            signIn()
-        }
-
     }
 
 
@@ -81,17 +78,19 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                                 }
                             )
                         }
-
                     }.getOrThrow()
-                }.onSuccess {token->
-                    loginViewModel.setloginDto(LoginEntitiy(LoginType.KAKAO , token, null,null))
-                    loginViewModel.getlogin( )
+                }.onSuccess { token ->
+                    loginViewModel.setloginDto(LoginEntitiy(LoginType.KAKAO, token, null, null))
+                    loginViewModel.getlogin()
                 }.onFailure {
-                     Toast.makeText(this@LoginFragment.requireContext().applicationContext, it.message , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@LoginFragment.requireContext().applicationContext,
+                        it.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-
             }
-            }
+        }
 
 
 //        val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
@@ -135,7 +134,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
 
     override fun afterViewCreated() {
         super.afterViewCreated()
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -166,7 +164,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                     }
                 }
             }
-
     }
 
     private fun signIn() = activityLauncher.launch(googleSignInClient!!.signInIntent)

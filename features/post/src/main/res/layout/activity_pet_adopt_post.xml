@@ -9,676 +9,119 @@
     android:fillViewport="true" >
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
-
-
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/inclue_top"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/v_camera2"
-        android:layout_width="67dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/button_camera_round"
-        android:backgroundTint="#C4C4C4"
-        app:layout_constraintStart_toStartOf="@id/tv_camera_necessary"
-        app:layout_constraintTop_toBottomOf="@id/tv_camera_necessary">
-
-    </View>
-
-    <ImageView
-        android:id="@+id/iv_camera2"
-        android:layout_width="28dp"
-        android:layout_height="29dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="14dp"
-        app:layout_constraintEnd_toEndOf="@id/v_camera2"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="@id/v_camera2"
-        app:layout_constraintTop_toTopOf="@id/v_camera2"
-        app:srcCompat="@drawable/ic_camera" />
-
-    <TextView
-        android:id="@+id/tv_camera2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="12dp"
-        android:text="0/10"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/v_camera2"
-        app:layout_constraintEnd_toEndOf="@id/v_camera2"
-        app:layout_constraintStart_toStartOf="@id/v_camera2"
-        app:layout_constraintTop_toBottomOf="@id/iv_camera2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_left2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gi_light2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_end="16dp" />
-
-    <View
-        android:id="@+id/v_line1"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_camera2" />
-
-    <View
-        android:id="@+id/v_line2"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tiet_title" />
-
-    <View
-        android:id="@+id/v_line3"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_introduce" />
-
-    <View
-        android:id="@+id/v_line4"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/li_start_date" />
-
-    <View
-        android:id="@+id/v_line5"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdg_animal" />
-
-    <View
-        android:id="@+id/v_line6"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_animal_kind" />
-
-    <View
-        android:id="@+id/v_line7"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_animal_kind" />
-
-    <View
-        android:id="@+id/v_line8"
-        android:layout_width="0dp"
-        android:layout_height="0.2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdg_sex" />
-
-    <View
-        android:id="@+id/v_line9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_age" />
-
-    <View
-        android:id="@+id/v_line10"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdg_neutering" />
-
-    <View
-        android:id="@+id/v_line11"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:background="#E1E1E1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_diesase" />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/post_title"
-        android:textColor="@color/color_title"
-        android:textColorHighlight="@color/color_title"
-        android:textSize="@dimen/size_title"
-        app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/v_camera2"
-        app:layout_constraintTop_toBottomOf="@id/v_line1" />
-
-    <TextView
-        android:id="@+id/tv_title_introduce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/title_introduce"
-        android:textColor="@color/color_title"
-        android:textSize="@dimen/size_title"
-        app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/v_line2" />
-
-    <TextView
-        android:id="@+id/tv_post_week"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="@string/title_post_week"
-        android:textColor="@color/color_title"
-        android:textSize="@dimen/size_title"
-        app:layout_constraintStart_toStartOf="@id/tv_title_introduce"
-        app:layout_constraintTop_toBottomOf="@+id/v_line3" />
-
-    <TextView
-        android:id="@+id/tv_animal_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/title_animal_choice"
-        android:textColor="@color/color_title"
-        app:layout_constraintStart_toStartOf="@id/tv_post_week"
-        app:layout_constraintTop_toBottomOf="@+id/v_line4" />
-
-    <TextView
-        android:id="@+id/tv_animal_kind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/title_kind"
-        android:textColor="@color/color_title"
-        app:layout_constraintStart_toStartOf="@id/tv_animal_type"
-        app:layout_constraintTop_toBottomOf="@+id/v_line5" />
-
-    <TextView
-        android:id="@+id/tv_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/title_age"
-        android:textColor="@color/color_title"
-        app:layout_constraintStart_toStartOf="@id/tv_animal_kind"
-        app:layout_constraintTop_toBottomOf="@+id/v_line8" />
-
-    <TextView
-        android:id="@+id/tv_neutering"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="@string/tv_neutering"
-        android:textColor="@color/color_title"
-        app:layout_constraintStart_toStartOf="@id/tv_age"
-        app:layout_constraintTop_toBottomOf="@+id/v_line9" />
-
-    <TextView
-        android:id="@+id/tv_disease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="@string/title_disease"
-        android:textColor="@color/color_title"
-        app:layout_constraintStart_toStartOf="@id/tv_neutering"
-        app:layout_constraintTop_toBottomOf="@+id/v_line10" />
-
-    <TextView
-        android:id="@+id/tv_camera_necessary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="19dp"
-        android:text="@string/title_camera_necessary"
-        android:textColor="@color/color_C4"
-        android:textColorHighlight="@color/color_C4"
-        android:textSize="@dimen/font_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include" />
-
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tiet_title"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/edit_text_round"
-        android:hint="@string/hint_adapt_title"
-        android:padding="8dp"
-        android:textColor="@color/color_C4"
-        android:textSize="@dimen/font_content"
-        app:layout_constraintEnd_toStartOf="@id/gi_light2"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        android:layout_height="match_parent">
 
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_introduce"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/edit_text_round"
-        android:paddingLeft="8dp"
-        android:paddingTop="14dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_introduce">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_introduce"
-            android:layout_width="match_parent"
+        <include
+            android:id="@+id/include"
+            layout="@layout/inclue_top"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:hint="@string/hint_introduce"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginEnd="9dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_age"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/edit_text_round"
-        android:paddingStart="13dp"
-        android:paddingTop="9dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_age">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_age"
+        <com.dev6.core.view.CustomButtonCamera
+            android:id="@+id/v_camera2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:hint="@string/hint_age"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="14dp"
+            android:background="@drawable/round_4dp"
+            android:backgroundTint="#C4C4C4"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/include">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_diesase"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:background="@drawable/edit_text_round"
-        android:paddingStart="10dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="6dp"
-        app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_disease">
+        </com.dev6.core.view.CustomButtonCamera>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_diesase"
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:hint="@string/hint_disease"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/li_start_date"
-        android:layout_width="115dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/edit_text_round"
-        android:orientation="horizontal"
-        android:paddingStart="13dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="4dp"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_post_week">
-
-        <EditText
-            android:id="@+id/edit_start_date"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gi_light2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:ems="10"
-            android:hint="03 / 12 / 2022"
-            android:inputType="date"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="16dp" />
 
-        <ImageView
-            android:id="@+id/iv_start_date"
+
+        <TextView
+            android:id="@+id/tv_camera_necessary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_calendar" />
-    </LinearLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="21dp"
+            android:hint="@string/hint_title"
+            android:textColor="@color/Gray_06"
+            android:textColorHighlight="@color/Gray_06"
+            android:textSize="@dimen/font_content"
+            app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/v_camera2"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <LinearLayout
-        android:id="@+id/li_end_date"
-        android:layout_width="115dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/edit_text_round"
-        android:orientation="horizontal"
-        android:paddingStart="13dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/v_backtick"
-        app:layout_constraintStart_toEndOf="@+id/v_backtick"
-        app:layout_constraintTop_toTopOf="@+id/v_backtick"
-        app:layout_constraintVertical_bias="0.5">
 
-        <EditText
-            android:id="@+id/edit_end_date"
+        <com.dev6.core.view.CustomButtonSpinner
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:ems="10"
-            android:hint="03 / 12 / 2022"
-            android:inputType="date"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/v_camera2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_camera_necessary"
+            app:text="동물선택" />
 
-        <ImageView
-            android:id="@+id/iv_end_date"
+        <com.dev6.core.view.CustomButtonSpinner
+            android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_calendar" />
-    </LinearLayout>
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2"
+            app:layout_constraintVertical_bias="0.0"
+            app:text="암수구분" />
 
-    <View
-        android:id="@+id/v_backtick"
-        android:layout_width="8dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/color_bd"
-        app:layout_constraintBottom_toBottomOf="@+id/li_start_date"
-        app:layout_constraintStart_toEndOf="@+id/li_start_date"
-        app:layout_constraintTop_toTopOf="@+id/li_start_date" />
-
-    <LinearLayout
-        android:id="@+id/li_euthanasia_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/edit_text_round"
-        android:orientation="horizontal"
-        android:paddingStart="13dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="4dp"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_explain_euthanasia">
-
-        <EditText
-            android:id="@+id/edit_euthanasia_date"
+        <com.dev6.core.view.CustomButtonSpinner
+            android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:ems="10"
-            android:hint="03 / 12 / 2022"
-            android:inputType="date"
-            android:textSize="@dimen/font_content" />
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button3"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintTop_toTopOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.0"
+            app:text="나이" />
 
-        <ImageView
-            android:id="@+id/iv_euthanasia_date"
+        <com.dev6.core.view.CustomButtonLight
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_calendar" />
-    </LinearLayout>
-
-    <RadioGroup
-        android:id="@+id/rdg_animal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_animal_type">
-
-        <RadioButton
-            android:id="@+id/rdbtn_dog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="@string/text_dog"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-
-        <RadioButton
-            android:id="@+id/rdbtn_cat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="@string/text_cat"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-
-        <RadioButton
-            android:id="@+id/rdbtn_other"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="기타"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/rdg_neutering"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_neutering">
-
-        <RadioButton
-            android:id="@+id/rdbtn_ok"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="@string/text_ok"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-
-        <RadioButton
-            android:id="@+id/rdbtn_no"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="@string/text_no"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/rdg_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sex">
-
-        <RadioButton
-            android:id="@+id/rdbtn_male"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="남아"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-
-        <RadioButton
-            android:id="@+id/rdbtn_female"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:button="@null"
-            android:drawableLeft="@drawable/btn_radio"
-            android:drawablePadding="11dp"
-            android:text="여아"
-            android:textColor="@color/color_C4"
-            android:textSize="@dimen/font_content" />
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/tv_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="암수구분"
-        android:textColor="@color/color_title"
-        android:textSize="@dimen/size_title"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/v_line6" />
-
-    <TextView
-        android:id="@+id/tv_euthanasia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="@string/title_euthanasia"
-        android:textColor="@color/color_title"
-        android:textSize="@dimen/size_title"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/v_line11" />
-
-    <TextView
-        android:id="@+id/tv_explain_euthanasia"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/explain_euthanasia"
-        android:textColor="@color/color_C4"
-        android:textSize="@dimen/font_content"
-        app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="@+id/gl_left2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_euthanasia" />
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/v_camera2"
+            app:text="품종 선택" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
