@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.feed.R
+import com.dev6.feed.adapter.PagingAdapter
 import com.dev6.feed.databinding.FragmentFeedBinding
 import com.dev6.feed.view.feedDetailFragment.AdoptFragment
 import com.dev6.feed.view.feedDetailFragment.DailyFragment
@@ -17,6 +18,7 @@ import com.dev6.feed.view.feedDetailFragment.DonationFragment
 import com.dev6.feed.view.feedDetailFragment.TotalFragment
 import com.dev6.feed.viewmodel.FeedViewModel
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
@@ -43,7 +45,6 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
 
         //초기화면
         childFragmentManager.beginTransaction().replace(R.id.nav_detail_fragment,totalFragment).commit()
-
 
     }
 

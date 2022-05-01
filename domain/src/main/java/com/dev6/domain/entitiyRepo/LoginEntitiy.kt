@@ -13,8 +13,6 @@ data class LoginEntitiy(
      var email: String? = null,
     @SerializedName("password")
      var password: String? =null
-
-
 )
 
 

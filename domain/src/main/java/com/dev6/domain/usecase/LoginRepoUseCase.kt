@@ -16,10 +16,6 @@ import javax.inject.Inject
 class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRepository) {
 
     fun login(loginEntityRepo: LoginEntitiy): Flow<UiState<UserEntity>> = flow {
-
-
-
-
         if(loginEntityRepo.loginMethod== LoginType.EMAIL) {
             if (loginEntityRepo.email.isNullOrEmpty()) throw Exception()
             if (loginEntityRepo.password.isNullOrEmpty()) throw Exception()

@@ -1,5 +1,6 @@
 package com.dev6.data.di
 
+import com.dev6.data.service.FeedAPI
 import com.dev6.data.service.JoinAPI
 import com.dev6.data.service.LoginAPI
 import dagger.Module
@@ -17,7 +18,7 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
-    const val BASE_URL = "http://02b2-123-212-235-38.ngrok.io"
+    const val BASE_URL = "http://192.168.0.12:8080"
 
     @Provides
     @Singleton
@@ -51,5 +52,11 @@ object NetworkModule {
     @Singleton
     fun provideLoginService(retrofit: Retrofit): LoginAPI {
         return retrofit.create(LoginAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFeedService(retrofit: Retrofit): FeedAPI {
+        return retrofit.create(FeedAPI::class.java)
     }
 }

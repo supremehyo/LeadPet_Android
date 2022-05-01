@@ -29,11 +29,12 @@ class DailyshelterRecyclerAdapter(private val callback : (String) -> Unit)
     class RecommendViewHolder(private val binding: ItemDailyshelterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: String) {
+            binding.dailyShelterName.text = item
             Glide.with(binding.root)
-                .load(Uri.parse("http://newsimg.hankookilbo.com/2017/11/06/201711060912547465_1.jpg"))
+                .load(Uri.parse(""))
                 .circleCrop()
                 .error(R.drawable.dailay_image1)
-                .into(binding.shelterIv)
+                .into(binding.dailyShelterIv)
         }
 
         fun getLayoutParams(): ViewGroup.LayoutParams {
@@ -41,9 +42,7 @@ class DailyshelterRecyclerAdapter(private val callback : (String) -> Unit)
         }
 
         fun itemClickListener(item: String , callback: (String) -> Unit) {
-            binding.shelterIv.setOnClickListener {
-                callback.invoke(item)
-            }
+
         }
     }
 

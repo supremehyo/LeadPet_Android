@@ -16,6 +16,7 @@ android {
 dependencies {
     implementation (project(":core"))
     implementation (project(":domain"))
+    implementation(project(":data"))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)

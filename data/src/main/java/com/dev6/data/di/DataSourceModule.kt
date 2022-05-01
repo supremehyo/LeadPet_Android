@@ -1,9 +1,6 @@
 package com.dev6.data.di
 
-import com.dev6.data.remote.JoinRemoteSource
-import com.dev6.data.remote.JoinRemoteSourceImpl
-import com.dev6.data.remote.LoginRemoteSource
-import com.dev6.data.remote.LoginRemoteSourceImpl
+import com.dev6.data.remote.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,5 +17,11 @@ abstract class DataSourceModule {
     @Singleton
     @Binds
     abstract fun bindsLoginRemoteSource(source: LoginRemoteSourceImpl): LoginRemoteSource
+
+    @Singleton
+    @Binds
+    abstract fun bindsSamplePagingRemoteSource(source: DailyRemoteSourceImpl): DailyRemoteSource
+
+
 }
 
