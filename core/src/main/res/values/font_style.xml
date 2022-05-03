@@ -34,7 +34,7 @@
     <style name="CustomOutlineBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/text_input_layout_stroke</item>
         <item name="android:textColorHint">@color/text_color_hint</item>
-        <item name="hintTextColor">@color/color_8B</item>
+        <item name="hintTextColor">@color/Gray_04</item>
     </style>
 
 
@@ -43,6 +43,23 @@
         <item name="android:textColor">@color/Gray_03</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+
+
+        <style name="CustomWhiteButtonStyle"
+            parent="Widget.MaterialComponents.Button.TextButton">
+            <item name="materialThemeOverlay">@style/GreenButtonThemeOverlay</item>
+            <item name="strokeColor">@color/text_input_layout_stroke</item>
+            <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="GreenButtonThemeOverlay">
+        <item name="colorPrimary">@color/color_black</item>
+        <item name="colorOnSurface">@color/Gray_07</item>
+
+    </style>
+
+
 
 
 
