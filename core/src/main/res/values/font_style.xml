@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/custom_font_family</item>
         <item name="android:color">@color/Gray_06</item>
@@ -44,25 +45,29 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-
-
-        <style name="CustomWhiteButtonStyle"
-            parent="Widget.MaterialComponents.Button.TextButton">
-            <item name="materialThemeOverlay">@style/GreenButtonThemeOverlay</item>
-            <item name="strokeColor">@color/text_input_layout_stroke</item>
-            <item name="strokeWidth">2dp</item>
+    <style name="CustomWhiteButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="materialThemeOverlay">@style/GreenButtonThemeOverlay</item>
+        <item name="strokeColor">@color/text_input_layout_stroke</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/text_button_pressed</item>
     </style>
 
     <style name="GreenButtonThemeOverlay">
         <item name="colorPrimary">@color/color_black</item>
         <item name="colorOnSurface">@color/Gray_07</item>
-
     </style>
 
+    <style name="CustomTextViewTitle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:color">@color/Gray_03</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
-
-
-
-
-
+    <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
+    <item name="cardBackgroundColor">@color/color_black</item>
+    <item name="android:clickable">true</item>
+    <item name="cardCornerRadius">8dp</item>
+    <item name="cardElevation">0dp</item>
+    <item name="rippleColor">@color/White</item>
+    </style>
 </resources>

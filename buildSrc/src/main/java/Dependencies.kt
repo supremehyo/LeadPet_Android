@@ -83,5 +83,11 @@ object Memory {
 
 object Kakao {
     const val LOGIN =  "com.kakao.sdk:v2-user:2.8.6"
-
 }
+
+
+object RecyclerView {
+    const val Groupie = "com.github.lisawray.groupie:groupie:2.10.1"
+    const val GroupieViewBinding = "com.github.lisawray.groupie:groupie-viewbinding:2.10.1"
+}
+

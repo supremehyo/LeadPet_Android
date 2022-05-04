@@ -6,8 +6,25 @@ import com.dev6.core.base.BindingActivity
 import com.dev6.post.databinding.ActivityLifePostBinding
 class LifePostActivity : BindingActivity<ActivityLifePostBinding>(R.layout.activity_life_post) {
 
+
     override fun initView() {
         super.initView()
 
+    }
+
+    override fun beforeSetContentView() {
+        super.beforeSetContentView()
+    }
+
+    override fun initViewModel() {
+        super.initViewModel()
+    }
+
+    override fun initListener() {
+        super.initListener()
+    }
+
+    override fun afterOnCreate() {
+        super.afterOnCreate()
     }
 }

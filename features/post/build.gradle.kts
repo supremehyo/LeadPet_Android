@@ -65,6 +65,9 @@ dependencies {
 
     //디버그용
     implementation(Debug.TIMBER)
-
     implementation(Kakao.LOGIN)
+
+    //Groupie
+    implementation(RecyclerView.Groupie)
+    implementation(RecyclerView.GroupieViewBinding)
 }
