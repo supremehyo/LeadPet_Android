@@ -2,7 +2,6 @@ package com.dev6.login
 
 import androidx.fragment.app.activityViewModels
 import com.dev6.core.base.BindingFragment
-import com.dev6.core.enum.LoginType
 import com.dev6.login.databinding.FragmentEmailLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint

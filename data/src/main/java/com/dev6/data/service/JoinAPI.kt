@@ -11,6 +11,6 @@ interface  JoinAPI {
 
     @Headers("Content-Type: application/json")
     @POST("v1/user/signup")
-    suspend fun signUp(@Body userEntitiy: JoinEntitiy): String
+    suspend fun signUp(@Body userEntitiy: JoinEntitiy): String  //Response<String> 로 변경해서 응답코드에 맞는 로직 처리로 수정 필요
 
 }

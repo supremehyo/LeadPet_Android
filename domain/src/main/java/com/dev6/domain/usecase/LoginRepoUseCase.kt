@@ -1,7 +1,7 @@
 package com.dev6.domain.usecase
 
 import com.dev6.core.base.UiState
-import com.dev6.core.enum.LoginType
+import com.dev6.core.enums.LoginType
 import com.dev6.core.exception.JoinException
 import com.dev6.core.exception.NotFoundException
 import com.dev6.domain.entitiyRepo.LoginEntitiy

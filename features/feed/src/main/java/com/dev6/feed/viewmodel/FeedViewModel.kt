@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.dev6.core.enums.FeedViewType
 import com.dev6.data.entity.DailyFeedEntitiy
-import com.dev6.domain.usecase.JoinReposUseCase
 import com.dev6.domain.usecase.PagingRepoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -23,6 +23,8 @@ class FeedViewModel
     val spinnerEntry : StateFlow<List<String>?> = _spinnerEntry
     val spinnerData = MutableStateFlow<String>("")
 
+    val  _viewNameData = MutableStateFlow<FeedViewType>(FeedViewType.HOME)
+    val viewNameData : StateFlow<FeedViewType> = _viewNameData
 
     fun setSpinnerEntry(Entry: List<String>) {
         viewModelScope.launch {
@@ -32,6 +34,12 @@ class FeedViewModel
 
     suspend fun getFeedList() : Flow<PagingData<DailyFeedEntitiy>>{
       return  pagingRepoUseCase.getPagingData().cachedIn(viewModelScope) as Flow<PagingData<DailyFeedEntitiy>>
+    }
+
+    fun setCurrentView(viewName : FeedViewType){
+        viewModelScope.launch {
+            _viewNameData.emit(viewName)
+        }
     }
 
 

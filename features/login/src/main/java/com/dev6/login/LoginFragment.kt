@@ -8,10 +8,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
-import com.dev6.core.enum.LoginType
+import com.dev6.core.enums.LoginType
 import com.dev6.domain.entitiyRepo.LoginEntitiy
 import com.dev6.login.databinding.FragmentLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
@@ -22,9 +21,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kakao.sdk.auth.model.OAuthToken
-import com.kakao.sdk.common.model.ClientError
-import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*

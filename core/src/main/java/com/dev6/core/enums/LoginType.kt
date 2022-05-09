@@ -1,4 +1,4 @@
-package com.dev6.core.enum
+package com.dev6.core.enums
 
 enum class LoginType {
     KAKAO,
