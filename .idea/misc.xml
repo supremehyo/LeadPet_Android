@@ -3,17 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_feed.xml" value="0.1529888551165147" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_adopt.xml" value="0.2" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_daily.xml" value="0.1529888551165147" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_feed.xml" value="0.15172239108409322" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_dailyshelter.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_donation.xml" value="0.22" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_recommend_feed.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_recommendfedd.xml" value="0.16590678824721378" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/features/login/src/main/res/layout/activity_login.xml" value="0.16" />
-        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/drawable/tab_selector.xml" value="0.122" />
-        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/activity_feed.xml" value="0.22" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_daily.xml" value="0.25" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_donation.xml" value="0.1522289766970618" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_feed.xml" value="0.27713625866050806" />
-        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/item_dailyfeed.xml" value="0.1646403242147923" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/item_dailyshelter.xml" value="0.25" />
-        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/tab_selector.xml" value="0.23233695652173914" />
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/menu/bottome_menu.xml" value="0.1111111111111111" />
         <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.25" />
         <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.25" />
@@ -37,7 +43,7 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

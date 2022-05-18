@@ -42,5 +42,18 @@ class FeedViewModel
         }
     }
 
+    //홈화면 기부 추천
+    fun getRecommendDonationList(){
+
+    }
+
+    //홈화면 피드 추천
+    fun getRecommendFeedList(){
+
+    }
+
+    fun getAdoptList(){
+
+    }
 
 }
