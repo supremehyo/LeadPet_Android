@@ -4,34 +4,41 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.dev6.core.R
+import com.dev6.core.databinding.CustomViewCaladerBinding
 import com.dev6.core.databinding.CustomViewSpinnerButtonBinding
 
 
-class CustomButtonSpinner @JvmOverloads constructor(
+class CustomButtonCalandar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
-
-    private var binding: CustomViewSpinnerButtonBinding
-
+    
+    private var binding: CustomViewCaladerBinding
+    
     init {
-        binding = CustomViewSpinnerButtonBinding.inflate(LayoutInflater.from(context), this)
-
+        binding = CustomViewCaladerBinding.inflate(LayoutInflater.from(context), this, true)
+        
+        binding.textInputLayout.isEnabled = false
+        binding.root.setOnClickListener {
+            Toast.makeText(context,"호호" , Toast.LENGTH_SHORT).show()
+        }
         attrs?.run {
+            
             val typedArr = context.obtainStyledAttributes(attrs, R.styleable.Button)
-            setText(typedArr.getString(R.styleable.Button_text) ?: "값없음")
+            setText(typedArr.getString(R.styleable.Button_text) ?: "")
             if (!isInEditMode) {
                 typedArr.recycle()
             }
         }
     }
-
-
+    
+    
     fun setText(text_string: String) {
-        binding.text.text = text_string
+        binding.textInputLayout.editText?.setText(text_string)
     }
-
+    
 }

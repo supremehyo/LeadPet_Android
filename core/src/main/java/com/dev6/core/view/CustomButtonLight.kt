@@ -16,7 +16,7 @@ class CustomButtonLight @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    private lateinit var binding: CustomViewLightButtonBinding
+    private var binding: CustomViewLightButtonBinding
 
     init {
         binding = CustomViewLightButtonBinding.inflate(LayoutInflater.from(context), this, true)

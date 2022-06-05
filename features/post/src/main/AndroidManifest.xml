@@ -4,13 +4,14 @@
 
     <application>
         <activity
-            android:name=".LifePostActivity"
-            android:exported="true"></activity>
+            android:name=".DonateDialogFragment"
+            android:exported="false" />
         <activity
-            android:name=".PetAdoptPostActivity"
+            android:name=".PostActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

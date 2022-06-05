@@ -10,6 +10,22 @@
         <item name="android:fontFamily">@font/custom_font_family</item>
     </style>
 
+    <style name="customButtonRed" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/Main</item>
+        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="customButtonRadius" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:backgroundTint">@color/White</item>
+        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:radius">8dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/Gray_02</item>
+    </style>
+
+
+
     <style name="EditTextFontStyle_title" parent="@android:style/Widget.DeviceDefault.EditText">
         <item name="android:fontFamily">@font/custom_font_family</item>
         <item name="android:color">@color/Gray_06</item>
@@ -69,5 +85,17 @@
     <item name="cardCornerRadius">8dp</item>
     <item name="cardElevation">0dp</item>
     <item name="rippleColor">@color/White</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.2dp</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <style name="Hyphon">
+        <item name="android:layout_width">7dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_bd</item>
     </style>
 </resources>

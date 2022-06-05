@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/post_nav_graph"
+    app:startDestination="@id/petDonateFragment">
+    <fragment
+        android:id="@+id/lifePostFragment"
+        android:name="com.dev6.post.LifePostFragment"
+        android:label="LifePostFragment" >
+        <action
+            android:id="@+id/action_lifePostFragment_to_gallraryFragment"
+            app:destination="@id/gallraryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/petChoiceFragment"
+        android:name="com.dev6.post.PetChoiceFragment"
+        android:label="PetChoiceFragment" >
+        <action
+            android:id="@+id/action_petChoiceFragment_to_gallraryFragment"
+            app:destination="@id/gallraryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/petAdoptPostFragment"
+        android:name="com.dev6.post.PetAdoptPostFragment"
+        android:label="PetAdoptPostFragment" >
+        <action
+            android:id="@+id/action_petAdoptPostFragment_to_gallraryFragment"
+            app:destination="@id/gallraryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gallraryFragment"
+        android:name="com.dev6.post.GallraryFragment"
+        android:label="GallraryFragment" />
+    <fragment
+        android:id="@+id/petDonateFragment"
+        android:name="com.dev6.post.PetDonateFragment"
+        android:label="fragment_pet_donate"
+        tools:layout="@layout/fragment_pet_donate" >
+        <action
+            android:id="@+id/action_petDonateFragment_to_gallraryFragment"
+            app:destination="@id/gallraryFragment" />
+    </fragment>
+</navigation>

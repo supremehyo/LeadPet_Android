@@ -17,10 +17,7 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
 
     fun login(loginEntityRepo: LoginEntitiy): Flow<UiState<UserEntity>> = flow {
 
-
-
-
-        if(loginEntityRepo.loginMethod== LoginType.EMAIL) {
+        if (loginEntityRepo.loginMethod == LoginType.EMAIL) {
             if (loginEntityRepo.email.isNullOrEmpty()) throw Exception()
             if (loginEntityRepo.password.isNullOrEmpty()) throw Exception()
         }
@@ -38,8 +35,12 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
             emit(UiState.Success(userEntityRepo))
         } else {
             when (response.code()) {
-                404 -> if(loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(response.message()) else throw  JoinException(response.message())
-                else -> { }
+                404 -> if (loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(
+                    response.message()
+                ) else throw  JoinException(response.message())
+                else -> {
+
+                }
             }
         }
 

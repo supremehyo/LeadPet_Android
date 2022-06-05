@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.dev6.core.R
 import com.dev6.core.databinding.CustomViewCameraButtonBinding
@@ -14,7 +15,7 @@ class CustomButtonCamera @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    private lateinit var binding: CustomViewCameraButtonBinding
+    private var binding: CustomViewCameraButtonBinding
 
     init {
         binding = CustomViewCameraButtonBinding.inflate(LayoutInflater.from(context), this, true)
@@ -26,8 +27,12 @@ class CustomButtonCamera @JvmOverloads constructor(
     }
 
 
-//    fun setText(text_string: String) {
-//        binding.text.text = text_string
-//    }
+    fun getImage(): ImageView {
+        with(binding) {
+            ivCamera.visibility = View.INVISIBLE
+            binding.tvCamera.visibility = View.INVISIBLE
+        }
+        return binding.vCamera
+    }
 
 }

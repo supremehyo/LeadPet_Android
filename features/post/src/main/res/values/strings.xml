@@ -7,7 +7,7 @@
     <string name="title_animal_choice">동물 선택</string>
     <string name="title_kind">품종</string>
     <string name="title_age">나이</string>
-    <string name="tv_neutering">중성화 여부</string>
+    <string name="tv_neutering">중성화 여부 선택</string>
     <string name="title_disease">질병상태</string>
     <string name="title_camera_necessary">사진 필수</string>
     <string name="hint_adapt_title">예시) 예쁜 살구가 가족을 찾고 있어요!</string>
@@ -22,4 +22,6 @@
     <string name="text_no">없음</string>
 
     <string name="text_ems_1000">%d/1000</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

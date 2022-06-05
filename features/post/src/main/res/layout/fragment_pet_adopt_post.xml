@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.core.widget.NestedScrollView
-    tools:context=".PetAdoptPostActivity"
+    tools:context=".PetAdoptPostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true" >
@@ -19,7 +19,6 @@
             layout="@layout/inclue_top"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="9dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -28,11 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:background="@drawable/round_4dp"
-            android:backgroundTint="#C4C4C4"
             app:layout_constraintStart_toStartOf="@+id/gl_left2"
             app:layout_constraintTop_toBottomOf="@+id/include">
-
         </com.dev6.core.view.CustomButtonCamera>
 
 
@@ -54,16 +50,14 @@
             app:layout_constraintGuide_end="17dp" />
 
 
-        <TextView
-            android:id="@+id/tv_camera_necessary"
+        <EditText
+            android:id="@+id/tv_title"
+            style="@style/EditTextFontStyle_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="21dp"
             android:hint="@string/hint_title"
-            android:textColor="@color/Gray_06"
-            android:textColorHighlight="@color/Gray_06"
-            android:textSize="@dimen/font_content"
             app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
             app:layout_constraintEnd_toStartOf="@+id/gi_light2"
             app:layout_constraintHorizontal_bias="0.0"
@@ -82,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/v_camera2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_camera_necessary"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             app:text="동물선택" />
 
         <com.dev6.core.view.CustomButtonSpinner
@@ -123,31 +117,35 @@
             app:text="품종 선택" />
 
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/customButtonLight">
+            app:layout_constraintDimensionRatio="6:1"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_neutering"
+            app:layout_constraintVertical_bias="0.07999998">
 
             <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:id="@+id/btn_what"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="뭐지">
+                android:insetRight="7dp"
+                android:layout_weight="1"
+                android:text="있음">
 
             </com.google.android.material.button.MaterialButton>
 
             <com.google.android.material.button.MaterialButton
-                style="@style/CustomWhiteButtonStyle"
                 android:id="@+id/btn_the"
+                style="@style/CustomWhiteButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="시발?" />
-
-
+                android:insetLeft="7dp"
+                android:layout_weight="1"
+                android:text="없음" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <TextView
@@ -155,9 +153,18 @@
             style="@style/CustomTextViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/tv_neutering"
-            tools:layout_editor_absoluteX="55dp"
-            tools:layout_editor_absoluteY="315dp" />
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+        <View
+            android:id="@+id/v_line1"
+            style="@style/Divider"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_animal_choice" />
 
 
         <androidx.recyclerview.widget.RecyclerView

@@ -1,21 +1,23 @@
 package com.dev6.post
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.dev6.core.base.BindingActivity
-import com.dev6.post.databinding.ActivityLifePostBinding
-import com.dev6.post.databinding.ActivityPetAdoptPostBinding
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.dev6.core.base.BindingFragment
+import com.dev6.login.viewmodel.PostViewModel
+import com.dev6.post.databinding.FragmentPetAdoptPostBinding
 import com.dev6.post.item.ItemChoiceAnimal
 import com.dev6.post.item.ItemSerchAnimal
 import com.xwray.groupie.GroupieAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import gun0912.tedimagepicker.builder.TedImagePicker
 
-class PetAdoptPostActivity :
-    BindingActivity<ActivityPetAdoptPostBinding>(R.layout.activity_pet_adopt_post) {
+@AndroidEntryPoint
+class PetAdoptPostFragment : BindingFragment<FragmentPetAdoptPostBinding>(R.layout.fragment_pet_adopt_post) {
 
-    override fun beforeSetContentView() {
-        super.beforeSetContentView()
+    private val postViewModel: PostViewModel by activityViewModels()
+
+    override fun afterViewCreated() {
+        super.afterViewCreated()
     }
 
     override fun initView() {
@@ -23,8 +25,6 @@ class PetAdoptPostActivity :
         val choiceAdapter = GroupieAdapter()
 
         binding.rvAnimalChoice.adapter = choiceAdapter
-//        binding.rvAnimalChoice.layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-
 
         choiceAdapter.add(ItemChoiceAnimal("믹스견"))
         choiceAdapter.add(ItemChoiceAnimal("치와와"))
@@ -38,10 +38,8 @@ class PetAdoptPostActivity :
     }
 
     override fun initListener() {
+
         super.initListener()
     }
 
-    override fun afterOnCreate() {
-        super.afterOnCreate()
-    }
 }
