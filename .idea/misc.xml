@@ -3,9 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../../layout/custom_preview.xml" value="0.35208333333333336" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_feed.xml" value="0.1529888551165147" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_adopt.xml" value="0.2" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_daily.xml" value="0.1529888551165147" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_donation.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_feed.xml" value="0.15172239108409322" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_daily.xml" value="0.11778115501519756" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_donation.xml" value="0.14447463768115942" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_introduce.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_total.xml" value="0.16666666666666666" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_adopt.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_dailyshelter.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_donation.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_profiledaily.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_recommend_feed.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_recommendfedd.xml" value="0.16590678824721378" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/LeadPet_Android/features/login/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_daily.xml" value="0.25" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_donation.xml" value="0.1522289766970618" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/fragment_feed.xml" value="0.27713625866050806" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/item_dailyfeed.xml" value="0.1646403242147923" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/layout/item_dailyshelter.xml" value="0.25" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/menu/bottome_menu.xml" value="0.1111111111111111" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.25" />
+        <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.25" />
+        <entry key="../../../../../layout/custom_preview.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/font/custom_font_family.xml" value="0.2838541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.9385416666666667" />
         <entry key="core/src/main/res/drawable/backspace.xml" value="0.276" />

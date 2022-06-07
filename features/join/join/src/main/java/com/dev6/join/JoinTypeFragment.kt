@@ -1,25 +1,27 @@
 package com.dev6.join
 
+import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dev6.core.base.BindingFragment
 import com.dev6.join.databinding.FragmentJoinTypeBinding
+import com.dev6.join.viewmodel.JoinViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 class JoinTypeFragment : BindingFragment<FragmentJoinTypeBinding>(R.layout.fragment_join_type){
 
-
     var userType : String ="normal"
-
-
 
     override fun initView() {
 
-        Log.v("email" , arguments?.get("email").toString())//잘넘어옴 확인
 
         binding.normalButton.setOnClickListener {
-            findNavController().navigate(R.id.action_joinTypeFragment_to_normalUserJoinFragment)
+            userType = "NORMAL"
+            findNavController().navigate(R.id.action_joinTypeFragment_to_normalUserJoinFragment ,
+                Bundle().apply {putString("userType", userType)})
         }
 
         binding.joinTypeBackButton.setOnClickListener {
@@ -27,7 +29,9 @@ class JoinTypeFragment : BindingFragment<FragmentJoinTypeBinding>(R.layout.fragm
         }
 
         binding.shelterButton.setOnClickListener {
-            findNavController().navigate(R.id.action_joinTypeFragment_to_shelterUserJoinFragment)
+            userType = "shelter"
+            findNavController().navigate(R.id.action_joinTypeFragment_to_shelterUserJoinFragment,
+                Bundle().apply {putString("userType", userType)})
         }
     }
 }

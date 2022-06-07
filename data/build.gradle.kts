@@ -20,8 +20,10 @@ dependencies {
     implementation(Network.OKHTTP)
     implementation(Network.OKHTTP3)
     implementation(Network.RETROFIT)
+    implementation(Network.SCALAR)
     implementation(Network.GSON)
 
+    implementation(AndroidX.PAGING)
     implementation(Google.HILT_ANDROID)
     implementation(project(mapOf("path" to ":core")))
     annotationProcessor(Google.HILT_COMPILER)

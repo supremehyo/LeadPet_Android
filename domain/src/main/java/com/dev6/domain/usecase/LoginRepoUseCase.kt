@@ -1,7 +1,7 @@
 package com.dev6.domain.usecase
 
 import com.dev6.core.base.UiState
-import com.dev6.core.enum.LoginType
+import com.dev6.core.enums.LoginType
 import com.dev6.core.exception.JoinException
 import com.dev6.core.exception.NotFoundException
 import com.dev6.domain.entitiyRepo.LoginEntitiy
@@ -18,6 +18,7 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
     fun login(loginEntityRepo: LoginEntitiy): Flow<UiState<UserEntity>> = flow {
 
         if (loginEntityRepo.loginMethod == LoginType.EMAIL) {
+
             if (loginEntityRepo.email.isNullOrEmpty()) throw Exception()
             if (loginEntityRepo.password.isNullOrEmpty()) throw Exception()
         }
