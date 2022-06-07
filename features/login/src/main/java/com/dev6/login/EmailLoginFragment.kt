@@ -15,7 +15,7 @@ class EmailLoginFragment :
     override fun initListener() {
         super.initListener()
 
-        binding.button.setOnClickListener {
+        binding.tvLeft.setOnClickListener {
             loginViewModel.getlogin()
 
         }

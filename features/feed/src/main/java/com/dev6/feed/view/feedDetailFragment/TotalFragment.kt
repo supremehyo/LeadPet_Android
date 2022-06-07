@@ -24,29 +24,10 @@ class TotalFragment : BindingFragment<FragmentTotalBinding>(R.layout.fragment_to
 
     override fun initView() {
 
-        totalRc = binding.dailyRc
-        pagingAdapter = PagingAdapter()
-
-        dailyNearShelterRc = binding.dailyNearShelterRc
-        dailyNearShelterRc.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = DailyshelterRecyclerAdapter{
-
-            }
-        }
-
-        dailyRc.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = pagingAdapter
-        }
     }
 
     override fun initViewModel() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            feedViewModel.getFeedList().collectLatest {
-                pagingAdapter.submitData(it)
-            }
-        }
+
     }
 
     override fun initListener() {

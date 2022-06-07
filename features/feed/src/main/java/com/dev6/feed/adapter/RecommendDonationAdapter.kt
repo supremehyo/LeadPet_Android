@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dev6.feed.R
+import com.dev6.feed.databinding.ItemDailyshelterBinding
 
 class RecommendDonationAdapter (private val callback : (String) -> Unit)
     : ListAdapter<String, RecommendDonationAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
