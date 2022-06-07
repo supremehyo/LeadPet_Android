@@ -51,9 +51,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
 
-    //Glid
+    //Image
     implementation(Image.GLIDE)
     implementation(Image.GLIDE_COMPILER)
+    implementation(Image.TED_IMAGE_PICKER)
 
 
    // implementation(Google.HILT_ANDROID)

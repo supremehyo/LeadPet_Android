@@ -9,9 +9,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class EmailLoginFragment : BindingFragment<FragmentEmailLoginBinding>(R.layout.fragment_email_login) {
+class EmailLoginFragment :
+    BindingFragment<FragmentEmailLoginBinding>(R.layout.fragment_email_login) {
 
-    private  val loginViewModel : LoginViewModel by activityViewModels()
+    private val loginViewModel: LoginViewModel by activityViewModels()
     override fun initListener() {
         super.initListener()
 
@@ -24,18 +25,6 @@ class EmailLoginFragment : BindingFragment<FragmentEmailLoginBinding>(R.layout.f
 
     override fun initView() {
         super.initView()
-        with(binding){
-        viewModel = loginViewModel
-
-        }
-
-
+        with(binding) { viewModel = loginViewModel }
     }
-
-
-
-
-
-
-
 }
