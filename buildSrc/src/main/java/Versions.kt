@@ -7,6 +7,7 @@ object Versions {
     const val MIN_SDK_VERSION = 23
     const val TARGET_SDK_VERSION = 31
 
+    const val PAGING = "3.1.0"
     const val CORE_KTX = "1.8.0-alpha04"
     const val APP_COMPAT = "1.4.1"
     const val ACTIVITY_KTX = "1.5.0-alpha02"

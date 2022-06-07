@@ -1,5 +1,6 @@
 package com.dev6.data.di
 
+import com.dev6.data.service.FeedAPI
 import com.dev6.data.service.JoinAPI
 import com.dev6.data.service.LoginAPI
 import dagger.Module
@@ -9,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -16,7 +18,7 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
-    const val BASE_URL = "http://02b2-123-212-235-38.ngrok.io"
+    const val BASE_URL = "http://192.168.0.12:8080"
 
     @Provides
     @Singleton
@@ -34,6 +36,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BASE_URL)
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -49,5 +52,11 @@ object NetworkModule {
     @Singleton
     fun provideLoginService(retrofit: Retrofit): LoginAPI {
         return retrofit.create(LoginAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFeedService(retrofit: Retrofit): FeedAPI {
+        return retrofit.create(FeedAPI::class.java)
     }
 }

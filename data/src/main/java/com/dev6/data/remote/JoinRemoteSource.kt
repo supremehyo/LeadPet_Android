@@ -1,5 +1,6 @@
 package com.dev6.data.remote
 
+import com.dev6.data.entity.JoinEntitiy
 import com.dev6.data.service.JoinAPI
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class JoinRemoteSourceImpl @Inject constructor(
 ) : JoinRemoteSource {
 
     override suspend fun signUp(joinEntitiy: JoinEntitiyRepo): String {
-        return joinService.signUp(joinEntitiy)
+        return joinService.signUp(joinEntitiy as JoinEntitiy)//이게 맞나?
     }
 
 }
