@@ -21,9 +21,9 @@ class CustomButtonCalandar @JvmOverloads constructor(
     
     init {
         binding = CustomViewCaladerBinding.inflate(LayoutInflater.from(context), this, true)
+    
         
-        binding.textInputLayout.isEnabled = false
-        binding.root.setOnClickListener {
+        binding.tietDate.setOnClickListener {
             Toast.makeText(context,"호호" , Toast.LENGTH_SHORT).show()
         }
         attrs?.run {
