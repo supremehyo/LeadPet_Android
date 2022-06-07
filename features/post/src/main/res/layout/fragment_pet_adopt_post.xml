@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.core.widget.NestedScrollView
+    tools:context=".PetAdoptPostFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/inclue_top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.dev6.core.view.CustomButtonCamera
+            android:id="@+id/v_camera2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/include">
+        </com.dev6.core.view.CustomButtonCamera>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="17dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gi_light2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="17dp" />
+
+
+        <EditText
+            android:id="@+id/tv_title"
+            style="@style/EditTextFontStyle_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="21dp"
+            android:hint="@string/hint_title"
+            app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/v_camera2"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <com.dev6.core.view.CustomButtonSpinner
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/v_camera2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:text="동물선택" />
+
+        <com.dev6.core.view.CustomButtonSpinner
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2"
+            app:layout_constraintVertical_bias="0.0"
+            app:text="암수구분" />
+
+        <com.dev6.core.view.CustomButtonSpinner
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button3"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintTop_toTopOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.0"
+            app:text="나이" />
+
+        <com.dev6.core.view.CustomButtonLight
+
+            android:id="@+id/customButtonLight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/v_camera2"
+            app:text="품종 선택" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="6:1"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_neutering"
+            app:layout_constraintVertical_bias="0.07999998">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_what"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:insetRight="7dp"
+                android:layout_weight="1"
+                android:text="있음">
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_the"
+                style="@style/CustomWhiteButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:insetLeft="7dp"
+                android:layout_weight="1"
+                android:text="없음" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <TextView
+            android:id="@+id/tv_neutering"
+            style="@style/CustomTextViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/tv_neutering"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+        <View
+            android:id="@+id/v_line1"
+            style="@style/Divider"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_animal_choice" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_animal_choice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_animal_choice"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/customButtonLight"
+            tools:listitem="@layout/item_choice_animal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_animal_choice"
+            style="@style/CustomCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_animal_choice"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintHorizontal_bias="1.0">
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
+</layout>

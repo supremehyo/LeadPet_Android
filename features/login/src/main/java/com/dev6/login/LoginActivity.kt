@@ -15,26 +15,31 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
-    private  val loginViewModel : LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun initView() {
         super.initView()
-            repeatOnStarted {
-                loginViewModel.eventFlow.collect { event ->
-                    handleEvent(event)
-                }
+
+        repeatOnStarted {
+            loginViewModel.eventFlow.collect { event ->
+                handleEvent(event)
+            }
         }
     }
 
     fun handleEvent(event: LoginViewModel.Event) = when (event) {
         is LoginViewModel.Event.JoinEvent -> {
-            val joinIntent = Intent(this , JoinActivity::class.java)
+            val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
-            joinIntent.putExtra("uuid" , event.loginDto.uid)
+            joinIntent.putExtra("uuid", event.loginDto.uid)
             startActivity(joinIntent)
             finish()
         }
 
-        is LoginViewModel.Event.ErrorEvent -> Toast.makeText(applicationContext, event.text , Toast.LENGTH_SHORT).show()
+        is LoginViewModel.Event.ErrorEvent -> Toast.makeText(
+            applicationContext,
+            event.text,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

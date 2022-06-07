@@ -19,7 +19,7 @@ object Versions {
 
     const val HILT = "2.38.1"
     const val HILT_EXTENTION = "1.0.0-alpha02"
-    const val MATERIAL = "1.6.0-alpha02"
+    const val MATERIAL = "1.7.0-alpha01"
 
     const val RETROFIT = "2.7.1"
     const val OKHTTP = "4.3.1"

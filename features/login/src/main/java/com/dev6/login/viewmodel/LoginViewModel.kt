@@ -20,12 +20,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepoUseCase: LoginRepoUseCase,
-    private val getKakaoAccessTokenUseCase: GetKakaoAccessTokenUseCase
+    private val loginRepoUseCase: LoginRepoUseCase
 ) : ViewModel() {
 
-    //    private val _id = MutableSharedFlow<String>()
-//    val joinDataFlow = _joinDataFlow.asSharedFlow()
+
     private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(loginMethod = LoginType.EMAIL))
     val loginDto = _loginDto.asStateFlow()
 
@@ -43,24 +41,7 @@ class LoginViewModel @Inject constructor(
 
     fun getlogin() {
         viewModelScope.launch {
-
-            //여기서 카카오 로그인, 네이버 로그인일경우, 토큰값을 가져온다 (구글일경우 미리 넣어놓고온다.)
-
-//            if(loginType==LoginType.KAKAO){
-//                getKakaoAccessTokenUseCase().onSuccess {accessToken->
-//                    _loginDto.value = LoginEntitiy(LoginType.KAKAO,accessToken)
-//
-//                }.onFailure {
-//                Timber.d("카카오 오류 ")
-//                    event(Event.ErrorEvent("카카오 계정을 찾을수 없습니다."))
-//                    return@launch
-//                }
-//            }
-
-
-
             loginRepoUseCase.login(loginDto.value).collect { uiState ->
-
                 when (uiState) {
                     is UiState.Success<UserEntity> -> {
                         _lodingFlow.value = false
@@ -74,17 +55,13 @@ class LoginViewModel @Inject constructor(
                             is JoinException  -> event(Event.JoinEvent(loginDto.value))
                             is NotFoundException -> event(Event.ErrorEvent("계정을 찾을수 없습니다."))
                         }
-
                     }
                     is UiState.Loding -> {
                         Timber.d("로딩")
                         _lodingFlow.value = true
                     }
                 }
-
-
             }
-
         }
     }
 

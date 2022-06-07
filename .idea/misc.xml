@@ -30,7 +30,31 @@
         <entry key="..\:/androidProject/LeadPet_Android/features/feed/src/main/res/menu/bottome_menu.xml" value="0.1111111111111111" />
         <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/activity_join.xml" value="0.25" />
         <entry key="..\:/androidProject/LeadPet_Android/features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.25" />
+        <entry key="../../../../../layout/custom_preview.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/font/custom_font_family.xml" value="0.2838541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.9385416666666667" />
+        <entry key="core/src/main/res/drawable/backspace.xml" value="0.276" />
+        <entry key="core/src/main/res/drawable/ic_calendar.xml" value="0.3375" />
+        <entry key="core/src/main/res/drawable/ic_camera.xml" value="0.305" />
+        <entry key="core/src/main/res/drawable/ic_chevron_down.xml" value="0.305" />
+        <entry key="core/src/main/res/drawable/ic_keyboard_backspace.xml" value="0.305" />
+        <entry key="core/src/main/res/drawable/ic_polygon.xml" value="0.344" />
+        <entry key="core/src/main/res/drawable/ic_vector.xml" value="0.3375" />
+        <entry key="core/src/main/res/drawable/round_4dp.xml" value="0.301" />
+        <entry key="core/src/main/res/drawable/round_4dp_gray06.xml" value="0.344" />
+        <entry key="core/src/main/res/drawable/round_8dp.xml" value="0.344" />
+        <entry key="core/src/main/res/drawable/round_8dp_black.xml" value="0.12" />
+        <entry key="core/src/main/res/drawable/round_8dp_gray06.xml" value="0.23" />
+        <entry key="core/src/main/res/drawable/round_8dp_gray07.xml" value="0.23" />
+        <entry key="core/src/main/res/font/custom_font_family.xml" value="0.23229166666666667" />
+        <entry key="core/src/main/res/layout/custom_view.xml" value="0.31145833333333334" />
+        <entry key="core/src/main/res/layout/custom_view_camera_button.xml" value="0.67" />
+        <entry key="core/src/main/res/layout/custom_view_light_button.xml" value="0.25" />
+        <entry key="core/src/main/res/layout/custom_view_separator.xml" value="0.5" />
+        <entry key="core/src/main/res/layout/custom_view_spinner_button.xml" value="0.33" />
+        <entry key="core/src/main/res/layout/customview_spinner_button.xml" value="1.5" />
+        <entry key="core/src/main/res/layout/font_style.xml" value="0.20208333333333334" />
+        <entry key="core/src/main/res/layout/inclue_top.xml" value="0.67" />
         <entry key="features/join/join/src/main/res/layout/activity_join.xml" value="0.2921195652173913" />
         <entry key="features/join/join/src/main/res/layout/fragment_email_join.xml" value="0.28976697061803447" />
         <entry key="features/join/join/src/main/res/layout/fragment_join_type.xml" value="0.28976697061803447" />
@@ -39,13 +63,24 @@
         <entry key="features/join/join/src/main/res/layout/fragment_shelter_user_join.xml" value="0.28976697061803447" />
         <entry key="features/join/join/src/main/res/layout/fragment_shelter_user_more.xml" value="0.28976697061803447" />
         <entry key="features/join/join/src/main/res/layout/fragment_terms.xml" value="0.28976697061803447" />
+        <entry key="features/login/src/main/res/drawable/button_camera_round.xml" value="0.1" />
         <entry key="features/login/src/main/res/drawable/button_round.xml" value="0.815" />
         <entry key="features/login/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="features/login/src/main/res/layout/content_login.xml" value="0.1743659420289855" />
-        <entry key="features/login/src/main/res/layout/fragment_email_login.xml" value="0.1" />
+        <entry key="features/login/src/main/res/layout/fragment_email_login.xml" value="0.33" />
         <entry key="features/login/src/main/res/layout/fragment_first.xml" value="0.1743659420289855" />
-        <entry key="features/login/src/main/res/layout/fragment_login.xml" value="0.27786220871327255" />
+        <entry key="features/login/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="features/login/src/main/res/layout/fragment_second.xml" value="0.9385416666666667" />
+        <entry key="features/post/src/main/res/drawable/btn_radio.xml" value="0.3375" />
+        <entry key="features/post/src/main/res/drawable/button_camera_round.xml" value="0.3615" />
+        <entry key="features/post/src/main/res/drawable/edit_text_round.xml" value="0.305" />
+        <entry key="features/post/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.246" />
+        <entry key="features/post/src/main/res/drawable/ic_baseline_radio_button_unchecked_24.xml" value="0.344" />
+        <entry key="features/post/src/main/res/drawable/selector_stroke.xml" value="0.245" />
+        <entry key="features/post/src/main/res/layout/activity_life_post.xml" value="0.33" />
+        <entry key="features/post/src/main/res/layout/activity_pet_adopt_post.xml" value="0.2" />
+        <entry key="features/post/src/main/res/layout/item_choice_animal.xml" value="0.8397932816537468" />
+        <entry key="features/post/src/main/res/layout/item_choice_search.xml" value="0.22083333333333333" />
       </map>
     </option>
   </component>

@@ -6,6 +6,7 @@ plugins {
 
 android {
     buildFeatures {
+        viewBinding = true
         dataBinding = true
     }
 }
@@ -23,7 +24,8 @@ dependencies {
     implementation(AndroidX.LIFECYCLE_VIEWMODEL_KTX)
     implementation(AndroidX.LIFECYCLE_LIVEDATA_KTX)
     implementation(AndroidX.LIFECYCLE_EXTENSIONNS)
-
+    implementation(AndroidX.APP_COMPAT)
+    implementation(Google.MATERIAL)
 
     testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
@@ -31,6 +33,7 @@ dependencies {
 
     //디버그용
     implementation(Debug.TIMBER)
+
 
 
 }

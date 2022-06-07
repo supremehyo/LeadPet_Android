@@ -53,7 +53,8 @@ dependencies {
     implementation (project(":data"))
     implementation (project(":domain"))
     implementation (project(":core"))
-    implementation(project(":features:join:join"))
+    implementation (project(":features:join:join"))
+    implementation (project(":features:post"))
 
 
     //Android Core
@@ -83,7 +84,7 @@ dependencies {
     annotationProcessor(Google.HILT_COMPILER)
 
     implementation("androidx.appcompat:appcompat:1.4.0")
-
+    implementation(Google.MATERIAL)
 
     implementation(Google.GOOGLE_CORE)
     implementation(platform(Google.FIREBASE_BOM))
