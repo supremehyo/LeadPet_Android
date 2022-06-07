@@ -17,9 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:clickable="true"
+            android:focusable="false"
             android:hint="시작일"
             android:paddingLeft="16dp"
             android:paddingTop="16dp"
