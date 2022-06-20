@@ -21,6 +21,7 @@
                 android:id="@+id/dailyFeedProfileIv"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:background="@drawable/round_8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
@@ -34,6 +35,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="투게더펫"
+                android:textSize="14dp"
+                android:fontFamily="@font/hansneo_medium"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/dailyFeedProfileIv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.051"
@@ -41,35 +45,55 @@
                 app:layout_constraintTop_toTopOf="@+id/dailyFeedProfileIv"
                 app:layout_constraintVertical_bias="0.129" />
 
+
             <TextView
                 android:id="@+id/dailyFeedWriteTimeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2시간 전"
+                android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/dailyFeedProfileIv"
                 app:layout_constraintEnd_toEndOf="@+id/dailyFeedProfileTv"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/dailyFeedProfileTv"
                 app:layout_constraintTop_toBottomOf="@+id/dailyFeedProfileTv"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/dailyFeedContentTv"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="내용입니다."
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginLeft="12dp"
+                android:text="내용입니다.\n내용입니다."
+                android:fontFamily="@font/hansneo_medium"
+                app:layout_constraintBottom_toBottomOf="@+id/dailyFeedIv"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dailyFeedWriteTimeTv"
-                app:layout_constraintVertical_bias="0" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/dailyFeedIv"
+                app:layout_constraintTop_toTopOf="@+id/dailyFeedIv"
+                app:layout_constraintVertical_bias="0.78" />
+
+            <TextView
+                android:id="@+id/dailyFeedTitleTv"
+                android:textSize="16dp"
+                android:fontFamily="@font/hansansneobold"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="웅이 근황"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/dailyFeedIv"
+                app:layout_constraintTop_toTopOf="@+id/dailyFeedIv"></TextView>
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/dailyFeedIv"
+                android:layout_marginTop="24dp"
+                android:layout_width="79dp"
+                android:layout_height="81dp"
+                android:background="@drawable/round_8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dailyFeedContentTv" />
+                app:layout_constraintTop_toBottomOf="@+id/dailyFeedProfileIv" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

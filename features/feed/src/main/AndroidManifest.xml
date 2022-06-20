@@ -4,11 +4,24 @@
 
     <application>
         <activity
+            android:name=".view.feedDetailActivity.AdoptFeedDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.feedDetailActivity.DonationFeedDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.feedDetailActivity.DailyFeedDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.FeedActivity"
-            android:label="FeedActivity"
             android:exported="true"
+            android:label="FeedActivity"
             android:theme="@style/Theme.LeadPet">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

@@ -31,6 +31,10 @@ dependencies {
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
+    //Glid
+    implementation(Image.GLIDE)
+    implementation(Image.GLIDE_COMPILER)
+
     //디버그용
     implementation(Debug.TIMBER)
 

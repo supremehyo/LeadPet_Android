@@ -9,10 +9,9 @@
         android:layout_height="200dp">
 
         <ImageView
-            android:id="@+id/recommentFeedIv"
+            android:id="@+id/recommendDonationIv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:src="@drawable/home"
             android:background="@drawable/round_8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,41 +26,31 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <TextView
-            android:id="@+id/recommentFeeTv1"
+            android:id="@+id/recommendFeedTv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="고양이 사료가 부족해요!"
-            android:fontFamily="@font/hansneo_medium"
             android:textColor="@color/black"
+            android:fontFamily="@font/hansneo_medium"
+            android:text="새로운 가족을 찾고 있어요."
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/recommentFeedIv"
+            app:layout_constraintEnd_toEndOf="@+id/recommendDonationIv"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/recommentFeedIv"
-            app:layout_constraintTop_toBottomOf="@+id/recommentFeedIv"
-            app:layout_constraintVertical_bias="0.181" />
-
-        <ImageView
-            android:id="@+id/recommendFeedProfileIv"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/recommendFeedTv2"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/recommentFeeTv1"
-            app:layout_constraintTop_toBottomOf="@+id/recommentFeeTv1"
+            app:layout_constraintStart_toStartOf="@+id/recommendDonationIv"
+            app:layout_constraintTop_toBottomOf="@+id/recommendDonationIv"
             app:layout_constraintVertical_bias="0.181" />
 
         <TextView
-            android:id="@+id/recommendFeedTv2"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="애니멀헬프"
-            android:fontFamily="@font/hansneo_medium"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="2022 03월 27일까지"
+            android:fontFamily="@font/hansneo_regular"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/recommendFeedProfileIv"
-            app:layout_constraintTop_toBottomOf="@+id/recommentFeeTv1"
-            app:layout_constraintVertical_bias="0.191" />
+            app:layout_constraintEnd_toEndOf="@+id/recommendFeedTv1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/recommendFeedTv1"
+            app:layout_constraintTop_toBottomOf="@+id/recommendFeedTv1"
+            app:layout_constraintVertical_bias="0.046" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

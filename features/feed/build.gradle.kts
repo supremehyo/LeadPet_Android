@@ -50,6 +50,7 @@ dependencies {
 
     implementation(Google.HILT_ANDROID)
     implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 

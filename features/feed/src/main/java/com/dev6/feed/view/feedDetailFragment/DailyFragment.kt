@@ -26,10 +26,10 @@ import kotlinx.coroutines.launch
 
 class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_daily) {
 
-    private  val feedViewModel : FeedViewModel by activityViewModels()
+    private val feedViewModel: FeedViewModel by activityViewModels()
     private lateinit var dailyRc: RecyclerView
-    private lateinit var dailyNearShelterRc : RecyclerView
-    private lateinit var pagingAdapter : PagingAdapter
+    private lateinit var dailyNearShelterRc: RecyclerView
+    private lateinit var pagingAdapter: PagingAdapter
 
     override fun initView() {
         super.initView()
@@ -37,18 +37,34 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         dailyRc = binding.dailyRc
         pagingAdapter = PagingAdapter()
 
+
+
         dailyNearShelterRc = binding.dailyNearShelterRc
         dailyNearShelterRc.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = DailyshelterRecyclerAdapter{
+            adapter = DailyshelterRecyclerAdapter {
 
+            }.also {
+                it.submitList(listOf("첫번째", "첫번째", "첫번째", "첫번째", "첫번째", "첫번째"))
             }
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
         dailyRc.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = pagingAdapter
+        }.also {
+            //it.submitList(listOf("첫번째", "첫번째", "첫번째", "첫번째", "첫번째", "첫번째"))
         }
+
+        /*
+            val contents : String,
+    val images : List<String>,
+    val normalPostId : String,
+    val tags : List<String>,
+    val title : String,
+    val userId : String
+         */
     }
 
     override fun initViewModel() {

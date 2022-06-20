@@ -32,8 +32,8 @@ class DailyshelterRecyclerAdapter(private val callback : (String) -> Unit)
             binding.dailyShelterName.text = item
             Glide.with(binding.root)
                 .load(Uri.parse(""))
-                .circleCrop()
                 .error(R.drawable.dailay_image1)
+                .circleCrop()
                 .into(binding.dailyShelterIv)
         }
 

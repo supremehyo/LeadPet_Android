@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDailyshelterBinding
+import com.dev6.feed.databinding.ItemRecommendDonationBinding
 
-class RecommendDonationAdapter (private val callback : (String) -> Unit)
-    : ListAdapter<String, RecommendDonationAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
+class RecommendDonationAdapter (private val callback : (String) -> Unit) : ListAdapter<String, RecommendDonationAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding = ItemDailyshelterBinding.
+        val binding = ItemRecommendDonationBinding.
         inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendViewHolder(binding)
     }
@@ -26,15 +26,10 @@ class RecommendDonationAdapter (private val callback : (String) -> Unit)
         holder.itemClickListener(currentList[position] , callback)
     }
 
-    class RecommendViewHolder(private val binding: ItemDailyshelterBinding) :
+    class RecommendViewHolder(private val binding: ItemRecommendDonationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: String) {
-            binding.dailyShelterName.text = item
-            Glide.with(binding.root)
-                .load(Uri.parse(""))
-                .circleCrop()
-                .error(R.drawable.dailay_image1)
-                .into(binding.dailyShelterIv)
+
         }
 
         fun getLayoutParams(): ViewGroup.LayoutParams {
