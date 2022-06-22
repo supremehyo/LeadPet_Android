@@ -80,7 +80,7 @@ object Debug {
 
 //메모리 누수 잡는 라이브러리
 object Memory {
-    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.8.1"
+    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.9.1"
 
 }
 

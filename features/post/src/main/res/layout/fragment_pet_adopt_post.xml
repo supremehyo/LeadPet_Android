@@ -14,6 +14,16 @@
         android:layout_height="match_parent">
 
 
+        <TextView
+            android:id="@+id/tv_euthanasia"
+            style="@style/CustomTextViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="안락사예정일 (비공개)"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/til_disease" />
+
         <include
             android:id="@+id/include"
             layout="@layout/inclue_top"
@@ -117,6 +127,7 @@
             app:text="품종 선택" />
 
         <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/materialButtonToggleGroup"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
@@ -132,19 +143,19 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:insetRight="7dp"
                 android:layout_weight="1"
+                android:insetRight="7dp"
                 android:text="있음">
 
             </com.google.android.material.button.MaterialButton>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_the"
-                style="@style/CustomWhiteButtonStyle"
+                style="@style/ButtonSelecterStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:insetLeft="7dp"
                 android:layout_weight="1"
+                android:insetLeft="7dp"
                 android:text="없음" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -188,12 +199,63 @@
             app:layout_constraintBottom_toBottomOf="@+id/rv_animal_choice"
             app:layout_constraintEnd_toStartOf="@+id/gi_light2"
             app:layout_constraintHorizontal_bias="1.0">
-
-
-
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_disease"
+            style="@style/CustomOutlineBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            app:boxStrokeWidth="2dp"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_disease"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@null"
+                android:fontFamily="@font/custom_font_family"
+                android:hint="질병상태" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.dev6.core.view.CustomButtonCalandar
+            android:id="@+id/cv_euthanasia_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="6dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_euthanasia"></com.dev6.core.view.CustomButtonCalandar>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_introduce"
+            style="@style/CustomOutlineBox"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:paddingTop="15dp"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/gl_left2"
+            app:layout_constraintTop_toBottomOf="@+id/cv_euthanasia_date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:fontFamily="@font/custom_font_family"
+                android:gravity="start|top"
+                android:hint="소개글 작성" />
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
 

@@ -3,13 +3,11 @@ package com.dev6.login
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.activityViewModels
 import com.dev6.core.base.BindingActivity
-import com.dev6.domain.util.repeatOnStarted
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.join.JoinActivity
 import com.dev6.login.databinding.ActivityLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

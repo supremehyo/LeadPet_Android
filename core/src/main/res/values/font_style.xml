@@ -61,14 +61,15 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="CustomWhiteButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="materialThemeOverlay">@style/GreenButtonThemeOverlay</item>
+
+    <style name="ButtonSelecterStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ButtonSelecterThemeOverlay</item>
         <item name="strokeColor">@color/text_input_layout_stroke</item>
         <item name="strokeWidth">2dp</item>
         <item name="android:textColor">@color/text_button_pressed</item>
     </style>
 
-    <style name="GreenButtonThemeOverlay">
+    <style name="ButtonSelecterThemeOverlay">
         <item name="colorPrimary">@color/color_black</item>
         <item name="colorOnSurface">@color/Gray_07</item>
     </style>

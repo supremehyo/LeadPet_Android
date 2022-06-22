@@ -4,7 +4,7 @@ object Versions {
     const val BUILD_GRADLE = "4.2.1"
     const val COMPILE_SDK_VERSION = 31
     const val BUILD_TOOLS_VERSION = "31.0.0"
-    const val MIN_SDK_VERSION = 23
+    const val MIN_SDK_VERSION = 24
     const val TARGET_SDK_VERSION = 31
 
     const val CORE_KTX = "1.8.0-alpha04"

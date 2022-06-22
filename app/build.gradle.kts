@@ -99,7 +99,7 @@ dependencies {
 
     //디버그용
     implementation(Debug.TIMBER)
-
+    debugImplementation(Memory.LEAK_CANARY)
 
     implementation(Kakao.LOGIN)
 

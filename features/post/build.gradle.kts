@@ -77,4 +77,6 @@ dependencies {
     implementation(Image.TED_IMAGE_PICKER)
 
     implementation(Indicator.CIRCLE_INDICATOR)
+
+    debugImplementation(Memory.LEAK_CANARY)
 }

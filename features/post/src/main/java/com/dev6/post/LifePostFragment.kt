@@ -4,7 +4,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
-import com.dev6.domain.util.repeatOnStarted
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.login.viewmodel.PostViewModel
 import com.dev6.post.databinding.FragmentLifePostBinding
 import gun0912.tedimagepicker.builder.TedImagePicker

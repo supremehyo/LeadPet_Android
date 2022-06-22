@@ -11,8 +11,8 @@ android {
     buildFeatures.dataBinding = true
     buildFeatures.viewBinding = true
     defaultConfig {
-        minSdk = 23
-        targetSdk = 31
+        minSdk = Versions.MIN_SDK_VERSION
+        targetSdk = Versions.TARGET_SDK_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

@@ -11,8 +11,6 @@ class HttpRequestInterceptor : Interceptor {
         Timber.d(request.toString())
         val response = chain.proceed(request)
         Timber.d(response.toString())
-
         return response
-
     }
 }
