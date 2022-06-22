@@ -1,7 +1,8 @@
 package com.dev6.domain.repository
 
+import com.dev6.domain.entitiyRepo.AdoptPostEntityRepo
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 
 interface AdoptRepository {
-    suspend fun signUp(userEntitiy: JoinEntitiyRepo)  : String
+    suspend fun insertAdoptPost(postEntity: AdoptPostEntityRepo): Boolean
 }

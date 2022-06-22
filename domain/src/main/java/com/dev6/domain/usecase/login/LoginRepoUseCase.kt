@@ -1,4 +1,4 @@
-package com.dev6.domain.usecase
+package com.dev6.domain.usecase.login
 
 import com.dev6.core.base.UiState
 import com.dev6.core.enum.LoginType

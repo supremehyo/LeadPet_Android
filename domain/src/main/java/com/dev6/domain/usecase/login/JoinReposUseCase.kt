@@ -1,4 +1,4 @@
-package com.dev6.domain.usecase
+package com.dev6.domain.usecase.login
 
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import com.dev6.domain.repository.JoinRepository
