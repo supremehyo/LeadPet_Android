@@ -108,3 +108,4 @@ lint/tmp/
 # build src
 buildSrc/.gradle/
 buildSrc/build/
+.idea/codeStyles/Project.xml

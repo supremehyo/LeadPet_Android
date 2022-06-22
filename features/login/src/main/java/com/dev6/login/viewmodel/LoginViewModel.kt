@@ -7,19 +7,15 @@ import com.dev6.core.enum.LoginType
 import com.dev6.core.exception.*
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.domain.entitiyRepo.LoginEntitiy
+import com.dev6.domain.entitiyRepo.LoginEntity
 import com.dev6.domain.entitiyRepo.UserEntity
-import com.dev6.domain.usecase.GetKakaoAccessTokenUseCase
 import com.dev6.domain.usecase.LoginRepoUseCase
-import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
 import timber.log.Timber
 import javax.inject.Inject
-import kotlin.coroutines.resume
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
@@ -27,7 +23,7 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private val _loginDto = MutableStateFlow<LoginEntitiy>(LoginEntitiy(loginMethod = LoginType.EMAIL))
+    private val _loginDto = MutableStateFlow<LoginEntity>(LoginEntity(loginMethod = LoginType.EMAIL))
     val loginDto = _loginDto.asStateFlow()
 
     private val _lodingFlow = MutableStateFlow<Boolean>(false)
@@ -36,7 +32,7 @@ class LoginViewModel @Inject constructor(
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    fun setloginDto(loginEntitiy: LoginEntitiy){
+    fun setloginDto(loginEntitiy: LoginEntity){
         _loginDto.value = loginEntitiy
     }
 
@@ -70,7 +66,7 @@ class LoginViewModel @Inject constructor(
 
     sealed class Event {
         data class JoinEvent(
-            val loginDto: LoginEntitiy
+            val loginDto: LoginEntity
         ) : Event()
 
         data class ErrorEvent(

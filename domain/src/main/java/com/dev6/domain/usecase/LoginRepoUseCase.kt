@@ -4,7 +4,7 @@ import com.dev6.core.base.UiState
 import com.dev6.core.enum.LoginType
 import com.dev6.core.exception.JoinException
 import com.dev6.core.exception.NotFoundException
-import com.dev6.domain.entitiyRepo.LoginEntitiy
+import com.dev6.domain.entitiyRepo.LoginEntity
 import com.dev6.domain.entitiyRepo.UserEntity
 import com.dev6.domain.repository.LoginRepository
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRepository) {
 
-    fun login(loginEntityRepo: LoginEntitiy): Flow<UiState<UserEntity>> = flow {
+    fun login(loginEntityRepo: LoginEntity): Flow<UiState<UserEntity>> = flow {
 
         if (loginEntityRepo.loginMethod == LoginType.EMAIL) {
             if (loginEntityRepo.email.isNullOrEmpty()) throw Exception()

@@ -8,11 +8,10 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.enum.LoginType
-import com.dev6.domain.entitiyRepo.LoginEntitiy
+import com.dev6.domain.entitiyRepo.LoginEntity
 import com.dev6.login.databinding.FragmentLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -22,9 +21,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kakao.sdk.auth.model.OAuthToken
-import com.kakao.sdk.common.model.ClientError
-import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -80,7 +76,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                         }
                     }.getOrThrow()
                 }.onSuccess { token ->
-                    loginViewModel.setloginDto(LoginEntitiy(LoginType.KAKAO, token, null, null))
+                    loginViewModel.setloginDto(LoginEntity(LoginType.KAKAO, token, null, null))
                     loginViewModel.getlogin()
                 }.onFailure {
                     Toast.makeText(
@@ -127,7 +123,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     override fun onStart() {
         super.onStart()
         GoogleSignIn.getLastSignedInAccount(requireContext())?.let {
-            loginViewModel.setloginDto(LoginEntitiy(LoginType.GOOGLE, it.id, null, null))
+            loginViewModel.setloginDto(LoginEntity(LoginType.GOOGLE, it.id, null, null))
             loginViewModel.getlogin()
         }
     }
@@ -150,7 +146,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                     try {
                         val account = task.getResult(ApiException::class.java)!!
                         loginViewModel.setloginDto(
-                            LoginEntitiy(
+                            LoginEntity(
                                 LoginType.GOOGLE,
                                 account.id,
                                 null,
