@@ -7,5 +7,5 @@ import retrofit2.http.POST
 
 interface DonatePostAPI {
     @POST("/v1/post/donation")
-    suspend fun addNewDonatePost(@Body donatePostEntityRepo: DonatePostEntityRepo): String
+    suspend fun addNewDonatePost(@Body donatePostEntityRepo: DonatePostEntityRepo): Boolean
 }

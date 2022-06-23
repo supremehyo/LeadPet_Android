@@ -7,5 +7,5 @@ import retrofit2.http.POST
 
 interface AdoptPostAPI {
     @POST("/v1/post/normal")
-    suspend fun addNewAdoptPost(@Body adoptPostEntityRepo: AdoptPostEntityRepo): String
+    suspend fun addNewAdoptPost(@Body adoptPostEntityRepo: AdoptPostEntityRepo): Boolean
 }

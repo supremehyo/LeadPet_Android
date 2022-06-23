@@ -8,5 +8,5 @@ import retrofit2.http.POST
 
 interface LifePostAPI {
     @POST("/v1/post/adoption")
-    suspend fun addNewLifePost(@Body lifePosEntityRepo: LifePosEntityRepo): String
+    suspend fun addNewLifePost(@Body lifePosEntityRepo: LifePosEntityRepo): Boolean
 }

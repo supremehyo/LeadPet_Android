@@ -16,5 +16,4 @@ class JoinRemoteSourceImpl @Inject constructor(
     override suspend fun signUp(joinEntitiy: JoinEntitiyRepo): String {
         return joinService.signUp(joinEntitiy)
     }
-
 }
