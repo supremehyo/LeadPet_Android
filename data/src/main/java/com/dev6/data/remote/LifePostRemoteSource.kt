@@ -13,5 +13,4 @@ class LifePostRemoteImpl @Inject constructor(
 ) : LifePostRemoteSource {
     override suspend fun insert(lifePosEntityRepo: LifePosEntityRepo): Boolean =
         lifePostAPI.addNewLifePost(lifePosEntityRepo)
-
 }

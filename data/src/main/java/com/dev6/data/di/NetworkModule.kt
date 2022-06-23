@@ -1,7 +1,6 @@
 package com.dev6.data.di
 
-import com.dev6.data.service.JoinAPI
-import com.dev6.data.service.LoginAPI
+import com.dev6.data.service.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,8 +22,8 @@ object NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpRequestInterceptor())
-            .connectTimeout(5 , TimeUnit.SECONDS )
-            .callTimeout(5 ,TimeUnit.SECONDS)
+            .connectTimeout(5, TimeUnit.SECONDS)
+            .callTimeout(5, TimeUnit.SECONDS)
             .build()
     }
 
@@ -38,7 +37,6 @@ object NetworkModule {
             .build()
     }
 
-
     @Provides
     @Singleton
     fun provideJoinService(retrofit: Retrofit): JoinAPI {
@@ -49,5 +47,23 @@ object NetworkModule {
     @Singleton
     fun provideLoginService(retrofit: Retrofit): LoginAPI {
         return retrofit.create(LoginAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLifeService(retrofit: Retrofit): LifePostAPI {
+        return retrofit.create(LifePostAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDonateService(retrofit: Retrofit): DonatePostAPI {
+        return retrofit.create(DonatePostAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAdoptService(retrofit: Retrofit): AdoptPostAPI {
+        return retrofit.create(AdoptPostAPI::class.java)
     }
 }
