@@ -1,6 +1,6 @@
 package com.dev6.domain.entitiyRepo
 
-interface LifePosEntityRepo {
+interface LifePostEntityRepo {
     val userId: String
     val title: String
     val contents: String

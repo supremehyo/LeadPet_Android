@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/post_nav_graph"
-    app:startDestination="@id/petDonateFragment">
+    app:startDestination="@id/lifePostFragment">
     <fragment
         android:id="@+id/lifePostFragment"
         android:name="com.dev6.post.LifePostFragment"
@@ -23,7 +23,8 @@
     <fragment
         android:id="@+id/petAdoptPostFragment"
         android:name="com.dev6.post.PetAdoptPostFragment"
-        android:label="PetAdoptPostFragment" >
+        android:label="PetAdoptPostFragment"
+        tools:layout="@layout/fragment_pet_adopt_post">
         <action
             android:id="@+id/action_petAdoptPostFragment_to_gallraryFragment"
             app:destination="@id/gallraryFragment" />

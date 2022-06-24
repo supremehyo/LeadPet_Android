@@ -14,8 +14,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
-    implementation (project(":core"))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)
@@ -26,7 +28,6 @@ dependencies {
     implementation(AndroidX.LIFECYCLE_VIEWMODEL_KTX)
     implementation(AndroidX.LIFECYCLE_LIVEDATA_KTX)
     implementation(AndroidX.LIFECYCLE_EXTENSIONNS)
-
 
     //retrofit2
     implementation(Network.OKHTTP)

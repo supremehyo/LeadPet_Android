@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
-        app:layout_constraintTop_toBottomOf="@+id/include"></com.dev6.core.view.CustomButtonCamera>
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <EditText
         android:id="@+id/tv_life_title"

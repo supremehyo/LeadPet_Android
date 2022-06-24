@@ -24,7 +24,6 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
 
         //todo 확장함수로 정규식 표현 만들기 이메일 형식이 올바르지 않은거 체크
 
-
         //시작할때 로딩을 emit
         emit(UiState.Loding)
 

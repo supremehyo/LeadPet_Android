@@ -1,7 +1,7 @@
 package com.dev6.domain.repository
 
-import com.dev6.domain.entitiyRepo.LifePosEntityRepo
+import com.dev6.domain.entitiyRepo.LifePostEntityRepo
 
 interface LifePostRepository {
-    suspend fun insertLifePost(postEntity: LifePosEntityRepo): Boolean
+    suspend fun insertLifePost(postEntity: LifePostEntityRepo): Boolean
 }
