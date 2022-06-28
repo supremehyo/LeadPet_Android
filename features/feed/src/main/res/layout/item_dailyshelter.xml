@@ -23,7 +23,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:fontFamily="@font/hansneo_medium"
-         android:textColor="@color/black"
+         android:textColor="@color/Gray_01"
          android:layout_marginTop="12dp"
          android:textSize="16dp"
          android:text="투게더펫"
