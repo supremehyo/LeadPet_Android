@@ -7,16 +7,12 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
-import com.dev6.data.entity.JoinEntitiy
-import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
+import com.dev6.data.model.JoinEntitiy
 import com.dev6.join.databinding.FragmentNormalUserJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 
 

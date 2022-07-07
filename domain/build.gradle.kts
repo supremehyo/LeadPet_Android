@@ -18,6 +18,9 @@ dependencies {
     implementation(Network.OKHTTP3)
     implementation(Network.RETROFIT)
     implementation(Network.GSON)
+    testImplementation(UnitTest.MOCKITO)
+    testImplementation(UnitTest.TRUTH)
+    testImplementation(UnitTest.TURBINE)
 
     implementation(Google.HILT_ANDROID)
     kapt(Google.HILT_ANDROID_COMPILER)

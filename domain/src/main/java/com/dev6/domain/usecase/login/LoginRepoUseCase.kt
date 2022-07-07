@@ -2,8 +2,6 @@ package com.dev6.domain.usecase.login
 
 import com.dev6.core.base.UiState
 import com.dev6.core.enum.LoginType
-import com.dev6.core.exception.JoinException
-import com.dev6.core.exception.NotFoundException
 import com.dev6.domain.entitiyRepo.LoginEntity
 import com.dev6.domain.entitiyRepo.UserEntity
 import com.dev6.domain.repository.LoginRepository
@@ -34,9 +32,9 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
             emit(UiState.Success(userEntityRepo))
         } else {
             when (response.code()) {
-                404 -> if (loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(
-                    response.message()
-                ) else throw  JoinException(response.message())
+//                404 -> if (loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(
+//                    response.message()
+//                ) else throw  JoinException(response.message())
                 else -> {
 
                 }

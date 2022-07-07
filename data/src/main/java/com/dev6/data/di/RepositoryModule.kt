@@ -24,9 +24,9 @@ abstract class RepositoryModule {
     @ViewModelScoped
     abstract fun bindsAccessTokenRepository(repository: AccessTokenRepositoryImp): AccessTokenRepository
 
-    @Binds
-    @ViewModelScoped
-    abstract fun bindsLifeRepository(repository: LifePostRepositoryImp): LifePostRepository
+//    @Binds
+//    @ViewModelScoped
+//    abstract fun bindsLifeRepository(repository: LifePostRepositoryImp): LifePostRepository
 
     @Binds
     @ViewModelScoped

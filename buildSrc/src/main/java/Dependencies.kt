@@ -4,6 +4,8 @@ object Kotlin {
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLINX_COROUTINES}"
     const val COROUTINES_ANDROID =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINES}"
+    const val COROUTINES_TEST =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.KOTLINX_COROUTINES}"
 }
 
 object AndroidX {
@@ -25,13 +27,15 @@ object AndroidX {
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
-}
 
+    const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
+}
 
 object Google {
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
-    const val HILT_COMMON = "androidx.hilt:hilt-common:${Versions.HILT_EXTENTION}"
+    const val HILT_TESTING = "com.google.dagger:hilt-android-testing:${Versions.HILT}"
+
     const val HILT_LIFECYCLE = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_EXTENTION}"
     const val HILT_COMPILER = "androidx.hilt:hilt-compiler:1.0.0-alpha01"
 
@@ -51,9 +55,11 @@ object Image {
     const val TED_IMAGE_PICKER = "io.github.ParkSangGwon:tedimagepicker:1.2.8"
 }
 
-
 object UnitTest {
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val TRUTH = "com.google.truth:truth:1.1.3"
+    const val MOCKITO = "org.mockito:mockito-inline:4.6.1"
+    const val TURBINE = "app.cash.turbine:turbine:0.8.0"
 }
 
 object AndroidTest {
@@ -68,6 +74,8 @@ object Network {
     const val SCALAR = "com.squareup.retrofit2:converter-scalars:2.9.0"
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val OKHTTP3 = "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    const val MOCKWEBSERVER = "com.squareup.okhttp3:mockwebserver:4.10.0"
+
 }
 
 //Flipper 디버깅 편리하게 해주는 라이브러리
@@ -88,13 +96,12 @@ object Kakao {
     const val LOGIN = "com.kakao.sdk:v2-user:2.8.6"
 }
 
-
 object RecyclerView {
     const val Groupie = "com.github.lisawray.groupie:groupie:2.10.1"
     const val GroupieViewBinding = "com.github.lisawray.groupie:groupie-viewbinding:2.10.1"
 }
 
-object Indicator{
+object Indicator {
     const val CIRCLE_INDICATOR = "com.tbuonomo:dotsindicator:4.3"
 }
 

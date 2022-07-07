@@ -1,16 +1,17 @@
 package com.dev6.data.remote
 
+import com.dev6.data.model.LifePostRequestResponse
+import com.dev6.data.model.executeNetworkHandling
 import com.dev6.data.service.LifePostAPI
-import com.dev6.domain.entitiyRepo.LifePostEntityRepo
 import javax.inject.Inject
 
 interface LifePostRemoteSource {
-    suspend fun insert(lifePosEntityRepo: LifePostEntityRepo): Boolean
+    suspend fun insert(lifePostEntityRepo: LifePostRequestResponse): LifePostRequestResponse?
 }
 
 class LifePostRemoteImpl @Inject constructor(
     private val lifePostAPI: LifePostAPI
 ) : LifePostRemoteSource {
-    override suspend fun insert(lifePosEntityRepo: LifePostEntityRepo): Boolean =
-        lifePostAPI.addNewLifePost(lifePosEntityRepo)
+    override suspend fun insert(lifePostEntityRepo: LifePostRequestResponse): LifePostRequestResponse? =
+        lifePostAPI.addNewLifePost(lifePostEntityRepo).executeNetworkHandling()
 }

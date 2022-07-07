@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.data.entity.LifePostEntity
+import com.dev6.domain.entitiyRepo.LifePost
 import com.dev6.domain.usecase.post.InsertLifePostUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,26 +28,24 @@ class LifePostViewModel @Inject constructor(
         _postImageFlow.value = uriList
     }
 
-    sealed class Event {
-        data class UiEvent(
-            val uiState: UiState<Boolean>
-        ) : Event()
-
-    }
-
     private fun event(event: Event) {
         viewModelScope.launch {
             _eventFlow.emit(event)
         }
     }
 
-    fun insertLifePost(text: String, content: String) {
+    fun insertLifePost(text: String, content: String, img: List<String>) {
         viewModelScope.launch {
-            val repo =
-                LifePostEntity(userId = "", title = text, contents = content, images = listOf())
+            val repo = LifePost(userId = "", title = text, contents = content, images = img)
             insertLifePostUseCase(repo).collect { uiState ->
                 event(Event.UiEvent(uiState))
             }
         }
+    }
+
+    sealed class Event {
+        data class UiEvent(
+            val uiState: UiState<LifePost>
+        ) : Event()
     }
 }

@@ -58,6 +58,9 @@ dependencies {
 
 
     testImplementation(UnitTest.JUNIT)
+    testImplementation(UnitTest.TRUTH)
+    testImplementation(UnitTest.MOCKITO)
+
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 

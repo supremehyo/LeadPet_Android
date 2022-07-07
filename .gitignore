@@ -109,3 +109,5 @@ lint/tmp/
 buildSrc/.gradle/
 buildSrc/build/
 .idea/codeStyles/Project.xml
+.idea/misc.xml
+.idea/androidTestResultsUserPreferences.xml

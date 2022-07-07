@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,9 +14,9 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object NetworkModule {
+open class NetworkModule {
 
-    const val BASE_URL = "http://02b2-123-212-235-38.ngrok.io"
+    protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
 
     @Provides
     @Singleton
@@ -32,7 +33,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl(baseUrl())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
