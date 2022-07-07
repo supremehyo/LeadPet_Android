@@ -10,7 +10,9 @@ import com.dev6.feed.R
 import com.dev6.feed.adapter.RecommendAdoptAdapter
 import com.dev6.feed.adapter.RecommendDonationAdapter
 import com.dev6.feed.adapter.RecommendFeedAdapter
+import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
+import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import timber.log.Timber
 
@@ -34,7 +36,8 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
     private fun initRc(){
         binding.recommendDonationRc.apply {
             adapter = RecommendDonationAdapter{
-
+                val detailIntent = Intent(context, DonationFeedDetailActivity::class.java)
+                startActivity(detailIntent)
             }.also {
                 it.submitList(listOf("첫번째" , "첫번째" , "첫번째" ,"첫번째" ,"첫번째" ,"첫번째"))
             }
@@ -43,7 +46,8 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
 
         binding.recommendAdoptRc.apply {
             adapter = RecommendAdoptAdapter{
-
+                val detailIntent = Intent(context, AdoptFeedDetailActivity::class.java)
+                startActivity(detailIntent)
             }.also {
                 it.submitList(listOf("첫번째" , "첫번째" , "첫번째" ,"첫번째" ,"첫번째" ,"첫번째"))
             }

@@ -23,6 +23,8 @@ import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
+import java.util.*
 
 class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_daily) {
 
@@ -70,8 +72,12 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     override fun initViewModel() {
         super.initViewModel()
         viewLifecycleOwner.lifecycleScope.launch {
-            feedViewModel.getFeedList().collectLatest {
-                pagingAdapter.submitData(it)
+            try {
+                feedViewModel.getFeedList().collectLatest {
+                    pagingAdapter.submitData(it)
+                }
+            } catch (e: Exception) {
+                Timber.e(e)
             }
         }
     }

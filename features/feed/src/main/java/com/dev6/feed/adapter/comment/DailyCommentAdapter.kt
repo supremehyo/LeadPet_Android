@@ -1,4 +1,4 @@
-package com.dev6.feed.adapter
+package com.dev6.feed.adapter.comment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ class DailyCommentAdapter(private val callback: (String) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
         val binding =
-            com.dev6.feed.databinding.ItemDailycommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemDailycommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendViewHolder(binding)
     }
 
@@ -27,7 +27,7 @@ class DailyCommentAdapter(private val callback: (String) -> Unit) :
     class RecommendViewHolder(private val binding: ItemDailycommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: String) {
-
+            binding.dailyCommentContentTv.text = item
         }
 
         fun getLayoutParams(): ViewGroup.LayoutParams {

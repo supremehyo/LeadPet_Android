@@ -31,7 +31,7 @@ class RecommendFeedAdapter (private val callback : (String) -> Unit)
     class RecommendViewHolder(private val binding: ItemRecommendFeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: String) {
-            binding.recommentFeeTv1.text = item
+
         }
 
         fun getLayoutParams(): ViewGroup.LayoutParams {
@@ -39,7 +39,9 @@ class RecommendFeedAdapter (private val callback : (String) -> Unit)
         }
 
         fun itemClickListener(item: String , callback: (String) -> Unit) {
-
+            binding.recommendItemCl.setOnClickListener {
+                callback("")
+            }
         }
     }
 

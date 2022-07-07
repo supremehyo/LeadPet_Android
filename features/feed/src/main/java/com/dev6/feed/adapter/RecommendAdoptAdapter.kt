@@ -7,20 +7,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.feed.databinding.ItemRecommendAdoptBinding
 
-class RecommendAdoptAdapter (private val callback : (String) -> Unit)
-    : ListAdapter<String, RecommendAdoptAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
+class RecommendAdoptAdapter(private val callback: (String) -> Unit) :
+    ListAdapter<String, RecommendAdoptAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding = ItemRecommendAdoptBinding.
-        inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemRecommendAdoptBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
         holder.onBind(currentList[position])
         holder.getLayoutParams()
-        holder.itemClickListener(currentList[position] , callback)
+        holder.itemClickListener(currentList[position], callback)
     }
 
     class RecommendViewHolder(private val binding: ItemRecommendAdoptBinding) :
@@ -33,8 +33,10 @@ class RecommendAdoptAdapter (private val callback : (String) -> Unit)
             return binding.root.layoutParams
         }
 
-        fun itemClickListener(item: String , callback: (String) -> Unit) {
-
+        fun itemClickListener(item: String, callback: (String) -> Unit) {
+            binding.recommendAdoptCl.setOnClickListener {
+                callback("")
+            }
         }
     }
 

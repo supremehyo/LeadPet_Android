@@ -10,29 +10,21 @@ import com.dev6.feed.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class BottomSheet(private val callback: (PostOptionType) -> Unit, type: String) :
+class BottomSheet(private val callback: (PostOptionType) -> Unit, type: Int) :
     BottomSheetDialogFragment() {
 
-    var optionType = type
-
+    var type = type
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return when (optionType) {
-            "정렬" -> {
-                inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
-            }
-            else -> {
-                inflater.inflate(R.layout.fragment_category_sheet, container, false)
-            }
-        }
+        return  inflater.inflate(this.type, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (optionType == "정렬") {
+        if (type == R.layout.fragment_bottom_sheet) {
             view.findViewById<RadioGroup>(R.id.radioGroup1)
                 .setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
@@ -54,5 +46,6 @@ class BottomSheet(private val callback: (PostOptionType) -> Unit, type: String) 
 
     private fun optionSelection(callback: (PostOptionType) -> Unit, type: PostOptionType) {
         callback(type)
+        this.dismiss()
     }
 }

@@ -32,6 +32,7 @@
 
         <ImageView
             android:id="@+id/imageView3"
+            android:elevation="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/search"
@@ -46,19 +47,29 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="49dp"
-            android:layout_marginTop="149dp"
-            android:layout_marginEnd="49dp"
+            android:background="@drawable/round_16dp_maincolor"
+            android:backgroundTint="@color/mainColor"
+            android:fontFamily="@font/hansneo_medium"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="4dp"
             android:text="팔로우"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.659"
             app:layout_constraintStart_toStartOf="@+id/guide2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:fontFamily="@font/hansansneobold"
             android:text="보호소이름"
             app:layout_constraintEnd_toStartOf="@+id/guide3"
             app:layout_constraintHorizontal_bias="0.046"
@@ -69,7 +80,8 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/black"
+            android:fontFamily="@font/hansneo_medium"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:text="20명의 아이들을 보호하고있는 꿈나무 보호소입니다.\n아이들이 행ㄴ복하게 살아갈 수 있는 보호소를 만들고 있습니다."
@@ -78,13 +90,15 @@
 
         <TextView
             android:id="@+id/textView8"
+            android:textColor="@color/black"
+            android:fontFamily="@font/hansneo_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="일상 3 | 기부 3 | 입양 3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
@@ -95,7 +109,7 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/profileTabs"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +118,8 @@
             app:layout_constraintTop_toTopOf="@+id/guideline5"
             app:layout_constraintVertical_bias="0.0"
             app:tabIndicatorColor="@color/mainColor"
-            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorHeight="10dp"
+            app:tabIndicator="@drawable/tab_selector"
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/grey5"
             app:tabTextAppearance="@style/tabTextSetting"

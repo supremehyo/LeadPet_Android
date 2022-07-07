@@ -37,7 +37,9 @@ class RecommendDonationAdapter (private val callback : (String) -> Unit) : ListA
         }
 
         fun itemClickListener(item: String , callback: (String) -> Unit) {
-
+            binding.recommendDonationCl.setOnClickListener {
+                callback("dd")
+            }
         }
     }
 
