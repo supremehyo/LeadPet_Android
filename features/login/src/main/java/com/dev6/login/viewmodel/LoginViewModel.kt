@@ -51,8 +51,8 @@ class LoginViewModel @Inject constructor(
                         Timber.d(uiState.error?.message)
 
                         when(uiState.error){
-                            is JoinException  -> event(Event.JoinEvent(loginDto.value))
-                            is NotFoundException -> event(Event.ErrorEvent("계정을 찾을수 없습니다."))
+                            is NotCorrectException  -> event(Event.JoinEvent(loginDto.value))
+                            is ServerFailException -> event(Event.ErrorEvent("계정을 찾을수 없습니다."))
                         }
                     }
                     is UiState.Loding -> {

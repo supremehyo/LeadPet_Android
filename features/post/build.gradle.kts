@@ -60,6 +60,7 @@ dependencies {
     testImplementation(UnitTest.JUNIT)
     testImplementation(UnitTest.TRUTH)
     testImplementation(UnitTest.MOCKITO)
+    testImplementation(UnitTest.TURBINE)
 
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
@@ -83,4 +84,5 @@ dependencies {
     implementation(Indicator.CIRCLE_INDICATOR)
 
     debugImplementation(Memory.LEAK_CANARY)
+    testImplementation(Kotlin.COROUTINES_TEST)
 }

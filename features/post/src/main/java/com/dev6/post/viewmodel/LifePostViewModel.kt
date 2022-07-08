@@ -1,12 +1,15 @@
 package com.dev6.post.viewmodel
 
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.provider.MediaStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
 import com.dev6.domain.entitiyRepo.LifePost
+import com.dev6.domain.usecase.post.InsertLifePostBaseUseCase
 import com.dev6.domain.usecase.post.InsertLifePostUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LifePostViewModel @Inject constructor(
-    private val insertLifePostUseCase: InsertLifePostUseCase
+    private val insertLifePostUseCase: @JvmSuppressWildcards InsertLifePostBaseUseCase
 ) : ViewModel() {
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
@@ -34,12 +37,13 @@ class LifePostViewModel @Inject constructor(
         }
     }
 
-    fun insertLifePost(text: String, content: String, img: List<String>) {
-        viewModelScope.launch {
-            val repo = LifePost(userId = "", title = text, contents = content, images = img)
-            insertLifePostUseCase(repo).collect { uiState ->
-                event(Event.UiEvent(uiState))
-            }
+    fun insertLifePost(text: String, content: String) = viewModelScope.launch {
+        postImageFlow.value.map{
+            ImageDecoder.decodeBitmap(ImageDecoder.createSource())
+        }
+        val repo = LifePost(userId = "", title = text, contents = content, images = img)
+        insertLifePostUseCase(repo).collect { uiState ->
+            event(Event.UiEvent(uiState))
         }
     }
 

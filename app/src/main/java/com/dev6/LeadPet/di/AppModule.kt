@@ -1,4 +1,4 @@
-package com.dev6.data.di
+package com.dev6.LeadPet.di
 
 import android.app.Application
 import android.content.Context

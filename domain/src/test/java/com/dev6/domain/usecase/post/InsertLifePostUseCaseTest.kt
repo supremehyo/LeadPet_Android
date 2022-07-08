@@ -46,7 +46,6 @@ class InsertLifePostUseCaseTest {
         insertLifePostUseCase(loginEntity).test {
             Truth.assertThat(awaitItem()).isInstanceOf(UiState.Loding::class.java)
             Truth.assertThat(awaitItem()).isInstanceOf(UiState.Success::class.java)
-            awaitComplete()
         }
     }
 

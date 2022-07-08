@@ -1,4 +1,4 @@
-package com.dev6.data.di
+package com.dev6.LeadPet.di
 
 import com.dev6.data.service.*
 import dagger.Module

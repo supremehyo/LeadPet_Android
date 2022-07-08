@@ -1,4 +1,4 @@
-package com.dev6.data.di
+package com.dev6.LeadPet.di
 
 import com.dev6.data.repositoryImple.*
 import com.dev6.domain.repository.*
@@ -24,9 +24,9 @@ abstract class RepositoryModule {
     @ViewModelScoped
     abstract fun bindsAccessTokenRepository(repository: AccessTokenRepositoryImp): AccessTokenRepository
 
-//    @Binds
-//    @ViewModelScoped
-//    abstract fun bindsLifeRepository(repository: LifePostRepositoryImp): LifePostRepository
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsLifeRepository(repository: LifePostRepositoryImp): LifePostRepository
 
     @Binds
     @ViewModelScoped

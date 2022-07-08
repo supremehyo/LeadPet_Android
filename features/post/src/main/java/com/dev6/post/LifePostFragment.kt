@@ -72,7 +72,10 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
         }
 
         binding.include.tvRight.setOnClickListener {
-            postViewModel.insertLifePost(binding.tvLifeTitle.text.toString() , binding.tietIntroduce.text.toString())
+            postViewModel.insertLifePost(
+                binding.tvLifeTitle.text.toString(),
+                binding.tietIntroduce.text.toString(),
+            )
         }
 
         binding.include.tvLeft.setOnClickListener {
