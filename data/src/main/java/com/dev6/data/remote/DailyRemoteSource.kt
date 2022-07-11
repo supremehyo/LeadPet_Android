@@ -1,12 +1,14 @@
 package com.dev6.data.remote
 
 import com.dev6.data.entity.DailyFeedEntitiy
+import com.dev6.data.entity.donation.DonationPaginationResponse
 import com.dev6.data.service.FeedAPI
 import javax.inject.Inject
 
 interface DailyRemoteSource {
     suspend fun normalAllFeed(page : Int , size : Int): List<DailyFeedEntitiy>
     suspend fun normalAllCount(): String
+
 }
 
 class DailyRemoteSourceImpl @Inject constructor(

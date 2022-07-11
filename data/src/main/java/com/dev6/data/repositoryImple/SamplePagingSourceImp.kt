@@ -20,7 +20,6 @@ class SamplePagingSourceImp @Inject constructor(private val dailyRemoteSource: D
             val next = params.key ?: 0
             val size = params.loadSize
             val response = dailyRemoteSource.normalAllFeed(next, size)
-            Log.v("sdfsdfsf" , response[0].contents)
             LoadResult.Page(
                 data = response,
                 prevKey = if (next == 0) null else next - 1, nextKey = next + 1

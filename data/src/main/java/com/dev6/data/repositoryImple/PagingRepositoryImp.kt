@@ -8,8 +8,11 @@ import com.dev6.domain.repository.PagingRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class PagingRepositoryImp @Inject constructor(private val dailyRemoteSource: DailyRemoteSource) : PagingRepository() {
+class PagingRepositoryImp
+@Inject constructor(private val dailyRemoteSource: DailyRemoteSource) : PagingRepository() {
     override fun getPagingData(): Flow<PagingData<Any>> {
-        return Pager(PagingConfig(pageSize = 10)) { SamplePagingSourceImp(dailyRemoteSource)}.flow
+        return Pager(PagingConfig(pageSize = 10))
+        { SamplePagingSourceImp(dailyRemoteSource)}.flow
     }
+
 }

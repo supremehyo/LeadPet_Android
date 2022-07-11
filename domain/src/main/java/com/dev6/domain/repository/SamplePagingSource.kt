@@ -7,7 +7,6 @@ import javax.inject.Inject
 abstract class SamplePagingSource () : PagingSource<Int, Any >(){
     abstract override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any>
     abstract override fun getRefreshKey(state: PagingState<Int, Any>): Int?
-
 }
 
 
