@@ -2,48 +2,82 @@ package com.dev6.data.mapper
 
 import com.dev6.data.entity.PageEntitiy
 import com.dev6.data.entity.SortEntitiy
+import com.dev6.data.entity.SortXX
 import com.dev6.data.entity.donation.DonationFeedEntitiy
 
 import com.dev6.data.entity.donation.DonationPaginationResponse
 import com.dev6.domain.entitiyRepo.*
 
+
 internal fun DonationPaginationResponse?.toDomain() = DonationPost(
-    donationFeedList = this?.donationFeedEntitiyList as List<DonationPostFeed>,
+    donationFeedList = this?.donationFeedList?.toDomain() ?: emptyList(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
     number = this?.number ?: 0,
     numberOfElements = this?.numberOfElements ?: 0,
-    page = this?.pageEntitiy as Pageable,
+    page = this?.page.toDomain(),
     size = this?.size ?: 0,
-    sort = this?.sortEntitiy as Sort,
-    totalElements = totalElements,
-    totalPages = this.totalPages
+    sort = this?.sort.toDomain(),
+    totalElements = this?.totalElements ?: 0,
+    totalPages = this?.totalPages ?: 0
+)
+
+internal fun List<DonationFeedEntitiy>.toDomain(): List<DonationPostFeed> {
+    var temp: ArrayList<DonationPostFeed> = ArrayList()
+    this.forEach {
+        temp.add(it.toData())
+    }
+    return temp
+}
+
+
+internal fun SortEntitiy?.toDomain() = Sort(
+    empty = this?.empty ?: false,
+    sorted = this?.sorted ?: false,
+    unsorted = this?.unsorted ?: false
+)
+
+
+internal fun SortXX?.toXX() = Sort(
+    empty = this?.empty ?: false,
+    sorted = this?.sorted ?: false,
+    unsorted = this?.unsorted ?: false
+)
+
+//SortXX
+internal fun PageEntitiy?.toDomain() = Pageable(
+    offset = this?.offset ?: 0,
+    pageNumber = this?.pageNumber ?: 0,
+    pageSize = this?.pageSize ?: 0,
+    paged = this?.paged ?: false,
+    sort = this?.sort.toDomain(),
+    unpaged = this?.unpaged ?: false
 )
 
 internal fun DonationPost.toMapper() = DonationPaginationResponse(
-    donationFeedEntitiyList =this.donationFeedList as List<DonationFeedEntitiy>,
+    donationFeedList = this.donationFeedList as List<DonationFeedEntitiy>,
     empty = this.empty,
     first = this.first,
     last = this.last,
     number = this.number,
     numberOfElements = this.numberOfElements,
-    pageEntitiy = page as PageEntitiy,
+    page = this.page as PageEntitiy,
     size = this.size,
-    sortEntitiy = sort as SortEntitiy,
+    sort = this.sort as SortEntitiy,
     totalElements = totalElements,
     totalPages = this.totalPages
 )
 
-internal fun DonationFeedEntitiy.toData() = DonationPostFeed(
-    contents = contents,
-    donationMethod = donationMethod,
-    donationPostId = donationPostId,
-    endDate = endDate,
-    images = images,
-    startDate =startDate,
-    title = title,
-    userId = userId
+internal fun DonationFeedEntitiy?.toData() = DonationPostFeed(
+    contents = this?.contents ?: "",
+    donationMethod = this?.donationMethod ?: "",
+    donationPostId = this?.donationPostId ?: "",
+    endDate = this?.endDate ?: emptyList(),
+    images = this?.images ?: emptyList(),
+    startDate = this?.startDate ?: emptyList(),
+    title = this?.title ?: "",
+    userId = this?.userId ?: ""
 )
 
 internal fun DonationPost.toMakeViewLayer(temp: DonationFeedEntitiy) = DonationFeedEntitiy(
@@ -56,7 +90,6 @@ internal fun DonationPost.toMakeViewLayer(temp: DonationFeedEntitiy) = DonationF
     title = temp.title,
     userId = temp.userId
 )
-
 
 
 

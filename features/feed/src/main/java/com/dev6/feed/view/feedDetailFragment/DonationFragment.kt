@@ -62,34 +62,34 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
             }
         }
     }
-
     private fun getDonationList() {
         feedViewModel.getDonationList()
     }
-
     private fun makeBottomSheet(type: Int) {
         bottomSheet = BottomSheet({
             sortFeed(it)
         }, type)
     }
-
     override fun afterViewCreated() {
         super.afterViewCreated()
         getDonationList()
 
         repeatOnStarted {
             feedViewModel.donationPagingFlow.collect { it ->
-                recommendDonationAdapter.submitData(it)
+
             }
         }
 
         repeatOnStarted {
-            feedViewModel.eventFlow.collect { event ->
+            feedViewModel.eventFlow.collect { event ->2
                 when (event) {
                     is FeedViewModel.Event.DonationUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
+                                event.uiState.data.collectLatest {
+                                    recommendDonationAdapter.submitData(it)
+                                }
                             }
                             is UiState.Error -> {
                                 Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()

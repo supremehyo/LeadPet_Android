@@ -13,7 +13,7 @@ data class PageEntitiy(
     @SerializedName("paged")
     val paged: Boolean,
     @SerializedName("sort")
-    val sort: SortXX,
+    val sort: SortEntitiy,
     @SerializedName("unpaged")
     val unpaged: Boolean
 

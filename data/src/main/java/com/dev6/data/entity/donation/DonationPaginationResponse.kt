@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DonationPaginationResponse(
     @SerializedName("content")
-    val donationFeedEntitiyList: List<DonationFeedEntitiy>,
+    val donationFeedList: List<DonationFeedEntitiy>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")
@@ -18,11 +18,11 @@ data class DonationPaginationResponse(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val pageEntitiy: PageEntitiy,
+    val page: PageEntitiy,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")
-    val sortEntitiy: SortEntitiy,
+    val sort: SortEntitiy,
     @SerializedName("totalElements")
     val totalElements: Int,
     @SerializedName("totalPages")
