@@ -5,6 +5,7 @@ import com.dev6.data.model.JoinEntitiy
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import com.dev6.domain.usecase.login.JoinReposUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -18,7 +19,9 @@ class JoinViewModel
     private val _joinDataFlow = MutableSharedFlow<String>()
     val joinDataFlow = _joinDataFlow.asSharedFlow()
 
-    private val _joinDTOData = MutableSharedFlow<JoinEntitiy>()
+    private val _joinDTOData = MutableSharedFlow<JoinEntitiy>(
+        replay = 1, extraBufferCapacity = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
     val joinDTOData =  _joinDTOData.asSharedFlow()
 
 

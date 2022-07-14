@@ -1,6 +1,9 @@
 package com.dev6.LeadPet.di
 
 import com.dev6.data.service.*
+import com.dev6.data.service.FeedAPI
+import com.dev6.data.service.JoinAPI
+import com.dev6.data.service.LoginAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,6 +12,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -66,5 +70,11 @@ open class NetworkModule {
     @Singleton
     fun provideAdoptService(retrofit: Retrofit): AdoptPostAPI {
         return retrofit.create(AdoptPostAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFeedService(retrofit: Retrofit): FeedAPI {
+        return retrofit.create(FeedAPI::class.java)
     }
 }

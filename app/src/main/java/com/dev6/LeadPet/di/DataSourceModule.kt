@@ -30,5 +30,11 @@ abstract class DataSourceModule {
     @Binds
     abstract fun bindsAdoptPostRemoteSource(source: AdoptPostRemoteSource): AdoptPostRemoteSource
 
+
+    @Singleton
+    @Binds
+    abstract fun bindsSamplePagingRemoteSource(source: DailyRemoteSourceImpl): DailyRemoteSource
+
+
 }
 

@@ -10,8 +10,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
-import com.dev6.core.enum.LoginType
 import com.dev6.domain.entitiyRepo.LoginEntity
+import com.dev6.core.enums.LoginType
 import com.dev6.login.databinding.FragmentLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+     <ImageView
+         android:id="@+id/dailyShelterIv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/home"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+
+     <TextView
+         android:id="@+id/dailyShelterName"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="투게더펫"
+         app:layout_constraintEnd_toEndOf="@+id/dailyShelterIv"
+         app:layout_constraintStart_toStartOf="@+id/dailyShelterIv"
+         app:layout_constraintTop_toBottomOf="@+id/dailyShelterIv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

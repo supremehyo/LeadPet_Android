@@ -1,8 +1,8 @@
 package com.dev6.domain.usecase.login
 
 import com.dev6.core.base.UiState
-import com.dev6.core.enum.LoginType
 import com.dev6.domain.entitiyRepo.LoginEntity
+import com.dev6.core.enums.LoginType
 import com.dev6.domain.entitiyRepo.UserEntity
 import com.dev6.domain.repository.LoginRepository
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +21,7 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
         }
 
         //todo 확장함수로 정규식 표현 만들기 이메일 형식이 올바르지 않은거 체크
+
 
         //시작할때 로딩을 emit
         emit(UiState.Loding)

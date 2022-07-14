@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/totalFragment"
+    android:id="@+id/tablayout_nav_graph">
+
+    <fragment
+        android:id="@+id/totalFragment"
+        android:name="com.dev6.feed.view.feedDetailFragment.TotalFragment"
+        tools:layout="@layout/fragment_total">
+    </fragment>
+
+    <fragment
+        android:id="@+id/dailyFragment"
+        android:name="com.dev6.feed.view.feedDetailFragment.DailyFragment"
+        tools:layout="@layout/fragment_daily">
+    </fragment>
+
+    <fragment
+        android:id="@+id/donationFragment"
+        android:name="com.dev6.feed.view.feedDetailFragment.DonationFragment"
+        tools:layout="@layout/fragment_donation">
+    </fragment>
+
+    <fragment
+        android:id="@+id/adoptFragment"
+        android:name="com.dev6.feed.view.feedDetailFragment.AdoptFragment"
+        tools:layout="@layout/fragment_adopt">
+
+    </fragment>
+
+    <action android:id="@+id/action_global_dailyFragment"
+        app:destination="@id/dailyFragment"/>
+    <action android:id="@+id/action_global_totalFragment"
+        app:destination="@id/totalFragment"/>
+    <action android:id="@+id/action_global_donationFragment"
+        app:destination="@id/donationFragment"/>
+    <action android:id="@+id/action_global_adoptFragment"
+        app:destination="@id/adoptFragment"/>
+
+</navigation>

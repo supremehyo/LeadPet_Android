@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constrainedHeight="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/dailyFeedProfileIv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.1" />
+
+            <TextView
+                android:id="@+id/dailyFeedProfileTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="투게더펫"
+                app:layout_constraintBottom_toBottomOf="@+id/dailyFeedProfileIv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintStart_toEndOf="@+id/dailyFeedProfileIv"
+                app:layout_constraintTop_toTopOf="@+id/dailyFeedProfileIv"
+                app:layout_constraintVertical_bias="0.129" />
+
+            <TextView
+                android:id="@+id/dailyFeedWriteTimeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2시간 전"
+                app:layout_constraintBottom_toBottomOf="@+id/dailyFeedProfileIv"
+                app:layout_constraintEnd_toEndOf="@+id/dailyFeedProfileTv"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/dailyFeedProfileTv"
+                app:layout_constraintTop_toBottomOf="@+id/dailyFeedProfileTv"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/dailyFeedContentTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내용입니다."
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dailyFeedWriteTimeTv"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dailyFeedContentTv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

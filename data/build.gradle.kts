@@ -20,10 +20,12 @@ dependencies {
     implementation(Network.OKHTTP)
     implementation(Network.OKHTTP3)
     implementation(Network.RETROFIT)
+    implementation(Network.SCALAR)
     implementation(Network.GSON)
     implementation(Network.MOCKWEBSERVER)
 
 
+    implementation(AndroidX.PAGING)
     implementation(Google.HILT_ANDROID)
     annotationProcessor(Google.HILT_COMPILER)
     testImplementation(Google.HILT_TESTING)

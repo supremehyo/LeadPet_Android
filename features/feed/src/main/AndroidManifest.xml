@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dev6.feed">
+
+    <application>
+        <activity
+            android:name=".view.FeedActivity"
+            android:label="FeedActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LeadPet">
+
+        </activity>
+    </application>
+
+</manifest>

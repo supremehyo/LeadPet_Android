@@ -17,11 +17,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     override fun initView() {
         super.initView()
+
         repeatOnStarted {
             loginViewModel.eventFlow.collect { event ->
                 handleEvent(event)
             }
-
         }
     }
 

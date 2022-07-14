@@ -48,6 +48,7 @@ android {
 
 dependencies {
 
+    implementation (project(":features:feed"))
     implementation (project(":features:login"))
     implementation (project(":data"))
     implementation (project(":domain"))
