@@ -4,14 +4,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev6.core.base.BindingFragment
-import com.dev6.login.viewmodel.PostViewModel
+import com.dev6.login.viewmodel.DonatePostViewModel
 import com.dev6.post.databinding.FragmentGallraryBinding
 import com.dev6.post.viewpager.ViewPagerImage
 
 
 class GallraryFragment : BindingFragment<FragmentGallraryBinding>(R.layout.fragment_gallrary) {
 
-    private val postViewModel: PostViewModel by activityViewModels()
+    private val postViewModel: DonatePostViewModel by activityViewModels()
 
     private val pagerAdapter by lazy { ScreenSlidePagerAdapter(this) }
 

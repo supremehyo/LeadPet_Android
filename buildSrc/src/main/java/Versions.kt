@@ -4,7 +4,7 @@ object Versions {
     const val BUILD_GRADLE = "4.2.1"
     const val COMPILE_SDK_VERSION = 31
     const val BUILD_TOOLS_VERSION = "31.0.0"
-    const val MIN_SDK_VERSION = 23
+    const val MIN_SDK_VERSION = 24
     const val TARGET_SDK_VERSION = 31
 
     const val PAGING = "3.1.0"
@@ -19,12 +19,12 @@ object Versions {
 
     const val HILT = "2.38.1"
     const val HILT_EXTENTION = "1.0.0-alpha02"
-    const val MATERIAL = "1.7.0-alpha01"
+    const val MATERIAL = "1.7.0-alpha02"
 
     const val RETROFIT = "2.7.1"
     const val OKHTTP = "4.3.1"
 
     const val JUNIT = "4.13.2"
     const val ANDROID_JUNIT = "1.1.1"
-    const val ESPRESSO_CORE = "3.2.0"
+    const val ESPRESSO_CORE = "3.4.0"
 }

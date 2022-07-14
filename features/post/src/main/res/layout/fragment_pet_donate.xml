@@ -128,7 +128,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_the"
-                style="@style/CustomWhiteButtonStyle"
+                style="@style/ButtonSelecterStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -144,6 +144,7 @@
             android:layout_marginTop="32dp"
             android:paddingTop="15dp"
             app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/gi_light2"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/gl_left2"
@@ -177,7 +178,8 @@
             app:layout_constraintEnd_toStartOf="@id/v_hyphon"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="@id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_donate_method2"></com.dev6.core.view.CustomButtonCalandar>
+            app:layout_constraintTop_toBottomOf="@+id/tv_donate_method2">
+        </com.dev6.core.view.CustomButtonCalandar>
 
         <View
             android:id="@+id/v_hyphon"

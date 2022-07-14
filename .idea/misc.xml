@@ -33,6 +33,8 @@
         <entry key="core/src/main/res/drawable/ic_chevron_down.xml" value="0.305" />
         <entry key="core/src/main/res/drawable/ic_keyboard_backspace.xml" value="0.305" />
         <entry key="core/src/main/res/drawable/ic_polygon.xml" value="0.344" />
+        <entry key="core/src/main/res/drawable/ic_search.xml" value="0.281" />
+        <entry key="core/src/main/res/drawable/ic_search_gray_04.xml" value="0.281" />
         <entry key="core/src/main/res/drawable/ic_vector.xml" value="0.3375" />
         <entry key="core/src/main/res/drawable/round_4dp.xml" value="0.301" />
         <entry key="core/src/main/res/drawable/round_4dp_gray06.xml" value="0.344" />
@@ -42,6 +44,7 @@
         <entry key="core/src/main/res/drawable/round_8dp_gray07.xml" value="0.23" />
         <entry key="core/src/main/res/font/custom_font_family.xml" value="0.23229166666666667" />
         <entry key="core/src/main/res/layout/custom_view.xml" value="0.31145833333333334" />
+        <entry key="core/src/main/res/layout/custom_view_calader.xml" value="0.2703804347826087" />
         <entry key="core/src/main/res/layout/custom_view_camera_button.xml" value="0.67" />
         <entry key="core/src/main/res/layout/custom_view_light_button.xml" value="0.25" />
         <entry key="core/src/main/res/layout/custom_view_separator.xml" value="0.5" />
@@ -54,7 +57,7 @@
         <entry key="features/join/join/src/main/res/layout/fragment_join_type.xml" value="0.28976697061803447" />
         <entry key="features/join/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.28976697061803447" />
         <entry key="features/join/join/src/main/res/layout/fragment_shelter_donate.xml" value="0.28976697061803447" />
-        <entry key="features/join/join/src/main/res/layout/fragment_shelter_user_join.xml" value="0.28976697061803447" />
+        <entry key="features/join/join/src/main/res/layout/fragment_shelter_user_join.xml" value="0.2877166748046874" />
         <entry key="features/join/join/src/main/res/layout/fragment_shelter_user_more.xml" value="0.28976697061803447" />
         <entry key="features/join/join/src/main/res/layout/fragment_terms.xml" value="0.28976697061803447" />
         <entry key="features/login/src/main/res/drawable/button_camera_round.xml" value="0.1" />
@@ -70,11 +73,22 @@
         <entry key="features/post/src/main/res/drawable/edit_text_round.xml" value="0.305" />
         <entry key="features/post/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.246" />
         <entry key="features/post/src/main/res/drawable/ic_baseline_radio_button_unchecked_24.xml" value="0.344" />
+        <entry key="features/post/src/main/res/drawable/info.xml" value="0.242" />
         <entry key="features/post/src/main/res/drawable/selector_stroke.xml" value="0.245" />
         <entry key="features/post/src/main/res/layout/activity_life_post.xml" value="0.33" />
-        <entry key="features/post/src/main/res/layout/activity_pet_adopt_post.xml" value="0.2" />
+        <entry key="features/post/src/main/res/layout/activity_pet_adopt_post.xml" value="0.25" />
+        <entry key="features/post/src/main/res/layout/activity_post.xml" value="0.1423076923076923" />
+        <entry key="features/post/src/main/res/layout/fragement_bottom_seat.xml" value="0.18931159420289856" />
+        <entry key="features/post/src/main/res/layout/fragment_donate_dialog.xml" value="0.1" />
+        <entry key="features/post/src/main/res/layout/fragment_gallrary.xml" value="0.22" />
+        <entry key="features/post/src/main/res/layout/fragment_life_post.xml" value="0.17571611799914494" />
+        <entry key="features/post/src/main/res/layout/fragment_pet_adopt_post.xml" value="0.1858974358974359" />
+        <entry key="features/post/src/main/res/layout/fragment_pet_choice.xml" value="0.33" />
+        <entry key="features/post/src/main/res/layout/fragment_pet_donate.xml" value="0.2824786324786325" />
         <entry key="features/post/src/main/res/layout/item_choice_animal.xml" value="0.8397932816537468" />
         <entry key="features/post/src/main/res/layout/item_choice_search.xml" value="0.22083333333333333" />
+        <entry key="features/post/src/main/res/layout/viewpager_image.xml" value="0.22350427350427352" />
+        <entry key="features/post/src/main/res/layout/vp_image.xml" value="0.276268115942029" />
       </map>
     </option>
   </component>

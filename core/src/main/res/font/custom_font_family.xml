@@ -2,18 +2,18 @@
 <font-family
     xmlns:android="http://schemas.android.com/apk/res/android">
     <font
-        android:font="@font/notosanskr_medium"
+        android:font="@font/hansneo_medium"
         android:fontStyle="normal"
         android:fontWeight="400"
         />
 
     <font
-        android:font="@font/notosanskr_bold"
+        android:font="@font/hansansneobold"
         android:fontStyle="normal"
         android:fontWeight="700"/>
 
     <font
-        android:font="@font/notosanskr_light"
+        android:font="@font/hanseno_light"
         android:fontStyle="normal"
         android:fontWeight="400"/>
 

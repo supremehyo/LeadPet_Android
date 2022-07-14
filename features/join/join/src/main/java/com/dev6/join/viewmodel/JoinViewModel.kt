@@ -1,9 +1,9 @@
 package com.dev6.join.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dev6.data.entity.JoinEntitiy
+import com.dev6.data.model.JoinEntitiy
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
-import com.dev6.domain.usecase.JoinReposUseCase
+import com.dev6.domain.usecase.login.JoinReposUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow

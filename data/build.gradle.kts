@@ -1,4 +1,3 @@
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -13,8 +12,9 @@ android {
 }
 
 dependencies {
-    implementation (project(":domain"))
+    implementation(project(":domain"))
 
+    testImplementation(Kotlin.COROUTINES_TEST)
 
     //retrofit2
     implementation(Network.OKHTTP)
@@ -22,19 +22,26 @@ dependencies {
     implementation(Network.RETROFIT)
     implementation(Network.SCALAR)
     implementation(Network.GSON)
+    implementation(Network.MOCKWEBSERVER)
+
 
     implementation(AndroidX.PAGING)
     implementation(Google.HILT_ANDROID)
-    implementation(project(mapOf("path" to ":core")))
     annotationProcessor(Google.HILT_COMPILER)
+    testImplementation(Google.HILT_TESTING)
+    testImplementation(AndroidX.CORE_TESTING)
+
+
+    implementation(project(mapOf("path" to ":core")))
     kapt(Google.HILT_ANDROID_COMPILER)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(UnitTest.JUNIT)
+    androidTestImplementation(AndroidTest.ANDROID_JUNIT)
+    androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+    testImplementation(UnitTest.TRUTH)
 
     //디버그용
     implementation(Debug.TIMBER)
