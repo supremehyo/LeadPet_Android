@@ -38,10 +38,8 @@ class LifePostViewModel @Inject constructor(
     }
 
     fun insertLifePost(text: String, content: String) = viewModelScope.launch {
-        postImageFlow.value.map{
-            ImageDecoder.decodeBitmap(ImageDecoder.createSource())
-        }
-        val repo = LifePost(userId = "", title = text, contents = content, images = img)
+
+        val repo = LifePost(userId = "", title = text, contents = content, images = listOf())
         insertLifePostUseCase(repo).collect { uiState ->
             event(Event.UiEvent(uiState))
         }

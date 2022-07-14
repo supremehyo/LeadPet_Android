@@ -28,11 +28,11 @@ dependencies {
     implementation(Google.MATERIAL)
     implementation(Debug.TIMBER)
 
-    testImplementation(AndroidX.CORE_TESTING)
-    testImplementation(UnitTest.JUNIT)
-
-    androidTestImplementation(AndroidTest.ANDROID_JUNIT)
-    androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+//    testImplementation(AndroidX.CORE_TESTING)
+//    testImplementation(UnitTest.JUNIT)
+//
+//    androidTestImplementation(AndroidTest.ANDROID_JUNIT)
+//    androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
     //디버그용
 

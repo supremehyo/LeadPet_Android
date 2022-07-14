@@ -18,12 +18,12 @@ object Versions {
 
     const val HILT = "2.38.1"
     const val HILT_EXTENTION = "1.0.0-alpha02"
-    const val MATERIAL = "1.7.0-alpha01"
+    const val MATERIAL = "1.7.0-alpha02"
 
     const val RETROFIT = "2.7.1"
     const val OKHTTP = "4.3.1"
 
     const val JUNIT = "4.13.2"
     const val ANDROID_JUNIT = "1.1.1"
-    const val ESPRESSO_CORE = "3.2.0"
+    const val ESPRESSO_CORE = "3.4.0"
 }

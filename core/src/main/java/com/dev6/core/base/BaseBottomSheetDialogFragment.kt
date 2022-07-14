@@ -26,8 +26,11 @@ abstract class BaseBottomSheetDialogFragment<B : ViewDataBinding>(private val la
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        initListener()
         return binding.root
     }
+
+    abstract fun initListener()
 
     open fun setCancel(setting: Boolean) {
         isCancelable = setting

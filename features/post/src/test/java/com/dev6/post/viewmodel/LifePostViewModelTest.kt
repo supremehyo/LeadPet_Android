@@ -31,7 +31,7 @@ class LifePostViewModelTest {
         val lifePostViewModel = LifePostViewModel(insertLifePostUseCase = insertLifePostUseCase)
         //then
 
-        lifePostViewModel.insertLifePost("", "", mutableListOf())
+        lifePostViewModel.insertLifePost("", "" )
 
         lifePostViewModel.eventFlow.test {
             Truth.assertThat(awaitItem()).isInstanceOf(LifePostViewModel.Event.UiEvent::class.java)
