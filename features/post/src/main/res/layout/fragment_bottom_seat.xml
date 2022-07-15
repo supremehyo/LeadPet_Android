@@ -18,23 +18,24 @@
 
 
     <RadioGroup
+        android:id="@+id/rg_gender"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
 
         <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/mrb_one"
             style="@style/bottomSeatCheckStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="암컷" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/mrb_two"
             style="@style/bottomSeatCheckStyle"
-            android:id="@+id/materialCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="수컷"
-     />
+            android:text="수컷" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

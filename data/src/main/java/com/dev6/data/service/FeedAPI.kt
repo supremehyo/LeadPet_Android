@@ -1,8 +1,9 @@
 package com.dev6.data.service
 
 import com.dev6.data.entity.DailyFeedEntitiy
-import com.dev6.data.entity.JoinEntitiy
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.Query
 
 interface FeedAPI {
 

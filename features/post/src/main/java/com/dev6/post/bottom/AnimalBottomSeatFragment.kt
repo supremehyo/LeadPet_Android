@@ -12,9 +12,9 @@ import com.dev6.post.databinding.FragmentBottomSeatBinding
 import com.dev6.post.viewmodel.AdoptPostViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-/// TODO 시간날때, BottomSeatFragment 통합시키기
+/// TODO 시간날때, BottomSeatFragment 통합시키기  
 @AndroidEntryPoint
-class GenderBottomSeatFragment :
+class AnimalBottomSeatFragment :
     BaseBottomSheetDialogFragment<FragmentBottomSeatBinding>(R.layout.fragment_bottom_seat) {
 
     private val adoptPostViewModel: AdoptPostViewModel by activityViewModels()
@@ -37,7 +37,11 @@ class GenderBottomSeatFragment :
                 R.drawable.ic_close_thin_black,
                 null
             )
-        binding.include.tvTop.text = "암수구분"
+
+        binding.mrbOne.text = "고양이"
+        binding.mrbTwo.text = "강아지"
+        binding.include.tvTop.text = "동물선택"
+
         binding.include.tvRight.run {
             setTextColor(resources.getColor(R.color.Main, null))
             setText(R.string.text_complete)
@@ -45,21 +49,21 @@ class GenderBottomSeatFragment :
     }
 
     override fun initListener() {
-        binding.include.tvRight.setOnClickListener {
 
+        binding.include.tvRight.setOnClickListener {
             val radioButtonText = when (binding.rgGender.checkedRadioButtonId) {
                 R.id.mrb_one -> binding.mrbOne.text.toString()
                 R.id.mrb_two -> binding.mrbTwo.text.toString()
                 else -> null
             }
             radioButtonText?.run {
-                adoptPostViewModel.updateGenderSelection(this)
+                adoptPostViewModel.updateAnimalSelection(this)
             }
 
-            this@GenderBottomSeatFragment.dialog?.dismiss()
+            this@AnimalBottomSeatFragment.dialog?.dismiss()
         }
         binding.include.tvLeft.setOnClickListener {
-            this@GenderBottomSeatFragment.dialog?.dismiss()
+            this@AnimalBottomSeatFragment.dialog?.dismiss()
         }
     }
 

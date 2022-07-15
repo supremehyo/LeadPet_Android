@@ -2,19 +2,29 @@ package com.dev6.post
 
 import androidx.fragment.app.activityViewModels
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.login.viewmodel.DonatePostViewModel
+import com.dev6.post.bottom.AgeBottomSeatFragment
+import com.dev6.post.bottom.AnimalBottomSeatFragment
 import com.dev6.post.bottom.GenderBottomSeatFragment
 import com.dev6.post.databinding.FragmentPetAdoptPostBinding
 import com.dev6.post.item.ItemChoiceAnimal
 import com.dev6.post.item.ItemSerchAnimal
+import com.dev6.post.viewmodel.AdoptPostViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
-class PetAdoptPostFragment : BindingFragment<FragmentPetAdoptPostBinding>(R.layout.fragment_pet_adopt_post) {
+class PetAdoptPostFragment :
+    BindingFragment<FragmentPetAdoptPostBinding>(R.layout.fragment_pet_adopt_post) {
 
-    private val postViewModel: DonatePostViewModel by activityViewModels()
-    lateinit var genderBottomSeatFragment : GenderBottomSeatFragment
+    private val adoptPostViewModel: AdoptPostViewModel by activityViewModels()
+    lateinit var genderBottomSeatFragment: GenderBottomSeatFragment
+    lateinit var animalBottomSeatFragment: AnimalBottomSeatFragment
+    lateinit var ageBottomSeatFragment: AgeBottomSeatFragment
+
     override fun afterViewCreated() {
         super.afterViewCreated()
     }
@@ -22,7 +32,10 @@ class PetAdoptPostFragment : BindingFragment<FragmentPetAdoptPostBinding>(R.layo
     override fun initView() {
         super.initView()
         val choiceAdapter = GroupieAdapter()
+
+        animalBottomSeatFragment = AnimalBottomSeatFragment()
         genderBottomSeatFragment = GenderBottomSeatFragment()
+        ageBottomSeatFragment = AgeBottomSeatFragment()
 
         binding.rvAnimalChoice.adapter = choiceAdapter
 
@@ -39,13 +52,44 @@ class PetAdoptPostFragment : BindingFragment<FragmentPetAdoptPostBinding>(R.layo
 
     override fun initViewModel() {
         super.initViewModel()
+
+        repeatOnStarted {
+            adoptPostViewModel.adoptChoizceStateFlow.collect {
+                binding.btnChoiceAnimal.setText(it.animal)
+                binding.btnChoiceGender.setText(it.gender)
+                binding.btnChoiceAge.setText(it.age)
+            }
+        }
     }
 
     override fun initListener() {
-        binding.btnChoiceGender.setOnClickListener {
-            genderBottomSeatFragment.show(this.parentFragmentManager , "")
-        }
         super.initListener()
+        binding.btnChoiceGender.setOnClickListener {
+            genderBottomSeatFragment.show(this.parentFragmentManager, "")
+        }
+        binding.btnChoiceAnimal.setOnClickListener {
+            animalBottomSeatFragment.show(this.parentFragmentManager, "")
+        }
+        binding.btnChoiceAge.setOnClickListener {
+            ageBottomSeatFragment.show(this.parentFragmentManager, "")
+        }
+
+        binding.cvStartDate.setClick { excuteDatePicker() }
+        binding.cvEndDate.setClick { excuteDatePicker() }
     }
 
+    private fun excuteDatePicker() {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val dateRangePicker =
+            MaterialDatePicker.Builder.dateRangePicker()
+                .setTheme(R.style.ThemeOverlay_MaterialComponents_MaterialCalendar)
+                .setTitleText("날짜를 골라주세용 응애!!!")
+                .build()
+
+        dateRangePicker.addOnPositiveButtonClickListener {
+            binding.cvStartDate.setText(simpleDateFormat.format(it.first))
+            binding.cvEndDate.setText(simpleDateFormat.format(it.second))
+        }
+        dateRangePicker.show(this.parentFragmentManager, null)
+    }
 }
