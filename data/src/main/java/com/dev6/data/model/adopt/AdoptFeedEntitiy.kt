@@ -1,4 +1,4 @@
-package com.dev6.data.entity.adopt
+package com.dev6.data.model.adopt
 
 import com.google.gson.annotations.SerializedName
 

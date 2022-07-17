@@ -1,11 +1,11 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.entity.PageEntitiy
-import com.dev6.data.entity.SortEntitiy
+import com.dev6.data.model.PageEntitiy
+import com.dev6.data.model.SortEntitiy
 import com.dev6.data.entity.SortXX
-import com.dev6.data.entity.donation.DonationFeedEntitiy
+import com.dev6.data.model.donation.DonationFeedEntitiy
 
-import com.dev6.data.entity.donation.DonationPaginationResponse
+import com.dev6.data.model.donation.DonationPaginationResponse
 import com.dev6.domain.entitiyRepo.*
 
 

@@ -1,4 +1,4 @@
-package com.dev6.data.entity.daily
+package com.dev6.data.model.daily
 
 import com.google.gson.annotations.SerializedName
 

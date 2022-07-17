@@ -1,9 +1,7 @@
 package com.dev6.data.remote
 
 import android.util.Log
-import com.dev6.data.entity.adopt.AdoptPaginationResponse
-import com.dev6.data.entity.donation.DonationPaginationResponse
-import com.dev6.data.model.executeNetworkHandling
+import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.service.FeedAPI
 import javax.inject.Inject
 

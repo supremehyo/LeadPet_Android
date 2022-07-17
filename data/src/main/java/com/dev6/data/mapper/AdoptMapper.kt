@@ -1,14 +1,9 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.entity.PageEntitiy
-import com.dev6.data.entity.SortEntitiy
-import com.dev6.data.entity.SortXX
-import com.dev6.data.entity.adopt.AdoptFeedEntitiy
-import com.dev6.data.entity.adopt.AdoptPageEntitiy
-import com.dev6.data.entity.adopt.AdoptPaginationResponse
+import com.dev6.data.model.adopt.AdoptFeedEntitiy
+import com.dev6.data.model.adopt.AdoptPageEntitiy
+import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.entity.adopt.AdoptSortEntitiy
-import com.dev6.data.entity.donation.DonationFeedEntitiy
-import com.dev6.data.entity.donation.DonationPaginationResponse
 import com.dev6.domain.entitiyRepo.*
 import com.dev6.domain.entitiyRepo.adopt.AdoptPost
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed

@@ -5,11 +5,9 @@ import com.dev6.domain.repository.*
 import com.dev6.data.repositoryImple.AccessTokenRepositoryImp
 import com.dev6.data.repositoryImple.JoinRepositoryImple
 import com.dev6.data.repositoryImple.LoginRepositoryImp
-import com.dev6.data.repositoryImple.PagingRepositoryImp
 import com.dev6.domain.repository.AccessTokenRepository
 import com.dev6.domain.repository.JoinRepository
 import com.dev6.domain.repository.LoginRepository
-import com.dev6.domain.repository.PagingRepository
 import com.dev6.data.repositoryImple.*
 import com.dev6.domain.repository.*
 import com.dev6.domain.repository.adopt.AdoptPagingRepository
@@ -57,6 +55,6 @@ abstract class RepositoryModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsAdoptRepository(repository: AdoptPagingRepositoryImp): AdoptPagingRepository
+    abstract fun bindsAdoptPagingRepository(repository: AdoptPagingRepositoryImp): AdoptPagingRepository
 }
 

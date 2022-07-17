@@ -1,4 +1,4 @@
-package com.dev6.data.entity
+package com.dev6.data.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.dev6.data.entity.donation
+package com.dev6.data.model.donation
 
 import com.google.gson.annotations.SerializedName
 

@@ -4,7 +4,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.dev6.core.base.BindingActivity
 import com.dev6.core.enums.LoginType
-import com.dev6.data.entity.JoinEntitiy
+import com.dev6.data.model.JoinEntitiy
 import com.dev6.join.databinding.ActivityJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import dagger.hilt.android.AndroidEntryPoint

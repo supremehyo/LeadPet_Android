@@ -1,8 +1,6 @@
 package com.dev6.data.remote
 
-import android.util.Log
-import com.dev6.data.entity.adopt.AdoptPaginationResponse
-import com.dev6.data.entity.daily.DailyPaginationResponse
+import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.service.FeedAPI
 import timber.log.Timber
 import javax.inject.Inject

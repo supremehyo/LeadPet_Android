@@ -1,5 +1,6 @@
-package com.dev6.data.entity.adopt
+package com.dev6.data.model.adopt
 
+import com.dev6.data.entity.adopt.AdoptSortEntitiy
 import com.google.gson.annotations.SerializedName
 
 data class AdoptPaginationResponse(

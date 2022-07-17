@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.PostOptionType
-import com.dev6.domain.util.repeatOnStarted
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.DonationPagingAdapter
 import com.dev6.feed.databinding.FragmentDonationBinding
@@ -60,7 +60,7 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
         getDonationList()
 
         repeatOnStarted {
-            feedViewModel.eventFlow.collect { event ->2
+            feedViewModel.eventFlow.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DonationUiEvent -> {
                         when (event.uiState) {

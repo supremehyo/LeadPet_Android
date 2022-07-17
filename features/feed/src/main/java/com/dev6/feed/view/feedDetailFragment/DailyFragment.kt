@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
-import com.dev6.domain.util.repeatOnStarted
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.adapter.DailyPagingAdapter

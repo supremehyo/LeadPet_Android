@@ -20,15 +20,15 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
-    protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
-
+    //protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
+    val baseUrl = "http://192.168.42.4:8080"
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpRequestInterceptor())
-            .connectTimeout(5, TimeUnit.SECONDS)
-            .callTimeout(5, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .callTimeout(30, TimeUnit.SECONDS)
             .build()
     }
 
@@ -37,7 +37,8 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(baseUrl())
+            .baseUrl(baseUrl)
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

@@ -21,4 +21,5 @@ object UseCaseModule {
     @ViewModelScoped
     fun provideInsertLifePostUsecase(repository: LifePostRepository): InsertLifePostBaseUseCase =
         InsertLifePostUseCase(repository)
+
 }
