@@ -1,26 +1,21 @@
 package com.dev6.feed.view.profileDetailFragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
 import com.dev6.feed.R
-import com.dev6.feed.adapter.PagingAdapter
+import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.databinding.FragmentProfileDailyBinding
 
 class ProfileDailyFragment :
     BindingFragment<FragmentProfileDailyBinding>(R.layout.fragment_profile_daily) {
 
     private lateinit var profileDailyRc: RecyclerView
-    private lateinit var pagingAdapter: PagingAdapter
+    private lateinit var pagingAdapter: DailyPagingAdapter
 
     override fun initView() {
         super.initView()
-        pagingAdapter = PagingAdapter()
+        pagingAdapter = DailyPagingAdapter()
         profileDailyRc = binding.profileDailyRc
         profileDailyRc.apply {
             layoutManager = LinearLayoutManager(context)

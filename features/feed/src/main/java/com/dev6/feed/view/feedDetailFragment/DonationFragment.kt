@@ -1,33 +1,19 @@
 package com.dev6.feed.view.feedDetailFragment
 
-import android.util.Log
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.asLiveData
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.PostOptionType
-import com.dev6.data.entity.donation.DonationPaginationResponse
-import com.dev6.domain.entitiyRepo.DonationPostFeed
 import com.dev6.domain.util.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.DonationPagingAdapter
-import com.dev6.feed.adapter.PagingAdapter
-import com.dev6.feed.adapter.RecommendDonationAdapter
 import com.dev6.feed.databinding.FragmentDonationBinding
 import com.dev6.feed.option.BottomSheet
 import com.dev6.feed.viewmodel.FeedViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
-import okhttp3.internal.wait
 import timber.log.Timber
 
 
@@ -36,7 +22,6 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
     private val feedViewModel: FeedViewModel by activityViewModels()
     private lateinit var bottomSheet: BottomSheet
     private lateinit var donationRc: RecyclerView
-
     private lateinit var recommendDonationAdapter: DonationPagingAdapter
 
     override fun initView() {
@@ -73,12 +58,6 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
     override fun afterViewCreated() {
         super.afterViewCreated()
         getDonationList()
-
-        repeatOnStarted {
-            feedViewModel.donationPagingFlow.collect { it ->
-
-            }
-        }
 
         repeatOnStarted {
             feedViewModel.eventFlow.collect { event ->2

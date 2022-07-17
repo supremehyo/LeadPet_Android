@@ -26,5 +26,9 @@ abstract class DataSourceModule {
     @Binds
     abstract fun bindsDonationPagingRemoteSource(source: DonationRemoteSourceImpl): DonationRemoteSource
 
+    @Singleton
+    @Binds
+    abstract fun bindsAdoptPagingRemoteSource(source: AdoptRemoteSourceImpl): AdoptRemoteSource
+
 }
 

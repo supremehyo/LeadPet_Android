@@ -1,4 +1,7 @@
-package com.dev6.domain.entitiyRepo
+package com.dev6.domain.entitiyRepo.adopt
+
+import com.dev6.domain.entitiyRepo.Page
+import com.dev6.domain.entitiyRepo.Sort
 
 data class AdoptPost(
     val adoptPostFeed: List<AdoptPostFeed>,

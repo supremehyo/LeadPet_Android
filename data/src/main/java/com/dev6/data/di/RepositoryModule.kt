@@ -2,6 +2,7 @@ package com.dev6.data.di
 
 import com.dev6.data.repositoryImple.*
 import com.dev6.domain.repository.*
+import com.dev6.domain.repository.adopt.AdoptPagingRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -28,10 +29,14 @@ abstract class RepositoryModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsDailyRepository(repository: PagingRepositoryImp): PagingRepository
+    abstract fun bindsDailyRepository(repositoryRepositoryImp: DailyRepositoryImp): DailyPagingRepository
 
     @Binds
     @ViewModelScoped
     abstract fun bindsDonationRepository(repository: DonationPagingRepositoryImp): DonaitonPagingRepository
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsAdoptRepository(repository: AdoptPagingRepositoryImp): AdoptPagingRepository
 }
 
