@@ -14,8 +14,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
-    implementation (project(":core"))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)
@@ -26,7 +28,6 @@ dependencies {
     implementation(AndroidX.LIFECYCLE_VIEWMODEL_KTX)
     implementation(AndroidX.LIFECYCLE_LIVEDATA_KTX)
     implementation(AndroidX.LIFECYCLE_EXTENSIONNS)
-
 
     //retrofit2
     implementation(Network.OKHTTP)
@@ -44,7 +45,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.0")
 
     implementation(Google.HILT_ANDROID)
-    implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
@@ -57,6 +57,10 @@ dependencies {
 
 
     testImplementation(UnitTest.JUNIT)
+    testImplementation(UnitTest.TRUTH)
+    testImplementation(UnitTest.MOCKITO)
+    testImplementation(UnitTest.TURBINE)
+
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
@@ -77,4 +81,7 @@ dependencies {
     implementation(Image.TED_IMAGE_PICKER)
 
     implementation(Indicator.CIRCLE_INDICATOR)
+
+    debugImplementation(Memory.LEAK_CANARY)
+    testImplementation(Kotlin.COROUTINES_TEST)
 }
