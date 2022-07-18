@@ -24,4 +24,6 @@
     <string name="text_gender">암수구분</string>
     <string name="text_complete">완료</string>
     <string name="text_ems_1000">%d/1000</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

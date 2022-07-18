@@ -74,6 +74,8 @@ class PetAdoptPostFragment :
             ageBottomSeatFragment.show(this.parentFragmentManager, "")
         }
 
+        binding.mcvAnimal
+
         binding.cvStartDate.setClick { excuteDatePicker() }
         binding.cvEndDate.setClick { excuteDatePicker() }
     }

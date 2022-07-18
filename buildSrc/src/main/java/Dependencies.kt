@@ -23,17 +23,14 @@ object AndroidX {
 
     const val NAVIGATION = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
     const val NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
-
+    const val SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NAVIGATION}"
 
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
-    const val PAGING                   ="androidx.paging:paging-runtime:${Versions.PAGING}"
+    const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
     const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
 }
-
-
-
 
 object Google {
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
