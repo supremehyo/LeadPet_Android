@@ -7,12 +7,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDailyfeedBinding
 
 
-class DailyPagingAdapter:
+class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit):
     PagingDataAdapter<DailyPostFeed, DailyPagingAdapter.ImageViewHolder>(
         object : DiffUtil.ItemCallback<DailyPostFeed>() {
             override fun areItemsTheSame(oldItem: DailyPostFeed, newItem: DailyPostFeed): Boolean {
@@ -26,8 +27,9 @@ class DailyPagingAdapter:
         }
     ) {
     override fun onBindViewHolder(holder: DailyPagingAdapter.ImageViewHolder, position: Int) {
-        val item = getItem(position)?: return
+        val item = getItem(position) ?: return
         holder.onBind(item)
+        holder.itemClickListener(item, callback)
     }
 
     override fun onCreateViewHolder(
@@ -42,9 +44,23 @@ class DailyPagingAdapter:
     inner class ImageViewHolder(private val binding: ItemDailyfeedBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: DailyPostFeed) {
-
             binding.dailyFeedContentTv.text = item.contents
+            binding.dailyFeedTitleTv.text = item.title
+            binding.dailyFeedProfileTv.text = item.userId
+            Glide.with(binding.root)
+                .load(Uri.parse(""))
+                .error(R.drawable.dailay_image1)
+                .circleCrop()
+                .into(binding.dailyFeedIv)
 
+            Glide.with(binding.root)
+                .load(Uri.parse(""))
+                .error(R.drawable.dailay_image1)
+                .circleCrop()
+                .into(binding.dailyFeedProfileIv)
+        }
+        fun itemClickListener(item: DailyPostFeed , callback: (DailyPostFeed) -> Unit) {
+            callback(item)
         }
     }
 }

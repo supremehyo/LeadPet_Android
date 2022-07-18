@@ -19,7 +19,7 @@
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/drawable/tab_selector.xml" value="0.1" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_adopt_feed_detail.xml" value="0.33" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_daily_feed_detail.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_donation_feed_detail.xml" value="0.18" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_donation_feed_detail.xml" value="0.2" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_feed.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_adopt.xml" value="0.33" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_bottom_sheet.xml" value="0.33" />
@@ -34,7 +34,7 @@
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_donation.xml" value="0.1859375" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_introduce.xml" value="0.33" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_total.xml" value="0.1793478260869565" />
-        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_adopt.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_adopt.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_dailycomment.xml" value="0.33" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_dailyfeed.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_dailyshelter.xml" value="0.25" />

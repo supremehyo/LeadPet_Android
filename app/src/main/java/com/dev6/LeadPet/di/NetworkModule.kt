@@ -21,7 +21,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     //protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
-    val baseUrl = "http://192.168.42.4:8080"
+    val baseUrl = "http://192.168.0.17:8080"
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {

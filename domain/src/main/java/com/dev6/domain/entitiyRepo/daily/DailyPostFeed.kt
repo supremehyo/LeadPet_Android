@@ -1,6 +1,7 @@
 package com.dev6.domain.entitiyRepo.daily
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class DailyPostFeed(
     @SerializedName("contents")
@@ -13,4 +14,4 @@ data class DailyPostFeed(
     val title: String,
     @SerializedName("userId")
     val userId: String
-)
+) : Serializable

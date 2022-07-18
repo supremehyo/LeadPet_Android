@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dev6.domain.entitiyRepo.DonationPostFeed
+import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
+import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDonationBinding
 
-class DonationPagingAdapter :
+class DonationPagingAdapter(private val callback: (DonationPostFeed) -> Unit) :
     PagingDataAdapter<DonationPostFeed, DonationPagingAdapter.ImageViewHolder>(
         object : DiffUtil.ItemCallback<DonationPostFeed>() {
             override fun areItemsTheSame(
@@ -35,7 +37,7 @@ class DonationPagingAdapter :
     override fun onBindViewHolder(holder: DonationPagingAdapter.ImageViewHolder, position: Int) {
         val item = getItem(position) ?: return
         holder.onBind(item)
-        Log.v("Agasdggaase", item.contents)
+        holder.itemClickListener(item, callback)
     }
 
     override fun onCreateViewHolder(
@@ -53,10 +55,19 @@ class DonationPagingAdapter :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
         fun onBind(item: DonationPostFeed) {
-            Log.v("asdfasdf" , item.contents)
             binding.donationShelterNameTv.text = item.userId
             binding.recommentdonationTv.text = item.title
             binding.textView5.text = item.contents
+            binding.donationEndTimeTv.text = item.endDate.toString()
+            Glide.with(binding.root)
+                .load(Uri.parse(""))
+                .error(R.drawable.dailay_image1)
+                .circleCrop()
+                .into(binding.donationFeedIv)
+        }
+
+        fun itemClickListener(item: DonationPostFeed, callback: (DonationPostFeed) -> Unit) {
+            callback(item)
         }
     }
 }

@@ -54,6 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
                         <TextView
+                            android:id="@+id/adoptFeedUserId"
                             android:text="투게더펫"
                             android:textSize="12dp"
                             android:textColor="@color/black"
@@ -74,7 +75,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/dailyContentImage"
+                    android:id="@+id/adoptContentImage"
                     android:layout_width="0dp"
                     android:layout_height="300dp"
                     android:src="@color/purple_200"
@@ -84,7 +85,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/adoptFeedTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -96,18 +97,18 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dailyContentImage"
+                    app:layout_constraintTop_toBottomOf="@+id/adoptContentImage"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/bookmark"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                    app:layout_constraintBottom_toBottomOf="@+id/adoptFeedTitle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.918"
-                    app:layout_constraintStart_toEndOf="@+id/textView11"
-                    app:layout_constraintTop_toTopOf="@+id/textView11"
+                    app:layout_constraintStart_toEndOf="@+id/adoptFeedTitle"
+                    app:layout_constraintTop_toTopOf="@+id/adoptFeedTitle"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <LinearLayout
@@ -117,7 +118,7 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11">
+                    app:layout_constraintTop_toBottomOf="@+id/adoptFeedTitle">
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -132,6 +133,7 @@
                             android:layout_height="wrap_content">
                         </TextView>
                         <TextView
+                            android:id="@+id/adoptFeedAnimalType"
                             android:text="동물 품종 암수"
                             android:textSize="12dp"
                             android:textColor="@color/Gray_01"
@@ -155,6 +157,7 @@
                             android:layout_height="wrap_content">
                         </TextView>
                         <TextView
+                            android:id="@+id/adoptFeedAge"
                             android:text="나이"
                             android:textSize="12dp"
                             android:textColor="@color/Gray_01"
@@ -178,6 +181,7 @@
                             android:layout_height="wrap_content">
                         </TextView>
                         <TextView
+                            android:id="@+id/adoptFeedDisease"
                             android:text="없음"
                             android:textSize="12dp"
                             android:textColor="@color/Gray_01"
@@ -201,6 +205,7 @@
                             android:layout_height="wrap_content">
                         </TextView>
                         <TextView
+                            android:id="@+id/adoptFeedDate"
                             android:text="2022.03.18 - 2022.04.01"
                             android:textColor="#5274EE"
                             android:textSize="12dp"
@@ -224,7 +229,7 @@
                 app:layout_constraintVertical_bias="0">
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/AdoptFeedContent"
                     android:textSize="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -247,7 +252,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.057"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/AdoptFeedContent"
                     app:layout_constraintVertical_bias="0.097" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

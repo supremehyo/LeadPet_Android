@@ -1,5 +1,7 @@
 package com.dev6.domain.entitiyRepo
 
+import java.io.Serializable
+
 data class DonationPostFeed(
     val contents: String,
     val donationMethod: String,
@@ -9,4 +11,4 @@ data class DonationPostFeed(
     val startDate: List<String>,
     val title: String,
     val userId: String
-)
+) : Serializable

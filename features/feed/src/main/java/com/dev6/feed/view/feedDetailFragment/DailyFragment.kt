@@ -1,5 +1,6 @@
 package com.dev6.feed.view.feedDetailFragment
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +13,8 @@ import com.dev6.feed.R
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
+import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
+import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -28,9 +31,11 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         super.initView()
 
         dailyRc = binding.dailyRc
-        pagingAdapter = DailyPagingAdapter()
-
-
+        pagingAdapter = DailyPagingAdapter{
+            val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
+            dailyIntent.putExtra("dailyPostFeed", it)
+            startActivity(dailyIntent)
+        }
 
         dailyNearShelterRc = binding.dailyNearShelterRc
         dailyNearShelterRc.apply {

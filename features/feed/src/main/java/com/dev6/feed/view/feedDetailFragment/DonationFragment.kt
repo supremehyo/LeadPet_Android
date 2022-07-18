@@ -1,5 +1,6 @@
 package com.dev6.feed.view.feedDetailFragment
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +13,8 @@ import com.dev6.feed.R
 import com.dev6.feed.adapter.DonationPagingAdapter
 import com.dev6.feed.databinding.FragmentDonationBinding
 import com.dev6.feed.option.BottomSheet
+import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
+import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
@@ -26,7 +29,11 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
 
     override fun initView() {
         donationRc = binding.donationRc
-        recommendDonationAdapter = DonationPagingAdapter()
+        recommendDonationAdapter = DonationPagingAdapter {
+            val donationIntent = Intent(context, DonationFeedDetailActivity::class.java)
+            donationIntent.putExtra("donationPostFeed", it)
+            startActivity(donationIntent)
+        }
 
         donationRc.apply {
             layoutManager = LinearLayoutManager(context)
@@ -47,14 +54,17 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
             }
         }
     }
+
     private fun getDonationList() {
         feedViewModel.getDonationList()
     }
+
     private fun makeBottomSheet(type: Int) {
         bottomSheet = BottomSheet({
             sortFeed(it)
         }, type)
     }
+
     override fun afterViewCreated() {
         super.afterViewCreated()
         getDonationList()

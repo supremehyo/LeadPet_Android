@@ -15,7 +15,9 @@ class ProfileDailyFragment :
 
     override fun initView() {
         super.initView()
-        pagingAdapter = DailyPagingAdapter()
+        pagingAdapter = DailyPagingAdapter{
+
+        }
         profileDailyRc = binding.profileDailyRc
         profileDailyRc.apply {
             layoutManager = LinearLayoutManager(context)

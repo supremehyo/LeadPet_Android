@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constrainedHeight="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="180dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -22,6 +22,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_8dp"
+                app:layout_constraintBottom_toTopOf="@+id/dailyFeedIv"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
@@ -84,14 +85,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.043"
                 app:layout_constraintStart_toEndOf="@+id/dailyFeedIv"
-                app:layout_constraintTop_toTopOf="@+id/dailyFeedIv"></TextView>
+                app:layout_constraintTop_toTopOf="@+id/dailyFeedIv" />
 
             <ImageView
                 android:id="@+id/dailyFeedIv"
-                android:layout_marginTop="24dp"
                 android:layout_width="79dp"
                 android:layout_height="81dp"
                 android:background="@drawable/round_8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dailyFeedProfileIv" />
 

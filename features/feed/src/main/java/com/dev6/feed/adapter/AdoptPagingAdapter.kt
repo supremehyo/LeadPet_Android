@@ -12,7 +12,7 @@ import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.feed.databinding.ItemAdoptBinding
 import com.dev6.feed.databinding.ItemDonationBinding
 
-class AdoptPagingAdapter :
+class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
     PagingDataAdapter<AdoptPostFeed, AdoptPagingAdapter.ImageViewHolder>(
         object : DiffUtil.ItemCallback<AdoptPostFeed>() {
             override fun areItemsTheSame(
@@ -34,7 +34,7 @@ class AdoptPagingAdapter :
     override fun onBindViewHolder(holder: AdoptPagingAdapter.ImageViewHolder, position: Int) {
         val item = getItem(position) ?: return
         holder.onBind(item)
-        Log.v("Agasdggaase", item.contents)
+        holder.itemClickListener(item, callback)
     }
 
     override fun onCreateViewHolder(
@@ -52,9 +52,12 @@ class AdoptPagingAdapter :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
         fun onBind(item: AdoptPostFeed) {
-            Log.v("asdfsadf" , item.userId)
             binding.adoptUserId.text = item.userId
             binding.adoptTitleTv.text = item.title
+        }
+
+        fun itemClickListener(item: AdoptPostFeed, callback: (AdoptPostFeed) -> Unit) {
+            callback(item)
         }
     }
 }

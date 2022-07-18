@@ -105,6 +105,7 @@
             app:layout_constraintTop_toTopOf="@+id/donation_ShelterNameTv" />
 
         <TextView
+            android:id="@+id/donationEndTimeTv"
             android:textColor="@color/purple_700"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

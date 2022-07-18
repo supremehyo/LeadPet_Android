@@ -1,9 +1,9 @@
 package com.dev6.domain.entitiyRepo.adopt
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-data
-class AdoptPostFeed(
+data class AdoptPostFeed(
     @SerializedName("adoptionPostId")
     val adoptionPostId: String,
     @SerializedName("animalType")
@@ -28,4 +28,4 @@ class AdoptPostFeed(
     val title: String,
     @SerializedName("userId")
     val userId: String
-)
+) : Serializable

@@ -21,7 +21,7 @@ interface FeedAPI {
         @Query("size") size : Int
     ): DonationPaginationResponse
 
-    @GET("/v1/post/donation")
+    @GET("/v1/post/adoption")
     suspend fun adoptAllFeed(
         @Query("page") page : Int,
         @Query("size") size : Int

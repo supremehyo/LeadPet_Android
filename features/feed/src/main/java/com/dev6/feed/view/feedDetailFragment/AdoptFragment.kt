@@ -1,6 +1,7 @@
 package com.dev6.feed.view.feedDetailFragment
 
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +17,8 @@ import com.dev6.feed.adapter.AdoptPagingAdapter
 import com.dev6.feed.adapter.DonationPagingAdapter
 import com.dev6.feed.databinding.FragmentAdoptBinding
 import com.dev6.feed.option.BottomSheet
+import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
+import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -33,7 +36,11 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
 
     override fun initView() {
 
-        recommendAdoptAdapter = AdoptPagingAdapter()
+        recommendAdoptAdapter = AdoptPagingAdapter{
+            val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
+            adoptIntent.putExtra("adoptPostFeed", it)
+            startActivity(adoptIntent)
+        }
         adoptRc = binding.adoptRc.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = recommendAdoptAdapter
