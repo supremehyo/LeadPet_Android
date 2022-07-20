@@ -1,51 +1,68 @@
 package com.dev6.feed.adapter
 
+import android.annotation.SuppressLint
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
+import com.dev6.feed.R
+import com.dev6.feed.databinding.ItemAdoptBinding
 import com.dev6.feed.databinding.ItemRecommendAdoptBinding
 
-class RecommendAdoptAdapter(private val callback: (String) -> Unit) :
-    ListAdapter<String, RecommendAdoptAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding =
-            ItemRecommendAdoptBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecommendViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
-        holder.onBind(currentList[position])
-        holder.getLayoutParams()
-        holder.itemClickListener(currentList[position], callback)
-    }
-
-    class RecommendViewHolder(private val binding: ItemRecommendAdoptBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: String) {
-
-        }
-
-        fun getLayoutParams(): ViewGroup.LayoutParams {
-            return binding.root.layoutParams
-        }
-
-        fun itemClickListener(item: String, callback: (String) -> Unit) {
-            binding.recommendAdoptCl.setOnClickListener {
-                callback("")
+class RecommendAdoptAdapter(private val callback: (AdoptPostFeed) -> Unit) :
+    PagingDataAdapter<AdoptPostFeed, RecommendAdoptAdapter.ImageViewHolder>(
+        object : DiffUtil.ItemCallback<AdoptPostFeed>() {
+            override fun areItemsTheSame(
+                oldItem: AdoptPostFeed,
+                newItem: AdoptPostFeed
+            ): Boolean {
+                return oldItem.adoptionPostId == newItem.adoptionPostId
             }
+
+            override fun areContentsTheSame(
+                oldItem: AdoptPostFeed,
+                newItem: AdoptPostFeed
+            ): Boolean {
+                return oldItem.adoptionPostId == newItem.adoptionPostId
+            }
+
+        }
+    ) {
+    override fun onBindViewHolder(holder: RecommendAdoptAdapter.ImageViewHolder, position: Int) {
+        val item = getItem(position) ?: return
+        holder.onBind(item)
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecommendAdoptAdapter.ImageViewHolder {
+        return ImageViewHolder(
+            binding = ItemRecommendAdoptBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
+    }
+
+    inner class ImageViewHolder(private val binding: ItemRecommendAdoptBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("CheckResult")
+        fun onBind(item: AdoptPostFeed) {
+            binding.recommendAdoptFeedTv1.text = item.title
+            binding.recommendAdoptEndDate.text = item.endDate + "까지"
+            binding.recommendAdoptCl.setOnClickListener {
+                callback(item)
+            }
+            Glide.with(binding.root)
+                .load(Uri.parse(""))
+                .error(R.drawable.dailay_image1)
+                .circleCrop()
+                .into(binding.recommendAdoptionIv)
         }
     }
-
-    private class RecommendDiffUtil : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String) =
-            oldItem == newItem
-
-        override fun areContentsTheSame(oldItem: String, newItem: String) =
-            oldItem == newItem
-    }
-
 }

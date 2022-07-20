@@ -39,7 +39,7 @@ class AdoptFeedDetailActivity : BindingActivity<ActivityAdoptFeedDetailBinding>(
                 adoptFeedDisease.text = "질병"
                 adoptFeedTitle.text = title
                 adoptFeedUserId.text = userId
-                makeImageView(images[0])
+                makeImageView("")
             }
         }
     }

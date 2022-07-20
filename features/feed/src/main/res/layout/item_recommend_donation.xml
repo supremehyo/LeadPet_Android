@@ -28,7 +28,7 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <TextView
-            android:id="@+id/recommendFeedTv1"
+            android:id="@+id/recommendDonationFeedTv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -42,15 +42,16 @@
             app:layout_constraintVertical_bias="0.181" />
 
         <TextView
+            android:id="@+id/recommendDonationEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022 03월 27일까지"
             android:fontFamily="@font/hansneo_regular"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/recommendFeedTv1"
+            app:layout_constraintEnd_toEndOf="@+id/recommendDonationFeedTv1"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/recommendFeedTv1"
-            app:layout_constraintTop_toBottomOf="@+id/recommendFeedTv1"
+            app:layout_constraintStart_toStartOf="@+id/recommendDonationFeedTv1"
+            app:layout_constraintTop_toBottomOf="@+id/recommendDonationFeedTv1"
             app:layout_constraintVertical_bias="0.046" />
 
 

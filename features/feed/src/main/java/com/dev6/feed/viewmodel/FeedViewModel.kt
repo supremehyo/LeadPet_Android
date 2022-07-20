@@ -41,6 +41,8 @@ class FeedViewModel
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
+    private val _eventFlow2 = MutableEventFlow<Event>()
+    val eventFlow2 = _eventFlow2.asEventFlow()
 
 
     fun setSpinnerEntry(Entry: List<String>) {
@@ -73,6 +75,13 @@ class FeedViewModel
         }
     }
 
+    private fun event2(event: Event) {
+        viewModelScope.launch {
+            _eventFlow2.emit(event)
+        }
+    }
+
+
     fun getFeedList()= viewModelScope.launch {
         pagingRepoUseCase.getDailyDataPagingData().collect{ uistate ->
             event(Event.DailyUiEvent(uistate))
@@ -81,7 +90,7 @@ class FeedViewModel
 
     fun getAdoptList()= viewModelScope.launch {
         adoptRepoUserCase.getAdoptDataPagingData().collect{ uistate ->
-            event(Event.AdoptUiEvent(uistate))
+            event2(Event.AdoptUiEvent(uistate))
         }
     }
     fun getDonationList() = viewModelScope.launch {

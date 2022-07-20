@@ -34,7 +34,6 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
     override fun onBindViewHolder(holder: AdoptPagingAdapter.ImageViewHolder, position: Int) {
         val item = getItem(position) ?: return
         holder.onBind(item)
-        holder.itemClickListener(item, callback)
     }
 
     override fun onCreateViewHolder(
@@ -54,10 +53,9 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
         fun onBind(item: AdoptPostFeed) {
             binding.adoptUserId.text = item.userId
             binding.adoptTitleTv.text = item.title
-        }
-
-        fun itemClickListener(item: AdoptPostFeed, callback: (AdoptPostFeed) -> Unit) {
-            callback(item)
+            binding.itemAdoptCl.setOnClickListener {
+                callback(item)
+            }
         }
     }
 }

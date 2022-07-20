@@ -37,7 +37,6 @@ class DonationPagingAdapter(private val callback: (DonationPostFeed) -> Unit) :
     override fun onBindViewHolder(holder: DonationPagingAdapter.ImageViewHolder, position: Int) {
         val item = getItem(position) ?: return
         holder.onBind(item)
-        holder.itemClickListener(item, callback)
     }
 
     override fun onCreateViewHolder(
@@ -59,15 +58,14 @@ class DonationPagingAdapter(private val callback: (DonationPostFeed) -> Unit) :
             binding.recommentdonationTv.text = item.title
             binding.textView5.text = item.contents
             binding.donationEndTimeTv.text = item.endDate.toString()
+            binding.itemDonationCl.setOnClickListener {
+                callback(item)
+            }
             Glide.with(binding.root)
                 .load(Uri.parse(""))
                 .error(R.drawable.dailay_image1)
                 .circleCrop()
                 .into(binding.donationFeedIv)
-        }
-
-        fun itemClickListener(item: DonationPostFeed, callback: (DonationPostFeed) -> Unit) {
-            callback(item)
         }
     }
 }

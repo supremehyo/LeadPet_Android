@@ -48,7 +48,7 @@ class DailyFeedDetailActivity :
                 dailyFeedTitleTv.text = title
                 dailyFeedContentTv.text = contents
 
-                makeImageView(images[0])
+                makeImageView("")
             }
         }
     }

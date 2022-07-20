@@ -37,7 +37,7 @@ class DonationFeedDetailActivity :
                 donationFeedContent.text = contents
                 donationFeedEndDate.text = endDate[0] + "." + endDate[1]
                 donationTag.text = "물"
-                makeImageView(images[0])
+                makeImageView("")
             }
         }
     }

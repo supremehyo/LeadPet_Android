@@ -29,7 +29,6 @@ class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit):
     override fun onBindViewHolder(holder: DailyPagingAdapter.ImageViewHolder, position: Int) {
         val item = getItem(position) ?: return
         holder.onBind(item)
-        holder.itemClickListener(item, callback)
     }
 
     override fun onCreateViewHolder(
@@ -58,9 +57,10 @@ class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit):
                 .error(R.drawable.dailay_image1)
                 .circleCrop()
                 .into(binding.dailyFeedProfileIv)
-        }
-        fun itemClickListener(item: DailyPostFeed , callback: (DailyPostFeed) -> Unit) {
-            callback(item)
+
+            binding.constraintLayout2.setOnClickListener {
+                callback(item)
+            }
         }
     }
 }

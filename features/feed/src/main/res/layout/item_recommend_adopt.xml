@@ -10,7 +10,7 @@
         android:layout_height="200dp">
 
         <ImageView
-            android:id="@+id/recommendDonationIv"
+            android:id="@+id/recommendAdoptionIv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/round_8dp"
@@ -27,29 +27,30 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <TextView
-            android:id="@+id/recommendFeedTv1"
+            android:id="@+id/recommendAdoptFeedTv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:fontFamily="@font/hansneo_medium"
             android:text="새로운 가족을 찾고 있어요."
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/recommendDonationIv"
+            app:layout_constraintEnd_toEndOf="@+id/recommendAdoptionIv"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/recommendDonationIv"
-            app:layout_constraintTop_toBottomOf="@+id/recommendDonationIv"
+            app:layout_constraintStart_toStartOf="@+id/recommendAdoptionIv"
+            app:layout_constraintTop_toBottomOf="@+id/recommendAdoptionIv"
             app:layout_constraintVertical_bias="0.181" />
 
         <TextView
+            android:id="@+id/recommendAdoptEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022 03월 27일까지"
             android:fontFamily="@font/hansneo_regular"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/recommendFeedTv1"
+            app:layout_constraintEnd_toEndOf="@+id/recommendAdoptFeedTv1"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/recommendFeedTv1"
-            app:layout_constraintTop_toBottomOf="@+id/recommendFeedTv1"
+            app:layout_constraintStart_toStartOf="@+id/recommendAdoptFeedTv1"
+            app:layout_constraintTop_toBottomOf="@+id/recommendAdoptFeedTv1"
             app:layout_constraintVertical_bias="0.046" />
 
 
