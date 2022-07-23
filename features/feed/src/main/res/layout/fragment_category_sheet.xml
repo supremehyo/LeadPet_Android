@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:text="카테고리"
+        android:textSize="20dp"
+        android:textColor="@color/terms_title"
+        android:fontFamily="@font/hansneo_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/feedRadio"
+            android:text="사료/간식"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/terms_title"
+            android:button="@null"
+            android:fontFamily="@font/hansneo_medium"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/thingRadio"
+            android:text="용품"
+            android:button="@null"
+            android:textColor="@color/terms_title"
+            android:fontFamily="@font/hansneo_medium"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RadioButton>
+    </RadioGroup>
+
+</LinearLayout>

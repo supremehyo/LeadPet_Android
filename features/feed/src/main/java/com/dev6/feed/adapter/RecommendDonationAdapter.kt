@@ -1,57 +1,69 @@
 package com.dev6.feed.adapter
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dev6.domain.entitiyRepo.DonationPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDailyshelterBinding
+import com.dev6.feed.databinding.ItemDonationBinding
+import com.dev6.feed.databinding.ItemRecommendDonationBinding
 
-class RecommendDonationAdapter (private val callback : (String) -> Unit)
-    : ListAdapter<String, RecommendDonationAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
+class RecommendDonationAdapter(private val callback: (DonationPostFeed) -> Unit) :
+    PagingDataAdapter<DonationPostFeed, RecommendDonationAdapter.ImageViewHolder>(
+        object : DiffUtil.ItemCallback<DonationPostFeed>() {
+            override fun areItemsTheSame(
+                oldItem: DonationPostFeed,
+                newItem: DonationPostFeed
+            ): Boolean {
+                return oldItem.donationPostId == newItem.donationPostId
+            }
 
+            override fun areContentsTheSame(
+                oldItem: DonationPostFeed,
+                newItem: DonationPostFeed
+            ): Boolean {
+                return oldItem.donationPostId == newItem.donationPostId
+            }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding = ItemDailyshelterBinding.
-        inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecommendViewHolder(binding)
+        }
+    ) {
+    override fun onBindViewHolder(holder: RecommendDonationAdapter.ImageViewHolder, position: Int) {
+        val item = getItem(position) ?: return
+        holder.onBind(item)
     }
 
-    override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
-        holder.onBind(currentList[position])
-        holder.getLayoutParams()
-        holder.itemClickListener(currentList[position] , callback)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecommendDonationAdapter.ImageViewHolder {
+        return ImageViewHolder(
+            binding = ItemRecommendDonationBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
     }
 
-    class RecommendViewHolder(private val binding: ItemDailyshelterBinding) :
+    inner class ImageViewHolder(private val binding: ItemRecommendDonationBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: String) {
-            binding.dailyShelterName.text = item
+        @SuppressLint("CheckResult")
+        fun onBind(item: DonationPostFeed) {
+            binding.recommendDonationEndDate.text = "까지"
+            binding.recommendDonationFeedTv1.text = item.title
+            binding.recommendDonationCl.setOnClickListener {
+                callback(item)
+            }
             Glide.with(binding.root)
                 .load(Uri.parse(""))
-                .circleCrop()
                 .error(R.drawable.dailay_image1)
-                .into(binding.dailyShelterIv)
-        }
-
-        fun getLayoutParams(): ViewGroup.LayoutParams {
-            return binding.root.layoutParams
-        }
-
-        fun itemClickListener(item: String , callback: (String) -> Unit) {
-
+                .circleCrop()
+                .into(binding.recommendDonationIv)
         }
     }
-
-    private class RecommendDiffUtil : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String) =
-            oldItem == newItem
-
-        override fun areContentsTheSame(oldItem: String, newItem: String) =
-            oldItem == newItem
-    }
-
 }

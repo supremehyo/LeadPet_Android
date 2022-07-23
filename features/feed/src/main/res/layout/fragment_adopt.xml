@@ -19,7 +19,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintHorizontal_bias="0.05"
-        android:text="빠른 도움이 필요해요"
+        android:textSize="20dp"
+        android:fontFamily="@font/hansansneobold"
+        android:textColor="@color/Gray_01"
+        android:text="빠른 도움이 필요해요⭐"
         app:layout_constraintBottom_toTopOf="@+id/guide1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,22 +30,36 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide2"
-        app:layout_constraintGuide_percent="0.2"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </androidx.constraintlayout.widget.Guideline>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="146dp"></androidx.constraintlayout.widget.Guideline>
 
-    <Spinner
-        android:id="@+id/adoptSpinner"
+
+    <TextView
+        android:id="@+id/adoptOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="최신순"
+        android:textSize="12dp"
+        android:fontFamily="@font/hansneo_medium"
+        android:textColor="@color/Gray_01"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintBottom_toTopOf="@+id/guide2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guide1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_down"
+        app:layout_constraintBottom_toBottomOf="@+id/adoptOption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/adoptOption"
+        app:layout_constraintTop_toTopOf="@+id/adoptOption"
+        app:layout_constraintVertical_bias="0.5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/adoptRc"

@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dev6.core.base.BindingActivity
 import com.dev6.core.enums.FeedViewType
-import com.dev6.domain.util.repeatOnStarted
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ActivityFeedBinding
 import com.dev6.feed.viewmodel.FeedViewModel
@@ -31,7 +31,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         feedViewModel.setSpinnerEntry(list)
         repeatOnStarted {
             feedViewModel.spinnerData.collect{
-                Log.v("sdfsdfsdf" , it)
+
             }
         }
 

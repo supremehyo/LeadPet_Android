@@ -5,17 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import com.dev6.core.base.BindingFragment
 import com.dev6.feed.R
+import com.dev6.feed.databinding.FragmentProfileIntroduceBinding
+import com.dev6.feed.viewmodel.FeedViewModel
 
 
-class ProfileIntroduceFragment : Fragment() {
+class ProfileIntroduceFragment :
+    BindingFragment<FragmentProfileIntroduceBinding>(R.layout.fragment_profile_introduce) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private  val feedViewModel : FeedViewModel by activityViewModels()
 
-        return inflater.inflate(R.layout.fragment_profile_introduce, container, false)
+    override fun initView() {
+        super.initView()
     }
 
+    override fun initViewModel() {
+        super.initViewModel()
+    }
+
+    override fun initListener() {
+        super.initListener()
+    }
 }

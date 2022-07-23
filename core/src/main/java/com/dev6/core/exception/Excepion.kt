@@ -1,5 +1,10 @@
 package com.dev6.core.exception
 
+class  NotFoundException(message:String): Exception(message)
+
+
+class  JoinException(message:String): Exception(message)
+
 /**
  * 서버 바디 없음
  */

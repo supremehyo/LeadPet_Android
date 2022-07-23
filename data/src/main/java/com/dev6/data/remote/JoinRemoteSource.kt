@@ -1,6 +1,7 @@
 package com.dev6.data.remote
 
-import com.dev6.data.entity.JoinEntitiy
+
+import com.dev6.data.model.JoinEntitiy
 import com.dev6.data.service.JoinAPI
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
 import javax.inject.Inject
