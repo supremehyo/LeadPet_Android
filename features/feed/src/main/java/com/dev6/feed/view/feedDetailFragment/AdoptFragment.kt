@@ -63,7 +63,7 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
         super.afterViewCreated()
         getAdoptList()
         repeatOnStarted {
-            feedViewModel.eventFlow.collect { event ->2
+            feedViewModel.eventFlow3.collect { event ->2
                 when (event) {
                     is FeedViewModel.Event.AdoptUiEvent -> {
                         when (event.uiState) {

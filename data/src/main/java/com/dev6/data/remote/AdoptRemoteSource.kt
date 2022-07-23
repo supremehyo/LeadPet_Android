@@ -14,8 +14,6 @@ class AdoptRemoteSourceImpl @Inject constructor(
 ) : AdoptRemoteSource {
 
     override suspend fun AdoptAllFeed(page: Int, size: Int): AdoptPaginationResponse? {
-        var temp = feedService.adoptAllFeed(page, size)
-        Log.v("asdfgasdg" , temp.adoptFeedEntitiyList.get(0).title)
         return feedService.adoptAllFeed(page, size)
     }
 }

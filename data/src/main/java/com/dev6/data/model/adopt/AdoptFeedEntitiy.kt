@@ -4,27 +4,27 @@ import com.google.gson.annotations.SerializedName
 
 data class AdoptFeedEntitiy(
     @SerializedName("adoptionPostId")
-    val adoptionPostId: String,
+    val adoptionPostId: String?,
     @SerializedName("animalType")
-    val animalType: String,
+    val animalType: String?,
     @SerializedName("contents")
-    val contents: String,
+    val contents: String?,
     @SerializedName("endDate")
-    val endDate: String,
+    val endDate: String?,
     @SerializedName("euthanasiaDate")
-    val euthanasiaDate: String,
+    val euthanasiaDate: String?,
     @SerializedName("gender")
-    val gender: String,
+    val gender: String?,
     @SerializedName("images")
     val images: List<String>,
     @SerializedName("neutering")
-    val neutering: String,
+    val neutering: String?,
     @SerializedName("species")
-    val species: String,
+    val species: String?,
     @SerializedName("startDate")
-    val startDate: String,
+    val startDate: String?,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("userId")
-    val userId: String
+    val userId: String?
 )

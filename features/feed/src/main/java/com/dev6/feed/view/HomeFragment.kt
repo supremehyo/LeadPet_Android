@@ -18,13 +18,14 @@ import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.*
 import timber.log.Timber
 
 
-class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment :
+    BindingFragment<com.dev6.feed.databinding.FragmentHomeBinding>(R.layout.fragment_home) {
 
-    private  val feedViewModel : FeedViewModel by activityViewModels()
+    private val feedViewModel: FeedViewModel by activityViewModels()
     private lateinit var dailyPagingAdapter: RecommendFeedAdapter
     private lateinit var adoptPagingAdapter: RecommendAdoptAdapter
     private lateinit var donationPagingAdapter: RecommendDonationAdapter
@@ -54,7 +55,7 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
 
     override fun initViewModel() {
         super.initViewModel()
-       // feedViewModel.getDonationList()
+        feedViewModel.getDonationList()
         feedViewModel.getAdoptList()
         feedViewModel.getFeedList()
 
@@ -62,9 +63,14 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
 
     }
 
-    private fun initRc(){
+    private fun initRc() {
+
         binding.recommendDonationRc.apply {
             adapter = donationPagingAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+        binding.recommendFeedRc.apply {
+            adapter = dailyPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
@@ -73,10 +79,7 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
-        binding.recommendFeedRc.apply {
-            adapter = dailyPagingAdapter
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        }
+
     }
 
     override fun afterViewCreated() {
@@ -84,11 +87,32 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
         repeatOnStarted {
             feedViewModel.eventFlow2.collect { event ->
                 when (event) {
+                    is FeedViewModel.Event.DonationUiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                event.uiState.data.collect {
+                                    donationPagingAdapter.submitData(it)
+                                }
+                            }
+                            is UiState.Error -> {
+                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            is UiState.Loding -> {
+                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        repeatOnStarted {
+            feedViewModel.eventFlow3.collect { event ->
+                when (event) {
                     is FeedViewModel.Event.AdoptUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
-                                Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
-                                event.uiState.data.collectLatest {
+                                event.uiState.data.collect {
                                     adoptPagingAdapter.submitData(it)
                                 }
                             }
@@ -103,15 +127,13 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
                 }
             }
         }
-
         repeatOnStarted {
             feedViewModel.eventFlow.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
-                                Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
-                                event.uiState.data.collectLatest {
+                                event.uiState.data.collect {
                                     dailyPagingAdapter.submitData(it)
                                 }
                             }
@@ -123,27 +145,10 @@ class HomeFragment : BindingFragment<com.dev6.feed.databinding.FragmentHomeBindi
                             }
                         }
                     }
-                    /*
-                    is FeedViewModel.Event.DonationUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
-                                event.uiState.data.collectLatest {
-                                    donationPagingAdapter.submitData(it)
-                                }
-                            }
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                     */
                 }
             }
         }
+
 
     }
 }

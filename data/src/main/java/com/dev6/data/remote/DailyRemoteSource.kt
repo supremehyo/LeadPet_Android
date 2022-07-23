@@ -14,8 +14,6 @@ class DailyRemoteSourceImpl @Inject constructor(
 ) : DailyRemoteSource {
 
     override suspend fun dailyAllFeed(page: Int, size: Int): DailyPaginationResponse {
-        var temp = feedService.normalAllFeed(page, size)
-        Timber.tag("asdfgasdg").v(temp.dailyFeedEntitiy.get(0).title)
         return feedService.normalAllFeed(page, size)
     }
 }

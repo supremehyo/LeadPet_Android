@@ -14,8 +14,6 @@ class DonationRemoteSourceImpl @Inject constructor(
 ) : DonationRemoteSource {
 
     override suspend fun donationAllFeed(page: Int, size: Int): DonationPaginationResponse {
-        var temp = feedService.donationAllFeed(page, size)
-        Log.v("asdfgasdg" , temp.donationFeedList.get(0).title)
         return feedService.donationAllFeed(page, size)
     }
 }

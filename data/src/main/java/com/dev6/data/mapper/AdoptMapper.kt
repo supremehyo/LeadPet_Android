@@ -42,16 +42,16 @@ internal fun List<AdoptFeedEntitiy>.toDomain(): List<AdoptPostFeed> {
 }
 
 internal fun AdoptFeedEntitiy.toData() = AdoptPostFeed(
-    contents = contents,
-    animalType = animalType,
-    adoptionPostId = adoptionPostId,
-    endDate = endDate,
+    contents = contents?: "",
+    animalType = animalType ?: "",
+    adoptionPostId = adoptionPostId?: "",
+    endDate = endDate?: "",
     images = images,
-    startDate = startDate,
-    title = title,
-    userId = userId,
-    neutering = neutering,
-    species = species,
-    gender = gender,
-    euthanasiaDate = euthanasiaDate
+    startDate = startDate?: "",
+    title = title?: "",
+    userId = userId?: "",
+    neutering = neutering?: "",
+    species = species?: "",
+    gender = gender?: "",
+    euthanasiaDate = euthanasiaDate?: ""
 )

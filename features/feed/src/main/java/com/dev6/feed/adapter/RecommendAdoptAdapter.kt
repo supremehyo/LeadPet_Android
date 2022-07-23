@@ -54,7 +54,6 @@ class RecommendAdoptAdapter(private val callback: (AdoptPostFeed) -> Unit) :
         @SuppressLint("CheckResult")
         fun onBind(item: AdoptPostFeed) {
             binding.recommendAdoptFeedTv1.text = item.title
-            binding.recommendAdoptEndDate.text = item.endDate + "까지"
             binding.recommendAdoptCl.setOnClickListener {
                 callback(item)
             }

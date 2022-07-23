@@ -44,6 +44,8 @@ class FeedViewModel
     private val _eventFlow2 = MutableEventFlow<Event>()
     val eventFlow2 = _eventFlow2.asEventFlow()
 
+    private val _eventFlow3 = MutableEventFlow<Event>()
+    val eventFlow3 = _eventFlow3.asEventFlow()
 
     fun setSpinnerEntry(Entry: List<String>) {
         viewModelScope.launch {
@@ -51,22 +53,10 @@ class FeedViewModel
         }
     }
 
-
-
     fun setCurrentView(viewName: FeedViewType) {
         viewModelScope.launch {
             _viewNameData.emit(viewName)
         }
-    }
-
-    //홈화면 기부 추천
-    fun getRecommendDonationList() {
-
-    }
-
-    //홈화면 피드 추천
-    fun getRecommendFeedList() {
-
     }
 
     private fun event(event: Event) {
@@ -80,7 +70,11 @@ class FeedViewModel
             _eventFlow2.emit(event)
         }
     }
-
+    private fun event3(event: Event) {
+        viewModelScope.launch {
+            _eventFlow3.emit(event)
+        }
+    }
 
     fun getFeedList()= viewModelScope.launch {
         pagingRepoUseCase.getDailyDataPagingData().collect{ uistate ->
@@ -90,12 +84,12 @@ class FeedViewModel
 
     fun getAdoptList()= viewModelScope.launch {
         adoptRepoUserCase.getAdoptDataPagingData().collect{ uistate ->
-            event2(Event.AdoptUiEvent(uistate))
+            event3(Event.AdoptUiEvent(uistate))
         }
     }
     fun getDonationList() = viewModelScope.launch {
         donationRepoUserCase.getDonationPagingData().collect{ uistate ->
-            event(Event.DonationUiEvent(uistate))
+            event2(Event.DonationUiEvent(uistate))
         }
     }
 

@@ -16,11 +16,11 @@ class DonationPagingSourceImp  @Inject constructor(private val donationRemoteSou
             val next = params.key ?: 0
             val size = params.loadSize
             val response = donationRemoteSource.donationAllFeed(next, size)
-            Log.v("ssssfsfsf1" ,response.donationFeedList.get(0).donationPostId)
+            Log.v("dddddd1" ,response.donationFeedList.get(0).donationPostId)
             try {
-                Log.v("ssssfsfsf2" ,response.toDomain().donationFeedList.get(0).donationPostId)
+                Log.v("dddddd2" ,response.toDomain().donationFeedList.get(0).donationPostId)
             }catch (e : Exception){
-                Log.v("ssssfsfsf3" ,e.stackTraceToString())
+                Log.v("dddddd3" ,e.stackTraceToString())
             }
             LoadResult.Page(
                 data = response.toDomain().donationFeedList,

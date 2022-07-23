@@ -70,7 +70,7 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
         getDonationList()
 
         repeatOnStarted {
-            feedViewModel.eventFlow.collect { event ->
+            feedViewModel.eventFlow2.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DonationUiEvent -> {
                         when (event.uiState) {

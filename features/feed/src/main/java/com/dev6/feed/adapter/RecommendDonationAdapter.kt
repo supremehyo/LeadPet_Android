@@ -54,7 +54,7 @@ class RecommendDonationAdapter(private val callback: (DonationPostFeed) -> Unit)
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
         fun onBind(item: DonationPostFeed) {
-            binding.recommendDonationEndDate.text = item.endDate[0]+"."+item.endDate[1]+"까지"
+            binding.recommendDonationEndDate.text = "까지"
             binding.recommendDonationFeedTv1.text = item.title
             binding.recommendDonationCl.setOnClickListener {
                 callback(item)
