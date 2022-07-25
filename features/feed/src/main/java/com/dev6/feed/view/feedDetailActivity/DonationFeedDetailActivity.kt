@@ -26,7 +26,7 @@ class DonationFeedDetailActivity :
         super.initView()
         currentFeed = intent.getSerializableExtra("donationPostFeed") as DonationPostFeed
         makeCurrentView()
-        makeBalloun()
+       // makeBalloun()
     }
 
     override fun initViewModel() {
