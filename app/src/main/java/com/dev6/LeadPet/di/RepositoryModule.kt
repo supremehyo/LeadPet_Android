@@ -56,5 +56,9 @@ abstract class RepositoryModule {
     @Binds
     @ViewModelScoped
     abstract fun bindsAdoptPagingRepository(repository: AdoptPagingRepositoryImp): AdoptPagingRepository
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsShelterRepository(repository: ShelterRepositoryImp): ShelterPagingRepository
 }
 

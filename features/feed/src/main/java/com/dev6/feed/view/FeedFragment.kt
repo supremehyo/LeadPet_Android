@@ -9,7 +9,6 @@ import com.dev6.feed.databinding.FragmentFeedBinding
 import com.dev6.feed.view.feedDetailFragment.AdoptFragment
 import com.dev6.feed.view.feedDetailFragment.DailyFragment
 import com.dev6.feed.view.feedDetailFragment.DonationFragment
-import com.dev6.feed.view.feedDetailFragment.TotalFragment
 import com.dev6.feed.viewmodel.FeedViewModel
 import com.google.android.material.tabs.TabLayout
 
@@ -20,7 +19,6 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
     lateinit var  navHostFragment : Fragment
 
 
-    lateinit var totalFragment: TotalFragment
     lateinit var dailyFragment: DailyFragment
     lateinit var donationFragment: DonationFragment
     lateinit var adoptFragment: AdoptFragment
@@ -30,13 +28,12 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
         super.initView()
         initTabLayout()
 
-        totalFragment = TotalFragment()
         dailyFragment = DailyFragment()
         donationFragment = DonationFragment()
         adoptFragment = AdoptFragment()
 
         //초기화면
-        childFragmentManager.beginTransaction().replace(R.id.nav_detail_fragment,totalFragment).commit()
+        childFragmentManager.beginTransaction().replace(R.id.nav_detail_fragment,dailyFragment).commit()
         feedViewModel.setCurrentView(FeedViewType.TOTAL)
     }
 
@@ -49,7 +46,6 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
     private fun initTabLayout(){
         binding.apply {
             mainTabs.run {
-                addTab(newTab().setText("전체"))
                 addTab(newTab().setText("일상"))
                 addTab(newTab().setText("기부"))
                 addTab(newTab().setText("입양"))
@@ -61,18 +57,14 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
                     // 눌렀을때 색 변경이랑 네이게이션 이동 코드
                     when(tab?.position){
                         0 -> {
-                            selected = totalFragment
-                            //feedViewModel.setCurrentView(FeedViewType.TOTAL)
-                        }
-                        1 -> {
                             selected = dailyFragment
                             //feedViewModel.setCurrentView(FeedViewType.DAILY)
                         }
-                        2 -> {
+                        1 -> {
                             selected = donationFragment
                             //feedViewModel.setCurrentView(FeedViewType.DONATION)
                         }
-                        3 -> {
+                        2 -> {
                             selected = adoptFragment
 
                         }

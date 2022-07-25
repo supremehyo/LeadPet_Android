@@ -7,20 +7,24 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dev6.core.util.extension.fewDay
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDailyfeedBinding
 
 
-class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit):
+class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit) :
     PagingDataAdapter<DailyPostFeed, DailyPagingAdapter.ImageViewHolder>(
         object : DiffUtil.ItemCallback<DailyPostFeed>() {
             override fun areItemsTheSame(oldItem: DailyPostFeed, newItem: DailyPostFeed): Boolean {
                 return oldItem.normalPostId == newItem.normalPostId
             }
 
-            override fun areContentsTheSame(oldItem: DailyPostFeed, newItem: DailyPostFeed): Boolean {
+            override fun areContentsTheSame(
+                oldItem: DailyPostFeed,
+                newItem: DailyPostFeed
+            ): Boolean {
                 return oldItem.normalPostId == newItem.normalPostId
             }
 
@@ -35,17 +39,21 @@ class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit):
         parent: ViewGroup,
         viewType: Int
     ): DailyPagingAdapter.ImageViewHolder {
-        return ImageViewHolder(binding = ItemDailyfeedBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false)
+        return ImageViewHolder(
+            binding = ItemDailyfeedBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
         )
     }
 
-    inner class ImageViewHolder(private val binding: ItemDailyfeedBinding):
+    inner class ImageViewHolder(private val binding: ItemDailyfeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: DailyPostFeed) {
             binding.dailyFeedContentTv.text = item.contents
             binding.dailyFeedTitleTv.text = item.title
             binding.dailyFeedProfileTv.text = item.userId
+            binding.dailyFeedWriteTimeTv.text = fewDay("2022", "7", "3").toString()
+
             Glide.with(binding.root)
                 .load(Uri.parse(""))
                 .error(R.drawable.dailay_image1)

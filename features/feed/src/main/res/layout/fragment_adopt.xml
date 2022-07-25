@@ -15,17 +15,32 @@
         android:layout_height="wrap_content">
     </androidx.constraintlayout.widget.Guideline>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintHorizontal_bias="0.05"
-        android:textSize="20dp"
         android:fontFamily="@font/hansansneobold"
-        android:textColor="@color/Gray_01"
         android:text="빠른 도움이 필요해요⭐"
+        android:includeFontPadding="false"
+        android:textColor="@color/Gray_01"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/guide1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -33,21 +48,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="146dp"></androidx.constraintlayout.widget.Guideline>
+        app:layout_constraintGuide_begin="120dp" />
 
 
     <TextView
         android:id="@+id/adoptOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="최신순"
-        android:textSize="12dp"
         android:fontFamily="@font/hansneo_medium"
+        android:text="최신순"
         android:textColor="@color/Gray_01"
-        app:layout_constraintHorizontal_bias="0.05"
+        android:textSize="12dp"
         app:layout_constraintBottom_toTopOf="@+id/guide2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guide1" />
 
     <ImageView
@@ -63,12 +78,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/adoptRc"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guide2" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guide2"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

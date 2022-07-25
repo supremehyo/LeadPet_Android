@@ -7,20 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".view.feedDetailFragment.DailyFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:paddingHorizontal="12dp"
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -28,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hansansneobold"
                 android:text="리드펫님과 가까운 보호소에요!"
-                android:textColor="@color/black"
+                android:textColor="@color/Gray_01"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
@@ -39,12 +52,11 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/house_with_garden"
-                app:layout_constraintBottom_toTopOf="@+id/dailyNearShelterRc"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/dailyNearShelterRc"
@@ -59,9 +71,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/dailyRc"
-                android:layout_marginTop="12dp"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,11 +84,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:background="@color/grey1"
-                app:layout_constraintVertical_bias="0.3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

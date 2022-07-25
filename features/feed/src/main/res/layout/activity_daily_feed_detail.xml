@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.feedDetailActivity.DailyFeedDetailActivity">
 
-
-
     <include
         android:id="@+id/include"
         layout="@layout/inclue_top_feed"

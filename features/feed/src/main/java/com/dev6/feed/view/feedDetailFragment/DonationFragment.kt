@@ -101,7 +101,7 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
 
             }
             PostOptionType.THING -> {
-                Timber.tag("sfsdf").v("피드")
+
             }
             PostOptionType.DATE -> {
 

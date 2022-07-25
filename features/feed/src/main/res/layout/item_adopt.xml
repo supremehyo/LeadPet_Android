@@ -102,9 +102,10 @@
                 android:textColor="@color/Gray_04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="품종  "></TextView>
+                android:text="품종  " />
 
             <TextView
+                android:id="@+id/adoptBreedTv"
                 android:fontFamily="@font/hansneo_medium"
                 android:textColor="@color/Gray_01"
                 android:layout_width="wrap_content"
@@ -124,6 +125,7 @@
                 android:text="나이  " />
 
             <TextView
+                android:id="@+id/adoptAgeTv"
                 android:fontFamily="@font/hansneo_medium"
                 android:textColor="@color/Gray_01"
                 android:layout_width="wrap_content"
@@ -140,14 +142,15 @@
                 android:textColor="@color/Gray_04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="질병  "></TextView>
+                android:text="질병  " />
 
             <TextView
+                android:id="@+id/adoptDiseaseTv"
                 android:fontFamily="@font/hansneo_regular"
                 android:textColor="@color/Gray_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="없음"></TextView>
+                android:text="없음" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -156,13 +159,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="공고  "></TextView>
+                android:text="공고  " />
 
             <TextView
+                android:id="@+id/adoptDateTv"
                 android:textColor="#3F51B5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2022.03.19 - 2022.04.02"></TextView>
+                android:text="2022.03.19 - 2022.04.02" />
         </LinearLayout>
     </LinearLayout>
 

@@ -41,6 +41,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:19.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("com.github.skydoves:balloon:1.4.5")
 
     //Glid
     implementation(Image.GLIDE)
