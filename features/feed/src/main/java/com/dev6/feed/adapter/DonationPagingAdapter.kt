@@ -9,6 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dev6.core.util.extension.fewDay
 import com.dev6.domain.entitiyRepo.DonationPostFeed
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
@@ -57,7 +58,9 @@ class DonationPagingAdapter(private val callback: (DonationPostFeed) -> Unit) :
             binding.donationShelterNameTv.text = item.userId
             binding.recommentdonationTv.text = item.title
             binding.textView5.text = item.contents
-            binding.donationEndTimeTv.text = item.endDate.toString()
+            binding.donationEndTimeTv.text =
+                item.endDate[0] + "." + item.endDate[1] + "." + item.endDate[2] + "까지"
+
             binding.itemDonationCl.setOnClickListener {
                 callback(item)
             }

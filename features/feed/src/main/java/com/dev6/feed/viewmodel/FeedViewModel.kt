@@ -10,10 +10,12 @@ import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.domain.entitiyRepo.DonationPostFeed
+import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
 import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 import com.dev6.domain.usecase.AdoptPagingRepoUseCase
 import com.dev6.domain.usecase.DailyPagingRepoUseCase
 import com.dev6.domain.usecase.DonationPagingRepoUseCase
+import com.dev6.domain.usecase.ShelterPagingRepoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -22,9 +24,10 @@ import javax.inject.Inject
 @HiltViewModel
 class FeedViewModel
 @Inject constructor(
-    private val pagingRepoUseCase: DailyPagingRepoUseCase
-    ,private val donationRepoUserCase: DonationPagingRepoUseCase,
-    private val adoptRepoUserCase: AdoptPagingRepoUseCase
+    private val pagingRepoUseCase: DailyPagingRepoUseCase,
+    private val donationRepoUserCase: DonationPagingRepoUseCase,
+    private val adoptRepoUserCase: AdoptPagingRepoUseCase,
+    private val shelterUserCase: ShelterPagingRepoUseCase
 ) : ViewModel() {
 
     private val _spinnerEntry = MutableStateFlow(emptyList<String>())
@@ -46,6 +49,9 @@ class FeedViewModel
 
     private val _eventFlow3 = MutableEventFlow<Event>()
     val eventFlow3 = _eventFlow3.asEventFlow()
+
+    private val _eventFlow4 = MutableEventFlow<Event>()
+    val eventFlow4 = _eventFlow4.asEventFlow()
 
     fun setSpinnerEntry(Entry: List<String>) {
         viewModelScope.launch {
@@ -70,32 +76,50 @@ class FeedViewModel
             _eventFlow2.emit(event)
         }
     }
+
     private fun event3(event: Event) {
         viewModelScope.launch {
             _eventFlow3.emit(event)
         }
     }
 
-    fun getFeedList()= viewModelScope.launch {
-        pagingRepoUseCase.getDailyDataPagingData().collect{ uistate ->
+    private fun event4(event: Event) {
+        viewModelScope.launch {
+            _eventFlow4.emit(event)
+        }
+    }
+
+    fun getFeedList() = viewModelScope.launch {
+        pagingRepoUseCase.getDailyDataPagingData().collect { uistate ->
             event(Event.DailyUiEvent(uistate))
         }
     }
 
-    fun getAdoptList()= viewModelScope.launch {
-        adoptRepoUserCase.getAdoptDataPagingData().collect{ uistate ->
+    fun getAdoptList() = viewModelScope.launch {
+        adoptRepoUserCase.getAdoptDataPagingData().collect { uistate ->
             event3(Event.AdoptUiEvent(uistate))
         }
     }
+
     fun getDonationList() = viewModelScope.launch {
-        donationRepoUserCase.getDonationPagingData().collect{ uistate ->
+        donationRepoUserCase.getDonationPagingData().collect { uistate ->
             event2(Event.DonationUiEvent(uistate))
+        }
+    }
+
+    fun getNearShelterList(cityName: String, shelterName: String) = viewModelScope.launch {
+        shelterUserCase.getShelterPagingData(cityName, shelterName).collect { uistate ->
+            event4(Event.ShelterUiEvnet(uistate))
         }
     }
 
     sealed class Event {
         data class DailyUiEvent(val uiState: UiState<Flow<PagingData<DailyPostFeed>>>) : Event()
-        data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPostFeed>>>) : Event()
+        data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPostFeed>>>) :
+            Event()
+
         data class AdoptUiEvent(val uiState: UiState<Flow<PagingData<AdoptPostFeed>>>) : Event()
+        data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) :
+            Event()
     }
 }

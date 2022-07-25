@@ -3,22 +3,18 @@ package com.dev6.feed.view.feedDetailFragment
 import android.content.Intent
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
-import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.adapter.DailyPagingAdapter
+import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
 import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
-import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_daily) {
 
@@ -26,20 +22,30 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     private lateinit var dailyRc: RecyclerView
     private lateinit var dailyNearShelterRc: RecyclerView
     private lateinit var pagingAdapter: DailyPagingAdapter
+    private lateinit var shelterAdapter: DailyshelterRecyclerAdapter
+
 
     override fun initView() {
         super.initView()
 
         dailyRc = binding.dailyRc
-        pagingAdapter = DailyPagingAdapter{
+        dailyNearShelterRc = binding.dailyNearShelterRc
+
+        pagingAdapter = DailyPagingAdapter {
             val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
             dailyIntent.putExtra("dailyPostFeed", it)
             startActivity(dailyIntent)
         }
 
-        dailyNearShelterRc = binding.dailyNearShelterRc
+        shelterAdapter = DailyshelterRecyclerAdapter {
+            val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
+            dailyIntent.putExtra("dailyShelter", it)
+            startActivity(dailyIntent)
+        }
+
+
         dailyNearShelterRc.apply {
-            adapter = pagingAdapter
+            adapter = shelterAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
@@ -50,25 +56,51 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     override fun initViewModel() {
-
+        getDailyList()
+        getShelterList()
     }
 
     private fun getDailyList() {
         feedViewModel.getFeedList()
     }
 
+    private fun getShelterList() {
+        feedViewModel.getNearShelterList("서울","아이언맨")
+    }
+
+
     override fun afterViewCreated() {
         super.afterViewCreated()
-        getDailyList()
         repeatOnStarted {
             feedViewModel.eventFlow.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
-                                Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
                                 event.uiState.data.collectLatest {
                                     pagingAdapter.submitData(it)
+                                }
+                            }
+                            is UiState.Error -> {
+                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            is UiState.Loding -> {
+                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        repeatOnStarted {
+            feedViewModel.eventFlow4.collect { event ->
+                when (event) {
+                    is FeedViewModel.Event.ShelterUiEvnet -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                event.uiState.data.collectLatest {
+                                    shelterAdapter.submitData(it)
                                 }
                             }
                             is UiState.Error -> {

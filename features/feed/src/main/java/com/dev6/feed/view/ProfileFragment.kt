@@ -6,10 +6,6 @@ import com.dev6.core.base.BindingFragment
 import com.dev6.core.enums.FeedViewType
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileBinding
-import com.dev6.feed.view.feedDetailFragment.AdoptFragment
-import com.dev6.feed.view.feedDetailFragment.DailyFragment
-import com.dev6.feed.view.feedDetailFragment.DonationFragment
-import com.dev6.feed.view.feedDetailFragment.TotalFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileAdoptFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileDailyFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileDonationFragment
