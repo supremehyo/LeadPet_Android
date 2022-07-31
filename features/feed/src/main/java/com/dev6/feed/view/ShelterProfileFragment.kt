@@ -14,7 +14,7 @@ import com.dev6.feed.viewmodel.FeedViewModel
 import com.google.android.material.tabs.TabLayout
 
 
-class ProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
+class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     private val feedViewModel: FeedViewModel by activityViewModels()
 

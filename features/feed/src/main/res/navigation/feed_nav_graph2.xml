@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/feedFragment"
-    android:id="@+id/feed_nav_graph">
+    android:id="@+id/feed_nav_graph2">
 
     <fragment
         android:id="@+id/feedFragment"
@@ -19,9 +19,9 @@
 
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.dev6.feed.view.ShelterProfileFragment"
-        tools:layout="@layout/fragment_profile">
+        android:id="@+id/userFragment"
+        android:name="com.dev6.feed.view.UserFragment"
+        tools:layout="@layout/fragment_user">
     </fragment>
 
 
