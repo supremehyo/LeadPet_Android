@@ -119,7 +119,7 @@
 
                 <com.dev6.core.view.CustomButtonLight
 
-                    android:id="@+id/customButtonLight"
+                    android:id="@+id/cb_breed_choice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
@@ -191,7 +191,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toStartOf="@+id/mcv_animal"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
-                    app:layout_constraintTop_toBottomOf="@+id/customButtonLight"
+                    app:layout_constraintTop_toBottomOf="@+id/cb_breed_choice"
                     tools:listitem="@layout/item_choice_animal" />
 
                 <com.google.android.material.card.MaterialCardView

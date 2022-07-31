@@ -1,6 +1,7 @@
 package com.dev6.post
 
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.login.viewmodel.DonatePostViewModel
@@ -73,8 +74,9 @@ class PetAdoptPostFragment :
         binding.btnChoiceAge.setOnClickListener {
             ageBottomSeatFragment.show(this.parentFragmentManager, "")
         }
-
-        binding.mcvAnimal
+        binding.cbBreedChoice.setOnClickListener {
+          findNavController().navigate(R.id.action_petAdoptPostFragment_to_speciesChoiceFragment)
+        }
 
         binding.cvStartDate.setClick { excuteDatePicker() }
         binding.cvEndDate.setClick { excuteDatePicker() }

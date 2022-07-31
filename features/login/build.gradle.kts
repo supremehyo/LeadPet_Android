@@ -50,7 +50,6 @@ dependencies {
     implementation(project(mapOf("path" to ":features:join:join")))
 
 
-    annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 
 

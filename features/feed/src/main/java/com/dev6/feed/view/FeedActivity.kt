@@ -67,6 +67,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                 binding.logoImage.visibility = View.VISIBLE
                 binding.locationSpinner.visibility = View.GONE
             }
+            else -> {}
         }
     }
 }

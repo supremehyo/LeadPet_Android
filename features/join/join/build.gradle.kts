@@ -41,7 +41,6 @@ dependencies {
     //hilt
     implementation(Google.HILT_ANDROID)
     androidTestImplementation("junit:junit:4.12")
-    annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 
 
