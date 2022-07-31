@@ -25,11 +25,7 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
        // loginMethod = intent.getSerializableExtra("loginMethod") as LoginType
         //uuid = intent.getStringExtra("uuid")!!
 
-        val dto  = JoinEntitiy("구글","uuuiiiddd","","",
-            "","","","",""
-        ,"","" , "")
 
-        joinViewModel.setJoinDTOData(dto)
     }
 
     override fun initViewModel() {

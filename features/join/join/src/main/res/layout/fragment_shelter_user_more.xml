@@ -17,28 +17,32 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_more"
+            android:id="@+id/shelterMoreleftArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/keyboard_backspace"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="131dp"
+            android:rotationY="180"
+            android:src="@drawable/ic_vector"
             app:layout_constraintBottom_toBottomOf="@+id/appBar"
             app:layout_constraintEnd_toEndOf="@+id/appBar"
             app:layout_constraintHorizontal_bias="0.036"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.55"></ImageView>
+            app:layout_constraintVertical_bias="0.55" />
 
         <TextView
-            android:textSize="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_medium"
             android:text="프로필"
-            android:textColor="@color/grey5"
+            android:includeFontPadding="false"
+            android:textColor="@color/Gray_01"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_bold"
-            android:text="보호소에 대해서 조금\n더 알려주시겠어요?"
+            android:text="보호소 소개글을\n작성해주세요"
+            android:lineHeight="24dp"
             android:textColor="@color/grey5"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -64,72 +69,64 @@
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.025"></TextView>
+            app:layout_constraintVertical_bias="0.025" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="보호소 사진을 더 올려주세요."
-            android:textColor="@color/subTitle2"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/shelterDescriptionEt"
+            style="@style/CustomOutlineBox"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            app:counterMaxLength="1000"
+            app:counterEnabled="true"
+            app:helperTextTextColor="@color/Gray_04"
+            app:layout_constraintBottom_toTopOf="@+id/additionalProfileButtonNext"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.049"></TextView>
+            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintWidth_percent="0.91">
 
-        <ImageView
-            android:id="@+id/additionalProfileImageButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/userprofileimage"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11"
-            app:layout_constraintVertical_bias="0.067"></ImageView>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/shelterDescriptionTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autofillHints="name"
+                android:background="@null"
+                android:fontFamily="@font/custom_font_family"
+                android:gravity="start|top"
+                android:hint="보호소 소개"
+                android:paddingTop="20dp"
+                android:textColorHint="@color/text_color_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            android:text="보호소 이름"
-            android:textColor="@color/subTitle"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/additionalProfileImageButton"></TextView>
-
-        <EditText
-            android:layout_width="match_parent"
+            android:id="@+id/additionalProfileButtonNext"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
-            android:background="@null"
-            android:gravity="top|left"
-            android:hint="임시보호자에게 보호소를 소개할 수 있도록 간단한 소개서를 작성해주세요."
-            android:padding="16dp"
-            android:textColorHint="@color/hintColor"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/additionalProfileButton"
+            android:fontFamily="@font/hansneo_medium"
+            android:gravity="center"
+            android:text="나중에 할게요"
+            android:textColor="@color/Gray_06"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.3"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-            app:layout_constraintVertical_bias="1"></EditText>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.863"
+            app:layout_constraintWidth_percent="0.91" />
 
         <Button
             android:id="@+id/additionalProfileButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="다음"
+            android:text="완료"
             android:backgroundTint="@color/grey4"
-            android:background="@drawable/round_button"
+            android:background="@drawable/round_8dp_maincolor"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +134,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.91"
             app:layout_constraintHeight_percent="0.08"
-            app:layout_constraintVertical_bias="0.95"></Button>
+            app:layout_constraintVertical_bias="0.95" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

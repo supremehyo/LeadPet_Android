@@ -77,4 +77,5 @@
         android:name="com.dev6.join.ShelterDonateFragment"
         tools:layout="@layout/fragment_shelter_donate">
     </fragment>
+
 </navigation>

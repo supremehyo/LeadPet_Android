@@ -4,20 +4,28 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.join.databinding.FragmentShelterUserJoinBinding
+import com.dev6.join.viewmodel.JoinViewModel
+import gun0912.tedimagepicker.builder.TedImagePicker
 import java.io.IOException
 
 
-class ShelterUserJoinFragment : BindingFragment<FragmentShelterUserJoinBinding>(R.layout.fragment_shelter_user_join) {
+class ShelterUserJoinFragment :
+    BindingFragment<FragmentShelterUserJoinBinding>(R.layout.fragment_shelter_user_join) {
 
     private val PICK_IMAGE_REQUEST = 1
+    private val joinViewModel: JoinViewModel by activityViewModels()
 
+    private lateinit var userType: String
     override fun initView() {
         super.initView()
 
@@ -26,38 +34,55 @@ class ShelterUserJoinFragment : BindingFragment<FragmentShelterUserJoinBinding>(
     override fun initListener() {
         super.initListener()
 
+        userType = arguments?.get("userType").toString()
+
         binding.apply {
             shelterProfileImageButton.setOnClickListener {
-                val intent = Intent()
-                intent.type = "image/*"
-                intent.action = Intent.ACTION_GET_CONTENT
-                startActivityForResult(
-                    Intent.createChooser(intent, "Select Picture"),
-                    PICK_IMAGE_REQUEST
-                )
+                TedImagePicker.with(requireContext())
+                    .max(1, "")
+                    .startMultiImage { uriList ->
+                        joinViewModel.setJoinImage(uriList)
+                        Glide.with(binding.root)
+                            .load(uriList[0])
+                            .circleCrop()
+                            .into(binding.shelterProfileImageButton)
+                    }
             }
 
-            profileButton.setOnClickListener {
-                if (shelterNickname.text.toString().isNotEmpty()){
-                    findNavController().navigate(R.id.action_shelterUserJoinFragment_to_shelterUserMoreFragment)
+            joinTypeBackButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
+
+            shelterProfileButton.setOnClickListener {
+                var shelterName = shelterNameTv.text.toString()
+                var shelterPhone = shelterPhoneTv.text.toString()
+                var shelterAccount = shelterAccountTv.text.toString()
+                var shelterAddress = shelterAddressTv.text.toString()
+                var shelterHomePage = shelterHomePageTv.text.toString()
+
+                if (shelterName.isNotEmpty() && shelterPhone.isNotEmpty()
+                    && shelterAccount.isNotEmpty() && shelterAddress.isNotEmpty()
+                ) {
+                    findNavController().navigate(R.id.action_shelterUserJoinFragment_to_shelterUserMoreFragment,
+                        Bundle().apply {
+                            putString("shelterName", shelterName)
+                            putString("shelterPhone", shelterPhone)
+                            putString("shelterAccount", shelterAccount)
+                            putString("shelterAddress", shelterAddress)
+                            putString("shelterHomePage", shelterHomePage)
+                            putString("userType", userType)
+                        }
+                    )
+                } else {
+                    Toast.makeText(context, "입력되지 않은 값이 있습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
+
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode === PICK_IMAGE_REQUEST && resultCode === Activity.RESULT_OK && data != null && data.data != null) {
-            val uri: Uri? = data.data
-            try {
-                val bitmap: Bitmap =
-                    MediaStore.Images.Media.getBitmap(requireActivity()!!.contentResolver, uri)
-                val imageView: ImageView = requireActivity()!!.findViewById<View>(R.id.shelter_profileImageButton) as ImageView
-                Glide.with(this).load(bitmap).circleCrop().into(imageView)
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
+    override fun initViewModel() {
+        super.initViewModel()
+        joinViewModel.initJoinImage()
     }
 }

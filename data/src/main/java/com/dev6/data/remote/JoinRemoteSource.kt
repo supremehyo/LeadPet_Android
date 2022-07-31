@@ -8,14 +8,14 @@ import javax.inject.Inject
 
 //E
 interface JoinRemoteSource {
-    suspend fun signUp(joinEntitiy: JoinEntitiyRepo): String
+    suspend fun signUp(joinEntitiy: JoinEntitiy): String
 }
 
 class JoinRemoteSourceImpl @Inject constructor(
     private val joinService: JoinAPI
 ) : JoinRemoteSource {
 
-    override suspend fun signUp(joinEntitiy: JoinEntitiyRepo): String {
-        return joinService.signUp(joinEntitiy as JoinEntitiy)//이게 맞나?
+    override suspend fun signUp(joinEntitiy: JoinEntitiy): String {
+        return joinService.signUp(joinEntitiy)
     }
 }

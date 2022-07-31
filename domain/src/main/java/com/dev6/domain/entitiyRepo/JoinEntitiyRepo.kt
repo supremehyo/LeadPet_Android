@@ -1,16 +1,30 @@
 package com.dev6.domain.entitiyRepo
 
-interface  JoinEntitiyRepo {
-    var _loginMethod: String
-    var _uid : String
-    var _email : String?
-    var _password : String?
-    var _profileImage : String?
-    var _name : String
-    var _shelterName : String
-    var _shelterAddress : String
-    var _shelterPhoneNumber : String
-    var _shelterManager : String
-    var _shelterHomePage : String
-    var _userType : String
-}
+import com.google.gson.annotations.SerializedName
+
+data class JoinEntitiyRepo(
+    @SerializedName("loginMethod")
+    val loginMethod: String,
+    @SerializedName("uid")
+    val uid: String,
+    @SerializedName("email")
+    val email: String?,
+    @SerializedName("password")
+    val password: String?,
+    @SerializedName("profileImage")
+    val profileImage: String?,
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("shelterName")
+    val shelterName: String,
+    @SerializedName("shelterAddress")
+    val shelterAddress: String,
+    @SerializedName("shelterPhoneNumber")
+    val shelterPhoneNumber: String,
+    @SerializedName("shelterManager")
+    val shelterManager: String,
+    @SerializedName("shelterHomePage")
+    val shelterHomePage: String,
+    @SerializedName("userType")
+    val userType: String,
+)

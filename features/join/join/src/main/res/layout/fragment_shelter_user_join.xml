@@ -7,51 +7,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="70dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.095"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/joinType_backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/keyboard_backspace"
-                app:layout_constraintBottom_toBottomOf="@+id/appBar"
-                app:layout_constraintEnd_toEndOf="@+id/appBar"
-                app:layout_constraintHorizontal_bias="0.036"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.55"></ImageView>
-
             <TextView
-                android:textSize="16dp"
+                android:id="@+id/tv_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/notosanskr_medium"
-                android:text="프로필"
-                android:textColor="@color/grey5"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:includeFontPadding="false"
+                android:text="가입유형"
+                android:textColor="@color/Gray_01"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextView>
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_more"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_top"
+                app:layout_constraintStart_toEndOf="@+id/tv_top"
+                app:layout_constraintTop_toTopOf="@+id/tv_top"
+                app:srcCompat="@drawable/ic_chevron_down" />
+
+            <ImageButton
+                android:id="@+id/joinTypeBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="131dp"
+                android:background="@drawable/ic_vector"
+                android:rotationY="180"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@+id/profileButton"
+            app:layout_constraintBottom_toTopOf="@+id/shelterProfileButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBar">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -65,236 +79,164 @@
                     android:layout_height="150dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/userprofileimage"></ImageView>
-
-                <TextView
-                    android:id="@+id/shelter_profile_sub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/shelter_profileImageButton"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="12dp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:includeFontPadding="false"
-                    android:text="허위 정보 입력시 계정 영구정지가 될 수 있어요."
-                    android:textColor="@color/subTitle2"></TextView>
+                    android:src="@drawable/userprofileimage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></ImageView>
 
                 <LinearLayout
-                    android:id="@+id/linear1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_below="@+id/shelter_profile_sub">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/shelter_profileImageButton">
 
-                    <TextView
-                        android:text="닉네임을 입력해주세요"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="14dp"
-                        android:textColor="@color/subTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"></TextView>
-
-                    <EditText
-                        android:id="@+id/shelter_nickname"
-                        android:textSize="12dp"
-                        android:paddingStart="16dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:textColorHint="@color/hintColor"
-                        android:hint="2~16자 이내로 닉네임을 작성해주세요/"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp">
-                    </EditText>
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/linear2"
-                    android:layout_marginTop="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@+id/linear1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shelterUsernameEt"
+                        style="@style/CustomOutlineBox"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="보호소 이름"
-                        android:textColor="@color/subTitle"
-                        android:textSize="14dp"></TextView>
-                    <EditText
-                        android:id="@+id/shelter_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:paddingStart="16dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:hint="이름"
-                        android:textColorHint="@color/hintColor"
-                        android:textSize="12dp"></EditText>
+                        android:gravity="center_horizontal"
+                        app:helperTextTextColor="@color/Gray_04"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shelter_profile_sub"
+                        app:layout_constraintVertical_bias="0.15"
+                        app:layout_constraintWidth_percent="0.91">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shelterNameTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/custom_font_family"
+                            android:gravity="start|top"
+                            android:hint="보호소 이름"
+                            android:autofillHints="name"
+                            android:paddingTop="20dp"
+                            android:textColorHint="@color/text_color_hint" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear3"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@+id/linear2"
-                    android:layout_marginTop="12dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shelterUserAddressEt"
+                        style="@style/CustomOutlineBox"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="보호소 주소"
-                        android:textColor="@color/subTitle"
-                        android:textSize="14dp"></TextView>
-                    <EditText
-                        android:id="@+id/shelter_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:paddingStart="16dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:hint="주소를 입력해주세요"
-                        android:textColorHint="@color/hintColor"
-                        android:textSize="12dp"></EditText>
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        app:helperTextTextColor="@color/Gray_04"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shelterUsernameEt"
+                        app:layout_constraintWidth_percent="0.91">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shelterAddressTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/custom_font_family"
+                            android:gravity="start|top"
+                            android:hint="보호소 주소"
+                            android:paddingTop="20dp"
+                            android:textColorHint="@color/text_color_hint" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear4"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="12dp"
-                    android:orientation="vertical"
-                    android:layout_below="@+id/linear3">
-
-                    <TextView
-                        android:text="보호소 연락처"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="14dp"
-                        android:textColor="@color/subTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"></TextView>
-
-                    <EditText
-                        android:id="@+id/shelter_phoneNumber"
-                        android:textSize="12dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:textColorHint="@color/hintColor"
-                        android:paddingStart="16dp"
-                        android:hint="'-'를 제외한 숫자만 입력해주세요"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp">
-                    </EditText>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear5"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@+id/linear4"
-                    android:layout_marginTop="12dp"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shelterUserPhoneEt"
+                        style="@style/CustomOutlineBox"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:text="담당자 이름"
-                        android:textColor="@color/subTitle"
-                        android:textSize="14dp"></TextView>
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        app:helperTextTextColor="@color/Gray_04"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shelterUsernameEt"
+                        app:layout_constraintWidth_percent="0.91">
 
-                    <EditText
-                        android:id="@+id/shelter_managerName"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:hint="이름"
-                        android:paddingStart="16dp"
-                        android:textColorHint="@color/hintColor"
-                        android:textSize="12dp"></EditText>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shelterPhoneTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/custom_font_family"
+                            android:gravity="start|top"
+                            android:hint="보호소 연락처"
+                            android:paddingTop="20dp"
+                            android:textColorHint="@color/text_color_hint" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shelterUserAccountEt"
+                        style="@style/CustomOutlineBox"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="330dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        app:helperTextTextColor="@color/Gray_04"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shelterUsernameEt"
+                        app:layout_constraintWidth_percent="0.91">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shelterAccountTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/custom_font_family"
+                            android:gravity="start|top"
+                            android:hint="후원 계좌번호"
+                            android:paddingTop="20dp"
+                            android:textColorHint="@color/text_color_hint" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shelterUserHomePageEt"
+                        style="@style/CustomOutlineBox"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        app:helperTextTextColor="@color/Gray_04"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shelterUsernameEt"
+                        app:layout_constraintWidth_percent="0.91">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shelterHomePageTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/custom_font_family"
+                            android:gravity="start|top"
+                            android:hint="홈페이지(선택)"
+                            android:paddingTop="20dp"
+                            android:textColorHint="@color/text_color_hint" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/linear6"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="12dp"
-                    android:orientation="vertical"
-                    android:layout_below="@+id/linear5">
-
-                    <TextView
-                        android:text="담장자 연락처"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="14dp"
-                        android:textColor="@color/subTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"></TextView>
-
-                    <EditText
-                        android:id="@+id/shelter_managerPhoneNumber"
-                        android:textSize="12dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:textColorHint="@color/hintColor"
-                        android:hint="'-'를 제외한 숫자만 입력해주세요"
-                        android:paddingStart="16dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp">
-                    </EditText>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear7"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="12dp"
-                    android:orientation="vertical"
-                    android:layout_below="@+id/linear6">
-
-                    <TextView
-                        android:text="보호소 홈페이지"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="14dp"
-                        android:textColor="@color/subTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"></TextView>
-
-                    <EditText
-                        android:id="@+id/shelter_HomePage"
-                        android:textSize="12dp"
-                        android:background="@drawable/edittext_rounded_corner_rectangle"
-                        android:textColorHint="@color/hintColor"
-                        android:paddingStart="16dp"
-                        android:hint="링크를 첨부해주세요"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp">
-                    </EditText>
-                </LinearLayout>
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
 
         <Button
-            android:id="@+id/profileButton"
+            android:id="@+id/shelterProfileButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:text="다음"

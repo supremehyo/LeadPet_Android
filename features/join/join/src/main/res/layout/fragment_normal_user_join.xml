@@ -18,36 +18,49 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="70dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/joinType_backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/keyboard_backspace"
-            app:layout_constraintBottom_toBottomOf="@+id/appBar"
-            app:layout_constraintEnd_toEndOf="@+id/appBar"
-            app:layout_constraintHorizontal_bias="0.036"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.55"></ImageView>
-
         <TextView
-            android:textSize="16dp"
+            android:id="@+id/tv_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:text="프로필"
-            android:textColor="@color/grey5"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:textColor="@color/Gray_01"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_top"
+            app:layout_constraintStart_toEndOf="@+id/tv_top"
+            app:layout_constraintTop_toTopOf="@+id/tv_top"
+            app:srcCompat="@drawable/ic_chevron_down" />
+
+        <ImageButton
+            android:id="@+id/noramlJoinBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="131dp"
+            android:background="@drawable/ic_vector"
+            android:rotationY="180"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,26 +73,35 @@
         app:layout_constraintTop_toBottomOf="@+id/appBar"
         app:layout_constraintVertical_bias="1.0">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/normalUserNicknameEt"
+            style="@style/CustomOutlineBox"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_rounded_corner_rectangle"
-            android:hint="2~16자 이내로 닉네임을 작성해주세요."
-            android:paddingStart="16dp"
-            android:textColorHint="@color/hintColor"
-            android:textSize="12dp"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            android:gravity="center_horizontal"
+            app:helperTextTextColor="@color/Gray_04"
+            app:helperText="2~16자 이내로 작성해 주세요"
+            app:layout_constraintWidth_percent="0.91"
+            app:layout_constraintVertical_bias="0.15"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.08"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:layout_constraintVertical_bias="0.02"
-            app:layout_constraintWidth_percent="0.9">
+            app:layout_constraintTop_toBottomOf="@+id/profileImageButton">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nickNameInputText"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:textColorHint="@color/text_color_hint"
+                android:fontFamily="@font/custom_font_family"
+                android:gravity="start|top"
+                android:hint="닉네임" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/profileImageButton"
@@ -91,31 +113,19 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.049"></ImageView>
+            app:layout_constraintVertical_bias="0.049" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/notosanskr_light"
-            android:includeFontPadding="false"
-            android:text="닉네임을 입력해주세요."
-            android:textColor="@color/subTitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.076"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileImageButton"
-            app:layout_constraintVertical_bias="0.03"></TextView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/profileButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="작성완료"
-        android:backgroundTint="@color/grey4"
+        android:text="다음"
+        android:textSize="16dp"
+        android:fontFamily="@font/hansneo_medium"
+        android:backgroundTint="@color/Main"
         android:background="@drawable/round_button"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +134,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.91"
         app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintVertical_bias="0.95"></Button>
+        app:layout_constraintVertical_bias="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
