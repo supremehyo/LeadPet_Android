@@ -20,12 +20,19 @@ class SpeicesViewModel @Inject constructor(
     private val _speciesStateFlow = MutableStateFlow<UiState<List<Species>>>(UiState.Loding)
     val speciesStateFlow = _speciesStateFlow.asStateFlow()
 
+    private val _indexStateFlow = MutableStateFlow<String>("")
+    val indexStateFlow = _indexStateFlow.asStateFlow()
+
     init {
         viewModelScope.launch {
             getSpeciesListUseCase(Unit).collect { uiState ->
                 _speciesStateFlow.update { uiState }
             }
         }
-
     }
+
+    fun setIndex(index: String) {
+        _indexStateFlow.update { index }
+    }
+
 }

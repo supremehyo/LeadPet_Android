@@ -1,24 +1,20 @@
 package com.dev6.post
 
-import android.content.Context
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.ColorRes
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.entitiyRepo.Species
 import com.dev6.domain.entitiyRepo.extractIndex
-import com.dev6.login.viewmodel.DonatePostViewModel
 import com.dev6.post.databinding.FragmentSpeciesChoiceBinding
-import com.dev6.post.item.AlpabetGroupieAdapter
 import com.dev6.post.item.ItemIndex
 import com.dev6.post.item.ItemListPet
-import com.dev6.post.viewmodel.AdoptPostViewModel
+import com.dev6.post.item.VisiblePositionChangeListener
 import com.dev6.post.viewmodel.SpeicesViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
@@ -30,12 +26,40 @@ class SpeciesChoiceFragment :
     BindingFragment<FragmentSpeciesChoiceBinding>(R.layout.fragment_species_choice) {
 
     private val speicesViewModel: SpeicesViewModel by activityViewModels()
-    lateinit var breedAdapter: AlpabetGroupieAdapter
+    lateinit var breedAdapter: GroupieAdapter
+
+    private val sectionMap: HashMap<Section, String> = hashMapOf()
+    private val IndexMap: HashMap<String, View> = hashMapOf()
 
     override fun initView() {
         super.initView()
-        breedAdapter = AlpabetGroupieAdapter().also {
+        breedAdapter = GroupieAdapter().also {
             binding.rvPetList.adapter = it
+            binding.rvPetList.addOnScrollListener(VisiblePositionChangeListener(
+                binding.rvPetList.layoutManager as LinearLayoutManager,
+                object : VisiblePositionChangeListener.OnChangeListener {
+                    override fun onFirstVisiblePositionChanged(position: Int) {
+                        speicesViewModel.setIndex(
+                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
+                                position
+                            )] ?: return
+                        )
+                    }
+
+                    override fun onLastVisiblePositionChanged(position: Int) {}
+
+                    override fun onFirstInvisiblePositionChanged(position: Int) {
+//                        Timber.d(sectionMap[breedAdapter.getGroupAtAdapterPosition(position)])
+                        speicesViewModel.setIndex(
+                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
+                                position
+                            )] ?: return
+                        )
+                    }
+
+                    override fun onLastInvisiblePositionChanged(position: Int) {}
+                }
+            ))
         }
 
     }
@@ -47,6 +71,24 @@ class SpeciesChoiceFragment :
                 uiHandler(it)
             }
         }
+        repeatOnStarted {
+            speicesViewModel.indexStateFlow.collectLatest { index ->
+                clearIndexColor()
+                changeIndexColor(IndexMap.get(index), R.color.Main)
+            }
+        }
+    }
+
+    private fun changeIndexColor(indexView: View?, @ColorRes color: Int) {
+        indexView?.findViewById<TextView>(R.id.tv_index)?.also {
+            it.setTextColor(resources.getColor(color, null))
+        }
+    }
+
+    private fun clearIndexColor() {
+        IndexMap.forEach { key, value ->
+            changeIndexColor(value, R.color.color_bd)
+        }
     }
 
     private fun uiHandler(uiState: UiState<List<Species>>) {
@@ -56,15 +98,17 @@ class SpeciesChoiceFragment :
             }
 
             is UiState.Success -> {
+                sectionMap.clear()
+
                 uiState.data.extractIndex().let { addIndexView(it) }
-                //하나의 섹션을 열고, 담는다.
+
                 uiState.data.forEach { species ->
                     val speciesSection = Section().also { section ->
                         section.setHeader(ItemIndex(species.index))
                         section.addAll(species.speciesList.map { ItemListPet(it) })
-
                     }
                     breedAdapter.add(speciesSection)
+                    sectionMap[speciesSection] = species.index
 
                 }
 
@@ -97,8 +141,17 @@ class SpeciesChoiceFragment :
                 val view = it.findViewById<TextView>(R.id.tv_index)
                 view.text = item
             }
+            itemView.setOnClickListener {
+                speicesViewModel.setIndex(item)
+                scrollSectionPosition(item)
+            }
+            IndexMap.set(item, itemView)
             binding.llAlpabet.addView(itemView)
         }
 
+    }
+
+    private fun scrollSectionPosition(item: String) {
+    sectionMap.
     }
 }
