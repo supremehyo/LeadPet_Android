@@ -1,8 +1,7 @@
 package com.dev6.domain.repository
 
-import com.dev6.domain.entitiyRepo.AdoptPostEntityRepo
-import com.dev6.domain.entitiyRepo.Species
+import com.dev6.domain.entitiyRepo.IndexBreed
 
 interface SpeciesRepository {
-    suspend fun fetchSpeciesList(): List<Species>
+    suspend fun fetchSpeciesList(): List<IndexBreed>
 }

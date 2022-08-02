@@ -8,8 +8,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
-import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.domain.entitiyRepo.Species
+import com.dev6.core.util.extension.getKeyFirst
+import com.dev6.core.view.CenterSmoothScroller
+import com.dev6.domain.entitiyRepo.IndexBreed
 import com.dev6.domain.entitiyRepo.extractIndex
 import com.dev6.post.databinding.FragmentSpeciesChoiceBinding
 import com.dev6.post.item.ItemIndex
@@ -30,11 +31,13 @@ class SpeciesChoiceFragment :
 
     private val sectionMap: HashMap<Section, String> = hashMapOf()
     private val IndexMap: HashMap<String, View> = hashMapOf()
+    private lateinit var smoothScroller: CenterSmoothScroller
 
     override fun initView() {
         super.initView()
         breedAdapter = GroupieAdapter().also {
             binding.rvPetList.adapter = it
+            smoothScroller = CenterSmoothScroller(binding.rvPetList.context)
             binding.rvPetList.addOnScrollListener(VisiblePositionChangeListener(
                 binding.rvPetList.layoutManager as LinearLayoutManager,
                 object : VisiblePositionChangeListener.OnChangeListener {
@@ -66,12 +69,12 @@ class SpeciesChoiceFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        repeatOnStarted {
+        repeatOnStartedFragment {
             speicesViewModel.speciesStateFlow.collectLatest {
                 uiHandler(it)
             }
         }
-        repeatOnStarted {
+        repeatOnStartedFragment {
             speicesViewModel.indexStateFlow.collectLatest { index ->
                 clearIndexColor()
                 changeIndexColor(IndexMap.get(index), R.color.Main)
@@ -91,25 +94,22 @@ class SpeciesChoiceFragment :
         }
     }
 
-    private fun uiHandler(uiState: UiState<List<Species>>) {
+    private fun uiHandler(uiState: UiState<List<IndexBreed>>) {
         when (uiState) {
             is UiState.Loding -> {
 
             }
 
             is UiState.Success -> {
-                sectionMap.clear()
-
+                clearView()
                 uiState.data.extractIndex().let { addIndexView(it) }
-
                 uiState.data.forEach { species ->
                     val speciesSection = Section().also { section ->
                         section.setHeader(ItemIndex(species.index))
-                        section.addAll(species.speciesList.map { ItemListPet(it) })
+                        section.addAll(species.breedList.map { ItemListPet(it) })
                     }
                     breedAdapter.add(speciesSection)
                     sectionMap[speciesSection] = species.index
-
                 }
 
             }
@@ -134,7 +134,7 @@ class SpeciesChoiceFragment :
         super.onDestroyView()
     }
 
-    fun addIndexView(indexList: List<String>) {
+    private fun addIndexView(indexList: List<String>) {
         val inflater = LayoutInflater.from(binding.root.context)
         indexList.forEach { item ->
             val itemView = inflater.inflate(R.layout.view_index, null, false).also {
@@ -151,7 +151,22 @@ class SpeciesChoiceFragment :
 
     }
 
+    private fun clearView() {
+        binding.llAlpabet.removeAllViews()
+        sectionMap.clear()
+        breedAdapter.clear()
+
+    }
+    /**
+     * 해당 섹션으로 포지션 이동
+     *
+     * @param item
+     */
     private fun scrollSectionPosition(item: String) {
-    sectionMap.
+        val section = sectionMap.getKeyFirst(item)
+        breedAdapter.getAdapterPosition(section).also {
+            smoothScroller.targetPosition = it
+            binding.rvPetList.layoutManager?.startSmoothScroll(smoothScroller)
+        }
     }
 }

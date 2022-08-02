@@ -1,6 +1,7 @@
 package com.dev6.post.item
 
 import android.view.View
+import com.dev6.domain.entitiyRepo.Breed
 import com.dev6.post.R
 import com.dev6.post.databinding.ItemPetListBinding
 import com.xwray.groupie.viewbinding.BindableItem
@@ -9,10 +10,10 @@ import com.xwray.groupie.viewbinding.BindableItem
  * 품종 목록 리스트
  *
  */
-class ItemListPet(val name: String) : BindableItem<ItemPetListBinding>() {
+class ItemListPet(val breed: Breed) : BindableItem<ItemPetListBinding>() {
 
     override fun bind(binding: ItemPetListBinding, position: Int) {
-        binding.tvName.text = name
+        binding.tvName.text = breed.breedName
     }
 
     override fun getLayout(): Int = R.layout.item_pet_list

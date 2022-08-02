@@ -95,6 +95,14 @@
         <item name="rippleColor">@color/White</item>
     </style>
 
+    <style name="CustomChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_button_pressed</item>
+        <item name="android:textColor">@color/chip_button_text_pressed</item>
+        <item name="chipCornerRadius">35dp</item>
+        <item name="textEndPadding">12dp</item>
+        <item name="textStartPadding">12dp</item>
+    </style>
+
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.2dp</item>
