@@ -43,4 +43,8 @@ dependencies {
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
     androidTestImplementation(Kotlin.COROUTINES_TEST)
 
+    implementation(Room.ROOM)
+    kapt(Room.ROOM_COMPILER)
+    testImplementation(Room.ROOM_TESTING)
+
 }

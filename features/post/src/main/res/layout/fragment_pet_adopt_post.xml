@@ -79,7 +79,7 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <com.dev6.core.view.CustomButtonSpinner
-                    android:id="@+id/btn_choice_animal"
+                    android:id="@+id/btn_choice_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -89,20 +89,8 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/v_camera2"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
-                    app:text="동물선택" />
-
-                <com.dev6.core.view.CustomButtonSpinner
-                    android:id="@+id/btn_choice_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_choice_animal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/btn_choice_animal"
-                    app:layout_constraintTop_toTopOf="@+id/btn_choice_animal"
-                    app:layout_constraintVertical_bias="0.0"
                     app:text="암수구분" />
+
 
                 <com.dev6.core.view.CustomButtonSpinner
                     android:id="@+id/btn_choice_age"
@@ -133,13 +121,12 @@
                     style="@style/ButtonSelecterStyle"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="5:1"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
                     app:layout_constraintTop_toBottomOf="@+id/tv_neutering"
-                    app:layout_constraintVertical_bias="0.07999998"
                     app:singleSelection="true">
 
                     <com.google.android.material.button.MaterialButton
@@ -242,10 +229,11 @@
                     android:id="@+id/til_introduce"
                     style="@style/CustomOutlineBox"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:paddingTop="15dp"
                     app:boxStrokeWidth="2dp"
                     app:counterEnabled="true"
+                    app:counterMaxLength="1000"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
@@ -255,10 +243,10 @@
                         android:id="@+id/tiet_introduce"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@null"
                         android:fontFamily="@font/custom_font_family"
                         android:gravity="start|top"
-                        android:hint="소개글 작성" />
+                        android:hint="소개글 작성"
+                        android:minHeight="200dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

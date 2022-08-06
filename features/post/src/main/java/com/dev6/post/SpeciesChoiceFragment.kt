@@ -5,10 +5,13 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.getKeyFirst
+import com.dev6.core.util.extension.setClickEvent
 import com.dev6.core.view.CenterSmoothScroller
 import com.dev6.domain.entitiyRepo.IndexBreed
 import com.dev6.domain.entitiyRepo.extractIndex
@@ -28,42 +31,14 @@ class SpeciesChoiceFragment :
 
     private val speicesViewModel: SpeicesViewModel by activityViewModels()
     lateinit var breedAdapter: GroupieAdapter
+    private var isClicked: Boolean = false
 
     private val sectionMap: HashMap<Section, String> = hashMapOf()
     private val IndexMap: HashMap<String, View> = hashMapOf()
-    private lateinit var smoothScroller: CenterSmoothScroller
 
     override fun initView() {
         super.initView()
-        breedAdapter = GroupieAdapter().also {
-            binding.rvPetList.adapter = it
-            smoothScroller = CenterSmoothScroller(binding.rvPetList.context)
-            binding.rvPetList.addOnScrollListener(VisiblePositionChangeListener(
-                binding.rvPetList.layoutManager as LinearLayoutManager,
-                object : VisiblePositionChangeListener.OnChangeListener {
-                    override fun onFirstVisiblePositionChanged(position: Int) {
-                        speicesViewModel.setIndex(
-                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
-                                position
-                            )] ?: return
-                        )
-                    }
-
-                    override fun onLastVisiblePositionChanged(position: Int) {}
-
-                    override fun onFirstInvisiblePositionChanged(position: Int) {
-//                        Timber.d(sectionMap[breedAdapter.getGroupAtAdapterPosition(position)])
-                        speicesViewModel.setIndex(
-                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
-                                position
-                            )] ?: return
-                        )
-                    }
-
-                    override fun onLastInvisiblePositionChanged(position: Int) {}
-                }
-            ))
-        }
+        initIndexView()
 
     }
 
@@ -79,18 +54,6 @@ class SpeciesChoiceFragment :
                 clearIndexColor()
                 changeIndexColor(IndexMap.get(index), R.color.Main)
             }
-        }
-    }
-
-    private fun changeIndexColor(indexView: View?, @ColorRes color: Int) {
-        indexView?.findViewById<TextView>(R.id.tv_index)?.also {
-            it.setTextColor(resources.getColor(color, null))
-        }
-    }
-
-    private fun clearIndexColor() {
-        IndexMap.forEach { key, value ->
-            changeIndexColor(value, R.color.color_bd)
         }
     }
 
@@ -123,6 +86,13 @@ class SpeciesChoiceFragment :
 
     override fun initListener() {
         super.initListener()
+        binding.chipGroup.setOnClickListener {
+            when (binding.chipGroup.checkedChipId) {
+                R.id.c_all -> binding.cAll.text.toString()
+                R.id.c_cat -> binding.cCat.text.toString()
+                else -> null
+            }
+        }
 
     }
 
@@ -136,17 +106,19 @@ class SpeciesChoiceFragment :
 
     private fun addIndexView(indexList: List<String>) {
         val inflater = LayoutInflater.from(binding.root.context)
-        indexList.forEach { item ->
+        indexList.forEachIndexed { index, item ->
             val itemView = inflater.inflate(R.layout.view_index, null, false).also {
                 val view = it.findViewById<TextView>(R.id.tv_index)
                 view.text = item
             }
-            itemView.setOnClickListener {
+            itemView.setClickEvent(viewLifecycleOwner.lifecycleScope) {
                 speicesViewModel.setIndex(item)
+                isClicked = true
                 scrollSectionPosition(item)
             }
             IndexMap.set(item, itemView)
             binding.llAlpabet.addView(itemView)
+            if (index == 0) speicesViewModel.setIndex(item)
         }
 
     }
@@ -157,16 +129,66 @@ class SpeciesChoiceFragment :
         breedAdapter.clear()
 
     }
+
+    /**
+     * 인덱스뷰 만드는 설정
+     *
+     */
+    private fun initIndexView() {
+        breedAdapter = GroupieAdapter().also {
+            binding.rvPetList.adapter = it
+            binding.rvPetList.addOnScrollListener(VisiblePositionChangeListener(
+                binding.rvPetList.layoutManager as LinearLayoutManager,
+                object : VisiblePositionChangeListener.OnChangeListener {
+                    override fun onFirstVisiblePositionChanged(position: Int) {
+                        speicesViewModel.setIndex(
+                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
+                                position
+                            )] ?: return
+                        )
+                    }
+
+                    override fun onLastVisiblePositionChanged(position: Int) {}
+
+                    override fun onFirstInvisiblePositionChanged(position: Int) {
+                        if (isClicked) return
+                        speicesViewModel.setIndex(
+                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
+                                position
+                            )] ?: return
+                        )
+                    }
+
+                    override fun onLastInvisiblePositionChanged(position: Int) {}
+                })
+            )
+        }
+    }
+
+    private fun changeIndexColor(indexView: View?, @ColorRes color: Int) {
+        indexView?.findViewById<TextView>(R.id.tv_index)?.also {
+            it.setTextColor(resources.getColor(color, null))
+        }
+    }
+
+    private fun clearIndexColor() {
+        IndexMap.forEach { key, value ->
+            changeIndexColor(value, R.color.color_bd)
+        }
+    }
+
     /**
      * 해당 섹션으로 포지션 이동
-     *
+     * todo 스무스하게 이동하는건 다음 버전에 추가
      * @param item
      */
     private fun scrollSectionPosition(item: String) {
         val section = sectionMap.getKeyFirst(item)
+        val layoutManager = binding.rvPetList.layoutManager as LinearLayoutManager
         breedAdapter.getAdapterPosition(section).also {
-            smoothScroller.targetPosition = it
-            binding.rvPetList.layoutManager?.startSmoothScroll(smoothScroller)
+            layoutManager.scrollToPositionWithOffset(it, 0)
         }
+
+        isClicked = false
     }
 }

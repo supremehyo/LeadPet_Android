@@ -23,9 +23,6 @@ object AndroidX {
 
     const val NAVIGATION = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
     const val NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
-    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
-    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
-    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
     const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
     const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
 }
@@ -61,7 +58,7 @@ object AndroidTest {
     const val ANDROID_JUNIT = "androidx.test.ext:junit:${Versions.ANDROID_JUNIT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
     const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:${Versions.ESPRESSO_CORE}"
-    const val ANDROID_RUNNER =  "androidx.test:runner:1.1.0"
+    const val ANDROID_RUNNER = "androidx.test:runner:1.1.0"
 }
 
 //네트워크 관련
@@ -100,5 +97,11 @@ object RecyclerView {
 
 object Indicator {
     const val CIRCLE_INDICATOR = "com.tbuonomo:dotsindicator:4.3"
+}
+
+object Room {
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
+    const val ROOM = "androidx.room:room-ktx:${Versions.ROOM}"
+    const val ROOM_TESTING = "androidx.room:room-testing:${Versions.ROOM}"
 }
 

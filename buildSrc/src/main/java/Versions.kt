@@ -13,7 +13,7 @@ object Versions {
     const val ACTIVITY_KTX = "1.5.0-alpha02"
     const val FRAGMENT_KTX = "1.4.0"
     const val LIFECYCLE_KTX = "2.2.0"
-    const val ROOM = "2.3.0"
+    const val ROOM = "2.4.2"
 
     const val NAVIGATION = "2.4.2"
 
@@ -26,4 +26,5 @@ object Versions {
     const val JUNIT = "4.13.2"
     const val ANDROID_JUNIT = "1.1.1"
     const val ESPRESSO_CORE = "3.4.0"
+
 }

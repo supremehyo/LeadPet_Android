@@ -9,6 +9,9 @@
         android:id="@+id/tv_index"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="5dp"
         android:text="가"
         android:textColor="@color/Gray_01" />
 </LinearLayout>

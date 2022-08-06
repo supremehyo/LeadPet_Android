@@ -7,7 +7,7 @@ import com.dev6.domain.entitiyRepo.IndexBreed
 import com.dev6.domain.usecase.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-
+//만약 값이 없다면 Unit
 typealias GetSpeciesListBaseUseCase = BaseUseCase<Unit, Flow<UiState<List<IndexBreed>>>>
 
 //todo 일단 가볍게 테스트로만 사용

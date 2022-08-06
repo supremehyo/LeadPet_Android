@@ -56,7 +56,6 @@ class PetAdoptPostFragment :
 
         repeatOnStarted {
             adoptPostViewModel.adoptChoizceStateFlow.collect {
-                binding.btnChoiceAnimal.setText(it.animal)
                 binding.btnChoiceGender.setText(it.gender)
                 binding.btnChoiceAge.setText(it.age)
             }
@@ -67,9 +66,6 @@ class PetAdoptPostFragment :
         super.initListener()
         binding.btnChoiceGender.setOnClickListener {
             genderBottomSeatFragment.show(this.parentFragmentManager, "")
-        }
-        binding.btnChoiceAnimal.setOnClickListener {
-            animalBottomSeatFragment.show(this.parentFragmentManager, "")
         }
         binding.btnChoiceAge.setOnClickListener {
             ageBottomSeatFragment.show(this.parentFragmentManager, "")
