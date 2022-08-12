@@ -31,7 +31,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         feedViewModel.setSpinnerEntry(list)
         repeatOnStarted {
             feedViewModel.spinnerData.collect{
-                Log.v("sdfsdfsdf" , it)
+
             }
         }
 

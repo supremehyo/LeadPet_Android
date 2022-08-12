@@ -24,7 +24,6 @@ suspend fun <T> Response<T>.executeNetworkHandling(): T? {
         DefaultHandleServerStatus(errorResponse.error)
     }
 
-
     return body().executeErrorHandling(handle)
 }
 
