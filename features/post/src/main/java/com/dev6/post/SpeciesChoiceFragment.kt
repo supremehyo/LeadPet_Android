@@ -137,30 +137,31 @@ class SpeciesChoiceFragment :
     private fun initIndexView() {
         breedAdapter = GroupieAdapter().also {
             binding.rvPetList.adapter = it
-            binding.rvPetList.addOnScrollListener(VisiblePositionChangeListener(
-                binding.rvPetList.layoutManager as LinearLayoutManager,
-                object : VisiblePositionChangeListener.OnChangeListener {
-                    override fun onFirstVisiblePositionChanged(position: Int) {
-                        speicesViewModel.setIndex(
-                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
-                                position
-                            )] ?: return
-                        )
-                    }
+            binding.rvPetList.addOnScrollListener(
+                VisiblePositionChangeListener(
+                    binding.rvPetList.layoutManager as LinearLayoutManager,
+                    object : VisiblePositionChangeListener.OnChangeListener {
+                        override fun onFirstVisiblePositionChanged(position: Int) {
+                            speicesViewModel.setIndex(
+                                sectionMap[breedAdapter.getGroupAtAdapterPosition(
+                                    position
+                                )] ?: return
+                            )
+                        }
 
-                    override fun onLastVisiblePositionChanged(position: Int) {}
+                        override fun onLastVisiblePositionChanged(position: Int) {}
 
-                    override fun onFirstInvisiblePositionChanged(position: Int) {
-                        if (isClicked) return
-                        speicesViewModel.setIndex(
-                            sectionMap[breedAdapter.getGroupAtAdapterPosition(
-                                position
-                            )] ?: return
-                        )
-                    }
+                        override fun onFirstInvisiblePositionChanged(position: Int) {
+                            if (isClicked) return
+                            speicesViewModel.setIndex(
+                                sectionMap[breedAdapter.getGroupAtAdapterPosition(
+                                    position
+                                )] ?: return
+                            )
+                        }
 
-                    override fun onLastInvisiblePositionChanged(position: Int) {}
-                })
+                        override fun onLastInvisiblePositionChanged(position: Int) {}
+                    })
             )
         }
     }

@@ -4,7 +4,7 @@ import com.dev6.domain.entitiyRepo.IndexBreed
 import com.dev6.domain.repository.BreedRepository
 
 class BreedRepositoryImp : BreedRepository {
-    override suspend fun fetchSpeciesList(): List<IndexBreed> {
+    override suspend fun fetchBreedList(): List<IndexBreed> {
         TODO("Not yet implemented")
     }
 }
