@@ -48,14 +48,13 @@ android {
 
 dependencies {
 
-    implementation (project(":features:feed"))
-    implementation (project(":features:login"))
-    implementation (project(":data"))
-    implementation (project(":domain"))
-    implementation (project(":core"))
-    implementation (project(":features:join:join"))
-    implementation (project(":features:post"))
-
+    implementation(project(":features:feed"))
+    implementation(project(":features:login"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":core"))
+    implementation(project(":features:join:join"))
+    implementation(project(":features:post"))
 
     //Android Core
     implementation(Kotlin.KOTLIN_STDLIB)
@@ -69,7 +68,6 @@ dependencies {
     implementation(AndroidX.LIFECYCLE_LIVEDATA_KTX)
     implementation(AndroidX.LIFECYCLE_EXTENSIONNS)
 
-
     //retrofit2
     implementation(Network.OKHTTP)
     implementation(Network.OKHTTP3)
@@ -79,11 +77,10 @@ dependencies {
 
 
     implementation(Google.HILT_ANDROID)
+    kapt(Google.HILT_ANDROID_COMPILER)
 
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    kapt(Google.HILT_ANDROID_COMPILER)
-    annotationProcessor(Google.HILT_COMPILER)
 
     implementation("androidx.appcompat:appcompat:1.4.0")
     implementation(Google.MATERIAL)
@@ -98,14 +95,14 @@ dependencies {
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
-
-
     //디버그용
     implementation(Debug.TIMBER)
     debugImplementation(Memory.LEAK_CANARY)
 
     implementation(Kakao.LOGIN)
 
-
+    implementation(Room.ROOM)
+    kapt(Room.ROOM_COMPILER)
+    testImplementation(Room.ROOM_TESTING)
 
 }

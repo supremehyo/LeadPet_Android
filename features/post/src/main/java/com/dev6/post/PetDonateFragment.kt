@@ -30,7 +30,7 @@ class PetDonateFragment : BindingFragment<FragmentPetDonateBinding>(R.layout.fra
     override fun initView() {
         super.initView()
 
-        with(binding){
+        with(binding) {
 
         }
     }
@@ -41,7 +41,6 @@ class PetDonateFragment : BindingFragment<FragmentPetDonateBinding>(R.layout.fra
             val text =
                 SpannableString("기부 방법 선택이 가능합니다. \n 입력하신 정보가 없을 시 ‘마이페이\n지’로 이동해 작성 할 수 있습니다.")
             text.setSpan(StyleSpan(Typeface.BOLD), 31, 41, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
 
             val balloon = createBalloon(requireContext()) {
                 setWidth(BalloonSizeSpec.WRAP)
@@ -70,12 +69,12 @@ class PetDonateFragment : BindingFragment<FragmentPetDonateBinding>(R.layout.fra
             }
         }
 
-        binding.cvStartDate.setClick { setDate() }
-        binding.cvEndDate.setClick { setDate() }
+        binding.cvStartDate.setClick { excuteDatePicker() }
+        binding.cvEndDate.setClick { excuteDatePicker() }
 
     }
 
-    private fun setDate() {
+    private fun excuteDatePicker() {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
         val dateRangePicker =
             MaterialDatePicker.Builder.dateRangePicker()

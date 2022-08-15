@@ -23,26 +23,18 @@ object AndroidX {
 
     const val NAVIGATION = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
     const val NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
-
-
-    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
-    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
-    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
-    const val PAGING                   ="androidx.paging:paging-runtime:${Versions.PAGING}"
+    const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
     const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
+
+    const val  WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_VERSION}"
+    const val  WORK_TEST = "androidx.work:work-testing:${Versions.WORK_VERSION}"
 }
-
-
-
 
 object Google {
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
     const val HILT_TESTING = "com.google.dagger:hilt-android-testing:${Versions.HILT}"
-
-    const val HILT_LIFECYCLE = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_EXTENTION}"
-    const val HILT_COMPILER = "androidx.hilt:hilt-compiler:1.0.0-alpha01"
-
+    const val HILT_WORKER = "androidx.hilt:hilt-work:${Versions.HILT}"
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
 
     //CRASHLYTICS
@@ -69,6 +61,8 @@ object UnitTest {
 object AndroidTest {
     const val ANDROID_JUNIT = "androidx.test.ext:junit:${Versions.ANDROID_JUNIT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+    const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:${Versions.ESPRESSO_CORE}"
+    const val ANDROID_RUNNER = "androidx.test:runner:1.1.0"
 }
 
 //네트워크 관련
@@ -107,5 +101,11 @@ object RecyclerView {
 
 object Indicator {
     const val CIRCLE_INDICATOR = "com.tbuonomo:dotsindicator:4.3"
+}
+
+object Room {
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
+    const val ROOM = "androidx.room:room-ktx:${Versions.ROOM}"
+    const val ROOM_TESTING = "androidx.room:room-testing:${Versions.ROOM}"
 }
 

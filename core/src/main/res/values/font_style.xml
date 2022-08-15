@@ -33,7 +33,6 @@
     </style>
 
 
-
     <style name="EditTextFontStyle_title" parent="@android:style/Widget.DeviceDefault.EditText">
         <item name="android:fontFamily">@font/custom_font_family</item>
         <item name="android:color">@color/Gray_06</item>
@@ -89,11 +88,19 @@
     </style>
 
     <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
-    <item name="cardBackgroundColor">@color/color_black</item>
-    <item name="android:clickable">true</item>
-    <item name="cardCornerRadius">8dp</item>
-    <item name="cardElevation">0dp</item>
-    <item name="rippleColor">@color/White</item>
+        <item name="cardBackgroundColor">@color/color_black</item>
+        <item name="android:clickable">true</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="rippleColor">@color/White</item>
+    </style>
+
+    <style name="CustomChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_button_pressed</item>
+        <item name="android:textColor">@color/chip_button_text_pressed</item>
+        <item name="chipCornerRadius">35dp</item>
+        <item name="textEndPadding">12dp</item>
+        <item name="textStartPadding">12dp</item>
     </style>
 
     <style name="Divider">

@@ -4,18 +4,13 @@ import app.cash.turbine.test
 import com.dev6.core.base.UiState
 import com.dev6.core.exception.ServerFailException
 import com.dev6.domain.entitiyRepo.LifePost
-import com.dev6.domain.entitiyRepo.LoginEntity
 import com.dev6.domain.repository.LifePostRepository
-import com.dev6.domain.repository.LoginRepository
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import java.io.IOException
 
 @RunWith(MockitoJUnitRunner::class)
 class InsertLifePostUseCaseTest {

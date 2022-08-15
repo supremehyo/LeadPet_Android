@@ -1,15 +1,13 @@
 package com.dev6.data.repositoryImple
 
-import com.dev6.core.enum.LoginType
+import com.dev6.core.enums.LoginType
 import com.dev6.data.fake.FakeLoginDataSource
 import com.dev6.domain.entitiyRepo.LoginEntity
-import com.dev6.domain.entitiyRepo.UserEntity
 import com.dev6.domain.repository.LoginRepository
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Response
 
 class LoginRepositoryImpTest {
 

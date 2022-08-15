@@ -29,3 +29,6 @@ include(":features:join:join")
 include(":features:feed")
 include(":features:post")
 
+include(":sync")
+include(":sync")
+include(":sync")

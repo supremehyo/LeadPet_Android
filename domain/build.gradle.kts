@@ -35,4 +35,8 @@ dependencies {
 
     //디버그용
     implementation(Debug.TIMBER)
+
+    implementation(Room.ROOM)
+    kapt(Room.ROOM_COMPILER)
+    testImplementation(Room.ROOM_TESTING)
 }

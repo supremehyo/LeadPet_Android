@@ -8,6 +8,8 @@
         android:id="@+id/lifePostFragment"
         android:name="com.dev6.post.LifePostFragment"
         android:label="LifePostFragment" >
+        <argument android:name="image"
+            app:argType="string[]" />
         <action
             android:id="@+id/action_lifePostFragment_to_gallraryFragment"
             app:destination="@id/gallraryFragment" />
@@ -28,11 +30,18 @@
         <action
             android:id="@+id/action_petAdoptPostFragment_to_gallraryFragment"
             app:destination="@id/gallraryFragment" />
+        <action
+            android:id="@+id/action_petAdoptPostFragment_to_speciesChoiceFragment"
+            app:destination="@id/speciesChoiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/gallraryFragment"
         android:name="com.dev6.post.GallraryFragment"
-        android:label="GallraryFragment" />
+        android:label="GallraryFragment" >
+        <argument
+            android:name="image"
+            app:argType="string[]" />
+    </fragment>
     <fragment
         android:id="@+id/petDonateFragment"
         android:name="com.dev6.post.PetDonateFragment"
@@ -41,5 +50,10 @@
         <action
             android:id="@+id/action_petDonateFragment_to_gallraryFragment"
             app:destination="@id/gallraryFragment" />
+        <argument android:name="Image" />
     </fragment>
+    <fragment
+        android:id="@+id/speciesChoiceFragment"
+        android:name="com.dev6.post.SpeciesChoiceFragment"
+        android:label="SpeciesChoiceFragment" />
 </navigation>

@@ -37,8 +37,12 @@ class CustomButtonCalandar @JvmOverloads constructor(
 
 
         binding.tietDate.doOnTextChanged { _, _, _, _ ->
-            binding.textInputLayout.setBoxStrokeColorStateList(resources.getColorStateList(R.color.text_input_layout_stroke_pressed,
-                null))
+            binding.textInputLayout.setBoxStrokeColorStateList(
+                resources.getColorStateList(
+                    R.color.text_input_layout_stroke_pressed,
+                    null
+                )
+            )
         }
 //        attrs?.run {
 //            val typedArr = context.obtainStyledAttributes(attrs, R.styleable.Button)
@@ -55,7 +59,6 @@ class CustomButtonCalandar @JvmOverloads constructor(
     }
 
     fun setClick(consumer: Consumer<String>) {
-
         this.okClickListener = consumer
     }
 }

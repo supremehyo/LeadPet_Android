@@ -13,15 +13,16 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object NetworkModule {
+open class NetworkModule {
 
-    //protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
-    val baseUrl = "http://192.168.0.17:8080"
+    protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -37,7 +38,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(baseUrl)
+            .baseUrl(baseUrl())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -77,5 +78,11 @@ object NetworkModule {
     @Singleton
     fun provideFeedService(retrofit: Retrofit): FeedAPI {
         return retrofit.create(FeedAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideBreedService(retrofit: Retrofit): BreedAPI {
+        return retrofit.create(BreedAPI::class.java)
     }
 }

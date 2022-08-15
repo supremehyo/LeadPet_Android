@@ -102,6 +102,7 @@ class HomeFragment :
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }
@@ -124,6 +125,7 @@ class HomeFragment :
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }
@@ -145,6 +147,7 @@ class HomeFragment :
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }

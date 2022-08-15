@@ -4,12 +4,21 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
     id("com.google.gms.google-services")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
+
     buildFeatures {
         viewBinding = true
         dataBinding = true
+    }
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+        animationsDisabled = true
     }
 }
 
@@ -46,7 +55,6 @@ dependencies {
 
     implementation(Google.HILT_ANDROID)
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    annotationProcessor(Google.HILT_COMPILER)
     kapt(Google.HILT_ANDROID_COMPILER)
 
 
@@ -63,6 +71,9 @@ dependencies {
 
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+    androidTestImplementation(AndroidTest.ESPRESSO_CONTRIB)
+    androidTestImplementation(AndroidTest.ANDROID_RUNNER)
+    androidTestImplementation(Kotlin.COROUTINES_TEST)
 
     implementation(AndroidX.NAVIGATION)
     implementation(AndroidX.NAVIGATION_KTX)

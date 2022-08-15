@@ -26,9 +26,12 @@ abstract class BaseBottomSheetDialogFragment<B : ViewDataBinding>(private val la
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        initView()
         initListener()
         return binding.root
     }
+
+    abstract fun initView()
 
     abstract fun initListener()
 

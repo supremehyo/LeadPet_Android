@@ -14,7 +14,7 @@ data class Error(
     val code: Int, val message: String, val detail: String
 )
 
-suspend fun <T> Response<T>.executeNetworkHandling(): T? {
+suspend fun <T> Response<T>.executeNetworkHandling(): T {
 
     val handle = if (isSuccessful) {
         null
@@ -27,14 +27,4 @@ suspend fun <T> Response<T>.executeNetworkHandling(): T? {
     return body().executeErrorHandling(handle)
 }
 
-//fun <T> Response<Response1>.executeNetworkHandling(): T {
-//    val handle = body()?.error?.let {
-//        DefaultHandleServerStatus(it)
-//    } ?: null
-//
-//    return executeNetworkHandling(handle)
-//}
 
-//abstract class Response1 {
-//    val error: ErrorResponse? = null
-//}

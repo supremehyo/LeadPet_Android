@@ -24,8 +24,7 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
     override fun initViewModel() {
         super.initViewModel()
         if (postViewModel.postImageFlow.value.isEmpty()) {
-            TedImagePicker.with(requireContext())
-                .max(5, "더이상 사진을 넣을수 없습니다")
+            TedImagePicker.with(requireContext()).max(5, "더이상 사진을 넣을수 없습니다")
                 .startMultiImage { uriList ->
                     postViewModel.setPostImage(uriList)
                 }
@@ -52,7 +51,9 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
                             }
                             is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    context, event.uiState.error?.message, Toast.LENGTH_SHORT
+                                ).show()
                             }
                             is UiState.Loding -> {
                                 Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
@@ -68,7 +69,12 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
 
     override fun initListener() {
         binding.vCamera.setOnClickListener {
-            findNavController().navigate(R.id.action_lifePostFragment_to_gallraryFragment)
+            val gallraryFragmentDirections =
+                LifePostFragmentDirections.actionLifePostFragmentToGallraryFragment(postViewModel.postImageFlow.value.map {
+                    it.toString()
+                }.toTypedArray())
+
+            findNavController().navigate(gallraryFragmentDirections)
         }
 
         binding.include.tvRight.setOnClickListener {
