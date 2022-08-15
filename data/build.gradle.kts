@@ -15,6 +15,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(mapOf("path" to ":core")))
 
+    implementation(Kakao.LOGIN)
     implementation(Network.OKHTTP)
     implementation(Network.OKHTTP3)
     implementation(Network.RETROFIT)

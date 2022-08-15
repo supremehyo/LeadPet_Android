@@ -81,6 +81,7 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }

@@ -88,6 +88,7 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }

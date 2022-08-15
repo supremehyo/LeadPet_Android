@@ -46,5 +46,9 @@ abstract class DataSourceModule {
     @Singleton
     @Binds
     abstract fun bindsShelterRemoteSource(source: ShelterRemoteSourceImpl): ShelterRemoteSource
+
+    @Singleton
+    @Binds
+    abstract fun bindsBreedRemoteSource(source: BreedRemoteSourceImpl): BreedRemoteSource
 }
 

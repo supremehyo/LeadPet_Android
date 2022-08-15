@@ -115,11 +115,8 @@ class FeedViewModel
 
     sealed class Event {
         data class DailyUiEvent(val uiState: UiState<Flow<PagingData<DailyPostFeed>>>) : Event()
-        data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPostFeed>>>) :
-            Event()
-
+        data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPostFeed>>>) : Event()
         data class AdoptUiEvent(val uiState: UiState<Flow<PagingData<AdoptPostFeed>>>) : Event()
-        data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) :
-            Event()
+        data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
     }
 }

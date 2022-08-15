@@ -6,20 +6,19 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.getKeyFirst
 import com.dev6.core.util.extension.setClickEvent
-import com.dev6.core.view.CenterSmoothScroller
 import com.dev6.domain.entitiyRepo.IndexBreed
 import com.dev6.domain.entitiyRepo.extractIndex
 import com.dev6.post.databinding.FragmentSpeciesChoiceBinding
 import com.dev6.post.item.ItemIndex
 import com.dev6.post.item.ItemListPet
 import com.dev6.post.item.VisiblePositionChangeListener
-import com.dev6.post.viewmodel.SpeicesViewModel
+import com.dev6.post.viewmodel.AdoptPostViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +28,7 @@ import kotlinx.coroutines.flow.collectLatest
 class SpeciesChoiceFragment :
     BindingFragment<FragmentSpeciesChoiceBinding>(R.layout.fragment_species_choice) {
 
-    private val speicesViewModel: SpeicesViewModel by activityViewModels()
+    private val adoptPostViewModel: AdoptPostViewModel by activityViewModels()
     lateinit var breedAdapter: GroupieAdapter
     private var isClicked: Boolean = false
 
@@ -45,12 +44,12 @@ class SpeciesChoiceFragment :
     override fun initViewModel() {
         super.initViewModel()
         repeatOnStartedFragment {
-            speicesViewModel.speciesStateFlow.collectLatest {
+            adoptPostViewModel.speciesListStateFlow.collectLatest {
                 uiHandler(it)
             }
         }
         repeatOnStartedFragment {
-            speicesViewModel.indexStateFlow.collectLatest { index ->
+            adoptPostViewModel.indexStateFlow.collectLatest { index ->
                 clearIndexColor()
                 changeIndexColor(IndexMap.get(index), R.color.Main)
             }
@@ -71,7 +70,8 @@ class SpeciesChoiceFragment :
                         section.setHeader(ItemIndex(species.index))
                         section.addAll(species.breedList.map {
                             ItemListPet(it) { breedName->
-
+                                adoptPostViewModel.updateSpecies(breedName)
+                                findNavController().popBackStack()
                             }
                         })
                     }
@@ -117,13 +117,13 @@ class SpeciesChoiceFragment :
                 view.text = item
             }
             itemView.setClickEvent(viewLifecycleOwner.lifecycleScope) {
-                speicesViewModel.setIndex(item)
+                adoptPostViewModel.setIndex(item)
                 isClicked = true
                 scrollSectionPosition(item)
             }
             IndexMap.set(item, itemView)
             binding.llAlpabet.addView(itemView)
-            if (index == 0) speicesViewModel.setIndex(item)
+            if (index == 0) adoptPostViewModel.setIndex(item)
         }
 
     }
@@ -147,7 +147,7 @@ class SpeciesChoiceFragment :
                     binding.rvPetList.layoutManager as LinearLayoutManager,
                     object : VisiblePositionChangeListener.OnChangeListener {
                         override fun onFirstVisiblePositionChanged(position: Int) {
-                            speicesViewModel.setIndex(
+                            adoptPostViewModel.setIndex(
                                 sectionMap[breedAdapter.getGroupAtAdapterPosition(
                                     position
                                 )] ?: return
@@ -158,7 +158,7 @@ class SpeciesChoiceFragment :
 
                         override fun onFirstInvisiblePositionChanged(position: Int) {
                             if (isClicked) return
-                            speicesViewModel.setIndex(
+                            adoptPostViewModel.setIndex(
                                 sectionMap[breedAdapter.getGroupAtAdapterPosition(
                                     position
                                 )] ?: return

@@ -10,8 +10,8 @@ data class IndexBreed(
 )
 
 data class Breed(
-    val animalType: AnimalType,
-    val breedName: String
+    val breedName: String,
+    val animalType: AnimalType
 )
 
 fun List<IndexBreed>.extractIndex(): List<String> =

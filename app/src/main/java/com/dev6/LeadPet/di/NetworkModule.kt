@@ -12,6 +12,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -37,7 +38,7 @@ open class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(baseUrl)
+            .baseUrl(baseUrl())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -77,5 +78,11 @@ open class NetworkModule {
     @Singleton
     fun provideFeedService(retrofit: Retrofit): FeedAPI {
         return retrofit.create(FeedAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideBreedService(retrofit: Retrofit): BreedAPI {
+        return retrofit.create(BreedAPI::class.java)
     }
 }

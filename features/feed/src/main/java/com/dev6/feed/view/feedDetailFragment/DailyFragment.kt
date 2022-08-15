@@ -89,6 +89,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }
@@ -111,6 +112,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                             }
                         }
                     }
+                    else -> {}
                 }
             }
         }
