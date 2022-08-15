@@ -1,10 +1,11 @@
 package com.dev6.data.repositoryImple
 
+import com.dev6.data.mapper.toDomain
+import com.dev6.data.remote.AdoptPostRemoteSource
+import com.dev6.data.remote.BreedRemoteSource
 import com.dev6.domain.entitiyRepo.IndexBreed
 import com.dev6.domain.repository.BreedRepository
 
-class BreedRepositoryImp : BreedRepository {
-    override suspend fun fetchBreedList(): List<IndexBreed> {
-        TODO("Not yet implemented")
-    }
+class BreedRepositoryImp(private val remoteSource: BreedRemoteSource) : BreedRepository {
+    override suspend fun fetchBreedList(): List<IndexBreed> = remoteSource.getBreedList().map { it.toDomain() }
 }

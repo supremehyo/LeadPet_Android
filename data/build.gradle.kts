@@ -30,7 +30,6 @@ dependencies {
     implementation(Debug.TIMBER)
     implementation(Google.AUTH)
     implementation(platform(Google.FIREBASE_BOM))
-    implementation(Kakao.LOGIN)
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     testImplementation(Kotlin.COROUTINES_TEST)

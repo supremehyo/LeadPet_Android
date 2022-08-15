@@ -77,10 +77,10 @@ dependencies {
 
 
     implementation(Google.HILT_ANDROID)
+    kapt(Google.HILT_ANDROID_COMPILER)
 
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    kapt(Google.HILT_ANDROID_COMPILER)
 
     implementation("androidx.appcompat:appcompat:1.4.0")
     implementation(Google.MATERIAL)

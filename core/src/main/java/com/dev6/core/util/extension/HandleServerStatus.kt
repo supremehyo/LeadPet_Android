@@ -2,7 +2,8 @@ package com.dev6.core.util.extension
 
 interface HandleServerStatus {
 
-
+    //성공
+    fun isSuccess()
     //실패
     fun isServerFail(): HandleServerResult
 

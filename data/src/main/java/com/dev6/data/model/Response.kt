@@ -14,7 +14,7 @@ data class Error(
     val code: Int, val message: String, val detail: String
 )
 
-suspend fun <T> Response<T>.executeNetworkHandling(): T? {
+suspend fun <T> Response<T>.executeNetworkHandling(): T {
 
     val handle = if (isSuccessful) {
         null

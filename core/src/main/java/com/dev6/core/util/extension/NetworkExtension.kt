@@ -3,8 +3,8 @@ package com.jydev.rest_api_util.extension
 import com.dev6.core.exception.*
 import com.dev6.core.util.extension.HandleServerStatus
 
-suspend fun <DATA> DATA.executeErrorHandling(
-    handleServerStatus: HandleServerStatus? = null
+suspend fun <DATA> DATA?.executeErrorHandling(
+    handleServerStatus: HandleServerStatus?
 ): DATA {
     handleServerStatus?.let {
         val serverFailResult = handleServerStatus.isServerFail()
@@ -24,10 +24,10 @@ suspend fun <DATA> DATA.executeErrorHandling(
             notCorrect.status -> {
                 throw NotCorrectException(notCorrect.message)
             }
-            else -> this
+            else -> this ?: throw NotFormatingMethod("리스폰스 없음")
         }
     } ?: kotlin.run {
-        return this
+        return this ?: throw NotFormatingMethod("리스폰스 없음")
     }
 }
 

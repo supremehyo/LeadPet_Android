@@ -69,7 +69,11 @@ class SpeciesChoiceFragment :
                 uiState.data.forEach { species ->
                     val speciesSection = Section().also { section ->
                         section.setHeader(ItemIndex(species.index))
-                        section.addAll(species.breedList.map { ItemListPet(it) })
+                        section.addAll(species.breedList.map {
+                            ItemListPet(it) { breedName->
+
+                            }
+                        })
                     }
                     breedAdapter.add(speciesSection)
                     sectionMap[speciesSection] = species.index
@@ -86,6 +90,7 @@ class SpeciesChoiceFragment :
 
     override fun initListener() {
         super.initListener()
+        //todo getCount 생기기 전까진
         binding.chipGroup.setOnClickListener {
             when (binding.chipGroup.checkedChipId) {
                 R.id.c_all -> binding.cAll.text.toString()

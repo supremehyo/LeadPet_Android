@@ -10,6 +10,8 @@ class  JoinException(message:String): Exception(message)
  */
 class ServerErrorException(message: String) : Exception(message)
 
+class NotFormatingMethod(message: String) : Exception(message)
+
 /**
  *404 에러
  */

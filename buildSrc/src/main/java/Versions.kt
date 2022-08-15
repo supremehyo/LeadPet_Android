@@ -27,4 +27,6 @@ object Versions {
     const val ANDROID_JUNIT = "1.1.1"
     const val ESPRESSO_CORE = "3.4.0"
 
+    const val WORK_VERSION = "2.7.1"
+
 }

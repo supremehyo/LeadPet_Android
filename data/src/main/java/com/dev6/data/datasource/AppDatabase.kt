@@ -16,16 +16,10 @@
 
 package com.dev6.data.datasource
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.skydoves.pokedex.model.Pokemon
-import com.skydoves.pokedex.model.PokemonInfo
-
-@Database(entities = [Pokemon::class, PokemonInfo::class], version = 1, exportSchema = true)
-//@TypeConverters(value = [TypeResponseConverter::class])
-abstract class AppDatabase : RoomDatabase() {
-
-  abstract fun breedDataSource(): BreedDataSource
-
-}
+//@Database(entities = [Pokemon::class, PokemonInfo::class], version = 1, exportSchema = true)
+////@TypeConverters(value = [TypeResponseConverter::class])
+//abstract class AppDatabase : RoomDatabase() {
+//
+//  abstract fun breedDataSource(): BreedDataSource
+//
+//}
