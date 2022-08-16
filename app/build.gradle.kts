@@ -53,7 +53,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":core"))
-    implementation(project(":features:join:join"))
+    implementation(project(":features:join"))
     implementation(project(":features:post"))
 
 
