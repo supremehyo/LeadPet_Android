@@ -16,10 +16,9 @@
             android:name=".view.FeedActivity"
             android:exported="true"
             android:label="FeedActivity"
-            android:theme="@style/Theme.LeadPet">
+            android:theme="@style/Theme.LeadPet.feed">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -47,7 +47,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.0")
 
     implementation(Google.HILT_ANDROID)
-    implementation(project(mapOf("path" to ":features:join:join")))
+    implementation(project(mapOf("path" to ":features:join")))
 
 
     kapt(Google.HILT_ANDROID_COMPILER)

@@ -93,6 +93,6 @@ dependencies {
 
     implementation(Indicator.CIRCLE_INDICATOR)
 
-    debugImplementation(Memory.LEAK_CANARY)
+    //debugImplementation(Memory.LEAK_CANARY)
     testImplementation(Kotlin.COROUTINES_TEST)
 }
