@@ -28,10 +28,10 @@ class SpeicesViewModelTest{
         val fakeGetSpeciesListUseCase = FakeGetSpeciesListUseCase()
 
         //when
-        val SpeicesViewModel = SpeicesViewModel(getSpeciesListUseCase = fakeGetSpeciesListUseCase)
+        val adoptPostViewModel = AdoptPostViewModel(getSpeciesListUseCase = fakeGetSpeciesListUseCase)
         //then
 
-        SpeicesViewModel.speciesStateFlow.test {
+        adoptPostViewModel.speciesStateFlow.test {
             Truth.assertThat(awaitItem()).isInstanceOf(UiState.Success::class.java)
             //캔슬시키고 꺼버림
             cancelAndIgnoreRemainingEvents()

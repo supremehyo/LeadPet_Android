@@ -3,13 +3,11 @@
     package="com.dev6.join">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <application>
+    <application android:theme="@style/Theme.LeadPet">
         <activity
             android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.LeadPet.join"
             android:name=".JoinActivity"
             android:exported="true">
-
         </activity>
 
     </application>

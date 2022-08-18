@@ -39,7 +39,7 @@ dependencies {
     testImplementation(Google.HILT_TESTING)
     testImplementation(AndroidX.CORE_TESTING)
 
-    androidTestImplementation(AndroidTest.ANDROID_JUNIT)
+    //androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
     androidTestImplementation(Kotlin.COROUTINES_TEST)
 

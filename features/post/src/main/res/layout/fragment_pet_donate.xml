@@ -9,18 +9,17 @@
     android:fillViewport="true" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".PetDonateFragment">
 
         <EditText
             android:id="@+id/tv_title"
+            style="@style/Widget_post_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="21dp"
-            style="@style/EditTextFontStyle_title"
             android:hint="@string/hint_title"
             app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
             app:layout_constraintEnd_toStartOf="@+id/gi_light2"

@@ -10,11 +10,7 @@
         <item name="android:fontFamily">@font/custom_font_family</item>
     </style>
 
-    <style name="customButtonRed" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:backgroundTint">@color/Main</item>
-        <item name="android:fontFamily">@font/custom_font_family</item>
-        <item name="cornerRadius">8dp</item>
-    </style>
+
 
     <style name="bottomSeatCheckStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:layout_marginLeft">16dp</item>
@@ -22,6 +18,12 @@
         <item name="buttonTint">@color/Main</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:button">@drawable/rb_check_pressed</item>
+    </style>
+
+    <style name="Widget.Donate.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/Main</item>
+        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="cornerRadius">8dp</item>
     </style>
 
     <style name="customButtonRadius" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -33,7 +35,7 @@
     </style>
 
 
-    <style name="EditTextFontStyle_title" parent="@android:style/Widget.DeviceDefault.EditText">
+    <style name="Widget_post_title" parent="@android:style/Widget.DeviceDefault.EditText">
         <item name="android:fontFamily">@font/custom_font_family</item>
         <item name="android:color">@color/Gray_06</item>
         <item name="android:textColor">@color/color_black</item>
@@ -115,5 +117,11 @@
         <item name="android:layout_width">7dp</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/color_bd</item>
+    </style>
+
+    <style name="tabTextSetting" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/hansansneobold</item>
     </style>
 </resources>

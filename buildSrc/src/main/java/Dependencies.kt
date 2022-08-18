@@ -28,13 +28,14 @@ object AndroidX {
 
     const val  WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_VERSION}"
     const val  WORK_TEST = "androidx.work:work-testing:${Versions.WORK_VERSION}"
+    const val  CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.4"
 }
 
 object Google {
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
     const val HILT_TESTING = "com.google.dagger:hilt-android-testing:${Versions.HILT}"
-    const val HILT_WORKER = "androidx.hilt:hilt-work:${Versions.HILT}"
+    const val HILT_WORKER = "androidx.hilt:hilt-work:1.0.0"
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
 
     //CRASHLYTICS

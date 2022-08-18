@@ -3,7 +3,7 @@ object Versions {
     const val KOTLINX_COROUTINES = "1.6.4"
     const val BUILD_GRADLE = "4.2.1"
     const val COMPILE_SDK_VERSION = 31
-    const val BUILD_TOOLS_VERSION = "31.0.0"
+    const val BUILD_TOOLS_VERSION = "32.0.0"
     const val MIN_SDK_VERSION = 24
     const val TARGET_SDK_VERSION = 31
 
@@ -18,7 +18,7 @@ object Versions {
     const val NAVIGATION = "2.4.2"
 
     const val HILT = "2.42"
-    const val MATERIAL = "1.7.0-alpha02"
+    const val MATERIAL = "1.6.1"
 
     const val RETROFIT = "2.7.1"
     const val OKHTTP = "4.3.1"

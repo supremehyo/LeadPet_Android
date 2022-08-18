@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dev6.feed">
 
-    <application>
+    <application android:theme="@style/Theme.LeadPet">
+
         <activity
             android:name=".view.feedDetailActivity.AdoptFeedDetailActivity"
             android:exported="false" />
@@ -15,8 +16,7 @@
         <activity
             android:name=".view.FeedActivity"
             android:exported="true"
-            android:label="FeedActivity"
-            android:theme="@style/Theme.LeadPet.feed">
+            android:label="FeedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

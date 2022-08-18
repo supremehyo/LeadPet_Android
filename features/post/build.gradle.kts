@@ -54,7 +54,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.0")
 
     implementation(Google.HILT_ANDROID)
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation(AndroidX.CONSTRAINT_LAYOUT)
     kapt(Google.HILT_ANDROID_COMPILER)
 
 
@@ -69,7 +69,7 @@ dependencies {
     testImplementation(UnitTest.MOCKITO)
     testImplementation(UnitTest.TURBINE)
 
-    androidTestImplementation(AndroidTest.ANDROID_JUNIT)
+    //androidTestImplementation(AndroidTest.ANDROID_JUNIT)
     androidTestImplementation(AndroidTest.ESPRESSO_CORE)
     androidTestImplementation(AndroidTest.ESPRESSO_CONTRIB)
     androidTestImplementation(AndroidTest.ANDROID_RUNNER)
