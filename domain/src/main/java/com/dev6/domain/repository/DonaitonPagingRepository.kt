@@ -5,5 +5,5 @@ import com.dev6.domain.entitiyRepo.DonationPostFeed
 import kotlinx.coroutines.flow.Flow
 
 interface DonaitonPagingRepository {
-    suspend fun getDonationData() : Flow<PagingData<DonationPostFeed>>
+    suspend fun getDonationData(userId: String) : Flow<PagingData<DonationPostFeed>>
 }

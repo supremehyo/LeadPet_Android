@@ -55,8 +55,13 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
         }
     }
 
+    override fun initViewModel() {
+        super.initViewModel()
+        getDonationList()
+    }
+
     private fun getDonationList() {
-        feedViewModel.getDonationList()
+        feedViewModel.getDonationList("")
     }
 
     private fun makeBottomSheet(type: Int) {
@@ -67,10 +72,9 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
 
     override fun afterViewCreated() {
         super.afterViewCreated()
-        getDonationList()
 
         repeatOnStarted {
-            feedViewModel.eventFlow2.collect { event ->
+            feedViewModel.eventDonationList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DonationUiEvent -> {
                         when (event.uiState) {

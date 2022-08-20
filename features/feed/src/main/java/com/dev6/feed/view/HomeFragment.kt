@@ -1,7 +1,6 @@
 package com.dev6.feed.view
 
 import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +9,6 @@ import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
-import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.RecommendAdoptAdapter
 import com.dev6.feed.adapter.RecommendDonationAdapter
 import com.dev6.feed.adapter.RecommendFeedAdapter
@@ -29,7 +27,7 @@ class HomeFragment :
     private lateinit var dailyPagingAdapter: RecommendFeedAdapter
     private lateinit var adoptPagingAdapter: RecommendAdoptAdapter
     private lateinit var donationPagingAdapter: RecommendDonationAdapter
-
+    var userId = ""
     override fun initView() {
         super.initView()
 
@@ -55,9 +53,9 @@ class HomeFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getDonationList()
-        feedViewModel.getAdoptList()
-        feedViewModel.getFeedList()
+        feedViewModel.getDonationList("")
+        feedViewModel.getAdoptList("")
+        feedViewModel.getFeedList(userId, "")
 
         feedViewModel.setCurrentView(FeedViewType.HOME)
 
@@ -85,7 +83,7 @@ class HomeFragment :
     override fun afterViewCreated() {
 
         repeatOnStarted {
-            feedViewModel.eventFlow2.collect { event ->
+            feedViewModel.eventDonationList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DonationUiEvent -> {
                         when (event.uiState) {
@@ -101,57 +99,60 @@ class HomeFragment :
                                 Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
                             }
                         }
+
                     }
-                    else -> {}
+                    else -> {
+
+                    }
                 }
             }
         }
-
-        repeatOnStarted {
-            feedViewModel.eventFlow3.collect { event ->
-                when (event) {
-                    is FeedViewModel.Event.AdoptUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                event.uiState.data.collect {
-                                    adoptPagingAdapter.submitData(it)
+            repeatOnStarted {
+                feedViewModel.eventAdoptList.collect { event ->
+                    when (event) {
+                        is FeedViewModel.Event.AdoptUiEvent -> {
+                            when (event.uiState) {
+                                is UiState.Success -> {
+                                    event.uiState.data.collect {
+                                        adoptPagingAdapter.submitData(it)
+                                    }
+                                }
+                                is UiState.Error -> {
+                                    Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                                }
+                                is UiState.Loding -> {
+                                    Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
                                 }
                             }
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                        }else->{
+
                     }
-                    else -> {}
+                    }
                 }
             }
-        }
-        repeatOnStarted {
-            feedViewModel.eventFlow.collect { event ->
-                when (event) {
-                    is FeedViewModel.Event.DailyUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                event.uiState.data.collect {
-                                    dailyPagingAdapter.submitData(it)
+            repeatOnStarted {
+                feedViewModel.eventDailyList.collect { event ->
+                    when (event) {
+                        is FeedViewModel.Event.DailyUiEvent -> {
+                            when (event.uiState) {
+                                is UiState.Success -> {
+                                    event.uiState.data.collect {
+                                        dailyPagingAdapter.submitData(it)
+                                    }
+                                }
+                                is UiState.Error -> {
+                                    Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                                }
+                                is UiState.Loding -> {
+                                    Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
                                 }
                             }
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                        }else->{
+
                     }
-                    else -> {}
+                    }
                 }
             }
-        }
-
 
     }
 }

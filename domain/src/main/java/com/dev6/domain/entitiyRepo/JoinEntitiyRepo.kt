@@ -19,6 +19,8 @@ data class JoinEntitiyRepo(
     val shelterName: String,
     @SerializedName("shelterAddress")
     val shelterAddress: String,
+    @SerializedName("shelterAccount")
+    val shelterAccount : String,
     @SerializedName("shelterPhoneNumber")
     val shelterPhoneNumber: String,
     @SerializedName("shelterManager")
@@ -27,4 +29,6 @@ data class JoinEntitiyRepo(
     val shelterHomePage: String,
     @SerializedName("userType")
     val userType: String,
+    @SerializedName("shelterIntro")
+    val shelterIntro: String
 )

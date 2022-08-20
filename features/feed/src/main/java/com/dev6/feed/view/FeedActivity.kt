@@ -23,7 +23,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
 
     private  val feedViewModel : FeedViewModel by viewModels()
     var list  = listOf("경기도 성남시" , "서울특별시")
-    var userType = "user"
+    var userType = ""
     lateinit var navController: NavController
     override fun initView() {
         super.initView()

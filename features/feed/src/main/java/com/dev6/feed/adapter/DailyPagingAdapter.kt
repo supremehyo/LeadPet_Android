@@ -1,6 +1,9 @@
 package com.dev6.feed.adapter
 
+import android.graphics.Color
 import android.net.Uri
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -49,25 +52,47 @@ class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit) :
     inner class ImageViewHolder(private val binding: ItemDailyfeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: DailyPostFeed) {
-            binding.dailyFeedContentTv.text = item.contents
-            binding.dailyFeedTitleTv.text = item.title
-            binding.dailyFeedProfileTv.text = item.userId
-            binding.dailyFeedWriteTimeTv.text = fewDay("2022", "7", "3").toString()
+            binding.apply {
+                dailyFeedContentTv.text = item.contents
+                dailyFeedTitleTv.text = item.title
+                dailyFeedProfileTv.text = item.userId
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    dailyFeedWriteTimeTv.text = fewDay(
+                        item.createdDate[0],
+                        item.createdDate[1],
+                        item.createdDate[2],
+                        item.createdDate[3],
+                        item.createdDate[4],
+                        item.createdDate[5]
+                    )
+                }
+                dailyCommentCount.text = item.commentCount.toString()
+                dailyLikeCount.text = item.likedCount.toString()
+                makeLikedHeart(item.liked)
+                Glide.with(binding.root)
+                    .load(Uri.parse(""))
+                    .error(R.drawable.dailay_image1)
+                    .circleCrop()
+                    .into(dailyFeedIv)
 
-            Glide.with(binding.root)
-                .load(Uri.parse(""))
-                .error(R.drawable.dailay_image1)
-                .circleCrop()
-                .into(binding.dailyFeedIv)
+                Glide.with(binding.root)
+                    .load(Uri.parse(""))
+                    .error(R.drawable.dailay_image1)
+                    .circleCrop()
+                    .into(dailyFeedProfileIv)
 
-            Glide.with(binding.root)
-                .load(Uri.parse(""))
-                .error(R.drawable.dailay_image1)
-                .circleCrop()
-                .into(binding.dailyFeedProfileIv)
+                constraintLayout2.setOnClickListener {
+                    callback(item)
+                }
 
-            binding.constraintLayout2.setOnClickListener {
-                callback(item)
+            }
+        }
+
+        private fun makeLikedHeart(boolean: Boolean){
+            if (boolean) {
+                binding.dailyLikeImage.setColorFilter(Color.parseColor("#FF675E"))
+            } else {
+                binding.dailyLikeImage.setColorFilter(Color.parseColor("#C4C4C4"))
             }
         }
     }

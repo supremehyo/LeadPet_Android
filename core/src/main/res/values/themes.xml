@@ -12,9 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-
-≈
-
 <!--        <item name="android:colorBackground">@color/my_app_background_color</item>-->
 <!--        <item name="colorError">@color/my_app_error_color</item>-->
 <!--        <item name="colorOnBackground">@color/my_app_color_on_background</item>-->
