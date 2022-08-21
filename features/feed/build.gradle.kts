@@ -17,6 +17,7 @@ dependencies {
     implementation (project(":core"))
     implementation (project(":domain"))
     implementation(project(":data"))
+    implementation(project(mapOf("path" to ":features:post")))
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)

@@ -55,4 +55,5 @@ abstract class BindingFragment<T : ViewDataBinding>(
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED, block)
         }
     }
+
 }

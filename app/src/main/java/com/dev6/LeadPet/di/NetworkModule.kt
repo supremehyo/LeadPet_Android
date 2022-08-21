@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @Module
 open class NetworkModule {
 
-    protected open fun baseUrl() = "http://02b2-123-212-235-38.ngrok.io".toHttpUrl()
+    protected open fun baseUrl() = "https://leadpet-dev6.com".toHttpUrl()
 
     @Provides
     @Singleton

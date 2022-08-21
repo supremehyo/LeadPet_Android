@@ -1,16 +1,19 @@
 package com.dev6.feed.view
 
 import android.content.Intent
-import android.util.Log
+import android.view.animation.OvershootInterpolator
 import android.widget.Toast
+import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
-import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.RecommendAdoptAdapter
 import com.dev6.feed.adapter.RecommendDonationAdapter
 import com.dev6.feed.adapter.RecommendFeedAdapter
@@ -18,9 +21,7 @@ import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
-import kotlinx.coroutines.flow.*
 import timber.log.Timber
-
 
 class HomeFragment :
     BindingFragment<com.dev6.feed.databinding.FragmentHomeBinding>(R.layout.fragment_home) {
@@ -58,7 +59,6 @@ class HomeFragment :
         feedViewModel.getDonationList()
         feedViewModel.getAdoptList()
         feedViewModel.getFeedList()
-
         feedViewModel.setCurrentView(FeedViewType.HOME)
 
     }
@@ -79,7 +79,17 @@ class HomeFragment :
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
+    }
 
+
+
+    fun updateConstraints(@LayoutRes id: Int) {
+        val newConstraintSet = ConstraintSet()
+        newConstraintSet.clone(this.context, id)
+        newConstraintSet.applyTo(binding.clHome)
+        val transition = ChangeBounds()
+        transition.interpolator = OvershootInterpolator()
+        TransitionManager.beginDelayedTransition(binding.clHome, transition)
     }
 
     override fun afterViewCreated() {
@@ -151,7 +161,6 @@ class HomeFragment :
                 }
             }
         }
-
 
     }
 }
