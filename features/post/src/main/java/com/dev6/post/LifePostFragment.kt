@@ -85,7 +85,7 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
         }
 
         binding.include.tvLeft.setOnClickListener {
-
+            requireActivity().finish()
         }
         super.initListener()
     }

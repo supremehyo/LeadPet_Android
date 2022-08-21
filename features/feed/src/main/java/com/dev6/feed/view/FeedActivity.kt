@@ -155,6 +155,5 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         val postIntent = Intent(this, PostActivity::class.java)
         postIntent.putExtra("postType", postType)
         startActivity(postIntent)
-        finish()
     }
 }

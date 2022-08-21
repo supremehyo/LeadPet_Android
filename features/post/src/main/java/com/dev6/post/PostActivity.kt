@@ -19,27 +19,23 @@ class PostActivity : BindingActivity<ActivityPostBinding>(R.layout.activity_post
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-
         var navGraph = navController.navInflater.inflate(R.navigation.post_nav_graph)
-
-
-        navController.graph = navGraph
 
         when (postType) {
             PostType.LIFE -> {
-                navGraph.setStartDestination(R.layout.fragment_life_post)
+                navGraph.setStartDestination(R.id.lifePostFragment)
 
             }
             PostType.ADOPT -> {
-
-                navGraph.setStartDestination(R.layout.fragment_pet_adopt_post)
+                navGraph.setStartDestination(R.id.petAdoptPostFragment)
 
             }
             PostType.DONATE -> {
-                navGraph.setStartDestination(R.layout.fragment_pet_donate)
+                navGraph.setStartDestination(R.id.petDonateFragment)
 
             }
         }
-        navController.graph = navGraph
+        navController.setGraph(navGraph , null)
+
     }
 }
