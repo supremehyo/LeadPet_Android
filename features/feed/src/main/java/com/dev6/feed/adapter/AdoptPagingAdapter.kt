@@ -60,6 +60,8 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
                     "~" + makeTimeString(item.endDate[0], item.endDate[1], item.endDate[2])
 
              */
+            binding.adoptAgeTv.text = item.age.toString()
+            binding.adoptDiseaseTv.text = "아픔"
             binding.itemAdoptCl.setOnClickListener {
                 callback(item)
             }

@@ -4,6 +4,7 @@ package com.dev6.core.util.extension
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
@@ -13,6 +14,30 @@ private object TimeMaximum {
     const val HOUR = 24
     const val DAY = 30
     const val MONTH = 12
+}
+
+fun makeProceedingString(startList :String , endList:String){
+    val d1 = startList[0]+"."+startList[1]+"."+startList[2]
+    val d2 = endList[0]+"."+endList[1]+"."+endList[2]
+
+    val sdf = SimpleDateFormat("yyyy.MM.DD")
+
+    val firstDate: Date = sdf.parse(d1)
+    val secondDate: Date = sdf.parse(d2)
+
+    val cmp = firstDate.compareTo(secondDate)
+    when {
+        cmp > 0 -> {
+            System.out.printf("%s is after %s", d1, d2)
+        }
+        cmp < 0 -> {
+            System.out.printf("%s is before %s", d1, d2)
+        }
+        else -> {
+            print("Both dates are equal")
+        }
+    }
+
 }
 
 //날짜차이 구하기

@@ -22,7 +22,7 @@ class DonationPagingSourceImp  @Inject constructor(private val donationRemoteSou
             try {
                 Log.v("dddddd2" ,response.toDomain().donationFeedList.get(0).donationPostId)
             }catch (e : Exception){
-                Log.v("dddddd3" ,e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().donationFeedList,

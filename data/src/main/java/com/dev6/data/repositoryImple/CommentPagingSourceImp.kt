@@ -26,7 +26,7 @@ class CommentPagingSourceImp @Inject constructor(
             try {
                 Log.v("ssssfsfsf2", response.toDomain().commentEntitiy.get(0).normalReplyId)
             } catch (e: Exception) {
-                Log.v("ssssfsfsf3", e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().commentEntitiy,

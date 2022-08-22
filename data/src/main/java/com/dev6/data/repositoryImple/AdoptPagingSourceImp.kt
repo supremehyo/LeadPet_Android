@@ -25,7 +25,7 @@ class AdoptPagingSourceImp  @Inject constructor(
             try {
                 Log.v("ssssfsfsf2" ,response.toDomain().adoptPostFeed.get(0).adoptionPostId)
             }catch (e : Exception){
-                Log.v("ssssfsfsf3" ,e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().adoptPostFeed,
