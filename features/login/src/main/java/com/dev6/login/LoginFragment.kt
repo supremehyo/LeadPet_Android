@@ -42,11 +42,10 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     override fun initListener() {
         super.initListener()
         with(binding) {
-            //todo 데이터 바인딩을 통해 viewmodel로 옮기게될 로직들
             imageButton.setOnClickListener {
                 kakaoLogin()
             }
-            //todo navigation 적용을 통해 사라질 로직
+
             someId.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_emailLoginFragment)
             }

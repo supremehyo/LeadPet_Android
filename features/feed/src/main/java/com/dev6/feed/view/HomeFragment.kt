@@ -1,9 +1,14 @@
 package com.dev6.feed.view
 
 import android.content.Intent
+import android.view.animation.OvershootInterpolator
 import android.widget.Toast
+import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
@@ -16,9 +21,7 @@ import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
-import kotlinx.coroutines.flow.*
 import timber.log.Timber
-
 
 class HomeFragment :
     BindingFragment<com.dev6.feed.databinding.FragmentHomeBinding>(R.layout.fragment_home) {
@@ -53,6 +56,7 @@ class HomeFragment :
 
     override fun initViewModel() {
         super.initViewModel()
+
         feedViewModel.getDonationList("")
         feedViewModel.getAdoptList("")
         feedViewModel.getFeedList(userId, "")
@@ -77,7 +81,17 @@ class HomeFragment :
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
+    }
 
+
+
+    fun updateConstraints(@LayoutRes id: Int) {
+        val newConstraintSet = ConstraintSet()
+        newConstraintSet.clone(this.context, id)
+        newConstraintSet.applyTo(binding.clHome)
+        val transition = ChangeBounds()
+        transition.interpolator = OvershootInterpolator()
+        TransitionManager.beginDelayedTransition(binding.clHome, transition)
     }
 
     override fun afterViewCreated() {
@@ -153,6 +167,9 @@ class HomeFragment :
                     }
                 }
             }
+
+        }
+
 
     }
 }

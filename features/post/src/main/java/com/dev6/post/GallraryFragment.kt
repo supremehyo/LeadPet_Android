@@ -2,6 +2,7 @@ package com.dev6.post
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev6.core.base.BindingFragment
@@ -31,6 +32,7 @@ class GallraryFragment : BindingFragment<FragmentGallraryBinding>(R.layout.fragm
 
     override fun initListener() {
         super.initListener()
+        binding.ibClose.setOnClickListener { findNavController().popBackStack() }
     }
 
     override fun afterViewCreated() {
