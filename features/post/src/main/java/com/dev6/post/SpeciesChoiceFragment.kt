@@ -3,6 +3,7 @@ package com.dev6.post
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -38,6 +39,8 @@ class SpeciesChoiceFragment :
     override fun initView() {
         super.initView()
         initIndexView()
+        binding.include.tvTop.setText("품종 선택")
+        binding.include.tvRight.visibility = View.GONE
 
     }
 
@@ -69,7 +72,7 @@ class SpeciesChoiceFragment :
                     val speciesSection = Section().also { section ->
                         section.setHeader(ItemIndex(species.index))
                         section.addAll(species.breedList.map {
-                            ItemListPet(it) { breedName->
+                            ItemListPet(it) { breedName ->
                                 adoptPostViewModel.updateSpecies(breedName)
                                 findNavController().popBackStack()
                             }
@@ -81,7 +84,7 @@ class SpeciesChoiceFragment :
 
             }
             is UiState.Error -> {
-
+                Toast.makeText(context , uiState.error?.message, Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -97,6 +100,9 @@ class SpeciesChoiceFragment :
                 R.id.c_cat -> binding.cCat.text.toString()
                 else -> null
             }
+        }
+        binding.include.tvLeft.setOnClickListener {
+            findNavController().popBackStack()
         }
 
     }

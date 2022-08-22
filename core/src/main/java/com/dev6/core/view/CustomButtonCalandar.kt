@@ -55,7 +55,10 @@ class CustomButtonCalandar @JvmOverloads constructor(
 
     fun setText(text_string: String) {
         binding.textInputLayout.editText?.setText(text_string)
+    }
 
+    fun setHint(text_string: String) {
+        binding.textInputLayout.hint = text_string
     }
 
     fun setClick(consumer: Consumer<String>) {

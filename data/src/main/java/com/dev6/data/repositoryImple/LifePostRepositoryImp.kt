@@ -1,5 +1,6 @@
 package com.dev6.data.repositoryImple
 
+import androidx.annotation.WorkerThread
 import com.dev6.data.mapper.toDomain
 import com.dev6.data.mapper.toMapper
 import com.dev6.data.remote.LifePostRemoteSource
@@ -9,6 +10,7 @@ import javax.inject.Inject
 
 class LifePostRepositoryImp @Inject constructor(private val remoteSource: LifePostRemoteSource) :
     LifePostRepository {
+    @WorkerThread
     override suspend fun insertLifePost(postEntity: LifePost): LifePost =
         remoteSource.insert(postEntity.toMapper()).toDomain()
 }

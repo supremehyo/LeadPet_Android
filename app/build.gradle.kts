@@ -10,6 +10,10 @@ plugins {
 
 
 android {
+    signingConfigs {
+        create("release") {
+        }
+    }
     compileSdk = Versions.COMPILE_SDK_VERSION
     buildToolsVersion = Versions.BUILD_TOOLS_VERSION
     buildFeatures.dataBinding = true
@@ -101,7 +105,7 @@ dependencies {
 
     //디버그용
     implementation(Debug.TIMBER)
-    //debugImplementation(Memory.LEAK_CANARY)
+    debugImplementation(Memory.LEAK_CANARY)
 
     implementation(Kakao.LOGIN)
 

@@ -55,7 +55,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                     .with(ObjectAnimator.ofFloat(binding.flDim, View.ALPHA, 1f))
             }.apply {
                 addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
+                    override fun onAnimationStart(animation: Animator, isReverse: Boolean) {
                         super.onAnimationStart(animation, isReverse)
                         binding.llFab.visibility = View.VISIBLE
                         binding.flDim.visibility = View.VISIBLE
@@ -71,7 +71,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                     .with(ObjectAnimator.ofFloat(binding.flDim, View.ALPHA, 0f))
             }.apply {
                 addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(p0: Animator?) {
+                    override fun onAnimationEnd(p0: Animator) {
                         binding.llFab.visibility = View.INVISIBLE
                         binding.flDim.visibility = View.INVISIBLE
                     }
@@ -107,9 +107,11 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
     fun initNavController() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        navController.setGraph(R.navigation.feed_nav_graph)
+        var navGraph = navController.navInflater.inflate(R.navigation.feed_nav_graph)
+//        navController.setGraph(navGraph, null)
         if (userType == "user") { // 유저 type이 user면 해당 바텀네비게이션으로 다시 그리기
-            navController.setGraph(R.navigation.feed_nav_graph2)
+            navGraph = navController.navInflater.inflate(R.navigation.feed_nav_graph2)
+            navController.setGraph(navGraph, null)
             binding.bottomNavigationView.menu.clear()
             binding.bottomNavigationView.inflateMenu(R.menu.bottome_menu2)
         }

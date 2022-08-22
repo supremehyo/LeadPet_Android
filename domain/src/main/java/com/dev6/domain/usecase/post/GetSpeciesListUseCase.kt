@@ -8,6 +8,7 @@ import com.dev6.domain.repository.BreedRepository
 import com.dev6.domain.usecase.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 import javax.inject.Inject
 
 //만약 값이 없다면 Unit
@@ -19,36 +20,11 @@ class GetSpeciesListUseCase @Inject constructor(private val repo: BreedRepositor
     override suspend operator fun invoke(params: Unit): Flow<UiState<List<IndexBreed>>> = flow {
         emit(UiState.Loding)
         runCatching {
-            listOf<IndexBreed>(
-                IndexBreed(
-                    "가",
-                    listOf(
-                        Breed("가브리안", AnimalType.CAT),
-                        Breed("가비투엘", AnimalType.DOG),
-                        Breed("가주망", AnimalType.CAT),
-                        Breed("가지주", AnimalType.CAT)
-                    )
-                ),
-                IndexBreed(
-                    "나", listOf(
-                        Breed("나루투", AnimalType.DOG),
-                        Breed("나리토", AnimalType.DOG),
-                        Breed("나미엘", AnimalType.CAT),
-                        Breed("나무베", AnimalType.DOG)
-                    )
-                ),
-                IndexBreed(
-                    "파", listOf(
-                        Breed("파파자", AnimalType.DOG),
-                        Breed("파피주", AnimalType.CAT),
-                        Breed("파피몬", AnimalType.DOG),
-                        Breed("파라과이", AnimalType.CAT)
-                    )
-                )
-            )
+            repo.fetchBreedList()
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
+            Timber.e(it, "GetSpeciesListBaseUseCase ERROR")
             emit(UiState.Error(it))
         }
     }

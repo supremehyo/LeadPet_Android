@@ -5,5 +5,4 @@ enum class PostType {
     DONATE,
     ADOPT,
     LIFE,
-
 }

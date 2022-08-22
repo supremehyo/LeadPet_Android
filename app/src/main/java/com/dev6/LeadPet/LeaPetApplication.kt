@@ -15,14 +15,8 @@ class LeaPetApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(LeadPetDebugTree())
-        }
-        Timber.d("timber Initalized")
-        var keyHash = Utility.getKeyHash(this)
-        Timber.d("keyhash..$keyHash")
-        KakaoSdk.init(this, getString(R.string.NATIVE_APP_KEY))
+//        var keyHash = Utility.getKeyHash(this)
+//        Timber.d("keyhash..$keyHash")
     }
 
 }
