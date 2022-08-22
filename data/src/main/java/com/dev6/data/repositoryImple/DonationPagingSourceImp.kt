@@ -8,19 +8,21 @@ import com.dev6.domain.entitiyRepo.DonationPostFeed
 import com.dev6.domain.repository.DonationPagingSource
 import javax.inject.Inject
 
-class DonationPagingSourceImp  @Inject constructor(private val donationRemoteSource: DonationRemoteSource) :
+class DonationPagingSourceImp  @Inject constructor(private val donationRemoteSource: DonationRemoteSource,userId:String) :
     DonationPagingSource() {
+
+    var _userId = userId
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DonationPostFeed> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = donationRemoteSource.donationAllFeed(next, size)
+            val response = donationRemoteSource.donationAllFeed(next, size,_userId)
             Log.v("dddddd1" ,response.donationFeedList.get(0).donationPostId)
             try {
                 Log.v("dddddd2" ,response.toDomain().donationFeedList.get(0).donationPostId)
             }catch (e : Exception){
-                Log.v("dddddd3" ,e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().donationFeedList,

@@ -26,7 +26,7 @@ class ShelterUserMoreFragment :
     private lateinit var shelterAccount: String
     private lateinit var shelterAddress: String
     private lateinit var shelterHomePage: String
-
+    private lateinit var shelterIntro: String
     private lateinit var joinImages: List<Uri>
 
     override fun initView() {
@@ -37,7 +37,7 @@ class ShelterUserMoreFragment :
         shelterAccount = arguments?.get("shelterAccount").toString()
         shelterAddress = arguments?.get("shelterAddress").toString()
         shelterHomePage = arguments?.get("shelterHomePage").toString() ?: ""
-
+        shelterIntro =""
 
     }
 
@@ -53,7 +53,8 @@ class ShelterUserMoreFragment :
                             shelterAccount,
                             shelterAddress,
                             shelterHomePage,
-                            userType
+                            userType,
+                            shelterDescriptionTv.text.toString()
                         )
                     )
                 } else {
@@ -69,7 +70,8 @@ class ShelterUserMoreFragment :
                         shelterAccount,
                         shelterAddress,
                         shelterHomePage,
-                        userType
+                        userType,
+                        shelterIntro
                     )
                 )
             }
@@ -117,14 +119,15 @@ class ShelterUserMoreFragment :
         shelterAccount: String,
         shelterAddress: String,
         shelterHomePage: String,
-        userType: String
+        userType: String,
+        shelterIntro: String
     ): JoinEntitiyRepo {
         return JoinEntitiyRepo(
             "GOOGLE", "uid",
             "dev6@gmail.com", "12345",
-            "", shelterName, shelterName, shelterAddress,
+            "", shelterName, shelterName, shelterAddress,shelterAccount,
             shelterPhone,
-            "", shelterHomePage, userType
+            "", shelterHomePage, userType, shelterIntro
         )
     }
 }

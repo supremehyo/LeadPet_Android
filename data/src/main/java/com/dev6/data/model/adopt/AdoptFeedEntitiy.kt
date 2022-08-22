@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class AdoptFeedEntitiy(
     @SerializedName("adoptionPostId")
     val adoptionPostId: String?,
+    @SerializedName("age")
+    val age: Int?,
     @SerializedName("animalType")
     val animalType: String?,
     @SerializedName("contents")
@@ -19,7 +21,7 @@ data class AdoptFeedEntitiy(
     val images: List<String>,
     @SerializedName("neutering")
     val neutering: String?,
-    @SerializedName("species")
+    @SerializedName("breed")
     val species: String?,
     @SerializedName("startDate")
     val startDate: String?,

@@ -8,18 +8,24 @@ import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 import com.dev6.domain.repository.DailyPagingSource
 import javax.inject.Inject
 
-class DailyPagingSourceImp @Inject constructor(private val dailyRemoteSource: DailyRemoteSource) :
+class DailyPagingSourceImp @Inject constructor(
+    userId : String, likedUser: String,
+    private val dailyRemoteSource: DailyRemoteSource
+) :
     DailyPagingSource() {
+
+    var _userId = userId
+    var _likedUser = likedUser
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DailyPostFeed> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = dailyRemoteSource.dailyAllFeed(next, size)
+            val response = dailyRemoteSource.dailyAllFeed(next, size , _userId,_likedUser)
             try {
                 Log.v("ssssfsfsf2" ,response.toDomain().dailyFeedEntitiy.get(0).normalPostId)
             }catch (e : Exception){
-                Log.v("ssssfsfsf3" ,e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().dailyFeedEntitiy,

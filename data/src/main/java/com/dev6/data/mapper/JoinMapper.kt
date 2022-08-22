@@ -14,11 +14,13 @@ internal fun JoinEntitiy?.toDomain() = JoinEntitiyRepo(
     profileImage = this?.profileImage ?: "",
     name = this?.name ?: "",
     shelterName = this?.shelterName ?: "",
+    shelterAccount = this?.shelterAccount ?: "",
     shelterAddress = this?.shelterAddress ?: "",
     shelterPhoneNumber = this?.shelterPhoneNumber ?: "",
     shelterManager = this?.shelterManager ?: "",
     shelterHomePage = this?.shelterHomePage ?: "",
-    userType = this?.userType ?: ""
+    userType = this?.userType ?: "",
+    shelterIntro = this?.shelterIntro ?: ""
 )
 
 internal fun JoinEntitiyRepo.toMapper() = JoinEntitiy(
@@ -29,9 +31,11 @@ internal fun JoinEntitiyRepo.toMapper() = JoinEntitiy(
     profileImage = profileImage,
     name = name,
     shelterName = shelterName,
+    shelterAccount = shelterAccount,
     shelterAddress = shelterAddress,
     shelterPhoneNumber = shelterPhoneNumber,
     shelterManager = shelterManager,
     shelterHomePage = shelterHomePage,
-    userType = userType
+    userType = userType,
+    shelterIntro = shelterIntro
 )
