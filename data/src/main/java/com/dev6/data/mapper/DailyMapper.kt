@@ -9,7 +9,7 @@ import com.dev6.domain.entitiyRepo.daily.DailyPost
 import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 
 internal fun DailyPaginationResponse?.toDomain() = DailyPost(
-    dailyFeedEntitiy = this?.dailyFeedEntitiy?.toDomain() ?: emptyList(),
+    dailyFeedEntitiy = this?.dailyFeedEntitiy?.map { it.toData() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -46,5 +46,9 @@ internal fun DailyFeedEntitiy.toData() = DailyPostFeed(
     images = images,
     title = title,
     userId = userId,
-    normalPostId = normalPostId
+    normalPostId = normalPostId,
+    likedCount = likedCount,
+    createdDate = createdDate,
+    liked = liked,
+    commentCount = commentCount
 )

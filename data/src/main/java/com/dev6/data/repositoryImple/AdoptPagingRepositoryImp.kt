@@ -12,9 +12,9 @@ import javax.inject.Inject
 class AdoptPagingRepositoryImp
 @Inject constructor(private val remoteSource: AdoptRemoteSource) :
     AdoptPagingRepository {
-    override suspend fun getAdoptData(): Flow<PagingData<AdoptPostFeed>> {
+    override suspend fun getAdoptData(userId: String): Flow<PagingData<AdoptPostFeed>> {
         return Pager(PagingConfig(pageSize = 3)) {
-            AdoptPagingSourceImp(remoteSource)
+            AdoptPagingSourceImp(remoteSource , userId)
         }.flow
     }
 }

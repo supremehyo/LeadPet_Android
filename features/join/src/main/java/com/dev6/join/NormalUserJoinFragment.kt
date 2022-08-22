@@ -86,7 +86,7 @@ class NormalUserJoinFragment :
             "", "",
             "", binding.nickNameInputText.text.toString(), "", "",
             "",
-            "", "", userType
+            "", "", "" ,userType,""
         )
     }
 

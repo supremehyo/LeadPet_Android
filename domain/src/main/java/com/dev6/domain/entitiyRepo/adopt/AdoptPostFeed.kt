@@ -6,6 +6,8 @@ import java.io.Serializable
 data class AdoptPostFeed(
     @SerializedName("adoptionPostId")
     val adoptionPostId: String,
+    @SerializedName("age")
+    val age: Int?,
     @SerializedName("animalType")
     val animalType: String,
     @SerializedName("contents")
@@ -20,7 +22,7 @@ data class AdoptPostFeed(
     val images: List<String>,
     @SerializedName("neutering")
     val neutering: String,
-    @SerializedName("species")
+    @SerializedName("breed")
     val species: String,
     @SerializedName("startDate")
     val startDate: String,

@@ -6,5 +6,5 @@ import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import kotlinx.coroutines.flow.Flow
 
 interface AdoptPagingRepository {
-    suspend fun getAdoptData() : Flow<PagingData<AdoptPostFeed>>
+    suspend fun getAdoptData(userId: String) : Flow<PagingData<AdoptPostFeed>>
 }

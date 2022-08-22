@@ -12,7 +12,7 @@ import com.dev6.domain.entitiyRepo.Sort
 import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
 
 internal fun ShelterPagingResponse?.toDomain() = ShelterResopnseEntitiyRepo(
-    shelterEntitiy = this?.shelterEntitiy?.toDomain() ?: emptyList(),
+    shelterEntitiy = this?.shelterEntitiy?.map { it.toData() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -48,6 +48,9 @@ internal fun List<ShelterEntitiy>.toDomain(): List<ShelterEntitiyRepo> {
 internal fun ShelterEntitiy.toData() = ShelterEntitiyRepo(
     allFeedCount = allFeedCount,
     assessmentStatus = assessmentStatus,
+    profileImage = profileImage,
+    shelterAddress = shelterAddress,
+    shelterHomePage = shelterHomePage,
     shelterName = shelterName,
     userId = userId
 )

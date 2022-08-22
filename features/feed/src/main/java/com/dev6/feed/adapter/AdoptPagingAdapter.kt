@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dev6.core.util.extension.makeTimeString
 import com.dev6.domain.entitiyRepo.DonationPostFeed
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.feed.databinding.ItemAdoptBinding
@@ -54,9 +53,15 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
         fun onBind(item: AdoptPostFeed) {
             binding.adoptUserId.text = item.userId
             binding.adoptTitleTv.text = item.title
-            binding.adoptDateTv.text =
-                makeTimeString(item.startDate[0], item.startDate[1], item.startDate[2]) +
-                        "~" + makeTimeString(item.endDate[0], item.endDate[1], item.endDate[2])
+            binding.adoptBreedTv.text = item.animalType+"+"+item.species+"+"+item.gender
+            binding.adoptDateTv.text = ""
+            /*
+            makeTimeString(item.startDate[0], item.startDate[1], item.startDate[2]) +
+                    "~" + makeTimeString(item.endDate[0], item.endDate[1], item.endDate[2])
+
+             */
+            binding.adoptAgeTv.text = item.age.toString()
+            binding.adoptDiseaseTv.text = "아픔"
             binding.itemAdoptCl.setOnClickListener {
                 callback(item)
             }

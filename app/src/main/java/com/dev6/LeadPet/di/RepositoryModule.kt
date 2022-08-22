@@ -64,5 +64,13 @@ abstract class RepositoryModule {
     @Binds
     @ViewModelScoped
     abstract fun bindsBreedRepository(repository: BreedRepositoryImp): BreedRepository
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsCommentRepository(repository: CommentRepositoryImp): CommentPagingRepository
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsProfileRepository(repository: ProfileRepositoryImp): ProfileRepository
 }
 

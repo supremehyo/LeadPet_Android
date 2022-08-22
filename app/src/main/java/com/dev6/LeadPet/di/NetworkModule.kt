@@ -52,6 +52,12 @@ open class NetworkModule {
 
     @Provides
     @Singleton
+    fun provideProfileService(retrofit: Retrofit): ProfileAPI {
+        return retrofit.create(ProfileAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun provideLoginService(retrofit: Retrofit): LoginAPI {
         return retrofit.create(LoginAPI::class.java)
     }
