@@ -17,6 +17,7 @@ dependencies {
     implementation (project(":data"))
     implementation (project(":domain"))
     implementation (project(":core"))
+    implementation (project(":features:feed"))
 
     //Android Core
     implementation(Kotlin.KOTLIN_STDLIB)

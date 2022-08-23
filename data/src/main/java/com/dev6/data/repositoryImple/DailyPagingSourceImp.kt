@@ -19,7 +19,7 @@ class DailyPagingSourceImp @Inject constructor(private val dailyRemoteSource: Da
             try {
                 Log.v("ssssfsfsf2" ,response.toDomain().dailyFeedEntitiy.get(0).normalPostId)
             }catch (e : Exception){
-                Log.v("ssssfsfsf3" ,e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().dailyFeedEntitiy,

@@ -30,14 +30,17 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
             joinIntent.putExtra("uuid", event.loginDto.uid)
+            joinIntent.putExtra("exist", true)
             startActivity(joinIntent)
             finish()
         }
 
-        is LoginViewModel.Event.ErrorEvent -> Toast.makeText(
-            applicationContext,
-            event.text,
-            Toast.LENGTH_SHORT
-        ).show()
+        is LoginViewModel.Event.ErrorEvent -> {
+            val joinIntent = Intent(this, JoinActivity::class.java)
+            joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
+            joinIntent.putExtra("uuid", event.loginDto.uid)
+            joinIntent.putExtra("exist", false)
+            startActivity(joinIntent)
+        }
     }
 }

@@ -25,7 +25,7 @@ class ShelterPagingSourceImp @Inject constructor(
             try {
                 Log.v("ssssfsfsf2", response.toDomain().shelterEntitiy.get(0).shelterName)
             } catch (e: Exception) {
-                Log.v("ssssfsfsf3", e.stackTraceToString())
+                throw Exception()
             }
             LoadResult.Page(
                 data = response.toDomain().shelterEntitiy,
