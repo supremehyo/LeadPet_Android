@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <font
-        android:font="@font/hansneo_medium"
-        android:fontStyle="normal"
-        android:fontWeight="400"
-        />
-
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
     <font
         android:font="@font/hansansneobold"
         android:fontStyle="normal"
@@ -14,7 +7,6 @@
 
     <font
         android:font="@font/hanseno_light"
-        android:fontStyle="normal"
+        android:fontStyle="italic"
         android:fontWeight="400"/>
-
 </font-family>

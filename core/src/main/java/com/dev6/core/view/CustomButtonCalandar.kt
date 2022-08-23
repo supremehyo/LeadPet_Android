@@ -16,15 +16,14 @@ import java.util.function.Consumer
 class CustomButtonCalandar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-
-    ) : ConstraintLayout(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = 0
+) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     lateinit var okClickListener: Consumer<String>
     private var binding: CustomViewCaladerBinding
 
     init {
-        binding = CustomViewCaladerBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = CustomViewCaladerBinding.inflate(LayoutInflater.from(context), this)
 
         doOnAttach {
             findViewTreeLifecycleOwner()?.lifecycleScope?.let { lifeCycleScope ->
@@ -33,8 +32,6 @@ class CustomButtonCalandar @JvmOverloads constructor(
                 }
             }
         }
-
-
 
         binding.tietDate.doOnTextChanged { _, _, _, _ ->
             binding.textInputLayout.setBoxStrokeColorStateList(

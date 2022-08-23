@@ -98,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:textColorHint="@color/text_color_hint"
-                android:fontFamily="@font/custom_font_family"
+                android:fontFamily="@font/custom_font_family_medium"
                 android:gravity="start|top"
                 android:hint="닉네임" />
         </com.google.android.material.textfield.TextInputLayout>

@@ -19,7 +19,7 @@ class CustomButtonLight @JvmOverloads constructor(
     private var binding: CustomViewLightButtonBinding
 
     init {
-        binding = CustomViewLightButtonBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = CustomViewLightButtonBinding.inflate(LayoutInflater.from(context), this)
 
         attrs?.run {
             val typedArr = context.obtainStyledAttributes(attrs, R.styleable.Button)
