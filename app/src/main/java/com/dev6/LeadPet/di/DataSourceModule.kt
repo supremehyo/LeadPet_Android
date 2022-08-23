@@ -50,5 +50,13 @@ abstract class DataSourceModule {
     @Singleton
     @Binds
     abstract fun bindsBreedRemoteSource(source: BreedRemoteSourceImpl): BreedRemoteSource
+
+    @Singleton
+    @Binds
+    abstract fun bindsCommentRemoteSource(source: CommentRemoteSourceImpl): CommentRemoteSource
+
+    @Singleton
+    @Binds
+    abstract fun bindsProfileRemoteSource(source: ProfileRemoteSourceImp): ProfileRemoteSource
 }
 

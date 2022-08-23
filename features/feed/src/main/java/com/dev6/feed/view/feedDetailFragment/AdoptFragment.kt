@@ -48,8 +48,7 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
     }
 
     override fun initViewModel() {
-
-
+        getAdoptList()
     }
 
     override fun initListener() {
@@ -61,9 +60,9 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
 
     override fun afterViewCreated() {
         super.afterViewCreated()
-        getAdoptList()
+
         repeatOnStarted {
-            feedViewModel.eventFlow3.collect { event ->2
+            feedViewModel.eventAdoptList.collect { event ->2
                 when (event) {
                     is FeedViewModel.Event.AdoptUiEvent -> {
                         when (event.uiState) {
@@ -88,7 +87,7 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
     }
 
     private fun getAdoptList() {
-        feedViewModel.getAdoptList()
+        feedViewModel.getAdoptList("")
     }
 
     private fun makeBottomSheet(type: Int) {

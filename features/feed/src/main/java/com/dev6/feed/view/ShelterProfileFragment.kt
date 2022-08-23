@@ -1,8 +1,13 @@
 package com.dev6.feed.view
 
+import android.net.Uri
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileBinding
@@ -11,12 +16,15 @@ import com.dev6.feed.view.profileDetailFragment.ProfileDailyFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileDonationFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileIntroduceFragment
 import com.dev6.feed.viewmodel.FeedViewModel
+import com.dev6.feed.viewmodel.ProfileViewModel
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.flow.collect
 
 
 class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     private val feedViewModel: FeedViewModel by activityViewModels()
+    private val profileViewModel : ProfileViewModel by activityViewModels()
 
     lateinit var profileIntroduceFragment: ProfileIntroduceFragment
     lateinit var profileDailyFragment: ProfileDailyFragment
@@ -27,7 +35,6 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     override fun initView() {
         super.initView()
         initTabLayout()
-        feedViewModel.setCurrentView(FeedViewType.PROFILE)
 
         profileIntroduceFragment = ProfileIntroduceFragment()
         profileDailyFragment = ProfileDailyFragment()
@@ -35,6 +42,49 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
         profileAdoptFragment = ProfileAdoptFragment()
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, profileIntroduceFragment).commit()
+    }
+
+    override fun initViewModel() {
+        super.initViewModel()
+        feedViewModel.setCurrentView(FeedViewType.PROFILE)
+        profileViewModel.getShelterProfileDetailData("app1")
+    }
+
+    override fun afterViewCreated() {
+        super.afterViewCreated()
+        repeatOnStartedFragment {
+            profileViewModel.eventProfileDetail.collect{ evnet->
+                when(evnet){
+                    is ProfileViewModel.Event.ProfileUiEvent->{
+                        when(evnet.uiState){
+                            is UiState.Success->{
+                               var userProfileData = evnet.uiState.data
+                                binding.apply {
+                                    Glide.with(binding.root)
+                                        .load(Uri.parse(""))
+                                        .error(R.drawable.dailay_image1)
+                                        .circleCrop()
+                                        .into(shelterProfileImageIv)
+                                    shelterProfileDesTv.text = userProfileData.shelterIntro
+                                    shelterProfileNameTv.text = userProfileData.shelterName
+                                }
+                            }
+                            is UiState.Error -> {
+                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            is UiState.Loding -> {
+                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            else->{
+
+                            }
+                        }
+                    }else->{
+
+                    }
+                }
+            }
+        }
     }
 
     private fun initTabLayout() {

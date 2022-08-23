@@ -8,25 +8,29 @@ data class JoinEntitiy(
     @SerializedName("loginMethod")
     val loginMethod: String,
     @SerializedName("uid")
-    val uid : String,
+    val uid: String,
     @SerializedName("email")
-    val email : String?,
+    val email: String?,
     @SerializedName("password")
-    val password : String?,
+    val password: String?,
     @SerializedName("profileImage")
-    val profileImage : String?,
+    val profileImage: String?,
     @SerializedName("name")
-    val name : String,
+    val name: String,
     @SerializedName("shelterName")
-    val shelterName : String,
+    val shelterName: String,
     @SerializedName("shelterAddress")
-    val shelterAddress : String,
+    val shelterAddress: String,
     @SerializedName("shelterPhoneNumber")
-    val shelterPhoneNumber : String,
+    val shelterPhoneNumber: String,
     @SerializedName("shelterManager")
-    val shelterManager : String,
+    val shelterManager: String,
     @SerializedName("shelterHomePage")
-    val shelterHomePage : String,
+    val shelterHomePage: String,
     @SerializedName("userType")
-    val userType : String,
+    val userType: String,
+    @SerializedName("shelterAccount")
+    val shelterAccount: String,
+    @SerializedName("shelterIntro")
+    val shelterIntro: String
 )

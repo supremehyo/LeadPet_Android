@@ -31,7 +31,7 @@
             app:layout_constraintGuide_percent="1" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/shelterProfileImageIv"
             android:elevation="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,15 +55,15 @@
             android:text="팔로우"
             android:textColor="@color/white"
             android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintBottom_toBottomOf="@+id/shelterProfileImageIv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.659"
             app:layout_constraintStart_toStartOf="@+id/guide2"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/shelterProfileImageIv"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/shelterProfileNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -74,10 +74,10 @@
             app:layout_constraintEnd_toStartOf="@+id/guide3"
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/shelterProfileImageIv" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/shelterProfileDesTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -86,7 +86,7 @@
             android:layout_marginTop="24dp"
             android:text="20명의 아이들을 보호하고있는 꿈나무 보호소입니다.\n아이들이 행ㄴ복하게 살아갈 수 있는 보호소를 만들고 있습니다."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/shelterProfileNameTv" />
 
         <TextView
             android:id="@+id/textView8"
@@ -98,7 +98,7 @@
             android:layout_marginTop="16dp"
             android:text="일상 3 | 기부 3 | 입양 3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/shelterProfileDesTv" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"

@@ -1,6 +1,7 @@
 package com.dev6.feed.view.feedDetailFragment
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     private lateinit var dailyNearShelterRc: RecyclerView
     private lateinit var pagingAdapter: DailyPagingAdapter
     private lateinit var shelterAdapter: DailyshelterRecyclerAdapter
-
+    var userId = ""
 
     override fun initView() {
         super.initView()
@@ -38,9 +39,10 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         }
 
         shelterAdapter = DailyshelterRecyclerAdapter {
-            val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            dailyIntent.putExtra("dailyShelter", it)
-            startActivity(dailyIntent)
+            Log.v("shelterData" , it.userId)
+            //val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
+            //dailyIntent.putExtra("dailyShelter", it)
+            //startActivity(dailyIntent)
         }
 
 
@@ -61,18 +63,18 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     private fun getDailyList() {
-        feedViewModel.getFeedList()
+         feedViewModel.getFeedList(userId,"")
     }
 
     private fun getShelterList() {
-        feedViewModel.getNearShelterList("서울","아이언맨")
+        feedViewModel.getNearShelterList("", "")
     }
 
 
     override fun afterViewCreated() {
         super.afterViewCreated()
         repeatOnStarted {
-            feedViewModel.eventFlow.collect { event ->
+            feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
                         when (event.uiState) {
@@ -89,13 +91,15 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                             }
                         }
                     }
-                    else -> {}
+                    else -> {
+
+                    }
                 }
             }
         }
 
         repeatOnStarted {
-            feedViewModel.eventFlow4.collect { event ->
+            feedViewModel.eventShelterList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.ShelterUiEvnet -> {
                         when (event.uiState) {
@@ -112,7 +116,9 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                             }
                         }
                     }
-                    else -> {}
+                    else -> {
+
+                    }
                 }
             }
         }

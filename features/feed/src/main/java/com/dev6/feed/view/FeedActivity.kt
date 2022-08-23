@@ -23,9 +23,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed) {
 
-    private val feedViewModel: FeedViewModel by viewModels()
-    var list = listOf("경기도 성남시", "서울특별시")
-    var userType = "user"
+
+    private  val feedViewModel : FeedViewModel by viewModels()
+    var list  = listOf("경기도 성남시" , "서울특별시")
+    var userType = ""
+
     lateinit var navController: NavController
     var isFabOpen = false
 

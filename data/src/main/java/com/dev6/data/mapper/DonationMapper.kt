@@ -10,7 +10,7 @@ import com.dev6.domain.entitiyRepo.*
 
 
 internal fun DonationPaginationResponse?.toDomain() = DonationPost(
-    donationFeedList = this?.donationFeedList?.toDomain() ?: emptyList(),
+    donationFeedList = this?.donationFeedList?.map { it.toData() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,

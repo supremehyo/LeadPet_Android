@@ -12,5 +12,13 @@ data class DailyFeedEntitiy(
     @SerializedName("title")
     val title: String,
     @SerializedName("userId")
-    val userId: String
+    val userId: String,
+    @SerializedName("likedCount")
+    val likedCount: Int,
+    @SerializedName("createdDate")
+    val createdDate: List<String>,
+    @SerializedName("commentCount")
+    val commentCount: Int,
+    @SerializedName("liked")
+    val liked: Boolean,
 )

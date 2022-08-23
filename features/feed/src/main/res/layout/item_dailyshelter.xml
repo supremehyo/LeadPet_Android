@@ -9,28 +9,28 @@
         android:layout_width="70dp"
         android:layout_height="90dp">
 
-     <ImageView
-         android:id="@+id/dailyShelterIv"
-         android:background="@color/black"
-         android:layout_width="67dp"
-         android:layout_height="67dp"
-         android:src="@drawable/home"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/dailyShelterIv"
+            android:background="@color/black"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:src="@drawable/home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-     <TextView
-         android:id="@+id/dailyShelterName"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:fontFamily="@font/hansneo_medium"
-         android:textColor="@color/Gray_01"
-         android:layout_marginTop="6dp"
-         app:layout_constraintHorizontal_bias="0.5"
-         android:textSize="10dp"
-         android:text="투게더펫"
-         app:layout_constraintEnd_toEndOf="@+id/dailyShelterIv"
-         app:layout_constraintStart_toStartOf="@+id/dailyShelterIv"
-         app:layout_constraintTop_toBottomOf="@+id/dailyShelterIv" />
+        <TextView
+            android:id="@+id/dailyShelterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hansneo_medium"
+            android:textColor="@color/Gray_01"
+            android:layout_marginTop="6dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:textSize="10dp"
+            android:text="투게더펫"
+            app:layout_constraintEnd_toEndOf="@+id/dailyShelterIv"
+            app:layout_constraintStart_toStartOf="@+id/dailyShelterIv"
+            app:layout_constraintTop_toBottomOf="@+id/dailyShelterIv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

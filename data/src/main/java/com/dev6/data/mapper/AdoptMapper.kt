@@ -9,7 +9,7 @@ import com.dev6.domain.entitiyRepo.adopt.AdoptPost
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 
 internal fun AdoptPaginationResponse?.toDomain() = AdoptPost(
-    adoptPostFeed = this?.adoptFeedEntitiyList?.toDomain() ?: emptyList(),
+    adoptPostFeed = this?.adoptFeedEntitiyList?.map { it.toData() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -53,5 +53,6 @@ internal fun AdoptFeedEntitiy.toData() = AdoptPostFeed(
     neutering = neutering?: "",
     species = species?: "",
     gender = gender?: "",
-    euthanasiaDate = euthanasiaDate?: ""
+    euthanasiaDate = euthanasiaDate?: "",
+    age = age
 )

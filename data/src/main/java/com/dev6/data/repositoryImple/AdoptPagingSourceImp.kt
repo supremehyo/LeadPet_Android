@@ -9,14 +9,18 @@ import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 import com.dev6.domain.repository.adopt.AdoptPagingSource
 import javax.inject.Inject
 
-class AdoptPagingSourceImp  @Inject constructor(private val adoptRemoteSource: AdoptRemoteSource) :
+class AdoptPagingSourceImp  @Inject constructor(
+    private val adoptRemoteSource: AdoptRemoteSource,
+    userId: String) :
     AdoptPagingSource() {
+
+    var _userId = userId
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AdoptPostFeed> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = adoptRemoteSource.AdoptAllFeed(next, size)
+            val response = adoptRemoteSource.AdoptAllFeed(next, size,_userId)
             response?.adoptFeedEntitiyList?.get(0)?.adoptionPostId?.let { Log.v("ssssfsfsf1" , it) }
             try {
                 Log.v("ssssfsfsf2" ,response.toDomain().adoptPostFeed.get(0).adoptionPostId)
