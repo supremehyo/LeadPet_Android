@@ -14,8 +14,7 @@ class JoinReposUseCase @Inject constructor(private val joinRepository: JoinRepos
     JoinReposBaseUseCase {
 
 
-    override suspend fun invoke(joinEntitiyRepo: JoinEntitiyRepo): Flow<UiState<String>> =
-        flow {
+    override suspend fun invoke(joinEntitiyRepo: JoinEntitiyRepo)=    flow {
             emit(UiState.Loding)
             runCatching {
                 joinRepository.signUp(joinEntitiyRepo)

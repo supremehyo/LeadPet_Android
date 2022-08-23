@@ -1,6 +1,7 @@
 package com.dev6.login
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.dev6.core.base.BindingActivity
@@ -27,6 +28,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     fun handleEvent(event: LoginViewModel.Event) = when (event) {
         is LoginViewModel.Event.JoinEvent -> {
+            Log.v("asdfsadga" ,"로그인 성공?")
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
             joinIntent.putExtra("uuid", event.loginDto.uid)
@@ -36,6 +38,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         }
 
         is LoginViewModel.Event.ErrorEvent -> {
+            Log.v("asdfsadga" ,"요까지옴")
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
             joinIntent.putExtra("uuid", event.loginDto.uid)
