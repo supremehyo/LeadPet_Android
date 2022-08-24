@@ -21,5 +21,5 @@ data class DailyPostFeed(
     @SerializedName("commentCount")
     val commentCount: Int,
     @SerializedName("liked")
-    val liked: Boolean,
+    val liked: Boolean
 ) : Serializable

@@ -33,7 +33,8 @@ class CustomButtonCalandar @JvmOverloads constructor(
             }
         }
 
-        binding.tietDate.doOnTextChanged { _, _, _, _ ->
+        binding.tietDate.doOnTextChanged { text, _, _, _ ->
+            if(text.isNullOrEmpty()) return@doOnTextChanged
             binding.textInputLayout.setBoxStrokeColorStateList(
                 resources.getColorStateList(
                     R.color.text_input_layout_stroke_pressed,
@@ -41,13 +42,6 @@ class CustomButtonCalandar @JvmOverloads constructor(
                 )
             )
         }
-//        attrs?.run {
-//            val typedArr = context.obtainStyledAttributes(attrs, R.styleable.Button)
-//            setText(typedArr.getString(R.styleable.Button_text) ?: "")
-//            if (!isInEditMode) {
-//                typedArr.recycle()
-//            }
-//        }
     }
 
     fun setText(text_string: String) {

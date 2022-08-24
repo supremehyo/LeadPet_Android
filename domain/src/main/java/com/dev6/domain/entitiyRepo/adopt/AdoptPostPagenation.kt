@@ -3,7 +3,7 @@ package com.dev6.domain.entitiyRepo.adopt
 import com.dev6.domain.entitiyRepo.Page
 import com.dev6.domain.entitiyRepo.Sort
 
-data class AdoptPost(
+data class AdoptPostPagenation(
     val adoptPostFeed: List<AdoptPostFeed>,
     val empty: Boolean,
     val first: Boolean,

@@ -1,4 +1,4 @@
-package com.dev6.data.model
+package com.dev6.data.model.daily
 
 data class LifePostRequestResponse(
     val userId: String,

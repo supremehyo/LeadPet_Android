@@ -5,10 +5,10 @@ import com.dev6.data.model.adopt.AdoptPageEntitiy
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.entity.adopt.AdoptSortEntitiy
 import com.dev6.domain.entitiyRepo.*
-import com.dev6.domain.entitiyRepo.adopt.AdoptPost
+import com.dev6.domain.entitiyRepo.adopt.AdoptPostPagenation
 import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
 
-internal fun AdoptPaginationResponse?.toDomain() = AdoptPost(
+internal fun AdoptPaginationResponse?.toDomain() = AdoptPostPagenation(
     adoptPostFeed = this?.adoptFeedEntitiyList?.map { it.toData() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,

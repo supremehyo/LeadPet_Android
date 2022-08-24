@@ -1,8 +1,7 @@
 package com.dev6.data.service
 
 
-import com.dev6.data.model.LifePostRequestResponse
-import com.dev6.domain.entitiyRepo.LifePost
+import com.dev6.data.model.daily.LifePostRequestResponse
 import retrofit2.Response
 
 import retrofit2.http.Body

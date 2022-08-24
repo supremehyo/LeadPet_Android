@@ -1,7 +1,7 @@
 package com.dev6.data.network
 
 import com.dev6.data.MainCoroutinesRule
-import com.dev6.data.model.LifePostRequestResponse
+import com.dev6.data.model.daily.LifePostRequestResponse
 import com.dev6.data.service.LifePostAPI
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -10,7 +10,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import java.io.IOException
-import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 class LoginApiTest : ApiAbstract<LifePostAPI>() {

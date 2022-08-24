@@ -109,11 +109,9 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
     fun initNavController() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        var navGraph = navController.navInflater.inflate(R.navigation.feed_nav_graph)
-//        navController.setGraph(navGraph, null)
+        navController.setGraph(R.navigation.feed_nav_graph)
         if (userType == "user") { // 유저 type이 user면 해당 바텀네비게이션으로 다시 그리기
-            navGraph = navController.navInflater.inflate(R.navigation.feed_nav_graph2)
-            navController.setGraph(navGraph, null)
+            navController.setGraph(R.navigation.feed_nav_graph2)
             binding.bottomNavigationView.menu.clear()
             binding.bottomNavigationView.inflateMenu(R.menu.bottome_menu2)
         }

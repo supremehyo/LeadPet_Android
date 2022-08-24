@@ -1,6 +1,6 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.LifePostRequestResponse
+import com.dev6.data.model.daily.LifePostRequestResponse
 import com.dev6.domain.entitiyRepo.LifePost
 
 // 같은 모듈 안에서만 볼 수 있다

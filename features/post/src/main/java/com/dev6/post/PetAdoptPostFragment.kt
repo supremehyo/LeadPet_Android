@@ -35,14 +35,14 @@ class PetAdoptPostFragment :
 
         binding.rvAnimalChoice.adapter = choiceAdapter
 
-        //todo 리소트 익스텐션 하나 만들기
-//        binding.include.tvTop.text = resources.getString(R.string.title_adaption_insert)
+
+        binding.include.tvTop.text = resources.getString(R.string.title_adaption_insert)
         //todo 이것도 깔끔하게 정리하기
-//        choiceAdapter.add(ItemChoiceAnimal("믹스견"))
-//        choiceAdapter.add(ItemChoiceAnimal("치와와"))
-//        choiceAdapter.add(ItemChoiceAnimal("골든 리트리버"))
-//        choiceAdapter.add(ItemChoiceAnimal("말티즈"))
-//        choiceAdapter.add(ItemSerchAnimal())
+        choiceAdapter.add(ItemChoiceAnimal("믹스견"))
+        choiceAdapter.add(ItemChoiceAnimal("치와와"))
+        choiceAdapter.add(ItemChoiceAnimal("골든 리트리버"))
+        choiceAdapter.add(ItemChoiceAnimal("말티즈"))
+        choiceAdapter.add(ItemSerchAnimal())
 
         binding.cvEndDate.setHint("종료일")
     }

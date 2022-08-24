@@ -1,202 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true" >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".PetDonateFragment">
-
-        <EditText
-            android:id="@+id/tv_title"
-            style="@style/Widget_post_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="21dp"
-            android:hint="@string/hint_title"
-            app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
-            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/v_camera2"
-            app:layout_constraintTop_toBottomOf="@+id/include"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_left2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="17dp"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gi_light2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_end="17dp" />
+        android:orientation="vertical">
 
         <include
             android:id="@+id/include"
             layout="@layout/inclue_top"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <com.dev6.core.view.CustomButtonCamera
-            android:id="@+id/v_camera2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            app:layout_constraintStart_toStartOf="@+id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/include"></com.dev6.core.view.CustomButtonCamera>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-        <com.dev6.core.view.CustomButtonLight
-
-            android:id="@+id/customButtonLight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-            app:layout_constraintStart_toStartOf="@+id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/v_camera2"
-            app:text="물품 선택" />
-
-        <TextView
-            android:id="@+id/tv_donate_method"
-            style="@style/CustomTextViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="기부 방법"
-            app:layout_constraintStart_toStartOf="@+id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/customButtonLight" />
-
-        <TextView
-            android:id="@+id/tv_donate_method2"
-            style="@style/CustomTextViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="게시 기간"
-            app:layout_constraintStart_toStartOf="@+id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <ImageView
-            android:id="@+id/iv_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/info"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_donate_method"
-            app:layout_constraintStart_toEndOf="@+id/tv_donate_method"
-            app:layout_constraintTop_toTopOf="@+id/tv_donate_method" />
-
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/mbtg_donate_method"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="6:1"
-            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-            app:layout_constraintStart_toStartOf="@+id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_donate_method"
-            app:layout_constraintVertical_bias="0.07999998">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_what"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:insetRight="7dp"
-                android:text="있음">
+                tools:context=".PetDonateFragment">
 
-            </com.google.android.material.button.MaterialButton>
+                <EditText
+                    android:id="@+id/tv_title"
+                    style="@style/Widget_post_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="21dp"
+                    android:hint="@string/hint_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
+                    app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/v_camera2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_the"
-                style="@style/ButtonSelecterStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:insetLeft="7dp"
-                android:text="없음" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_left2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="17dp"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textin_introduce"
-            style="@style/CustomOutlineBox"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="32dp"
-            android:paddingTop="15dp"
-            app:boxStrokeWidth="2dp"
-            app:counterEnabled="true"
-            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/mbtg_donate_method">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gi_light2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_end="17dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_introduce"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:fontFamily="@font/custom_font_family_medium"
-                android:gravity="start|top"
-                android:hint="소개글 작성" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.dev6.core.view.CustomButtonCamera
+                    android:id="@+id/v_camera2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    app:layout_constraintStart_toStartOf="@+id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/include"></com.dev6.core.view.CustomButtonCamera>
 
-        <TextView
-            android:id="@+id/textView3"
-            style="@style/customTextViewFontStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/text_ems_1000(tietIntroduce.text.length)}"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-            app:layout_constraintTop_toBottomOf="@+id/textin_introduce" />
+                <com.dev6.core.view.CustomButtonLight
+                    android:id="@+id/customButtonLight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/round_8dp_gray07"
+                    app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+                    app:layout_constraintStart_toStartOf="@+id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/v_camera2"
+                    app:text="물품 선택" />
 
-        <com.dev6.core.view.CustomButtonCalandar
-            android:id="@+id/cv_start_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            app:layout_constraintEnd_toStartOf="@id/v_hyphon"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="@id/gl_left2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_donate_method2">
-        </com.dev6.core.view.CustomButtonCalandar>
+                <TextView
+                    android:id="@+id/tv_donate_method"
+                    style="@style/CustomTextViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="52dp"
+                    android:text="기부 방법"
+                    app:layout_constraintStart_toStartOf="@+id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/customButtonLight" />
 
-        <View
-            android:id="@+id/v_hyphon"
-            style="@style/Hyphon"
-            app:layout_constraintBottom_toBottomOf="@id/cv_start_date"
-            app:layout_constraintEnd_toStartOf="@id/cv_end_date"
-            app:layout_constraintStart_toEndOf="@id/cv_start_date"
-            app:layout_constraintTop_toTopOf="@id/cv_start_date" />
+                <TextView
+                    android:id="@+id/tv_donate_method2"
+                    style="@style/CustomTextViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="게시 기간"
+                    app:layout_constraintStart_toStartOf="@+id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <com.dev6.core.view.CustomButtonCalandar
-            android:id="@+id/cv_end_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_start_date"
-            app:layout_constraintEnd_toEndOf="@+id/gi_light2"
-            app:layout_constraintStart_toEndOf="@id/v_hyphon"
-            app:layout_constraintTop_toTopOf="@+id/cv_start_date"></com.dev6.core.view.CustomButtonCalandar>
+                <ImageView
+                    android:id="@+id/iv_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/info"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_donate_method"
+                    app:layout_constraintStart_toEndOf="@+id/tv_donate_method"
+                    app:layout_constraintTop_toTopOf="@+id/tv_donate_method" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/mbtg_donate_method"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="5:1"
+                    app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+                    app:layout_constraintStart_toStartOf="@+id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_donate_method"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_yes"
+                        style="@style/ButtonSelecterStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:insetRight="7dp"
+                        android:text="후원 계좌">
+
+                    </com.google.android.material.button.MaterialButton>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_no"
+                        style="@style/ButtonSelecterStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:insetLeft="7dp"
+                        android:text="물품 배송" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textin_introduce"
+                    style="@style/CustomOutlineBox"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="32dp"
+                    android:paddingTop="15dp"
+                    app:boxStrokeWidth="2dp"
+                    app:counterEnabled="true"
+                    app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/mbtg_donate_method">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_introduce"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:fontFamily="@font/custom_font_family_medium"
+                        android:gravity="start|top"
+                        android:hint="소개글 작성" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/customTextViewFontStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/text_ems_1000(tietIntroduce.text.length)}"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/gi_light2"
+                    app:layout_constraintTop_toBottomOf="@+id/textin_introduce" />
+
+                <com.dev6.core.view.CustomButtonCalandar
+                    android:id="@+id/cv_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="75dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/v_hyphon"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@id/gl_left2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_donate_method2"></com.dev6.core.view.CustomButtonCalandar>
+
+                <View
+                    android:id="@+id/v_hyphon"
+                    style="@style/Hyphon"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_start_date"
+                    app:layout_constraintEnd_toStartOf="@id/cv_end_date"
+                    app:layout_constraintStart_toEndOf="@id/cv_start_date"
+                    app:layout_constraintTop_toTopOf="@id/cv_start_date" />
+
+                <com.dev6.core.view.CustomButtonCalandar
+                    android:id="@+id/cv_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/cv_start_date"
+                    app:layout_constraintEnd_toEndOf="@+id/gi_light2"
+                    app:layout_constraintStart_toEndOf="@id/v_hyphon"
+                    app:layout_constraintTop_toTopOf="@+id/cv_start_date"></com.dev6.core.view.CustomButtonCalandar>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
