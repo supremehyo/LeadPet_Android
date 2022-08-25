@@ -1,27 +1,25 @@
 package com.dev6.join
 
-import android.app.Activity
+
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
-import android.provider.MediaStore
-import android.util.Log
-import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.base.UiState
+import com.dev6.core.enums.LoginType
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.data.model.JoinEntitiy
 import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
+import com.dev6.feed.view.FeedActivity
+import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.join.databinding.FragmentNormalUserJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import gun0912.tedimagepicker.builder.TedImagePicker
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import java.io.IOException
+import gun0912.tedimagepicker.util.ToastUtil
 
 
 class NormalUserJoinFragment :
@@ -31,6 +29,8 @@ class NormalUserJoinFragment :
     private val joinViewModel: JoinViewModel by activityViewModels()
     lateinit var joinDto: JoinEntitiy
     lateinit var userType: String
+    lateinit var uid : String
+    lateinit var loginType: String
     private lateinit var imageUri: Uri
 
 
@@ -38,12 +38,42 @@ class NormalUserJoinFragment :
         super.initView()
 
         userType = arguments?.get("userType").toString()
+        uid = arguments?.get("uid").toString()
+
 
     }
 
     override fun initViewModel() {
         super.initViewModel()
         joinViewModel.initJoinImage()
+
+
+        repeatOnStarted {
+            joinViewModel.joinEvnetFlow.collect { event ->
+                when (event) {
+                    is JoinViewModel.Event.UiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                event.uiState.data
+                                Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
+                                val feedIntent = Intent(context, FeedActivity::class.java)
+                                feedIntent.putExtra("userType", "user")
+                                startActivity(feedIntent)
+                            }
+                            is UiState.Error -> {
+                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            is UiState.Loding -> {
+                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }else->{
+
+                }
+                }
+            }
+        }
+
     }
 
     override fun initListener() {
@@ -80,9 +110,25 @@ class NormalUserJoinFragment :
         }
     }
 
+
+    private fun makeLoginType(loginTypeEnum: LoginType) : String{
+        loginType = when(loginTypeEnum){
+            LoginType.EMAIL ->{
+               return "EMAIL"
+            }
+            LoginType.KAKAO ->{
+                return "KAKAO"
+            }
+            LoginType.GOOGLE ->{
+                return "GOOGLE"
+            }
+        }
+    }
+
+
     private fun makeJoinDto(): JoinEntitiyRepo {
         return JoinEntitiyRepo(
-            joinDto.loginMethod, joinDto.uid,
+            makeLoginType(UserData.loginMethod), UserData.uid,
             "", "",
             "", binding.nickNameInputText.text.toString(), "", "",
             "",
