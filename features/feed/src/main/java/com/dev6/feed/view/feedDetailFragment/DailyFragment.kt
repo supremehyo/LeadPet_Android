@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
@@ -63,7 +64,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     private fun getDailyList() {
-         feedViewModel.getFeedList(userId,"")
+         feedViewModel.getFeedList("",UserData.uid)
     }
 
     private fun getShelterList() {

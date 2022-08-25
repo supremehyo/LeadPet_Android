@@ -48,6 +48,7 @@ dependencies {
 
     implementation(Google.HILT_ANDROID)
     implementation(project(mapOf("path" to ":features:join")))
+    implementation(project(mapOf("path" to ":features:feed")))
 
 
     kapt(Google.HILT_ANDROID_COMPILER)
