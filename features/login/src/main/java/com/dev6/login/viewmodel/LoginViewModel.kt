@@ -49,7 +49,12 @@ class LoginViewModel @Inject constructor(
 
                         when (uiState.error) {
                             is NotCorrectException -> event(Event.JoinEvent(loginDto.value))
-                            is ServerFailException -> event(Event.ErrorEvent("계정을 찾을수 없습니다."))
+                            is ServerFailException -> event(
+                                Event.ErrorEvent(
+                                    "계정을 찾을수 없습니다.",
+                                    loginDto.value
+                                )
+                            )
                         }
                     }
                     is UiState.Loding -> {
@@ -62,12 +67,17 @@ class LoginViewModel @Inject constructor(
     }
 
     sealed class Event {
+        data class LoginEvent(
+            val loginDto: LoginEntity
+        ) : Event()
+
         data class JoinEvent(
             val loginDto: LoginEntity
         ) : Event()
 
         data class ErrorEvent(
-            val text: String
+            val text: String,
+            val loginDto: LoginEntity
         ) : Event()
     }
 

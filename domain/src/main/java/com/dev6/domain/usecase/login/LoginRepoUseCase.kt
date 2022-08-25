@@ -3,6 +3,7 @@ package com.dev6.domain.usecase.login
 import com.dev6.core.base.UiState
 import com.dev6.domain.entitiyRepo.LoginEntity
 import com.dev6.core.enums.LoginType
+import com.dev6.core.exception.ServerFailException
 import com.dev6.domain.entitiyRepo.UserEntity
 import com.dev6.domain.repository.LoginRepository
 import kotlinx.coroutines.flow.Flow
@@ -33,11 +34,8 @@ class LoginRepoUseCase @Inject constructor(private val loginRepository: LoginRep
             emit(UiState.Success(userEntityRepo))
         } else {
             when (response.code()) {
-//                404 -> if (loginEntityRepo.loginMethod == LoginType.EMAIL) throw  NotFoundException(
-//                    response.message()
-//                ) else throw  JoinException(response.message())
-                else -> {
-
+                404 ->{
+                    emit(UiState.Error(throw  ServerFailException(response.message())))
                 }
             }
         }
