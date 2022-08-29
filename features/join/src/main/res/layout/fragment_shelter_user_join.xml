@@ -75,14 +75,16 @@
 
                 <ImageView
                     android:id="@+id/shelter_profileImageButton"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
                     android:layout_height="150dp"
+                    app:layout_constraintVertical_bias="0.049"
+                    app:layout_constraintWidth_percent="0.30"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/userprofileimage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></ImageView>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -96,8 +98,9 @@
                         android:id="@+id/shelterUsernameEt"
                         style="@style/CustomOutlineBox"
                         android:layout_gravity="center_horizontal"
-                        android:layout_width="330dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="17dp"
                         android:gravity="center_horizontal"
                         app:helperTextTextColor="@color/Gray_04"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -126,8 +129,9 @@
                         android:id="@+id/shelterUserAddressEt"
                         style="@style/CustomOutlineBox"
                         android:layout_gravity="center_horizontal"
-                        android:layout_width="330dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="17dp"
                         android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         app:helperTextTextColor="@color/Gray_04"
@@ -153,8 +157,9 @@
                         android:id="@+id/shelterUserPhoneEt"
                         style="@style/CustomOutlineBox"
                         android:layout_gravity="center_horizontal"
-                        android:layout_width="330dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="17dp"
                         android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         app:helperTextTextColor="@color/Gray_04"
@@ -180,9 +185,10 @@
                         android:id="@+id/shelterUserAccountEt"
                         style="@style/CustomOutlineBox"
                         android:layout_gravity="center_horizontal"
-                        android:layout_width="330dp"
+                        android:layout_width="match_parent"
                         android:layout_marginTop="20dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="17dp"
                         android:gravity="center_horizontal"
                         app:helperTextTextColor="@color/Gray_04"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -207,8 +213,9 @@
                         android:id="@+id/shelterUserHomePageEt"
                         style="@style/CustomOutlineBox"
                         android:layout_gravity="center_horizontal"
-                        android:layout_width="330dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="17dp"
                         android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         app:helperTextTextColor="@color/Gray_04"
@@ -240,16 +247,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:text="다음"
-            android:backgroundTint="@color/grey4"
-            android:background="@drawable/round_button"
+            android:backgroundTint="@color/Main"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.91"
             app:layout_constraintHeight_percent="0.08"
-            app:layout_constraintVertical_bias="0.95"></Button>
+            app:layout_constraintVertical_bias="0.954" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
