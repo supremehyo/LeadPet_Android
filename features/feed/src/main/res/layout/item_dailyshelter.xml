@@ -5,9 +5,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dailyShelterCl"
-        android:layout_marginRight="24dp"
-        android:layout_width="70dp"
-        android:layout_height="90dp">
+        android:paddingRight="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/dailyShelterIv"
@@ -25,9 +25,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hansneo_medium"
             android:textColor="@color/Gray_01"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="13dp"
             app:layout_constraintHorizontal_bias="0.5"
-            android:textSize="10dp"
+            android:textSize="12dp"
             android:text="투게더펫"
             app:layout_constraintEnd_toEndOf="@+id/dailyShelterIv"
             app:layout_constraintStart_toStartOf="@+id/dailyShelterIv"

@@ -5,19 +5,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recommendItemCl"
-        android:layout_width="123dp"
-        android:layout_height="200dp">
+        android:layout_marginRight="10dp"
+        android:layout_width="133dp"
+        android:layout_height="188dp">
 
         <ImageView
             android:id="@+id/recommentFeedIv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:src="@drawable/home"
+            android:layout_width="122dp"
+            android:layout_height="122dp"
             android:background="@drawable/round_8dp"
+            android:src="@drawable/home"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -29,7 +32,8 @@
         <TextView
             android:id="@+id/recommendFeeTv1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
+            android:textSize="12dp"
             android:text="고양이 사료가 부족해요!"
             android:fontFamily="@font/hansneo_medium"
             android:textColor="@color/black"
@@ -47,21 +51,23 @@
             android:src="@drawable/search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/recommendFeedTv2"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/recommendFeeTv1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recommendFeeTv1"
-            app:layout_constraintVertical_bias="0.181" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/recommendFeedTv2"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="애니멀헬프"
             android:fontFamily="@font/hansneo_medium"
-            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:text="애니멀헬프"
+            android:layout_marginStart="7dp"
+            android:textColor="@color/Gray_02"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/recommendFeedProfileIv"
             app:layout_constraintTop_toBottomOf="@+id/recommendFeeTv1"
-            app:layout_constraintVertical_bias="0.191" />
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

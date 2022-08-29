@@ -20,9 +20,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="16dp"
                 tools:context=".view.HomeFragment">
-
 
                 <TextView
                     android:id="@+id/homeNickNameTv"
@@ -32,9 +31,10 @@
                     android:text="밤비쨩님이 좋아할 피드"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:layout_marginTop="29dp"
                     app:layout_constraintBottom_toTopOf="@+id/recommendFeedRc"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.074"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +43,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/cat"
+                    android:layout_marginLeft="4dp"
                     app:layout_constraintBottom_toBottomOf="@+id/homeNickNameTv"
                     app:layout_constraintStart_toEndOf="@+id/homeNickNameTv"
                     app:layout_constraintTop_toTopOf="@+id/homeNickNameTv" />
@@ -54,28 +55,20 @@
                     android:src="@drawable/ic_round_arrow_forward_ios_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
                     app:layout_constraintTop_toTopOf="@+id/imageView5"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.35" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recommendFeedRc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline3"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/homeNickNameTv"
-                    app:layout_constraintWidth_percent="0.9" />
+                    app:layout_constraintTop_toBottomOf="@+id/homeNickNameTv" />
 
 
                 <TextView
@@ -86,11 +79,12 @@
                     android:text="오늘은 이런 기부 어떠세요?"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:layout_marginTop="39dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.074"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/recommendFeedRc"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
@@ -98,9 +92,10 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/smiling"
+                    android:layout_marginLeft="4dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     app:layout_constraintStart_toEndOf="@+id/textView2"
-                    app:layout_constraintTop_toTopOf="@+id/guideline3" />
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
 
                 <ImageView
                     android:layout_width="24dp"
@@ -108,9 +103,8 @@
                     android:src="@drawable/ic_round_arrow_forward_ios_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toTopOf="@+id/guideline3"
                     app:layout_constraintVertical_bias="0.0" />
 
 
@@ -121,23 +115,22 @@
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2"
-                    app:layout_constraintVertical_bias="0.075"
-                    app:layout_constraintWidth_percent="0.9" />
+                    app:layout_constraintVertical_bias="0" />
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="39dp"
                     android:fontFamily="@font/hansansneobold"
                     android:text="빠른 도움이 필요해요! ❤"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.074"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recommendDonationRc" />
 
@@ -148,10 +141,10 @@
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10"
-                    app:layout_constraintWidth_percent="0.9" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:layout_width="24dp"
@@ -159,7 +152,7 @@
                     android:src="@drawable/ic_round_arrow_forward_ios_24"
                     app:layout_constraintBottom_toBottomOf="@+id/textView10"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintStart_toEndOf="@+id/textView10"
                     app:layout_constraintTop_toTopOf="@+id/textView10"
                     app:layout_constraintVertical_bias="0.0" />

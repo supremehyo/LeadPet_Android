@@ -32,7 +32,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout5"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -43,14 +43,14 @@
                     app:layout_constraintVertical_bias="0.098">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/house_with_garden"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
@@ -79,10 +79,11 @@
                 <ImageView
                     android:id="@+id/dailyContentImage"
                     android:layout_width="0dp"
-                    android:layout_height="300dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="11dp"
                     android:src="@color/purple_200"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.7"
+                    app:layout_constraintHeight_percent="0.45"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
@@ -95,7 +96,7 @@
                     android:fontFamily="@font/hansansneobold"
                     android:text="웅이 근황"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -104,8 +105,8 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="12.5dp"
+                    android:layout_height="17.5dp"
                     android:src="@drawable/bookmark"
                     app:layout_constraintBottom_toBottomOf="@+id/dailyFeedTitleTv"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +122,8 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginVertical="8dp"
                     android:text="꿈나무 보호소의 자랑 개구쟁이 삼둥이에요! 오늘은 아이들\n꿈나무 보호소의 자랑 개구쟁이 삼둥이에요! 오늘은 아이들"
-                    android:textSize="12sp"
+                    android:textSize="14dp"
+                    android:textColor="@color/Gray_01"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -144,7 +146,7 @@
                         android:id="@+id/dailyLikeImage"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="15dp"
                         android:src="@drawable/ic_baseline_favorite_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +156,8 @@
                         android:id="@+id/dailyLikeCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_gravity="center_vertical"
                         android:text="4"
                         app:layout_constraintStart_toEndOf="@+id/imageView9"
                         tools:layout_editor_absoluteY="0dp" />
@@ -162,7 +165,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="14dp"
                         android:src="@drawable/ic_round_mode_comment_24"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -170,7 +173,8 @@
                         android:id="@+id/dailyCommentCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
                         android:text="4"
                         app:layout_constraintEnd_toEndOf="parent" />
                 </LinearLayout>
