@@ -31,6 +31,7 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
         }
     }
 
+
     override fun afterViewCreated() {
 
         repeatOnStarted {

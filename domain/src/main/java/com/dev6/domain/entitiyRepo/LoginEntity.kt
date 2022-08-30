@@ -13,6 +13,3 @@ data class LoginEntity(
     @SerializedName("password")
     var password: String? = null
 )
-
-
-

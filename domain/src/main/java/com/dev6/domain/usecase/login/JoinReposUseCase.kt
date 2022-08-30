@@ -13,16 +13,14 @@ typealias JoinReposBaseUseCase = BaseUseCase<JoinEntitiyRepo, Flow<UiState<Strin
 class JoinReposUseCase @Inject constructor(private val joinRepository: JoinRepository) :
     JoinReposBaseUseCase {
 
-
-    override suspend fun invoke(joinEntitiyRepo: JoinEntitiyRepo)=    flow {
-            emit(UiState.Loding)
-            runCatching {
-                joinRepository.signUp(joinEntitiyRepo)
-            }.onSuccess { result ->
-                emit(UiState.Success(result))
-            }.onFailure {
-                emit(UiState.Error(it))
-            }
+    override suspend fun invoke(joinEntitiyRepo: JoinEntitiyRepo) = flow {
+        emit(UiState.Loding)
+        runCatching {
+            joinRepository.signUp(joinEntitiyRepo)
+        }.onSuccess { result ->
+            emit(UiState.Success(result))
+        }.onFailure {
+            emit(UiState.Error(it))
         }
-
+    }
 }

@@ -19,6 +19,11 @@
         <item name="android:button">@drawable/rb_check_pressed</item>
     </style>
 
+
+    <style name="Widget_BookMark_CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/cb_bookmark</item>
+    </style>
+
     <style name="Widget.Donate.Button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/Main</item>
         <item name="android:fontFamily">@font/custom_font_family_medium</item>

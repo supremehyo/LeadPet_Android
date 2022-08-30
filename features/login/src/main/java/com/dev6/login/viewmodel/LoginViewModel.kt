@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.LoginType
-import com.dev6.core.exception.*
+import com.dev6.core.exception.NotAutorityException
+import com.dev6.core.exception.ServerFailException
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
 import com.dev6.domain.entitiyRepo.LoginEntity
@@ -45,13 +46,11 @@ class LoginViewModel @Inject constructor(
                     }
                     is UiState.Error -> {
                         _lodingFlow.value = false
-                        Timber.d(uiState.error?.message)
-
                         when (uiState.error) {
-                            is NotCorrectException -> event(Event.JoinEvent(loginDto.value))
-                            is ServerFailException -> event(
+                            is ServerFailException -> event(Event.JoinEvent(loginDto.value))
+                            is NotAutorityException -> event(
                                 Event.ErrorEvent(
-                                    "계정을 찾을수 없습니다.",
+                                    "입력이 잘못되었습니다.",
                                     loginDto.value
                                 )
                             )

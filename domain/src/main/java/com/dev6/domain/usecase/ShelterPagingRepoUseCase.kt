@@ -5,13 +5,11 @@ import com.dev6.domain.repository.ShelterPagingRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
-class ShelterPagingRepoUseCase @Inject constructor
-    (
+class ShelterPagingRepoUseCase @Inject constructor(
     private val shelterPagingRepository: ShelterPagingRepository
 ) {
 
-    fun getShelterPagingData(cityName:String,shelterName:String) = flow {
+    fun getShelterPagingData(cityName: String, shelterName: String) = flow {
         emit(UiState.Loding)
         runCatching {
             shelterPagingRepository.getPagingData(cityName, shelterName)
@@ -22,4 +20,3 @@ class ShelterPagingRepoUseCase @Inject constructor
         }
     }
 }
-

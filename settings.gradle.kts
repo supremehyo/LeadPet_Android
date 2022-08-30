@@ -3,7 +3,6 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-
     }
 }
 
@@ -12,18 +11,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven ( "https://jitpack.io" )
-        maven ( url= "https://devrepo.kakao.com/nexus/content/groups/public/")
+        maven("https://jitpack.io")
+        maven(url = "https://devrepo.kakao.com/nexus/content/groups/public/")
     }
 }
 rootProject.name = "LeadPet"
-include (":app")
-include (":core")
-include (":data")
-include (":domain")
+include(":app")
+include(":core")
+include(":data")
+include(":domain")
 include(":features:login")
 include(":features:join")
-
 
 include(":features:feed")
 include(":features:post")

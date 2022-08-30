@@ -40,12 +40,11 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         }
 
         shelterAdapter = DailyshelterRecyclerAdapter {
-            Log.v("shelterData" , it.userId)
-            //val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            //dailyIntent.putExtra("dailyShelter", it)
-            //startActivity(dailyIntent)
+            Log.v("shelterData", it.userId)
+            // val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
+            // dailyIntent.putExtra("dailyShelter", it)
+            // startActivity(dailyIntent)
         }
-
 
         dailyNearShelterRc.apply {
             adapter = shelterAdapter
@@ -64,13 +63,12 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     private fun getDailyList() {
-         feedViewModel.getFeedList("",UserData.uid)
+        feedViewModel.getFeedList("", UserData.uid)
     }
 
     private fun getShelterList() {
         feedViewModel.getNearShelterList("", "")
     }
-
 
     override fun afterViewCreated() {
         super.afterViewCreated()
@@ -93,7 +91,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                         }
                     }
                     else -> {
-
                     }
                 }
             }
@@ -118,7 +115,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                         }
                     }
                     else -> {
-
                     }
                 }
             }

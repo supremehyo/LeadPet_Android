@@ -30,7 +30,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     fun handleEvent(event: LoginViewModel.Event) = when (event) {
         is LoginViewModel.Event.JoinEvent -> {
-            Log.v("asdfsadga" ,"로그인 성공?")
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
             joinIntent.putExtra("uuid", event.loginDto.uid)
