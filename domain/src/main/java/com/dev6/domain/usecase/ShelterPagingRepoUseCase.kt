@@ -6,8 +6,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
-class ShelterPagingRepoUseCase @Inject constructor
-    (
+class ShelterPagingRepoUseCase @Inject constructor(
     private val shelterPagingRepository: ShelterPagingRepository
 ) {
 

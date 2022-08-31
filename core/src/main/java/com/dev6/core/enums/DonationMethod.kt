@@ -1,6 +1,6 @@
-package com.dev6.core.enum
+package com.dev6.core.enums
 
-enum class DonationMethod {
-    ACCOUNT,  // 후원 계좌
-    GOODS // 물품 배송
+enum class DonationMethod(val item: String) {
+    ACCOUNT("후원 계좌"),
+    GOODS("물품 배송")
 }

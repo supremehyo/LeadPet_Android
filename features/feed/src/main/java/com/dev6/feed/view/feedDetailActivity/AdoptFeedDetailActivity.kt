@@ -8,9 +8,10 @@ import com.dev6.feed.databinding.ActivityAdoptFeedDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AdoptFeedDetailActivity : BindingActivity<ActivityAdoptFeedDetailBinding>(R.layout.activity_adopt_feed_detail) {
+class AdoptFeedDetailActivity :
+    BindingActivity<ActivityAdoptFeedDetailBinding>(R.layout.activity_adopt_feed_detail) {
 
-    lateinit var currentFeed : AdoptPostFeed
+    lateinit var currentFeed: AdoptPostFeed
 
     override fun initView() {
         super.initView()
@@ -30,7 +31,7 @@ class AdoptFeedDetailActivity : BindingActivity<ActivityAdoptFeedDetailBinding>(
         binding.apply {
             currentFeed.apply {
                 AdoptFeedContent.text = contents
-                adoptFeedAnimalType.text = animalType+" "+species
+                adoptFeedAnimalType.text = animalType.item + " " + species
                 adoptFeedAge.text = "10"
                 adoptFeedDate.text = "$startDate~$endDate"
                 adoptFeedDisease.text = "질병"

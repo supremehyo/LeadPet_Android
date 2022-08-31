@@ -1,6 +1,6 @@
 package com.dev6.domain.model.donate
 
-import com.dev6.core.enum.DonationMethod
+import com.dev6.core.enums.DonationMethod
 import java.io.Serializable
 
 data class DonationPost(

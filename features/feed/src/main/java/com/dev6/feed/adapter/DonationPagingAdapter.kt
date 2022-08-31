@@ -54,7 +54,7 @@ class DonationPagingAdapter(private val callback: (DonationPost) -> Unit) :
             binding.donationShelterNameTv.text = item.userId
             binding.recommentdonationTv.text = item.title
             binding.textView5.text = item.contents
-            binding.donationTypeTv.text = item.donationMethod ?: "사료"
+            binding.donationTypeTv.text = item.donationMethod.item
             binding.donationEndTimeTv.text =
                 item.endDate[0] + "." + item.endDate[1] + "." + item.endDate[2] + "까지"
 

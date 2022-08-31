@@ -10,7 +10,7 @@ import com.dev6.domain.repository.JoinRepository
 import com.dev6.domain.repository.LoginRepository
 import com.dev6.domain.repository.adopt.AdoptRepository
 import com.dev6.domain.repository.daily.DailyRepository
-import com.dev6.domain.repository.donate.DonaitonRepository
+import com.dev6.domain.repository.donate.DonationRepository
 import com.dev6.domain.repository.shelter.ShelterPagingRepository
 import dagger.Binds
 import dagger.Module
@@ -40,7 +40,7 @@ abstract class RepositoryModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsDonationRepository(repository: DonationRepositoryImp): DonaitonRepository
+    abstract fun bindsDonationRepository(repository: DonationRepositoryImp): DonationRepository
 
     @Binds
     @ViewModelScoped

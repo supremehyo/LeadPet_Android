@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 typealias InsertDailyPostBaseUseCase = BaseUseCase<DailyPost, Flow<UiState<DailyPost>>>
 
-class InsertLifePostUseCase @Inject constructor(private val repo: DailyRepository) : InsertDailyPostBaseUseCase {
+class InsertDailyPostUseCase @Inject constructor(private val repo: DailyRepository) : InsertDailyPostBaseUseCase {
 
     override suspend fun invoke(lifePost: DailyPost) = flow {
         emit(UiState.Loding)

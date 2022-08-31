@@ -1,12 +1,13 @@
 package com.dev6.data.model.donation
 
+import com.dev6.core.enums.DonationMethod
 import com.google.gson.annotations.SerializedName
 
 data class DonationFeedResponse(
     @SerializedName("content")
     val contents: String,
     @SerializedName("donationMethod")
-    val donationMethod: String,
+    val donationMethod: DonationMethod,
     @SerializedName("donationPostId")
     val donationPostId: String,
     @SerializedName("endDate")

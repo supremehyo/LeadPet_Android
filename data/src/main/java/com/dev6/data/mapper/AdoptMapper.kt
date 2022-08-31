@@ -1,12 +1,13 @@
-package com.dev6.data.mapper
+package com.dev6.data.mapper // ktlint-disable filename
 
+import com.dev6.data.entity.adopt.AdoptSortResponse
 import com.dev6.data.model.adopt.AdoptFeedResponse
 import com.dev6.data.model.adopt.AdoptPageResponse
 import com.dev6.data.model.adopt.AdoptPaginationResponse
-import com.dev6.data.entity.adopt.AdoptSortResponse
-import com.dev6.domain.model.*
-import com.dev6.domain.model.adopt.AdoptPostPage
+import com.dev6.domain.model.Page
+import com.dev6.domain.model.Sort
 import com.dev6.domain.model.adopt.AdoptPostFeed
+import com.dev6.domain.model.adopt.AdoptPostPage
 
 internal fun AdoptPaginationResponse?.toDomain() = AdoptPostPage(
     adoptPostFeed = this?.adoptFeedEntitiyList?.map { it.toDomain() } ?: listOf(),
@@ -27,11 +28,11 @@ internal fun AdoptSortResponse?.toDomain() = Sort(
     sorted = this?.sorted ?: false,
     unsorted = this?.unsorted ?: false
 )
+
 internal fun AdoptPageResponse?.toDomain() = Page(
     page = this?.page ?: 0,
     size = this?.size ?: 0
 )
-
 
 internal fun List<AdoptFeedResponse>.toDomain(): List<AdoptPostFeed> {
     var temp: ArrayList<AdoptPostFeed> = ArrayList()
@@ -42,17 +43,17 @@ internal fun List<AdoptFeedResponse>.toDomain(): List<AdoptPostFeed> {
 }
 
 internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
-    contents = contents?: "",
-    animalType = animalType ?: "",
-    adoptionPostId = adoptionPostId?: "",
-    endDate = endDate?: "",
+    contents = contents ?: "",
+    animalType = animalType,
+    adoptionPostId = adoptionPostId ?: "",
+    endDate = endDate ?: "",
     images = images,
-    startDate = startDate?: "",
-    title = title?: "",
-    userId = userId?: "",
-    neutering = neutering?: "",
-    species = species?: "",
-    gender = gender?: "",
-    euthanasiaDate = euthanasiaDate?: "",
+    startDate = startDate ?: "",
+    title = title ?: "",
+    userId = userId ?: "",
+    neutering = neutering,
+    species = species ?: "",
+    gender = gender,
+    euthanasiaDate = euthanasiaDate ?: "",
     age = age
 )

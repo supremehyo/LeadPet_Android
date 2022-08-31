@@ -1,12 +1,12 @@
 package com.dev6.data.mapper
 
+import com.dev6.data.entity.SortXX
 import com.dev6.data.model.PageResponse
 import com.dev6.data.model.SortResponse
-import com.dev6.data.entity.SortXX
 import com.dev6.data.model.donation.DonationFeedResponse
-
 import com.dev6.data.model.donation.DonationPaginationResponse
-import com.dev6.domain.model.*
+import com.dev6.domain.model.Pageable
+import com.dev6.domain.model.Sort
 import com.dev6.domain.model.donate.DonationPost
 import com.dev6.domain.model.donate.DonationPostPage
 
@@ -32,13 +32,11 @@ internal fun List<DonationFeedResponse>.toDomain(): List<DonationPost> {
     return temp
 }
 
-
 internal fun SortResponse?.toDomain() = Sort(
     empty = this?.empty ?: false,
     sorted = this?.sorted ?: false,
     unsorted = this?.unsorted ?: false
 )
-
 
 internal fun SortXX?.toXX() = Sort(
     empty = this?.empty ?: false,
@@ -46,7 +44,7 @@ internal fun SortXX?.toXX() = Sort(
     unsorted = this?.unsorted ?: false
 )
 
-//SortXX
+// SortXX
 internal fun PageResponse?.toDomain() = Pageable(
     offset = this?.offset ?: 0,
     pageNumber = this?.pageNumber ?: 0,
@@ -70,15 +68,15 @@ internal fun DonationPostPage.toMapper() = DonationPaginationResponse(
     totalPages = this.totalPages
 )
 
-internal fun DonationFeedResponse?.toDomain() = DonationPost(
-    contents = this?.contents ?: "",
-    donationMethod = this?.donationMethod ?: "",
-    donationPostId = this?.donationPostId ?: "",
-    endDate = this?.endDate ?: emptyList(),
-    images = this?.images ?: emptyList(),
-    startDate = this?.startDate ?: emptyList(),
-    title = this?.title ?: "",
-    userId = this?.userId ?: ""
+internal fun DonationFeedResponse.toDomain() = DonationPost(
+    contents = this.contents,
+    donationMethod = this.donationMethod,
+    donationPostId = this.donationPostId,
+    endDate = this.endDate,
+    images = this.images,
+    startDate = this.startDate,
+    title = this.title,
+    userId = this.userId
 )
 
 internal fun DonationPostPage.toMakeViewLayer(temp: DonationFeedResponse) = DonationFeedResponse(
@@ -91,6 +89,3 @@ internal fun DonationPostPage.toMakeViewLayer(temp: DonationFeedResponse) = Dona
     title = temp.title,
     userId = temp.userId
 )
-
-
-

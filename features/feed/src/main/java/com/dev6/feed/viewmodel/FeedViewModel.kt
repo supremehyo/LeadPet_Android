@@ -11,6 +11,7 @@ import com.dev6.core.util.asEventFlow
 import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.domain.model.donate.DonationPost
 import com.dev6.domain.model.ShelterEntitiyRepo
+import com.dev6.domain.model.comment.Comment
 import com.dev6.domain.model.comment.CommentPage
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.domain.usecase.*
@@ -150,7 +151,7 @@ class FeedViewModel
         data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPost>>>) : Event()
         data class AdoptUiEvent(val uiState: UiState<Flow<PagingData<AdoptPostFeed>>>) : Event()
         data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
-        data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<CommentPage>>>) : Event()
+        data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
         data class CommentLikeUiEvnet(val uiState: UiState<ResponseBody>) : Event()
     }
 }

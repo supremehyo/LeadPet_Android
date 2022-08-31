@@ -4,16 +4,16 @@ import android.util.Log
 import androidx.paging.PagingState
 import com.dev6.data.mapper.toDomain
 import com.dev6.data.remote.CommentRemoteSource
+import com.dev6.domain.model.comment.Comment
 import com.dev6.domain.model.comment.CommentPage
 import com.dev6.domain.repository.CommentPagingSource
 import javax.inject.Inject
 
 class CommentPagingSourceImp @Inject constructor(
-    postId: String,
-    private val commentRemoteSource: CommentRemoteSource
+    postId: String, private val commentRemoteSource: CommentRemoteSource
 ) : CommentPagingSource() {
     var _postId = postId
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CommentPage> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Comment> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
@@ -34,7 +34,8 @@ class CommentPagingSourceImp @Inject constructor(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, CommentPage>): Int? {
+
+    override fun getRefreshKey(state: PagingState<Int, Comment>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(
                 anchorPosition

@@ -6,8 +6,8 @@ import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.model.daily.DailySortResponse
 import com.dev6.domain.model.Page
 import com.dev6.domain.model.Sort
-import com.dev6.domain.model.daily.DailyPostPage
 import com.dev6.domain.model.daily.DailyPost
+import com.dev6.domain.model.daily.DailyPostPage
 
 internal fun DailyPaginationResponse?.toDomain() = DailyPostPage(
     dailyFeedEntitiy = this?.dailyFeedEntitiy?.map { it.toDomain() } ?: listOf(),

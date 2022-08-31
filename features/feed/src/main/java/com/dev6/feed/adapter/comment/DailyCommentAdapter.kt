@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.dev6.domain.model.comment.Comment
 import com.dev6.domain.model.comment.CommentPage
 import com.dev6.feed.databinding.ItemDailycommentBinding
 
 
-class DailyCommentAdapter(private val callback: (CommentPage) -> Unit) :
-    PagingDataAdapter<CommentPage, DailyCommentAdapter.RecommendViewHolder>
-        (RecommendDiffUtil()) {
+class DailyCommentAdapter(private val callback: (Comment) -> Unit) :
+    PagingDataAdapter<Comment, DailyCommentAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
@@ -29,8 +29,8 @@ class DailyCommentAdapter(private val callback: (CommentPage) -> Unit) :
 
     class RecommendViewHolder(private val binding: ItemDailycommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: CommentPage) {
-            Log.v("asdfsdf" , item.userId)
+        fun onBind(item: Comment) {
+            Log.v("asdfsdf", item.userId)
             binding.dailyCommentContentTv.text = item.content
             binding.dailyCommentShelterNameTv.text = item.userName
 
@@ -41,11 +41,11 @@ class DailyCommentAdapter(private val callback: (CommentPage) -> Unit) :
         }
     }
 
-    private class RecommendDiffUtil : DiffUtil.ItemCallback<CommentPage>() {
-        override fun areItemsTheSame(oldItem: CommentPage, newItem: CommentPage) =
+    private class RecommendDiffUtil : DiffUtil.ItemCallback<Comment>() {
+        override fun areItemsTheSame(oldItem: Comment, newItem: Comment) =
             oldItem.normalReplyId == newItem.normalReplyId
 
-        override fun areContentsTheSame(oldItem: CommentPage, newItem: CommentPage) =
+        override fun areContentsTheSame(oldItem: Comment, newItem: Comment) =
             oldItem.normalReplyId == newItem.normalReplyId
     }
 
