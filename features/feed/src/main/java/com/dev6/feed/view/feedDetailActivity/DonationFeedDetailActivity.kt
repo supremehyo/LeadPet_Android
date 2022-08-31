@@ -1,16 +1,13 @@
 package com.dev6.feed.view.feedDetailActivity
 
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.view.Gravity
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingActivity
-import com.dev6.domain.entitiyRepo.DonationPostFeed
+import com.dev6.domain.model.donate.DonationPost
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ActivityDonationFeedDetailBinding
 import com.skydoves.balloon.*
@@ -20,11 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class DonationFeedDetailActivity :
     BindingActivity<ActivityDonationFeedDetailBinding>(R.layout.activity_donation_feed_detail) {
 
-    lateinit var currentFeed: DonationPostFeed
+    lateinit var currentFeed: DonationPost
 
     override fun initView() {
         super.initView()
-        currentFeed = intent.getSerializableExtra("donationPostFeed") as DonationPostFeed
+        currentFeed = intent.getSerializableExtra("donationPostFeed") as DonationPost
         makeCurrentView()
        // makeBalloun()
     }

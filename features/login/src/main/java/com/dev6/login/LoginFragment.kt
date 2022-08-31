@@ -10,7 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
-import com.dev6.domain.entitiyRepo.LoginEntity
+import com.dev6.domain.model.Login
 import com.dev6.core.enums.LoginType
 import com.dev6.login.databinding.FragmentLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
@@ -75,7 +75,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                         }
                     }.getOrThrow()
                 }.onSuccess { token ->
-                    loginViewModel.setloginDto(LoginEntity(LoginType.KAKAO, token, null, null))
+                    loginViewModel.setloginDto(Login(LoginType.KAKAO, token, null, null))
                     loginViewModel.getlogin()
                 }.onFailure {
                     Toast.makeText(
@@ -122,7 +122,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     override fun onStart() {
         super.onStart()
         GoogleSignIn.getLastSignedInAccount(requireContext())?.let {
-            loginViewModel.setloginDto(LoginEntity(LoginType.GOOGLE, it.id, null, null))
+            loginViewModel.setloginDto(Login(LoginType.GOOGLE, it.id, null, null))
             loginViewModel.getlogin()
         }
     }
@@ -145,7 +145,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                     try {
                         val account = task.getResult(ApiException::class.java)!!
                         loginViewModel.setloginDto(
-                            LoginEntity(
+                            Login(
                                 LoginType.GOOGLE,
                                 account.id,
                                 null,

@@ -1,11 +1,8 @@
 package com.dev6.feed.view.feedDetailActivity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingActivity
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ActivityAdoptFeedDetailBinding
 import dagger.hilt.android.AndroidEntryPoint

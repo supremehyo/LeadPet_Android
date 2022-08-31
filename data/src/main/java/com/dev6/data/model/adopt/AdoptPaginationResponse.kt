@@ -1,11 +1,11 @@
 package com.dev6.data.model.adopt
 
-import com.dev6.data.entity.adopt.AdoptSortEntitiy
+import com.dev6.data.entity.adopt.AdoptSortResponse
 import com.google.gson.annotations.SerializedName
 
 data class AdoptPaginationResponse(
     @SerializedName("content")
-    val adoptFeedEntitiyList: List<AdoptFeedEntitiy>,
+    val adoptFeedEntitiyList: List<AdoptFeedResponse>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")
@@ -17,11 +17,11 @@ data class AdoptPaginationResponse(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val adoptPageEntitiy: AdoptPageEntitiy,
+    val adoptPageEntitiy: AdoptPageResponse,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")
-    val adoptSortEntitiy: AdoptSortEntitiy,
+    val adoptSortEntitiy: AdoptSortResponse,
     @SerializedName("totalElements")
     val totalElements: Int,
     @SerializedName("totalPages")

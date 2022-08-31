@@ -1,12 +1,10 @@
 package com.dev6.data.model.comment
 
-import com.dev6.data.model.daily.DailyPageEntitiy
-import com.dev6.data.model.daily.DailySortEntitiy
 import com.google.gson.annotations.SerializedName
 
 data class CommentPaginationResponse(
     @SerializedName("content")
-    val commentEntitiy: List<CommentEntitiy>,
+    val commentEntitiy: List<CommentResponse>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")
@@ -18,11 +16,11 @@ data class CommentPaginationResponse(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val commentPageEntitiy: CommentPageEntitiy,
+    val commentPageEntitiy: CommentPageResposne,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")
-    val commentSortEntitiy: CommentSortEntitiy,
+    val commentSortEntitiy: CommentSortResponse,
     @SerializedName("totalElements")
     val totalElements: Int,
     @SerializedName("totalPages")

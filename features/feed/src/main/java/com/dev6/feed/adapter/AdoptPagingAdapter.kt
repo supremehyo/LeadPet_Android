@@ -1,16 +1,13 @@
 package com.dev6.feed.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dev6.domain.entitiyRepo.DonationPostFeed
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
+import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.feed.databinding.ItemAdoptBinding
-import com.dev6.feed.databinding.ItemDonationBinding
 
 class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
     PagingDataAdapter<AdoptPostFeed, AdoptPagingAdapter.ImageViewHolder>(

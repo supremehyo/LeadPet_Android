@@ -1,9 +1,7 @@
 package com.dev6.post
 
 import android.os.Bundle
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingActivity
 import com.dev6.core.enums.PostType
 import com.dev6.post.databinding.ActivityPostBinding
@@ -22,20 +20,16 @@ class PostActivity : BindingActivity<ActivityPostBinding>(R.layout.activity_post
         var navGraph = navController.navInflater.inflate(R.navigation.post_nav_graph)
 
         when (postType) {
-            PostType.LIFE -> {
+            PostType.DAILY -> {
                 navGraph.setStartDestination(R.id.lifePostFragment)
-
             }
             PostType.ADOPT -> {
                 navGraph.setStartDestination(R.id.petAdoptPostFragment)
-
             }
             PostType.DONATE -> {
                 navGraph.setStartDestination(R.id.petDonateFragment)
-
             }
         }
-        navController.setGraph(navGraph , null)
-
+        navController.setGraph(navGraph, null)
     }
 }

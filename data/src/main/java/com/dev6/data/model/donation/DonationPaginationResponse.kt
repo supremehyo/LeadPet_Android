@@ -1,12 +1,12 @@
 package com.dev6.data.model.donation
 
-import com.dev6.data.model.PageEntitiy
-import com.dev6.data.model.SortEntitiy
+import com.dev6.data.model.PageResponse
+import com.dev6.data.model.SortResponse
 import com.google.gson.annotations.SerializedName
 
 data class DonationPaginationResponse(
     @SerializedName("content")
-    val donationFeedList: List<DonationFeedEntitiy>,
+    val donationFeedList: List<DonationFeedResponse>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")
@@ -18,11 +18,11 @@ data class DonationPaginationResponse(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val page: PageEntitiy,
+    val page: PageResponse,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")
-    val sort: SortEntitiy,
+    val sort: SortResponse,
     @SerializedName("totalElements")
     val totalElements: Int,
     @SerializedName("totalPages")

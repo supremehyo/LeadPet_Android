@@ -7,7 +7,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
+import com.dev6.domain.model.ShelterEntitiyRepo
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDailyshelterBinding
 

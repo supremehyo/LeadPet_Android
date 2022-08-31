@@ -148,7 +148,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             startPostActivity(PostType.DONATE)
         }
         binding.btnLife.setOnClickListener {
-            startPostActivity(PostType.LIFE)
+            startPostActivity(PostType.DAILY)
         }
         super.initListener()
     }

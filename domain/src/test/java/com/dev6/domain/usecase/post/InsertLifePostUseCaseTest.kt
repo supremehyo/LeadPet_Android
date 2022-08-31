@@ -3,8 +3,6 @@ package com.dev6.domain.usecase.post
 import app.cash.turbine.test
 import com.dev6.core.base.UiState
 import com.dev6.core.exception.ServerFailException
-import com.dev6.domain.entitiyRepo.LifePost
-import com.dev6.domain.repository.LifePostRepository
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -15,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class InsertLifePostUseCaseTest {
 
-    private lateinit var repositoryImp: LifePostRepository
+    private lateinit var repositoryImp: DailyPostRepository
     private lateinit var insertLifePostUseCase: InsertLifePostUseCase
 
     @Test
@@ -29,7 +27,7 @@ class InsertLifePostUseCaseTest {
             normalPostId = null
         )
 
-        repositoryImp = Mockito.mock(LifePostRepository::class.java)
+        repositoryImp = Mockito.mock(DailyPostRepository::class.java)
 
         Mockito.`when`(repositoryImp.insertLifePost(loginEntity)).thenReturn(loginEntity)
 
@@ -55,7 +53,7 @@ class InsertLifePostUseCaseTest {
             normalPostId = null
         )
 
-        repositoryImp = Mockito.mock(LifePostRepository::class.java)
+        repositoryImp = Mockito.mock(DailyPostRepository::class.java)
 
         Mockito.`when`(repositoryImp.insertLifePost(loginEntity))
             .thenAnswer { ServerFailException("테스뚜") }

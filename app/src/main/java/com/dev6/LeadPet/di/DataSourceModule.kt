@@ -20,19 +20,6 @@ abstract class DataSourceModule {
 
     @Singleton
     @Binds
-    abstract fun bindsLifePostRemoteSource(source: LifePostRemoteImpl): LifePostRemoteSource
-
-    @Singleton
-    @Binds
-    abstract fun bindsDonatePostRemoteSource(source: DonatePostRemoteSourceImpl): DonatePostRemoteSource
-
-    @Singleton
-    @Binds
-    abstract fun bindsAdoptPostRemoteSource(source: AdoptPostRemoteSource): AdoptPostRemoteSource
-
-
-    @Singleton
-    @Binds
     abstract fun bindsSamplePagingRemoteSource(source: DailyRemoteSourceImpl): DailyRemoteSource
 
     @Singleton
@@ -59,4 +46,3 @@ abstract class DataSourceModule {
     @Binds
     abstract fun bindsProfileRemoteSource(source: ProfileRemoteSourceImp): ProfileRemoteSource
 }
-

@@ -1,7 +1,7 @@
 package com.dev6.post.fake
 
 import com.dev6.core.base.UiState
-import com.dev6.domain.entitiyRepo.IndexBreed
+import com.dev6.domain.model.IndexBreed
 import com.dev6.domain.usecase.post.GetSpeciesListBaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

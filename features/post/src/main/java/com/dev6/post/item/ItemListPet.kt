@@ -1,8 +1,7 @@
 package com.dev6.post.item
 
 import android.view.View
-import androidx.databinding.adapters.ViewBindingAdapter
-import com.dev6.domain.entitiyRepo.Breed
+import com.dev6.domain.model.Breed
 import com.dev6.post.R
 import com.dev6.post.databinding.ItemPetListBinding
 import com.xwray.groupie.viewbinding.BindableItem

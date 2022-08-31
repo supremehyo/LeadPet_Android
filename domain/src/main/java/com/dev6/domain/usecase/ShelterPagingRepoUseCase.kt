@@ -1,7 +1,7 @@
 package com.dev6.domain.usecase
 
 import com.dev6.core.base.UiState
-import com.dev6.domain.repository.ShelterPagingRepository
+import com.dev6.domain.repository.shelter.ShelterPagingRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

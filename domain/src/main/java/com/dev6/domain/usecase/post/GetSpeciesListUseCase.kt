@@ -1,16 +1,14 @@
 package com.dev6.domain.usecase.post
 
 import com.dev6.core.base.UiState
-import com.dev6.domain.entitiyRepo.IndexBreed
+import com.dev6.domain.model.IndexBreed
 import com.dev6.domain.repository.BreedRepository
 import com.dev6.domain.usecase.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import timber.log.Timber
 import javax.inject.Inject
 
 typealias GetSpeciesListBaseUseCase = BaseUseCase<Unit, Flow<UiState<List<IndexBreed>>>>
-
 
 class GetSpeciesListUseCase @Inject constructor(private val repo: BreedRepository) : GetSpeciesListBaseUseCase {
 
@@ -24,5 +22,4 @@ class GetSpeciesListUseCase @Inject constructor(private val repo: BreedRepositor
             emit(UiState.Error(it))
         }
     }
-
 }

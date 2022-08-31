@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
+import com.dev6.domain.model.Join
 import com.dev6.join.databinding.FragmentShelterUserMoreBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +18,7 @@ class ShelterUserMoreFragment :
     BindingFragment<FragmentShelterUserMoreBinding>(R.layout.fragment_shelter_user_more) {
 
     private val joinViewModel: JoinViewModel by activityViewModels()
-    lateinit var joinDto: JoinEntitiyRepo
+    lateinit var joinDto: Join
 
     private lateinit var userType: String
     private lateinit var shelterName: String
@@ -121,8 +121,8 @@ class ShelterUserMoreFragment :
         shelterHomePage: String,
         userType: String,
         shelterIntro: String
-    ): JoinEntitiyRepo {
-        return JoinEntitiyRepo(
+    ): Join {
+        return Join(
             "GOOGLE", "uid",
             "dev6@gmail.com", "12345",
             "", shelterName, shelterName, shelterAddress,shelterAccount,

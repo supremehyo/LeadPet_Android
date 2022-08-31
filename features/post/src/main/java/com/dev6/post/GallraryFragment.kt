@@ -1,14 +1,11 @@
 package com.dev6.post
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev6.core.base.BindingFragment
-import com.dev6.login.viewmodel.DonatePostViewModel
 import com.dev6.post.databinding.FragmentGallraryBinding
-import com.dev6.post.viewmodel.LifePostViewModel
 import com.dev6.post.viewpager.ViewPagerImage
 
 class GallraryFragment : BindingFragment<FragmentGallraryBinding>(R.layout.fragment_gallrary) {

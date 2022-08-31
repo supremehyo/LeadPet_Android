@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.paging.PagingState
 import com.dev6.data.mapper.toDomain
 import com.dev6.data.remote.ShelterRemoteSource
-import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
-import com.dev6.domain.repository.ShelterPagingSource
+import com.dev6.domain.model.ShelterEntitiyRepo
+import com.dev6.domain.repository.shelter.ShelterPagingSource
 import javax.inject.Inject
 
 class ShelterPagingSourceImp @Inject constructor(

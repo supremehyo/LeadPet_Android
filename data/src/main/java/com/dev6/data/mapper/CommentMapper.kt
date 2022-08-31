@@ -1,21 +1,16 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.comment.CommentEntitiy
-import com.dev6.data.model.comment.CommentPageEntitiy
+import com.dev6.data.model.comment.CommentPageResposne
 import com.dev6.data.model.comment.CommentPaginationResponse
-import com.dev6.data.model.comment.CommentSortEntitiy
-import com.dev6.data.model.daily.DailyFeedEntitiy
-import com.dev6.data.model.daily.DailyPageEntitiy
-import com.dev6.data.model.daily.DailyPaginationResponse
-import com.dev6.data.model.daily.DailySortEntitiy
-import com.dev6.domain.entitiyRepo.*
-import com.dev6.domain.entitiyRepo.comment.Comment
-import com.dev6.domain.entitiyRepo.comment.CommentResponse
-import com.dev6.domain.entitiyRepo.daily.DailyPost
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.data.model.comment.CommentResponse
+import com.dev6.data.model.comment.CommentSortResponse
+import com.dev6.domain.model.Page
+import com.dev6.domain.model.Sort
+import com.dev6.domain.model.comment.Comment
+import com.dev6.domain.model.comment.CommentPage
 
-internal fun CommentPaginationResponse?.toDomain() = CommentResponse(
-    commentEntitiy = this?.commentEntitiy?.map { it.toData() } ?: listOf(),
+internal fun CommentPaginationResponse?.toDomain() = CommentPage(
+    commentEntitiy = this?.commentEntitiy?.map { it.toDomain() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -28,27 +23,18 @@ internal fun CommentPaginationResponse?.toDomain() = CommentResponse(
     totalPages = this?.totalPages ?: 0
 )
 
-internal fun CommentSortEntitiy?.toDomain() = Sort(
+internal fun CommentSortResponse?.toDomain() = Sort(
     empty = this?.empty ?: false,
     sorted = this?.sorted ?: false,
     unsorted = this?.unsorted ?: false
 )
-internal fun CommentPageEntitiy?.toDomain() = Page(
+
+internal fun CommentPageResposne?.toDomain() = Page(
     page = this?.page ?: 0,
     size = this?.size ?: 0
 )
 
-/*
-internal fun List<CommentEntitiy>.toDomain(): List<Comment> {
-    var temp: ArrayList<Comment> = ArrayList()
-    this.forEach {
-        temp.add(it.toData())
-    }
-    return temp
-}
- */
-
-internal fun CommentEntitiy.toData() = Comment(
+internal fun CommentResponse.toDomain() = Comment(
     content = content,
     userId = userId,
     createdDate = createdDate,

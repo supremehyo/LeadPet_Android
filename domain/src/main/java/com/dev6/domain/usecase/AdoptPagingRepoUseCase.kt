@@ -1,14 +1,14 @@
 package com.dev6.domain.usecase
 
 import com.dev6.core.base.UiState
-import com.dev6.domain.repository.adopt.AdoptPagingRepository
+import com.dev6.domain.repository.adopt.AdoptRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
 class AdoptPagingRepoUseCase @Inject constructor
     (
-    private val adoptPagingRepository: AdoptPagingRepository
+    private val adoptPagingRepository: AdoptRepository
 ) {
 
     fun getAdoptDataPagingData(userId: String) = flow {

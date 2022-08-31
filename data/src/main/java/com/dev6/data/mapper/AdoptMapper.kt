@@ -1,15 +1,15 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.adopt.AdoptFeedEntitiy
-import com.dev6.data.model.adopt.AdoptPageEntitiy
+import com.dev6.data.model.adopt.AdoptFeedResponse
+import com.dev6.data.model.adopt.AdoptPageResponse
 import com.dev6.data.model.adopt.AdoptPaginationResponse
-import com.dev6.data.entity.adopt.AdoptSortEntitiy
-import com.dev6.domain.entitiyRepo.*
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostPagenation
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
+import com.dev6.data.entity.adopt.AdoptSortResponse
+import com.dev6.domain.model.*
+import com.dev6.domain.model.adopt.AdoptPostPage
+import com.dev6.domain.model.adopt.AdoptPostFeed
 
-internal fun AdoptPaginationResponse?.toDomain() = AdoptPostPagenation(
-    adoptPostFeed = this?.adoptFeedEntitiyList?.map { it.toData() } ?: listOf(),
+internal fun AdoptPaginationResponse?.toDomain() = AdoptPostPage(
+    adoptPostFeed = this?.adoptFeedEntitiyList?.map { it.toDomain() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -22,26 +22,26 @@ internal fun AdoptPaginationResponse?.toDomain() = AdoptPostPagenation(
     totalPages = this?.totalPages ?: 0
 )
 
-internal fun AdoptSortEntitiy?.toDomain() = Sort(
+internal fun AdoptSortResponse?.toDomain() = Sort(
     empty = this?.empty ?: false,
     sorted = this?.sorted ?: false,
     unsorted = this?.unsorted ?: false
 )
-internal fun AdoptPageEntitiy?.toDomain() = Page(
+internal fun AdoptPageResponse?.toDomain() = Page(
     page = this?.page ?: 0,
     size = this?.size ?: 0
 )
 
 
-internal fun List<AdoptFeedEntitiy>.toDomain(): List<AdoptPostFeed> {
+internal fun List<AdoptFeedResponse>.toDomain(): List<AdoptPostFeed> {
     var temp: ArrayList<AdoptPostFeed> = ArrayList()
     this.forEach {
-        temp.add(it.toData())
+        temp.add(it.toDomain())
     }
     return temp
 }
 
-internal fun AdoptFeedEntitiy.toData() = AdoptPostFeed(
+internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
     contents = contents?: "",
     animalType = animalType ?: "",
     adoptionPostId = adoptionPostId?: "",

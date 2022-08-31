@@ -1,7 +1,7 @@
 package com.dev6.domain.repository
 
-import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
+import com.dev6.domain.model.Join
 
 interface JoinRepository {
-    suspend fun signUp(userEntitiy: JoinEntitiyRepo): String
+    suspend fun signUp(userEntitiy: Join): String
 }

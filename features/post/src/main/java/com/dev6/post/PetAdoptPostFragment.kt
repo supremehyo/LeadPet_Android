@@ -4,9 +4,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.login.viewmodel.DonatePostViewModel
 import com.dev6.post.bottom.AgeBottomSeatFragment
-import com.dev6.post.bottom.AnimalBottomSeatFragment
 import com.dev6.post.bottom.GenderBottomSeatFragment
 import com.dev6.post.databinding.FragmentPetAdoptPostBinding
 import com.dev6.post.item.ItemChoiceAnimal

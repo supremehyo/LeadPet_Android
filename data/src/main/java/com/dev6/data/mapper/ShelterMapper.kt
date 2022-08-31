@@ -1,18 +1,16 @@
 package com.dev6.data.mapper
 
 import com.dev6.data.entity.SortXX
-import com.dev6.data.model.daily.DailyFeedEntitiy
-import com.dev6.data.model.shelter.ShelterEntitiy
-import com.dev6.data.model.shelter.ShelterPageEntitiy
+import com.dev6.data.model.shelter.ShelterResponse
+import com.dev6.data.model.shelter.ShelterPageResponse
 import com.dev6.data.model.shelter.ShelterPagingResponse
-import com.dev6.domain.entitiyRepo.Page
-import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
-import com.dev6.domain.entitiyRepo.ShelterResopnseEntitiyRepo
-import com.dev6.domain.entitiyRepo.Sort
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.Page
+import com.dev6.domain.model.ShelterEntitiyRepo
+import com.dev6.domain.model.ShelterResopnseEntitiyRepo
+import com.dev6.domain.model.Sort
 
 internal fun ShelterPagingResponse?.toDomain() = ShelterResopnseEntitiyRepo(
-    shelterEntitiy = this?.shelterEntitiy?.map { it.toData() } ?: listOf(),
+    shelterEntitiy = this?.shelterEntitiy?.map { it.toDomain() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -31,21 +29,21 @@ internal fun SortXX?.toDomain() = Sort(
     unsorted = this?.unsorted ?: false
 )
 
-internal fun ShelterPageEntitiy?.toDomain() = Page(
+internal fun ShelterPageResponse?.toDomain() = Page(
     page = this?.page ?: 0,
     size = this?.size ?: 0
 )
 
 
-internal fun List<ShelterEntitiy>.toDomain(): List<ShelterEntitiyRepo> {
+internal fun List<ShelterResponse>.toDomain(): List<ShelterEntitiyRepo> {
     var temp: ArrayList<ShelterEntitiyRepo> = ArrayList()
     this.forEach {
-        temp.add(it.toData())
+        temp.add(it.toDomain())
     }
     return temp
 }
 
-internal fun ShelterEntitiy.toData() = ShelterEntitiyRepo(
+internal fun ShelterResponse.toDomain() = ShelterEntitiyRepo(
     allFeedCount = allFeedCount,
     assessmentStatus = assessmentStatus,
     profileImage = profileImage,
