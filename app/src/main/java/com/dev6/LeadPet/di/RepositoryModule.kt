@@ -8,9 +8,10 @@ import com.dev6.data.repositoryImple.LoginRepositoryImp
 import com.dev6.domain.repository.AccessTokenRepository
 import com.dev6.domain.repository.JoinRepository
 import com.dev6.domain.repository.LoginRepository
-import com.dev6.data.repositoryImple.*
-import com.dev6.domain.repository.*
-import com.dev6.domain.repository.adopt.AdoptPagingRepository
+import com.dev6.domain.repository.adopt.AdoptRepository
+import com.dev6.domain.repository.daily.DailyRepository
+import com.dev6.domain.repository.donate.DonationRepository
+import com.dev6.domain.repository.shelter.ShelterPagingRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -35,27 +36,15 @@ abstract class RepositoryModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsLifeRepository(repository: LifePostRepositoryImp): LifePostRepository
+    abstract fun bindsDailyRepository(repositoryRepositoryImp: DailyRepositoryImp): DailyRepository
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsDonateRepository(repository: DonatePostRepositoryImp): DonatePostRepository
+    abstract fun bindsDonationRepository(repository: DonationRepositoryImp): DonationRepository
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsAdoptRepository(repository: AdoptPostRepositoryImp): AdoptPostRepository
-
-    @Binds
-    @ViewModelScoped
-    abstract fun bindsDailyRepository(repositoryRepositoryImp: DailyRepositoryImp): DailyPagingRepository
-
-    @Binds
-    @ViewModelScoped
-    abstract fun bindsDonationRepository(repository: DonationPagingRepositoryImp): DonaitonPagingRepository
-
-    @Binds
-    @ViewModelScoped
-    abstract fun bindsAdoptPagingRepository(repository: AdoptPagingRepositoryImp): AdoptPagingRepository
+    abstract fun bindsAdoptPagingRepository(repository: AdoptRepositoryImp): AdoptRepository
 
     @Binds
     @ViewModelScoped

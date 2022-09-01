@@ -1,10 +1,10 @@
 package com.dev6.data.mapper
-import com.dev6.data.model.profile.ShelterUserDetailEntitiy
-import com.dev6.data.model.profile.ShelterUserUpdateEntitiy
-import com.dev6.domain.entitiyRepo.ProfileUserRepo
-import com.dev6.domain.entitiyRepo.ProfileUserUpdateRepo
+import com.dev6.data.model.profile.ShelterUserDetailResponse
+import com.dev6.data.model.profile.ShelterUserUpdateResponse
+import com.dev6.domain.model.ProfileUserRepo
+import com.dev6.domain.model.ProfileUserUpdateRepo
 
-internal fun ShelterUserDetailEntitiy?.toDomain() = ProfileUserRepo(
+internal fun ShelterUserDetailResponse?.toDomain() = ProfileUserRepo(
     assessmentStatus = this?.assessmentStatus ?: "",
     profileImage = this?.profileImage ?: "",
     shelterAccount = this?.shelterAccount ?: "",
@@ -17,7 +17,7 @@ internal fun ShelterUserDetailEntitiy?.toDomain() = ProfileUserRepo(
     userId = this?.userId ?: "",
 )
 
-internal fun ProfileUserUpdateRepo?.toData() = ShelterUserUpdateEntitiy(
+internal fun ProfileUserUpdateRepo?.toDomain() = ShelterUserUpdateResponse(
     shelterAccount = this?.shelterAccount ?: "",
     shelterAddress = this?.shelterAddress ?: "",
     shelterIntro = this?.shelterIntro ?: "",

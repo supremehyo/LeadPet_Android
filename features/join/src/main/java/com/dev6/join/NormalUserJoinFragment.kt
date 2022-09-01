@@ -12,22 +12,19 @@ import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.LoginType
 import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.data.model.JoinEntitiy
-import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
+import com.dev6.data.model.JoinResponse
+import com.dev6.domain.model.Join
 import com.dev6.feed.view.FeedActivity
-import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.join.databinding.FragmentNormalUserJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import gun0912.tedimagepicker.builder.TedImagePicker
-import gun0912.tedimagepicker.util.ToastUtil
-
 
 class NormalUserJoinFragment :
     BindingFragment<FragmentNormalUserJoinBinding>(R.layout.fragment_normal_user_join) {
 
     private val PICK_IMAGE_REQUEST = 1
     private val joinViewModel: JoinViewModel by activityViewModels()
-    lateinit var joinDto: JoinEntitiy
+    lateinit var joinDto: JoinResponse
     lateinit var userType: String
     lateinit var uid : String
     lateinit var loginType: String
@@ -126,8 +123,8 @@ class NormalUserJoinFragment :
     }
 
 
-    private fun makeJoinDto(): JoinEntitiyRepo {
-        return JoinEntitiyRepo(
+    private fun makeJoinDto(): Join {
+        return Join(
             makeLoginType(UserData.loginMethod), UserData.uid,
             "", "",
             "", binding.nickNameInputText.text.toString(), "", "",

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.dev6.core.R
 import com.dev6.core.databinding.CustomViewCameraButtonBinding
 
 class CustomButtonCamera @JvmOverloads constructor(
@@ -18,14 +17,8 @@ class CustomButtonCamera @JvmOverloads constructor(
     private var binding: CustomViewCameraButtonBinding
 
     init {
-        binding = CustomViewCameraButtonBinding.inflate(LayoutInflater.from(context), this, true)
-
-        attrs?.run {
-//            val typedArr = context.obtainStyledAttributes(attrs, R.styleable.SpinnerButton)
-//            setText(typedArr.getString(R.styleable.SpinnerButton_text) ?: "값없음")
-        }
+        binding = CustomViewCameraButtonBinding.inflate(LayoutInflater.from(context), this)
     }
-
 
     fun getImage(): ImageView {
         with(binding) {
@@ -34,5 +27,4 @@ class CustomButtonCamera @JvmOverloads constructor(
         }
         return binding.vCamera
     }
-
 }

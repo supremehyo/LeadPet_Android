@@ -1,15 +1,16 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.daily.DailyFeedEntitiy
-import com.dev6.data.model.daily.DailyPageEntitiy
+import com.dev6.data.model.daily.DailyFeedRequestResponse
+import com.dev6.data.model.daily.DailyPageResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
-import com.dev6.data.model.daily.DailySortEntitiy
-import com.dev6.domain.entitiyRepo.*
-import com.dev6.domain.entitiyRepo.daily.DailyPost
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.data.model.daily.DailySortResponse
+import com.dev6.domain.model.Page
+import com.dev6.domain.model.Sort
+import com.dev6.domain.model.daily.DailyPost
+import com.dev6.domain.model.daily.DailyPostPage
 
-internal fun DailyPaginationResponse?.toDomain() = DailyPost(
-    dailyFeedEntitiy = this?.dailyFeedEntitiy?.map { it.toData() } ?: listOf(),
+internal fun DailyPaginationResponse?.toDomain() = DailyPostPage(
+    dailyFeedEntitiy = this?.dailyFeedEntitiy?.map { it.toDomain() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -17,31 +18,31 @@ internal fun DailyPaginationResponse?.toDomain() = DailyPost(
     numberOfElements = this?.numberOfElements ?: 0,
     pageable = this?.dailyPageEntitiy.toDomain(),
     size = this?.size ?: 0,
-    dailySortEntitiy = this?.dailySortEntitiy .toDomain(),
+    dailySortEntitiy = this?.dailySortEntitiy.toDomain(),
     totalElements = this?.totalElements ?: 0,
     totalPages = this?.totalPages ?: 0
 )
 
-internal fun DailySortEntitiy?.toDomain() = Sort(
+internal fun DailySortResponse?.toDomain() = Sort(
     empty = this?.empty ?: false,
     sorted = this?.sorted ?: false,
     unsorted = this?.unsorted ?: false
 )
-internal fun DailyPageEntitiy?.toDomain() = Page(
+
+internal fun DailyPageResponse?.toDomain() = Page(
     page = this?.page ?: 0,
     size = this?.size ?: 0
 )
 
-
-internal fun List<DailyFeedEntitiy>.toDomain(): List<DailyPostFeed> {
-    var temp: ArrayList<DailyPostFeed> = ArrayList()
+internal fun List<DailyFeedRequestResponse>.toDomain(): List<DailyPost> {
+    var temp: ArrayList<DailyPost> = ArrayList()
     this.forEach {
-        temp.add(it.toData())
+        temp.add(it.toDomain())
     }
     return temp
 }
 
-internal fun DailyFeedEntitiy.toData() = DailyPostFeed(
+internal fun DailyFeedRequestResponse.toDomain() = DailyPost(
     contents = contents,
     images = images,
     title = title,
@@ -52,3 +53,16 @@ internal fun DailyFeedEntitiy.toData() = DailyPostFeed(
     liked = liked,
     commentCount = commentCount
 )
+
+internal fun DailyPost.toMapper() = DailyFeedRequestResponse(
+    contents = contents,
+    images = images,
+    title = title,
+    userId = userId,
+    normalPostId = normalPostId,
+    likedCount = likedCount,
+    createdDate = createdDate,
+    liked = liked,
+    commentCount = commentCount
+)
+

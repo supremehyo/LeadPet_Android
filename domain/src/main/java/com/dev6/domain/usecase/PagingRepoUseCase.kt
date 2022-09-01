@@ -1,14 +1,10 @@
 package com.dev6.domain.usecase
 
-import androidx.paging.PagingData
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
-import com.dev6.domain.repository.DailyPagingRepository
-import kotlinx.coroutines.flow.Flow
+import com.dev6.domain.repository.daily.DailyRepository
 import javax.inject.Inject
 
-
-class PagingRepoUseCase @Inject constructor
-    (private val dailyPagingRepository: DailyPagingRepository
+class PagingRepoUseCase @Inject constructor(
+    private val dailyPagingRepository: DailyRepository
 ) {
     /*
     fun getPagingData() : Flow<PagingData<DailyPostFeed>> {

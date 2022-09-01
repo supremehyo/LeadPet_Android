@@ -1,19 +1,17 @@
 package com.dev6.feed.view.feedDetailActivity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingActivity
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ActivityAdoptFeedDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AdoptFeedDetailActivity : BindingActivity<ActivityAdoptFeedDetailBinding>(R.layout.activity_adopt_feed_detail) {
+class AdoptFeedDetailActivity :
+    BindingActivity<ActivityAdoptFeedDetailBinding>(R.layout.activity_adopt_feed_detail) {
 
-    lateinit var currentFeed : AdoptPostFeed
+    lateinit var currentFeed: AdoptPostFeed
 
     override fun initView() {
         super.initView()
@@ -33,7 +31,7 @@ class AdoptFeedDetailActivity : BindingActivity<ActivityAdoptFeedDetailBinding>(
         binding.apply {
             currentFeed.apply {
                 AdoptFeedContent.text = contents
-                adoptFeedAnimalType.text = animalType+" "+species
+                adoptFeedAnimalType.text = animalType.item + " " + species
                 adoptFeedAge.text = "10"
                 adoptFeedDate.text = "$startDate~$endDate"
                 adoptFeedDisease.text = "질병"

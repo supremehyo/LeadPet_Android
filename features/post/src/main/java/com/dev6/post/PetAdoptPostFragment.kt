@@ -4,9 +4,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.login.viewmodel.DonatePostViewModel
 import com.dev6.post.bottom.AgeBottomSeatFragment
-import com.dev6.post.bottom.AnimalBottomSeatFragment
 import com.dev6.post.bottom.GenderBottomSeatFragment
 import com.dev6.post.databinding.FragmentPetAdoptPostBinding
 import com.dev6.post.item.ItemChoiceAnimal
@@ -22,9 +20,8 @@ class PetAdoptPostFragment :
     BindingFragment<FragmentPetAdoptPostBinding>(R.layout.fragment_pet_adopt_post) {
 
     private val adoptPostViewModel: AdoptPostViewModel by activityViewModels()
-    lateinit var genderBottomSeatFragment: GenderBottomSeatFragment
-    lateinit var animalBottomSeatFragment: AnimalBottomSeatFragment
-    lateinit var ageBottomSeatFragment: AgeBottomSeatFragment
+    private val genderBottomSeatFragment by lazy { GenderBottomSeatFragment() }
+    private val ageBottomSeatFragment by lazy { AgeBottomSeatFragment() }
 
     override fun afterViewCreated() {
         super.afterViewCreated()
@@ -34,21 +31,18 @@ class PetAdoptPostFragment :
         super.initView()
         val choiceAdapter = GroupieAdapter()
 
-        animalBottomSeatFragment = AnimalBottomSeatFragment()
-        genderBottomSeatFragment = GenderBottomSeatFragment()
-        ageBottomSeatFragment = AgeBottomSeatFragment()
-
         binding.rvAnimalChoice.adapter = choiceAdapter
 
-        //todo 리소트 익스텐션 하나 만들기
-        binding.include.tvTop.text = resources.getString(R.string.title_adaption_insert)
 
+        binding.include.tvTop.text = resources.getString(R.string.title_adaption_insert)
         //todo 이것도 깔끔하게 정리하기
         choiceAdapter.add(ItemChoiceAnimal("믹스견"))
         choiceAdapter.add(ItemChoiceAnimal("치와와"))
         choiceAdapter.add(ItemChoiceAnimal("골든 리트리버"))
         choiceAdapter.add(ItemChoiceAnimal("말티즈"))
         choiceAdapter.add(ItemSerchAnimal())
+
+        binding.cvEndDate.setHint("종료일")
     }
 
     override fun initViewModel() {
@@ -71,7 +65,11 @@ class PetAdoptPostFragment :
             ageBottomSeatFragment.show(this.parentFragmentManager, "")
         }
         binding.cbBreedChoice.setOnClickListener {
-          findNavController().navigate(R.id.action_petAdoptPostFragment_to_speciesChoiceFragment)
+            findNavController().navigate(R.id.action_petAdoptPostFragment_to_speciesChoiceFragment)
+        }
+
+        binding.include.tvLeft.setOnClickListener {
+            requireActivity().finish()
         }
 
         binding.cvStartDate.setClick { excuteDatePicker() }

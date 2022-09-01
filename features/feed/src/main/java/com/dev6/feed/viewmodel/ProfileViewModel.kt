@@ -2,20 +2,13 @@ package com.dev6.feed.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import com.dev6.core.base.UiState
-import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
-import com.dev6.domain.entitiyRepo.DonationPostFeed
-import com.dev6.domain.entitiyRepo.ProfileUserRepo
-import com.dev6.domain.entitiyRepo.ProfileUserUpdateRepo
-import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.ProfileUserRepo
+import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import javax.inject.Inject

@@ -1,16 +1,17 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.PageEntitiy
-import com.dev6.data.model.SortEntitiy
 import com.dev6.data.entity.SortXX
-import com.dev6.data.model.donation.DonationFeedEntitiy
-
+import com.dev6.data.model.PageResponse
+import com.dev6.data.model.SortResponse
+import com.dev6.data.model.donation.DonationFeedResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
-import com.dev6.domain.entitiyRepo.*
+import com.dev6.domain.model.Pageable
+import com.dev6.domain.model.Sort
+import com.dev6.domain.model.donate.DonationPost
+import com.dev6.domain.model.donate.DonationPostPage
 
-
-internal fun DonationPaginationResponse?.toDomain() = DonationPost(
-    donationFeedList = this?.donationFeedList?.map { it.toData() } ?: listOf(),
+internal fun DonationPaginationResponse?.toDomain() = DonationPostPage(
+    donationFeedList = this?.donationFeedList?.map { it.toDomain() } ?: listOf(),
     empty = this?.empty ?: false,
     first = this?.first ?: false,
     last = this?.last ?: false,
@@ -23,21 +24,19 @@ internal fun DonationPaginationResponse?.toDomain() = DonationPost(
     totalPages = this?.totalPages ?: 0
 )
 
-internal fun List<DonationFeedEntitiy>.toDomain(): List<DonationPostFeed> {
-    var temp: ArrayList<DonationPostFeed> = ArrayList()
+internal fun List<DonationFeedResponse>.toDomain(): List<DonationPost> {
+    var temp: ArrayList<DonationPost> = ArrayList()
     this.forEach {
-        temp.add(it.toData())
+        temp.add(it.toDomain())
     }
     return temp
 }
 
-
-internal fun SortEntitiy?.toDomain() = Sort(
+internal fun SortResponse?.toDomain() = Sort(
     empty = this?.empty ?: false,
     sorted = this?.sorted ?: false,
     unsorted = this?.unsorted ?: false
 )
-
 
 internal fun SortXX?.toXX() = Sort(
     empty = this?.empty ?: false,
@@ -45,8 +44,8 @@ internal fun SortXX?.toXX() = Sort(
     unsorted = this?.unsorted ?: false
 )
 
-//SortXX
-internal fun PageEntitiy?.toDomain() = Pageable(
+// SortXX
+internal fun PageResponse?.toDomain() = Pageable(
     offset = this?.offset ?: 0,
     pageNumber = this?.pageNumber ?: 0,
     pageSize = this?.pageSize ?: 0,
@@ -55,32 +54,32 @@ internal fun PageEntitiy?.toDomain() = Pageable(
     unpaged = this?.unpaged ?: false
 )
 
-internal fun DonationPost.toMapper() = DonationPaginationResponse(
-    donationFeedList = this.donationFeedList as List<DonationFeedEntitiy>,
+internal fun DonationPostPage.toMapper() = DonationPaginationResponse(
+    donationFeedList = this.donationFeedList as List<DonationFeedResponse>,
     empty = this.empty,
     first = this.first,
     last = this.last,
     number = this.number,
     numberOfElements = this.numberOfElements,
-    page = this.page as PageEntitiy,
+    page = this.page as PageResponse,
     size = this.size,
-    sort = this.sort as SortEntitiy,
+    sort = this.sort as SortResponse,
     totalElements = totalElements,
     totalPages = this.totalPages
 )
 
-internal fun DonationFeedEntitiy?.toData() = DonationPostFeed(
-    contents = this?.contents ?: "",
-    donationMethod = this?.donationMethod ?: "",
-    donationPostId = this?.donationPostId ?: "",
-    endDate = this?.endDate ?: emptyList(),
-    images = this?.images ?: emptyList(),
-    startDate = this?.startDate ?: emptyList(),
-    title = this?.title ?: "",
-    userId = this?.userId ?: ""
+internal fun DonationFeedResponse.toDomain() = DonationPost(
+    contents = this.contents,
+    donationMethod = this.donationMethod,
+    donationPostId = this.donationPostId,
+    endDate = this.endDate,
+    images = this.images,
+    startDate = this.startDate,
+    title = this.title,
+    userId = this.userId
 )
 
-internal fun DonationPost.toMakeViewLayer(temp: DonationFeedEntitiy) = DonationFeedEntitiy(
+internal fun DonationPostPage.toMakeViewLayer(temp: DonationFeedResponse) = DonationFeedResponse(
     contents = temp.contents,
     donationMethod = temp.donationMethod,
     donationPostId = temp.donationPostId,
@@ -90,6 +89,3 @@ internal fun DonationPost.toMakeViewLayer(temp: DonationFeedEntitiy) = DonationF
     title = temp.title,
     userId = temp.userId
 )
-
-
-

@@ -3,7 +3,6 @@ package com.dev6.feed.adapter
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -11,22 +10,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dev6.core.util.extension.fewDay
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.daily.DailyPost
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDailyfeedBinding
 
 
-class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit) :
-    PagingDataAdapter<DailyPostFeed, DailyPagingAdapter.ImageViewHolder>(
-        object : DiffUtil.ItemCallback<DailyPostFeed>() {
-            override fun areItemsTheSame(oldItem: DailyPostFeed, newItem: DailyPostFeed): Boolean {
+class DailyPagingAdapter(private val callback: (DailyPost) -> Unit) :
+    PagingDataAdapter<DailyPost, DailyPagingAdapter.ImageViewHolder>(
+        object : DiffUtil.ItemCallback<DailyPost>() {
+            override fun areItemsTheSame(oldItem: DailyPost, newItem: DailyPost): Boolean {
                 return oldItem.normalPostId == newItem.normalPostId
             }
 
             override fun areContentsTheSame(
-                oldItem: DailyPostFeed,
-                newItem: DailyPostFeed
+                oldItem: DailyPost,
+                newItem: DailyPost
             ): Boolean {
                 return oldItem.normalPostId == newItem.normalPostId
             }
@@ -51,7 +49,7 @@ class DailyPagingAdapter(private val callback: (DailyPostFeed) -> Unit) :
 
     inner class ImageViewHolder(private val binding: ItemDailyfeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: DailyPostFeed) {
+        fun onBind(item: DailyPost) {
             binding.apply {
                 dailyFeedContentTv.text = item.contents
                 dailyFeedTitleTv.text = item.title

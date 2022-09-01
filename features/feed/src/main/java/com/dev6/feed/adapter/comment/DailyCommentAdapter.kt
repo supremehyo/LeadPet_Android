@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dev6.domain.entitiyRepo.comment.Comment
-import com.dev6.domain.entitiyRepo.comment.CommentResponse
+import com.dev6.domain.model.comment.Comment
+import com.dev6.domain.model.comment.CommentPage
 import com.dev6.feed.databinding.ItemDailycommentBinding
 
 
 class DailyCommentAdapter(private val callback: (Comment) -> Unit) :
-    PagingDataAdapter<Comment, DailyCommentAdapter.RecommendViewHolder>
-        (RecommendDiffUtil()) {
+    PagingDataAdapter<Comment, DailyCommentAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
@@ -32,7 +30,7 @@ class DailyCommentAdapter(private val callback: (Comment) -> Unit) :
     class RecommendViewHolder(private val binding: ItemDailycommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: Comment) {
-            Log.v("asdfsdf" , item.userId)
+            Log.v("asdfsdf", item.userId)
             binding.dailyCommentContentTv.text = item.content
             binding.dailyCommentShelterNameTv.text = item.userName
 

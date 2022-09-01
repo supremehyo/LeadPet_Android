@@ -1,10 +1,12 @@
 package com.dev6.data.service
 
-
+import com.dev6.data.model.adopt.AdoptFeedResponse
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.comment.CommentPaginationResponse
-import com.dev6.data.model.comment.LikeDTO
+import com.dev6.data.model.comment.LikeRequestResponse
+import com.dev6.data.model.daily.DailyFeedRequestResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
+import com.dev6.data.model.donation.DonationFeedResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
 import com.dev6.data.model.shelter.ShelterPagingResponse
 import okhttp3.ResponseBody
@@ -20,7 +22,6 @@ interface FeedAPI {
         @Query("userId") userId: String
     ): Response<DailyPaginationResponse>
 
-
     @GET("/v1/post/donation")
     suspend fun donationAllFeed(
         @Query("page") page: Int,
@@ -35,6 +36,15 @@ interface FeedAPI {
         @Query("userId") userId: String
     ): Response<AdoptPaginationResponse>
 
+    @POST("/v1/post/adoption")
+    suspend fun insertAdoptPost(@Body adoptFeedResponse: AdoptFeedResponse): Response<AdoptFeedResponse>
+
+    @POST("/v1/post/donation")
+    suspend fun insertDonatePost(@Body donateFeedResponse: DonationFeedResponse): Response<DonationFeedResponse>
+
+    @POST("/v1/post/normal")
+    suspend fun insertDailyPost(@Body dailyFeedRequestResponse: DailyFeedRequestResponse): Response<DailyFeedRequestResponse>
+
     @GET("/v1/shelter/list")
     @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
     suspend fun nearShelterList(
@@ -46,7 +56,7 @@ interface FeedAPI {
 
     @POST("/v1/liked")
     suspend fun postLike(
-        @Body likeDTO: LikeDTO
+        @Body likeDTO: LikeRequestResponse
     ): Response<ResponseBody>
 
     @GET("/v1/reply/normal")
@@ -55,5 +65,4 @@ interface FeedAPI {
         @Query("postId") postId: String,
         @Query("size") size: Int
     ): Response<CommentPaginationResponse>
-
 }

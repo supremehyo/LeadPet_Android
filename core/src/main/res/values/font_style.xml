@@ -2,12 +2,12 @@
 <resources>
 
     <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="android:color">@color/Gray_06</item>
     </style>
 
     <style name="customButtonFontStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
     </style>
 
 
@@ -21,13 +21,13 @@
 
     <style name="Widget.Donate.Button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/Main</item>
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="cornerRadius">8dp</item>
     </style>
 
     <style name="customButtonRadius" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:backgroundTint">@color/White</item>
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="android:radius">8dp</item>
         <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/Gray_02</item>
@@ -35,7 +35,7 @@
 
 
     <style name="Widget_post_title" parent="@android:style/Widget.DeviceDefault.EditText">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="android:color">@color/Gray_06</item>
         <item name="android:textColor">@color/color_black</item>
         <item name="android:background">@null</item>
@@ -43,30 +43,30 @@
     </style>
 
     <style name="EditTextFontStyle_content" parent="@android:style/Widget.DeviceDefault.EditText">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="android:background">@null</item>
     </style>
 
 
     <style name="customRadioButtonFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
     </style>
 
     <style name="customCheckboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
     </style>
 
     <style name="CustomOutlineBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/text_input_layout_stroke</item>
         <item name="android:textColorHint">@color/text_color_hint</item>
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="hintTextColor">@color/Gray_04</item>
         <item name="helperTextEnabled">true</item>
     </style>
 
 
     <style name="SpinnerTextViewStyle" parent="Widget.MaterialComponents.TextView">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="android:textColor">@color/Gray_03</item>
         <item name="android:textSize">12sp</item>
     </style>
@@ -85,7 +85,7 @@
     </style>
 
     <style name="CustomTextViewTitle" parent="@android:style/Widget.DeviceDefault.TextView">
-        <item name="android:fontFamily">@font/custom_font_family</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="android:color">@color/Gray_03</item>
         <item name="android:textSize">16sp</item>
     </style>

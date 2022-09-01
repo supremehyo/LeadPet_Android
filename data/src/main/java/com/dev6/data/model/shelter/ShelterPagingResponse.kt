@@ -1,14 +1,12 @@
 package com.dev6.data.model.shelter
 
 import com.dev6.data.entity.SortXX
-import com.dev6.data.model.PageEntitiy
-import com.dev6.data.model.SortEntitiy
-import com.dev6.domain.entitiyRepo.Sort
+import com.dev6.data.model.PageResponse
 import com.google.gson.annotations.SerializedName
 
 data class ShelterPagingResponse(
     @SerializedName("content")
-    val shelterEntitiy: List<ShelterEntitiy>,
+    val shelterEntitiy: List<ShelterResponse>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")
@@ -20,7 +18,7 @@ data class ShelterPagingResponse(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val page: PageEntitiy,
+    val page: PageResponse,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")

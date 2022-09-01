@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.login.viewmodel.DonatePostViewModel
 import com.dev6.post.databinding.FragmentLifePostBinding
 import com.dev6.post.viewmodel.LifePostViewModel
 import gun0912.tedimagepicker.builder.TedImagePicker

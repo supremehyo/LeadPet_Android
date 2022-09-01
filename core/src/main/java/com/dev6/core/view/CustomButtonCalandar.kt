@@ -16,15 +16,14 @@ import java.util.function.Consumer
 class CustomButtonCalandar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-
-    ) : ConstraintLayout(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = 0
+) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     lateinit var okClickListener: Consumer<String>
     private var binding: CustomViewCaladerBinding
 
     init {
-        binding = CustomViewCaladerBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = CustomViewCaladerBinding.inflate(LayoutInflater.from(context), this)
 
         doOnAttach {
             findViewTreeLifecycleOwner()?.lifecycleScope?.let { lifeCycleScope ->
@@ -34,9 +33,8 @@ class CustomButtonCalandar @JvmOverloads constructor(
             }
         }
 
-
-
-        binding.tietDate.doOnTextChanged { _, _, _, _ ->
+        binding.tietDate.doOnTextChanged { text, _, _, _ ->
+            if(text.isNullOrEmpty()) return@doOnTextChanged
             binding.textInputLayout.setBoxStrokeColorStateList(
                 resources.getColorStateList(
                     R.color.text_input_layout_stroke_pressed,
@@ -44,18 +42,14 @@ class CustomButtonCalandar @JvmOverloads constructor(
                 )
             )
         }
-//        attrs?.run {
-//            val typedArr = context.obtainStyledAttributes(attrs, R.styleable.Button)
-//            setText(typedArr.getString(R.styleable.Button_text) ?: "")
-//            if (!isInEditMode) {
-//                typedArr.recycle()
-//            }
-//        }
     }
 
     fun setText(text_string: String) {
         binding.textInputLayout.editText?.setText(text_string)
+    }
 
+    fun setHint(text_string: String) {
+        binding.textInputLayout.hint = text_string
     }
 
     fun setClick(consumer: Consumer<String>) {

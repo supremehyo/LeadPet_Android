@@ -18,11 +18,11 @@ import kotlinx.coroutines.launch
 
 class EmailJoinFragment : BindingFragment<FragmentEmailJoinBinding>(R.layout.fragment_email_join) {
 
-    lateinit var bottomSheetView : View
-    lateinit var bottomSheetDialog : BottomSheetDialog
-    var email : String = ""
+    lateinit var bottomSheetView: View
+    lateinit var bottomSheetDialog: BottomSheetDialog
+    var email: String = ""
 
-    private  val joinViewModel : JoinViewModel by activityViewModels()
+    private val joinViewModel: JoinViewModel by activityViewModels()
 
     override fun initView() {
         super.initView()

@@ -5,17 +5,17 @@ import com.google.gson.Gson
 import com.jydev.rest_api_util.extension.executeErrorHandling
 import retrofit2.Response
 
-
 data class ErrorResponse(
     val error: Error
 )
 
 data class Error(
-    val code: Int, val message: String, val detail: String
+    val code: Int,
+    val message: String,
+    val detail: String
 )
 
 suspend fun <T> Response<T>.executeNetworkHandling(): T {
-
     val handle = if (isSuccessful) {
         null
     } else {
@@ -26,5 +26,3 @@ suspend fun <T> Response<T>.executeNetworkHandling(): T {
 
     return body().executeErrorHandling(handle)
 }
-
-

@@ -62,11 +62,9 @@ class HomeFragment :
         feedViewModel.getFeedList(userId, "")
 
         feedViewModel.setCurrentView(FeedViewType.HOME)
-
     }
 
     private fun initRc() {
-
         binding.recommendDonationRc.apply {
             adapter = donationPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -80,10 +78,7 @@ class HomeFragment :
             adapter = adoptPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
-
     }
-
-
 
     fun updateConstraints(@LayoutRes id: Int) {
         val newConstraintSet = ConstraintSet()
@@ -95,7 +90,6 @@ class HomeFragment :
     }
 
     override fun afterViewCreated() {
-
         repeatOnStarted {
             feedViewModel.eventDonationList.collect { event ->
                 when (event) {
@@ -113,62 +107,57 @@ class HomeFragment :
                                 Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
                             }
                         }
-
                     }
                     else -> {
-
                     }
                 }
             }
         }
-            repeatOnStarted {
-                feedViewModel.eventAdoptList.collect { event ->
-                    when (event) {
-                        is FeedViewModel.Event.AdoptUiEvent -> {
-                            when (event.uiState) {
-                                is UiState.Success -> {
-                                    event.uiState.data.collect {
-                                        adoptPagingAdapter.submitData(it)
-                                    }
-                                }
-                                is UiState.Error -> {
-                                    Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                                }
-                                is UiState.Loding -> {
-                                    Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+        repeatOnStarted {
+            feedViewModel.eventAdoptList.collect { event ->
+                when (event) {
+                    is FeedViewModel.Event.AdoptUiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                event.uiState.data.collect {
+                                    adoptPagingAdapter.submitData(it)
                                 }
                             }
-                        }else->{
-
+                            is UiState.Error -> {
+                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            is UiState.Loding -> {
+                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
+                    else -> {
                     }
                 }
             }
-            repeatOnStarted {
-                feedViewModel.eventDailyList.collect { event ->
-                    when (event) {
-                        is FeedViewModel.Event.DailyUiEvent -> {
-                            when (event.uiState) {
-                                is UiState.Success -> {
-                                    event.uiState.data.collect {
-                                        dailyPagingAdapter.submitData(it)
-                                    }
-                                }
-                                is UiState.Error -> {
-                                    Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                                }
-                                is UiState.Loding -> {
-                                    Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        }else->{
-
-                    }
-                    }
-                }
-            }
-
         }
-
-
+        repeatOnStarted {
+            feedViewModel.eventDailyList.collect { event ->
+                when (event) {
+                    is FeedViewModel.Event.DailyUiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                event.uiState.data.collect {
+                                    dailyPagingAdapter.submitData(it)
+                                }
+                            }
+                            is UiState.Error -> {
+                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                            is UiState.Loding -> {
+                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                    else -> {
+                    }
+                }
+            }
+        }
     }
+}

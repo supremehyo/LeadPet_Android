@@ -17,9 +17,7 @@ class EmailLoginFragment :
 
         binding.tvLogin.setOnClickListener {
             loginViewModel.getlogin()
-
         }
-
     }
 
     override fun initView() {

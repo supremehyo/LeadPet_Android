@@ -3,7 +3,7 @@ package com.dev6.post.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
-import com.dev6.domain.entitiyRepo.IndexBreed
+import com.dev6.domain.model.IndexBreed
 import com.dev6.domain.usecase.post.GetSpeciesListBaseUseCase
 import com.dev6.post.state.AdoptChoiceState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -52,7 +52,6 @@ class AdoptPostViewModel @Inject constructor(
         _adoptChoiceStateFlow.update { currentState ->
             currentState.copy(gender = gender)
         }
-
     }
 
     fun updateAgeSelection(age: String) {
@@ -62,5 +61,4 @@ class AdoptPostViewModel @Inject constructor(
     }
 
     fun updateSpecies(breed: String) = _speciesStateFlow.update { _ -> breed }
-
 }

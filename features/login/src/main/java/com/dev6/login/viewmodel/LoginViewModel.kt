@@ -7,10 +7,9 @@ import com.dev6.core.enums.LoginType
 import com.dev6.core.exception.*
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.domain.entitiyRepo.LoginEntity
-import com.dev6.domain.entitiyRepo.UserEntity
-import com.dev6.domain.usecase.login.LoginRepoUseCase
-
+import com.dev6.domain.model.Login
+import com.dev6.domain.model.User
+import com.dev6.domain.usecase.login.GetEmailAccessUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,11 +19,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepoUseCase: LoginRepoUseCase
+    private val loginRepoUseCase: GetEmailAccessUseCase
 ) : ViewModel() {
 
-
-    private val _loginDto = MutableStateFlow<LoginEntity>(LoginEntity(loginMethod = LoginType.EMAIL))
+    private val _loginDto = MutableStateFlow<Login>(Login(loginMethod = LoginType.EMAIL))
     val loginDto = _loginDto.asStateFlow()
 
     private val _lodingFlow = MutableStateFlow<Boolean>(false)
@@ -33,29 +31,30 @@ class LoginViewModel @Inject constructor(
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    fun setloginDto(loginEntitiy: LoginEntity){
+    fun setloginDto(loginEntitiy: Login) {
         _loginDto.value = loginEntitiy
     }
-
-
 
     fun getlogin() {
         viewModelScope.launch {
             loginRepoUseCase.login(loginDto.value).collect { uiState ->
                 when (uiState) {
-                    is UiState.Success<UserEntity> -> {
+                    is UiState.Success<User> -> {
                         _lodingFlow.value = false
                         Timber.d(uiState.data.toString())
-                        event(Event.LoginEvent(loginDto.value))
                     }
                     is UiState.Error -> {
                         _lodingFlow.value = false
                         Timber.d(uiState.error?.message)
 
-                        when(uiState.error){
-                            is NotCorrectException  -> event(Event.JoinEvent(loginDto.value))
-                            is ServerFailException -> event(Event.ErrorEvent("계정을 찾을수 없습니다."
-                            ,loginDto.value))
+                        when (uiState.error) {
+                            is NotCorrectException -> event(Event.JoinEvent(loginDto.value))
+                            is ServerFailException -> event(
+                                Event.ErrorEvent(
+                                    "계정을 찾을수 없습니다.",
+                                    loginDto.value
+                                )
+                            )
                         }
                     }
                     is UiState.Loding -> {
@@ -69,15 +68,16 @@ class LoginViewModel @Inject constructor(
 
     sealed class Event {
         data class LoginEvent(
-            val loginDto: LoginEntity
+            val loginDto: Login
         ) : Event()
 
         data class JoinEvent(
-            val loginDto: LoginEntity
+            val loginDto: Login
         ) : Event()
 
         data class ErrorEvent(
-            val text: String, val loginDto: LoginEntity
+            val text: String,
+            val loginDto: Login
         ) : Event()
     }
 
@@ -86,6 +86,4 @@ class LoginViewModel @Inject constructor(
             _eventFlow.emit(event)
         }
     }
-
-
 }

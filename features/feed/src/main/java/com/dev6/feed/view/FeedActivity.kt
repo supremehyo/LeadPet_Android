@@ -57,7 +57,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                     .with(ObjectAnimator.ofFloat(binding.flDim, View.ALPHA, 1f))
             }.apply {
                 addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
+                    override fun onAnimationStart(animation: Animator, isReverse: Boolean) {
                         super.onAnimationStart(animation, isReverse)
                         binding.llFab.visibility = View.VISIBLE
                         binding.flDim.visibility = View.VISIBLE
@@ -73,7 +73,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                     .with(ObjectAnimator.ofFloat(binding.flDim, View.ALPHA, 0f))
             }.apply {
                 addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(p0: Animator?) {
+                    override fun onAnimationEnd(p0: Animator) {
                         binding.llFab.visibility = View.INVISIBLE
                         binding.flDim.visibility = View.INVISIBLE
                     }
@@ -148,7 +148,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             startPostActivity(PostType.DONATE)
         }
         binding.btnLife.setOnClickListener {
-            startPostActivity(PostType.LIFE)
+            startPostActivity(PostType.DAILY)
         }
         super.initListener()
     }

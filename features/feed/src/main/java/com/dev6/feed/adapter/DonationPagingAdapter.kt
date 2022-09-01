@@ -2,33 +2,29 @@ package com.dev6.feed.adapter
 
 import android.annotation.SuppressLint
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dev6.core.util.extension.fewDay
-import com.dev6.domain.entitiyRepo.DonationPostFeed
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.donate.DonationPost
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemDonationBinding
 
-class DonationPagingAdapter(private val callback: (DonationPostFeed) -> Unit) :
-    PagingDataAdapter<DonationPostFeed, DonationPagingAdapter.ImageViewHolder>(
-        object : DiffUtil.ItemCallback<DonationPostFeed>() {
+class DonationPagingAdapter(private val callback: (DonationPost) -> Unit) :
+    PagingDataAdapter<DonationPost, DonationPagingAdapter.ImageViewHolder>(
+        object : DiffUtil.ItemCallback<DonationPost>() {
             override fun areItemsTheSame(
-                oldItem: DonationPostFeed,
-                newItem: DonationPostFeed
+                oldItem: DonationPost,
+                newItem: DonationPost
             ): Boolean {
                 return oldItem.donationPostId == newItem.donationPostId
             }
 
             override fun areContentsTheSame(
-                oldItem: DonationPostFeed,
-                newItem: DonationPostFeed
+                oldItem: DonationPost,
+                newItem: DonationPost
             ): Boolean {
                 return oldItem.donationPostId == newItem.donationPostId
             }
@@ -54,11 +50,11 @@ class DonationPagingAdapter(private val callback: (DonationPostFeed) -> Unit) :
     inner class ImageViewHolder(private val binding: ItemDonationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
-        fun onBind(item: DonationPostFeed) {
+        fun onBind(item: DonationPost) {
             binding.donationShelterNameTv.text = item.userId
             binding.recommentdonationTv.text = item.title
             binding.textView5.text = item.contents
-            binding.donationTypeTv.text = item.donationMethod ?: "사료"
+            binding.donationTypeTv.text = item.donationMethod.item
             binding.donationEndTimeTv.text =
                 item.endDate[0] + "." + item.endDate[1] + "." + item.endDate[2] + "까지"
 

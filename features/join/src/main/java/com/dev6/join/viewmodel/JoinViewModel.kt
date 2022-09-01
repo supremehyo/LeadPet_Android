@@ -5,9 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.data.model.JoinEntitiy
-import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
-import com.dev6.domain.entitiyRepo.LifePost
+import com.dev6.domain.model.Join
 import com.dev6.domain.usecase.login.JoinReposUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.BufferOverflow
@@ -29,7 +27,7 @@ class JoinViewModel
     val joinImageFlow = _joinImageFlow.asStateFlow()
 
 
-    private val _joinDTOData = MutableSharedFlow<JoinEntitiyRepo>(
+    private val _joinDTOData = MutableSharedFlow<Join>(
         replay = 1, extraBufferCapacity = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
     val joinDTOData =  _joinDTOData.asSharedFlow()
@@ -50,7 +48,7 @@ class JoinViewModel
     }
 
 
-    fun signUp(joinEntitiyRepo: JoinEntitiyRepo) {
+    fun signUp(joinEntitiyRepo: Join) {
         viewModelScope.launch {
             joinReposUseCase(joinEntitiyRepo).collect{uiState ->
                 event(Event.UiEvent(uiState))
@@ -58,7 +56,7 @@ class JoinViewModel
         }
     }
 
-    fun setJoinDTOData(dto : JoinEntitiyRepo){
+    fun setJoinDTOData(dto : Join){
         viewModelScope.launch {
             _joinDTOData.emit(dto)
         }

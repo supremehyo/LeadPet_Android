@@ -5,23 +5,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.daily.DailyPost
 import com.dev6.feed.R
-import com.dev6.feed.databinding.ItemDailyfeedBinding
-import com.dev6.feed.databinding.ItemDailyshelterBinding
 import com.dev6.feed.databinding.ItemRecommendFeedBinding
 
-class RecommendFeedAdapter(private val callback: (DailyPostFeed) -> Unit):
-    PagingDataAdapter<DailyPostFeed, RecommendFeedAdapter.ImageViewHolder>(
-        object : DiffUtil.ItemCallback<DailyPostFeed>() {
-            override fun areItemsTheSame(oldItem: DailyPostFeed, newItem: DailyPostFeed): Boolean {
+class RecommendFeedAdapter(private val callback: (DailyPost) -> Unit):
+    PagingDataAdapter<DailyPost, RecommendFeedAdapter.ImageViewHolder>(
+        object : DiffUtil.ItemCallback<DailyPost>() {
+            override fun areItemsTheSame(oldItem: DailyPost, newItem: DailyPost): Boolean {
                 return oldItem.normalPostId == newItem.normalPostId
             }
 
-            override fun areContentsTheSame(oldItem: DailyPostFeed, newItem: DailyPostFeed): Boolean {
+            override fun areContentsTheSame(oldItem: DailyPost, newItem: DailyPost): Boolean {
                 return oldItem.normalPostId == newItem.normalPostId
             }
 
@@ -43,7 +40,7 @@ class RecommendFeedAdapter(private val callback: (DailyPostFeed) -> Unit):
 
     inner class ImageViewHolder(private val binding: ItemRecommendFeedBinding):
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: DailyPostFeed) {
+        fun onBind(item: DailyPost) {
             binding.recommendFeeTv1.text = item.title
             binding.recommendFeedTv2.text = item.userId
             binding.recommendItemCl.setOnClickListener {

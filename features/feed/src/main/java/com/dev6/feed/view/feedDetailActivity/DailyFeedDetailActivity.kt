@@ -12,7 +12,7 @@ import com.dev6.core.base.BindingActivity
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.fewDay
 import com.dev6.core.util.extension.repeatOnStarted
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.daily.DailyPost
 import com.dev6.feed.R
 import com.dev6.feed.adapter.comment.DailyCommentAdapter
 import com.dev6.feed.databinding.ActivityDailyFeedDetailBinding
@@ -24,7 +24,7 @@ class DailyFeedDetailActivity :
     BindingActivity<ActivityDailyFeedDetailBinding>(R.layout.activity_daily_feed_detail) {
 
     private val feedViewModel: FeedViewModel by viewModels()
-    lateinit var currentFeed: DailyPostFeed
+    lateinit var currentFeed: DailyPost
     private lateinit var dailycommentRc: RecyclerView
     private lateinit var commentAdapter: DailyCommentAdapter
     var likedBoolean = false
@@ -32,7 +32,7 @@ class DailyFeedDetailActivity :
 
     override fun initView() {
         super.initView()
-        currentFeed = intent.getSerializableExtra("dailyPostFeed") as DailyPostFeed
+        currentFeed = intent.getSerializableExtra("dailyPostFeed") as DailyPost
         makeCurrentView()
         commentAdapter = DailyCommentAdapter {}
         dailycommentRc = binding.dailyCommentRv

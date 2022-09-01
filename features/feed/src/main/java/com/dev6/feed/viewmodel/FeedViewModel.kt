@@ -1,7 +1,6 @@
 package com.dev6.feed.viewmodel
 
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -9,11 +8,12 @@ import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.domain.entitiyRepo.adopt.AdoptPostFeed
-import com.dev6.domain.entitiyRepo.DonationPostFeed
-import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
-import com.dev6.domain.entitiyRepo.comment.Comment
-import com.dev6.domain.entitiyRepo.daily.DailyPostFeed
+import com.dev6.domain.model.adopt.AdoptPostFeed
+import com.dev6.domain.model.donate.DonationPost
+import com.dev6.domain.model.ShelterEntitiyRepo
+import com.dev6.domain.model.comment.Comment
+import com.dev6.domain.model.comment.CommentPage
+import com.dev6.domain.model.daily.DailyPost
 import com.dev6.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -38,7 +38,7 @@ class FeedViewModel
     val _viewNameData = MutableStateFlow<FeedViewType>(FeedViewType.HOME)
     val viewNameData: StateFlow<FeedViewType> = _viewNameData
 
-    private val _donationPagingFlow = MutableSharedFlow<PagingData<DonationPostFeed>>()
+    private val _donationPagingFlow = MutableSharedFlow<PagingData<DonationPost>>()
     val donationPagingFlow = _donationPagingFlow.asSharedFlow()
 
 
@@ -147,8 +147,8 @@ class FeedViewModel
     }
 
     sealed class Event {
-        data class DailyUiEvent(val uiState: UiState<Flow<PagingData<DailyPostFeed>>>) : Event()
-        data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPostFeed>>>) : Event()
+        data class DailyUiEvent(val uiState: UiState<Flow<PagingData<DailyPost>>>) : Event()
+        data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPost>>>) : Event()
         data class AdoptUiEvent(val uiState: UiState<Flow<PagingData<AdoptPostFeed>>>) : Event()
         data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
         data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()

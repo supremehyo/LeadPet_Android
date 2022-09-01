@@ -6,28 +6,25 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dev6.domain.entitiyRepo.DonationPostFeed
+import com.dev6.domain.model.donate.DonationPost
 import com.dev6.feed.R
-import com.dev6.feed.databinding.ItemDailyshelterBinding
-import com.dev6.feed.databinding.ItemDonationBinding
 import com.dev6.feed.databinding.ItemRecommendDonationBinding
 
-class RecommendDonationAdapter(private val callback: (DonationPostFeed) -> Unit) :
-    PagingDataAdapter<DonationPostFeed, RecommendDonationAdapter.ImageViewHolder>(
-        object : DiffUtil.ItemCallback<DonationPostFeed>() {
+class RecommendDonationAdapter(private val callback: (DonationPost) -> Unit) :
+    PagingDataAdapter<DonationPost, RecommendDonationAdapter.ImageViewHolder>(
+        object : DiffUtil.ItemCallback<DonationPost>() {
             override fun areItemsTheSame(
-                oldItem: DonationPostFeed,
-                newItem: DonationPostFeed
+                oldItem: DonationPost,
+                newItem: DonationPost
             ): Boolean {
                 return oldItem.donationPostId == newItem.donationPostId
             }
 
             override fun areContentsTheSame(
-                oldItem: DonationPostFeed,
-                newItem: DonationPostFeed
+                oldItem: DonationPost,
+                newItem: DonationPost
             ): Boolean {
                 return oldItem.donationPostId == newItem.donationPostId
             }
@@ -53,7 +50,7 @@ class RecommendDonationAdapter(private val callback: (DonationPostFeed) -> Unit)
     inner class ImageViewHolder(private val binding: ItemRecommendDonationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
-        fun onBind(item: DonationPostFeed) {
+        fun onBind(item: DonationPost) {
             binding.recommendDonationEndDate.text = "까지"
             binding.recommendDonationFeedTv1.text = item.title
             binding.recommendDonationCl.setOnClickListener {

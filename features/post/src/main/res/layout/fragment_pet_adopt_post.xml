@@ -42,7 +42,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     app:layout_constraintStart_toStartOf="@id/gl_left2"
-                    app:layout_constraintTop_toTopOf="parent"></com.dev6.core.view.CustomButtonCamera>
+                    app:layout_constraintTop_toTopOf="parent">
+                </com.dev6.core.view.CustomButtonCamera>
 
 
                 <androidx.constraintlayout.widget.Guideline
@@ -82,6 +83,7 @@
                     android:id="@+id/btn_choice_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/round_8dp_gray06"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="17dp"
                     app:layout_constraintBottom_toBottomOf="@id/v_camera2"
@@ -97,6 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
+                    android:background="@drawable/round_8dp_gray06"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_choice_gender"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -110,6 +113,7 @@
                     android:id="@+id/cb_breed_choice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/round_8dp_gray07"
                     android:layout_marginTop="32dp"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
@@ -188,7 +192,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_animal_choice"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-                    app:layout_constraintHorizontal_bias="1.0"></com.google.android.material.card.MaterialCardView>
+                    app:layout_constraintHorizontal_bias="1.0">
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_disease"
@@ -209,7 +214,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:background="@null"
-                        android:fontFamily="@font/custom_font_family"
+                        android:fontFamily="@font/custom_font_family_medium"
                         android:hint="질병상태" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -243,7 +248,7 @@
                         android:id="@+id/tiet_introduce"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/custom_font_family"
+                        android:fontFamily="@font/custom_font_family_medium"
                         android:gravity="start|top"
                         android:hint="소개글 작성"
                         android:minHeight="200dp" />
@@ -266,6 +271,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
+                    android:layout_marginBottom="75dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/v_hyphon2"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -290,10 +296,6 @@
                     app:layout_constraintTop_toTopOf="@+id/cv_start_date">
 
                 </com.dev6.core.view.CustomButtonCalandar>
-
-
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.appcompat.widget.LinearLayoutCompat>

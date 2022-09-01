@@ -1,12 +1,10 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.JoinEntitiy
-import com.dev6.data.model.LifePostRequestResponse
-import com.dev6.domain.entitiyRepo.JoinEntitiyRepo
-import com.dev6.domain.entitiyRepo.LifePost
+import com.dev6.data.model.JoinResponse
+import com.dev6.domain.model.Join
 
 // 같은 모듈 안에서만 볼 수 있다
-internal fun JoinEntitiy?.toDomain() = JoinEntitiyRepo(
+internal fun JoinResponse?.toDomain() = Join(
     loginMethod = this?.loginMethod ?: "",
     uid = this?.uid ?: "",
     email = this?.email ?: "",
@@ -23,7 +21,7 @@ internal fun JoinEntitiy?.toDomain() = JoinEntitiyRepo(
     shelterIntro = this?.shelterIntro ?: ""
 )
 
-internal fun JoinEntitiyRepo.toMapper() = JoinEntitiy(
+internal fun Join.toMapper() = JoinResponse(
     loginMethod = loginMethod,
     uid = uid,
     email = email,

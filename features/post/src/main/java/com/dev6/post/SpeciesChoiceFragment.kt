@@ -3,6 +3,7 @@ package com.dev6.post
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -12,8 +13,8 @@ import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.getKeyFirst
 import com.dev6.core.util.extension.setClickEvent
-import com.dev6.domain.entitiyRepo.IndexBreed
-import com.dev6.domain.entitiyRepo.extractIndex
+import com.dev6.domain.model.IndexBreed
+import com.dev6.domain.model.extractIndex
 import com.dev6.post.databinding.FragmentSpeciesChoiceBinding
 import com.dev6.post.item.ItemIndex
 import com.dev6.post.item.ItemListPet
@@ -38,7 +39,8 @@ class SpeciesChoiceFragment :
     override fun initView() {
         super.initView()
         initIndexView()
-
+        binding.include.tvTop.setText("품종 선택")
+        binding.include.tvRight.visibility = View.GONE
     }
 
     override fun initViewModel() {
@@ -59,7 +61,6 @@ class SpeciesChoiceFragment :
     private fun uiHandler(uiState: UiState<List<IndexBreed>>) {
         when (uiState) {
             is UiState.Loding -> {
-
             }
 
             is UiState.Success -> {
@@ -68,29 +69,28 @@ class SpeciesChoiceFragment :
                 uiState.data.forEach { species ->
                     val speciesSection = Section().also { section ->
                         section.setHeader(ItemIndex(species.index))
-                        section.addAll(species.breedList.map {
-                            ItemListPet(it) { breedName->
-                                adoptPostViewModel.updateSpecies(breedName)
-                                findNavController().popBackStack()
+                        section.addAll(
+                            species.breedList.map {
+                                ItemListPet(it) { breedName ->
+                                    adoptPostViewModel.updateSpecies(breedName)
+                                    findNavController().popBackStack()
+                                }
                             }
-                        })
+                        )
                     }
                     breedAdapter.add(speciesSection)
                     sectionMap[speciesSection] = species.index
                 }
-
             }
             is UiState.Error -> {
-
+                Toast.makeText(context, uiState.error?.message, Toast.LENGTH_SHORT).show()
             }
-
         }
-
     }
 
     override fun initListener() {
         super.initListener()
-        //todo getCount 생기기 전까진
+        // todo getCount 생기기 전까진
         binding.chipGroup.setOnClickListener {
             when (binding.chipGroup.checkedChipId) {
                 R.id.c_all -> binding.cAll.text.toString()
@@ -98,7 +98,9 @@ class SpeciesChoiceFragment :
                 else -> null
             }
         }
-
+        binding.include.tvLeft.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun afterViewCreated() {
@@ -125,14 +127,12 @@ class SpeciesChoiceFragment :
             binding.llAlpabet.addView(itemView)
             if (index == 0) adoptPostViewModel.setIndex(item)
         }
-
     }
 
     private fun clearView() {
         binding.llAlpabet.removeAllViews()
         sectionMap.clear()
         breedAdapter.clear()
-
     }
 
     /**
@@ -148,9 +148,11 @@ class SpeciesChoiceFragment :
                     object : VisiblePositionChangeListener.OnChangeListener {
                         override fun onFirstVisiblePositionChanged(position: Int) {
                             adoptPostViewModel.setIndex(
-                                sectionMap[breedAdapter.getGroupAtAdapterPosition(
-                                    position
-                                )] ?: return
+                                sectionMap[
+                                    breedAdapter.getGroupAtAdapterPosition(
+                                        position
+                                    )
+                                ] ?: return
                             )
                         }
 
@@ -159,14 +161,17 @@ class SpeciesChoiceFragment :
                         override fun onFirstInvisiblePositionChanged(position: Int) {
                             if (isClicked) return
                             adoptPostViewModel.setIndex(
-                                sectionMap[breedAdapter.getGroupAtAdapterPosition(
-                                    position
-                                )] ?: return
+                                sectionMap[
+                                    breedAdapter.getGroupAtAdapterPosition(
+                                        position
+                                    )
+                                ] ?: return
                             )
                         }
 
                         override fun onLastInvisiblePositionChanged(position: Int) {}
-                    })
+                    }
+                )
             )
         }
     }

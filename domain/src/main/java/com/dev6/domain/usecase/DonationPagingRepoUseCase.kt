@@ -1,15 +1,12 @@
 package com.dev6.domain.usecase
 
 import com.dev6.core.base.UiState
-import com.dev6.domain.repository.DonaitonPagingRepository
-import kotlinx.coroutines.flow.collectLatest
+import com.dev6.domain.repository.donate.DonationRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
-class DonationPagingRepoUseCase @Inject constructor
-    (
-    private val donaitonPagingRepository: DonaitonPagingRepository
+class DonationPagingRepoUseCase @Inject constructor(
+    private val donaitonPagingRepository: DonationRepository
 ) {
 
     fun getDonationPagingData(userId: String) = flow {
@@ -23,4 +20,3 @@ class DonationPagingRepoUseCase @Inject constructor
         }
     }
 }
-

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DailyPaginationResponse(
     @SerializedName("content")
-    val dailyFeedEntitiy: List<DailyFeedEntitiy>,
+    val dailyFeedEntitiy: List<DailyFeedRequestResponse>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")
@@ -16,11 +16,11 @@ data class DailyPaginationResponse(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val dailyPageEntitiy: DailyPageEntitiy,
+    val dailyPageEntitiy: DailyPageResponse,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")
-    val dailySortEntitiy: DailySortEntitiy,
+    val dailySortEntitiy: DailySortResponse,
     @SerializedName("totalElements")
     val totalElements: Int,
     @SerializedName("totalPages")
