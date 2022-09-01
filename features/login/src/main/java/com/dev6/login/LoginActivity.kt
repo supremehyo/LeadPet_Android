@@ -34,6 +34,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginDto.loginMethod)
             joinIntent.putExtra("uuid", event.loginDto.uid)
+            joinIntent.putExtra("userType", event.loginDto.userType)
             joinIntent.putExtra("exist", true)
             startActivity(joinIntent)
             finish()

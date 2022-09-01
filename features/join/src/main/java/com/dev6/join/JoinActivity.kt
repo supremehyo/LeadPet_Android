@@ -18,6 +18,7 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
     private  val joinViewModel : JoinViewModel by viewModels()
     lateinit var loginMethod : LoginType
     lateinit var uuid : String
+    lateinit var userType : String
     var exist : Boolean = false
     lateinit var navController  : NavController
     override fun initView() {
@@ -25,6 +26,7 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
 
         loginMethod = intent.getSerializableExtra("loginMethod") as LoginType
         uuid = intent.getStringExtra("uuid")!!
+        userType = intent.getStringExtra("userType")!!
         exist = intent.getBooleanExtra("exist" , false)
 
         UserData.uid = uuid
@@ -50,7 +52,7 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
         val navGraph = navController.navInflater.inflate(R.navigation.join_nav_graph)
         if (isAlreadyLogin) {
             val feedIntent = Intent(context, FeedActivity::class.java)
-            feedIntent.putExtra("userType", "")
+            feedIntent.putExtra("userType", userType)
             startActivity(feedIntent)
         } else navGraph.setStartDestination(R.id.joinTypeFragment)
         navController.setGraph(navGraph, null) //navController에 graph 설정
