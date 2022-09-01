@@ -24,7 +24,7 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private val _loginDto = MutableStateFlow<LoginEntity>(LoginEntity(loginMethod = LoginType.EMAIL))
+    private val _loginDto = MutableStateFlow<LoginEntity>(LoginEntity(loginMethod = LoginType.EMAIL , userType = "NORMAL"))
     val loginDto = _loginDto.asStateFlow()
 
     private val _lodingFlow = MutableStateFlow<Boolean>(false)

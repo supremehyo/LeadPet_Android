@@ -75,7 +75,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                         }
                     }.getOrThrow()
                 }.onSuccess { token ->
-                    loginViewModel.setloginDto(LoginEntity(LoginType.KAKAO, token, null, null))
+                    loginViewModel.setloginDto(LoginEntity(LoginType.KAKAO, token, null, null,"NORMAL"))
                     loginViewModel.getlogin()
                 }.onFailure {
                     Toast.makeText(
@@ -122,7 +122,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     override fun onStart() {
         super.onStart()
         GoogleSignIn.getLastSignedInAccount(requireContext())?.let {
-            loginViewModel.setloginDto(LoginEntity(LoginType.GOOGLE, it.id, null, null))
+            loginViewModel.setloginDto(LoginEntity(LoginType.GOOGLE, it.id, null, null,"NORMAL"))
             loginViewModel.getlogin()
         }
     }
@@ -150,7 +150,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                                 account.id,
                                 null,
                                 null
-                            )
+                            ,"NORMAL")
                         )
                         loginViewModel.getlogin()
                         Timber.d("GoogleLogin ${account.id}")

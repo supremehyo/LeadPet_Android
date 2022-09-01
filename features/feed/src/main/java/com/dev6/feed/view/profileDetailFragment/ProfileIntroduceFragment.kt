@@ -1,6 +1,7 @@
 package com.dev6.feed.view.profileDetailFragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileIntroduceBinding
 import com.dev6.feed.viewmodel.FeedViewModel
@@ -24,6 +26,7 @@ class ProfileIntroduceFragment :
 
     override fun initView() {
         super.initView()
+        Log.v("introroro" , "SDfsdfsdf")
     }
 
     override fun initViewModel() {
@@ -36,13 +39,15 @@ class ProfileIntroduceFragment :
 
     override fun afterViewCreated() {
         super.afterViewCreated()
-        repeatOnStartedFragment {
+        Log.v("introroro2" , "SDfsdfsdf")
+        repeatOnStarted {
             profileViewModel.eventProfileDetail.collect{ evnet->
                 when(evnet){
                     is ProfileViewModel.Event.ProfileUiEvent->{
                         when(evnet.uiState){
                             is UiState.Success->{
                                 var userProfileData = evnet.uiState.data
+
                                 binding.apply {
                                     shelterProfileLocationTv.text = userProfileData.shelterAddress
                                     shelterProfileNumberTv.text = userProfileData.shelterPhoneNumber

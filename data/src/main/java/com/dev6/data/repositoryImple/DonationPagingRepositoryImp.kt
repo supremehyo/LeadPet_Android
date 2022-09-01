@@ -14,9 +14,9 @@ import javax.inject.Inject
 class DonationPagingRepositoryImp
 @Inject constructor(private val remoteSource: DonationRemoteSource) :
     DonaitonPagingRepository {
-    override suspend fun getDonationData(userId: String): Flow<PagingData<DonationPostFeed>> {
+    override suspend fun getDonationData(donationMethod : String ,userId: String): Flow<PagingData<DonationPostFeed>> {
         return Pager(PagingConfig(pageSize = 3)) {
-            DonationPagingSourceImp(remoteSource,userId)
+            DonationPagingSourceImp(remoteSource,userId,donationMethod)
         }.flow
     }
 }

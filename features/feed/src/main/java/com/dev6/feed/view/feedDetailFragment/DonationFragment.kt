@@ -61,7 +61,7 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
     }
 
     private fun getDonationList() {
-        feedViewModel.getDonationList("")
+        feedViewModel.getDonationList("","")
     }
 
     private fun makeBottomSheet(type: Int) {

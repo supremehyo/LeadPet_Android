@@ -11,7 +11,10 @@ data class LoginEntity(
     @SerializedName("email")
     var email: String? = null,
     @SerializedName("password")
-    var password: String? = null
+    var password: String? = null,
+    @SerializedName("userType")
+    var userType: String
+
 )
 
 

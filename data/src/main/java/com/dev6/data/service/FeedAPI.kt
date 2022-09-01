@@ -23,6 +23,7 @@ interface FeedAPI {
 
     @GET("/v1/post/donation")
     suspend fun donationAllFeed(
+        @Query("donationMethod") donationMethod: String,
         @Query("page") page: Int,
         @Query("size") size: Int,
         @Query("userId") userId: String

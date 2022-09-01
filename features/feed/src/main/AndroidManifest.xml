@@ -3,7 +3,9 @@
     package="com.dev6.feed">
 
     <application android:theme="@style/Theme.LeadPet">
-
+        <activity
+            android:name=".view.ProfileDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".view.feedDetailActivity.AdoptFeedDetailActivity"
             android:exported="false" />
@@ -16,9 +18,7 @@
         <activity
             android:name=".view.FeedActivity"
             android:exported="true"
-            android:label="FeedActivity">
-
-        </activity>
+            android:label="FeedActivity"></activity>
     </application>
 
 </manifest>

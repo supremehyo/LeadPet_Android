@@ -10,7 +10,6 @@ import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
 import com.dev6.domain.entitiyRepo.LifePost
 import com.dev6.domain.usecase.post.InsertLifePostBaseUseCase
-import com.dev6.domain.usecase.post.InsertLifePostUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

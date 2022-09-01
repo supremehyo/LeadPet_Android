@@ -24,8 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed) {
 
 
-    private  val feedViewModel : FeedViewModel by viewModels()
-    var list  = listOf("경기도 성남시" , "서울특별시")
+    private val feedViewModel: FeedViewModel by viewModels()
+    var list = listOf("경기도 성남시", "서울특별시")
     var userType = ""
 
     lateinit var navController: NavController
@@ -107,7 +107,8 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
 
     //바텀 네비게이션 뷰 초기화
     fun initNavController() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         navController.setGraph(R.navigation.feed_nav_graph)
         if (userType == "user") { // 유저 type이 user면 해당 바텀네비게이션으로 다시 그리기
@@ -122,6 +123,10 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
 
     private fun changeHeader(state: FeedViewType) {
         when (state) {
+            FeedViewType.TOTAL->{
+                binding.bottomNavigationView.visibility = View.VISIBLE
+                binding.fabPost.visibility = View.VISIBLE
+            }
             FeedViewType.FEED -> {
                 binding.logoImage.visibility = View.GONE
                 binding.locationSpinner.visibility = View.VISIBLE
@@ -133,6 +138,12 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             FeedViewType.HOME -> {
                 binding.logoImage.visibility = View.VISIBLE
                 binding.locationSpinner.visibility = View.GONE
+            }
+            FeedViewType.PROFILECLICK -> {
+                binding.logoImage.visibility = View.GONE
+                binding.locationSpinner.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.fabPost.visibility = View.GONE
             }
             else -> {}
         }

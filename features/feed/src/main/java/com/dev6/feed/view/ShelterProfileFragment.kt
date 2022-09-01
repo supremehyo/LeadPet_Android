@@ -1,6 +1,7 @@
 package com.dev6.feed.view
 
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.domain.entitiyRepo.ShelterEntitiyRepo
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileBinding
 import com.dev6.feed.view.profileDetailFragment.ProfileAdoptFragment
@@ -31,15 +33,19 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     lateinit var profileDonationFragment: ProfileDonationFragment
     lateinit var profileAdoptFragment: ProfileAdoptFragment
     lateinit var selected: Fragment
+    var shelterData : ShelterEntitiyRepo? = null
 
     override fun initView() {
         super.initView()
         initTabLayout()
 
-        profileIntroduceFragment = ProfileIntroduceFragment()
+        shelterData = arguments?.get("shelterData") as ShelterEntitiyRepo?
+
+
         profileDailyFragment = ProfileDailyFragment()
         profileDonationFragment = ProfileDonationFragment()
         profileAdoptFragment = ProfileAdoptFragment()
+        profileIntroduceFragment = ProfileIntroduceFragment()
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, profileIntroduceFragment).commit()
     }
@@ -47,7 +53,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     override fun initViewModel() {
         super.initViewModel()
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
-        profileViewModel.getShelterProfileDetailData("app1")
+        profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "app1")
     }
 
     override fun afterViewCreated() {
@@ -85,6 +91,11 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
                 }
             }
         }
+    }
+
+    private fun refresh(){
+        var transaction = parentFragmentManager.beginTransaction()
+        transaction.detach(this).attach(this).commit()
     }
 
     private fun initTabLayout() {

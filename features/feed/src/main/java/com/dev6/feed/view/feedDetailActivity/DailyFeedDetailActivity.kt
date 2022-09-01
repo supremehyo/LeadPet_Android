@@ -2,7 +2,10 @@ package com.dev6.feed.view.feedDetailActivity
 
 import android.graphics.Color
 import android.os.Build
+import android.text.InputType
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +43,13 @@ class DailyFeedDetailActivity :
             layoutManager = LinearLayoutManager(context)
             adapter = commentAdapter
         }
+
+        binding.dailyFeedCommentEt.apply {
+            imeOptions = EditorInfo.IME_ACTION_SEND
+            setRawInputType(InputType.TYPE_CLASS_TEXT)
+        }
+
+
     }
 
     override fun initViewModel() {
@@ -52,7 +62,16 @@ class DailyFeedDetailActivity :
         binding.dailyLikeImage.setOnClickListener {
             feedViewModel.postLike(currentFeed.normalPostId, "uidkko149")
         }
+        binding.dailyFeedCommentEt.setOnKeyListener { view, keyCode, keyEvent ->
+            if((keyEvent.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                true
+            }else{
+              false
+            }
+        }
     }
+
+
 
     override fun afterOnCreate() {
         super.afterOnCreate()

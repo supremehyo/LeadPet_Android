@@ -1,19 +1,23 @@
 package com.dev6.feed.view.feedDetailFragment
 
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
+import com.dev6.feed.view.ProfileDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -40,10 +44,8 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         }
 
         shelterAdapter = DailyshelterRecyclerAdapter {
-            Log.v("shelterData" , it.userId)
-            //val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            //dailyIntent.putExtra("dailyShelter", it)
-            //startActivity(dailyIntent)
+            feedViewModel.setCurrentView(FeedViewType.PROFILECLICK)
+            findNavController().navigate(R.id.action_feedFragment_to_profileFragment , Bundle().apply {putSerializable("shelterData", it)})
         }
 
 
@@ -64,7 +66,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     private fun getDailyList() {
-         feedViewModel.getFeedList("",UserData.uid)
+         feedViewModel.getFeedList("","")
     }
 
     private fun getShelterList() {

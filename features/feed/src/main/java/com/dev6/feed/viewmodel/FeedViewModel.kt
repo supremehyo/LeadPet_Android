@@ -60,6 +60,16 @@ class FeedViewModel
     private val _eventPostLike = MutableEventFlow<Event>()
     val eventPostLike = _eventPostLike.asEventFlow()
 
+    private val _eventCommentPost = MutableEventFlow<Event>()
+    val eventCommentPost = _eventCommentPost.asEventFlow()
+
+
+    fun eventDailyCommentPost(event: Event){
+        viewModelScope.launch {
+            _eventCommentPost.emit(event)
+        }
+    }
+
     fun setSpinnerEntry(Entry: List<String>) {
         viewModelScope.launch {
             _spinnerEntry.emit(Entry)
@@ -116,6 +126,10 @@ class FeedViewModel
         }
     }
 
+    fun postComment(content: String , normalPostId: String, userId: String){
+
+    }
+
     fun getFeedList(userId: String , likedUser : String) = viewModelScope.launch {
         pagingRepoUseCase.getDailyDataPagingData(userId ,likedUser).collect { uistate ->
             eventDailyList(Event.DailyUiEvent(uistate))
@@ -128,8 +142,8 @@ class FeedViewModel
         }
     }
 
-    fun getDonationList(userId: String) = viewModelScope.launch {
-        donationRepoUserCase.getDonationPagingData(userId).collect { uistate ->
+    fun getDonationList(userId: String , donationMethod : String) = viewModelScope.launch {
+        donationRepoUserCase.getDonationPagingData(userId ,donationMethod).collect { uistate ->
             eventDonationList(Event.DonationUiEvent(uistate))
         }
     }
@@ -153,5 +167,6 @@ class FeedViewModel
         data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
         data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
         data class CommentLikeUiEvnet(val uiState: UiState<ResponseBody>) : Event()
+        data class CommentPostUiEvnet(val uiState: UiState<ResponseBody>) : Event()
     }
 }

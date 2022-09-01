@@ -12,10 +12,10 @@ class DonationPagingRepoUseCase @Inject constructor
     private val donaitonPagingRepository: DonaitonPagingRepository
 ) {
 
-    fun getDonationPagingData(userId: String) = flow {
+    fun getDonationPagingData(userId: String ,donationMethod:String) = flow {
         emit(UiState.Loding)
         runCatching {
-            donaitonPagingRepository.getDonationData(userId)
+            donaitonPagingRepository.getDonationData(userId ,donationMethod)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
