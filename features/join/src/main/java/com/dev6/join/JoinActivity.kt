@@ -20,7 +20,6 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
     lateinit var uuid : String
     var exist : Boolean = false
     lateinit var navController  : NavController
-    lateinit var navHostFragment : NavHostFragment
     override fun initView() {
         super.initView()
 

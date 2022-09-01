@@ -5,18 +5,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recommendAdoptCl"
-        android:layout_width="123dp"
-        android:layout_height="200dp">
+        android:layout_marginRight="10dp"
+        android:layout_width="133dp"
+        android:layout_height="186dp">
 
         <ImageView
             android:id="@+id/recommendAdoptionIv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="122dp"
+            android:layout_height="122dp"
             android:background="@drawable/round_8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -27,31 +30,35 @@
 
         <TextView
             android:id="@+id/recommendAdoptFeedTv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:layout_width="122dp"
+            android:layout_height="32dp"
             android:fontFamily="@font/hansneo_medium"
             android:text="새로운 가족을 찾고 있어요."
+            android:layout_marginTop="9dp"
+            android:textColor="@color/black"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recommendAdoptionIv"
-            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/recommendAdoptionIv"
             app:layout_constraintTop_toBottomOf="@+id/recommendAdoptionIv"
-            app:layout_constraintVertical_bias="0.181" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/recommendAdoptEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="2022 03월 27일까지"
             android:fontFamily="@font/hansneo_regular"
+            android:text="2022 03월 27일까지"
+            android:textColor="@color/gray_05"
+            android:textSize="12dp"
+            android:layout_marginTop="7dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recommendAdoptFeedTv1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/recommendAdoptFeedTv1"
             app:layout_constraintTop_toBottomOf="@+id/recommendAdoptFeedTv1"
-            app:layout_constraintVertical_bias="0.046" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

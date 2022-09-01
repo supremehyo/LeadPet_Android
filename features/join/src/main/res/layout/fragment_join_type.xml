@@ -9,75 +9,90 @@
             type="com.dev6.join.JoinTypeFragment" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".JoinTypeFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/join_Type_Guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="17dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/join_Type_Guide2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="17dp" />
+
         <LinearLayout
             android:id="@+id/normalButton"
-            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="74dp"
+            android:layout_marginTop="56dp"
             android:background="@drawable/round_8dp_maincolor"
+            android:gravity="center"
             android:text="일반 유저"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.9"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/join_Type_Guide2"
+            app:layout_constraintStart_toStartOf="@+id/join_Type_Guide1"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.082" >
+            app:layout_constraintVertical_bias="0">
+
             <ImageView
-                android:src="@drawable/man_raising_hand"
-                android:layout_marginRight="6dp"
-                android:layout_width="22dp"
-                android:layout_height="22dp">
-            </ImageView>
+                android:layout_width="18dp"
+                android:layout_height="22dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/man_raising_hand"></ImageView>
+
             <TextView
-                android:text="일반 유저"
-                android:layout_marginLeft="6dp"
-                android:textColor="@color/Gray_01"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:fontFamily="@font/hansansneobold"
+                android:text="일반 유저"
+                android:textColor="@color/Gray_01"
+                android:textSize="16dp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/shelterButton"
-            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="74dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/round_8dp_maincolor"
             android:fontFamily="@font/notosanskr_bold"
+            android:gravity="center"
             android:textColor="@color/subTitle"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/join_Type_Guide2"
+            app:layout_constraintStart_toStartOf="@+id/join_Type_Guide1"
             app:layout_constraintTop_toBottomOf="@+id/normalButton"
-            app:layout_constraintVertical_bias="0.056"
-            app:layout_constraintWidth_percent="0.9">
+            app:layout_constraintVertical_bias="0">
 
             <ImageView
-                android:src="@drawable/house_with_graden"
-                android:layout_marginRight="6dp"
                 android:layout_width="22dp"
-                android:layout_height="22dp">
-            </ImageView>
+                android:layout_height="22dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/house_with_graden"></ImageView>
+
             <TextView
-                android:text="유기동물 보호소"
-                android:layout_marginLeft="6dp"
-                android:textColor="@color/Gray_01"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:fontFamily="@font/hansansneobold"
+                android:text="유기동물 보호소"
+                android:textColor="@color/Gray_01"
+                android:textSize="16dp" />
         </LinearLayout>
 
         <TextView
@@ -85,17 +100,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/notosanskr_bold"
+            android:fontFamily="@font/hansansneobold"
             android:includeFontPadding="false"
             android:text="가입 유형을 선택해주세요."
             android:textColor="@color/grey5"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.073"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/join_Type_Guide1"
             app:layout_constraintTop_toBottomOf="@+id/include"
-            app:layout_constraintVertical_bias="0.004" />
+            app:layout_constraintVertical_bias="0.003" />
 
         <include
             android:id="@+id/include"

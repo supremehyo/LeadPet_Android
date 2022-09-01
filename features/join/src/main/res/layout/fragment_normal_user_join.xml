@@ -82,8 +82,8 @@
             app:counterMaxLength="16"
             android:gravity="center_horizontal"
             app:helperTextTextColor="@color/Gray_04"
+            android:layout_marginHorizontal="17dp"
             app:helperText="2~16자 이내로 작성해 주세요"
-            app:layout_constraintWidth_percent="0.91"
             app:layout_constraintVertical_bias="0.15"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,15 +105,16 @@
 
         <ImageView
             android:id="@+id/profileImageButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/userprofileimage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.049" />
+            app:layout_constraintVertical_bias="0.049"
+            app:layout_constraintWidth_percent="0.30" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -122,19 +123,17 @@
         android:id="@+id/profileButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="다음"
-        android:textSize="16dp"
-        android:fontFamily="@font/hansneo_medium"
         android:backgroundTint="@color/Main"
-        android:background="@drawable/round_button"
+        android:fontFamily="@font/hansneo_medium"
+        android:text="다음"
         android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.91"
         app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:layout_constraintVertical_bias="0.954" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

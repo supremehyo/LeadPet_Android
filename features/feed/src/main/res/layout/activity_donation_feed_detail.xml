@@ -38,15 +38,15 @@
                         android:id="@+id/linearLayout5"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginHorizontal="17dp"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center_vertical"
                             android:src="@drawable/house_with_garden"></ImageView>
 
@@ -61,10 +61,10 @@
                                 android:id="@+id/donationFeedUserId"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/hansneo_regular"
+                                android:fontFamily="@font/hansneo_medium"
                                 android:text="투게더펫"
-                                android:textColor="@color/black"
-                                android:textSize="12dp" />
+                                android:textColor="@color/Gray_02"
+                                android:textSize="14dp" />
 
                             <TextView
                                 android:id="@+id/donationFeedPostTimeAgo"
@@ -72,7 +72,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/hansneo_medium"
                                 android:text="2시간전"
-                                android:textColor="@color/grey4"
+                                android:textColor="@color/Gray_06"
                                 android:textSize="10dp" />
                         </LinearLayout>
 
@@ -81,7 +81,7 @@
                     <ImageView
                         android:id="@+id/dailyContentImage"
                         android:layout_width="0dp"
-                        android:layout_height="300dp"
+                        android:layout_height="341dp"
                         android:src="@color/purple_200"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.7"
@@ -91,14 +91,15 @@
 
                     <TextView
                         android:id="@+id/donationTag"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="38dp"
+                        android:layout_height="24dp"
                         android:layout_marginStart="16dp"
                         android:background="@drawable/round_8dp_maincolor"
                         android:textColor="@color/mainColor"
                         android:fontFamily="@font/hansneo_medium"
                         android:text="사료"
                         android:textSize="12dp"
+                        android:gravity="center"
                         android:paddingHorizontal="4dp"
                         android:paddingVertical="2dp"
                         app:layout_constraintBottom_toTopOf="@+id/donationFeedTitle"
@@ -113,8 +114,8 @@
                         android:layout_margin="16dp"
                         android:fontFamily="@font/hansansneobold"
                         android:text="강아지 사료가 필요해요"
-                        android:textColor="@color/grey5"
-                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -126,21 +127,22 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/bookmark"
+                        android:layout_marginRight="13dp"
                         app:layout_constraintBottom_toBottomOf="@+id/donationTag"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.953"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toEndOf="@+id/donationTag"
                         app:layout_constraintTop_toBottomOf="@+id/dailyContentImage"
-                        app:layout_constraintVertical_bias="0.5"/>
+                        app:layout_constraintVertical_bias="1.0" />
 
                     <TextView
                         android:id="@+id/donationFeedContent"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="57dp"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginVertical="8dp"
                         android:text="꿈나무 보호소의 자랑 개구쟁이 삼둥이에요! 오늘은 아이들\n꿈나무 보호소의 자랑 개구쟁이 삼둥이에요! 오늘은 아이들"
-                        android:textSize="12sp"
+                        android:textSize="14dp"
                         android:textColor="@color/Gray_01"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -175,6 +177,7 @@
                             <TextView
                                 android:text="마감일"
                                 android:textColor="@color/grey4"
+                                android:textSize="16dp"
                                 android:fontFamily="@font/hansneo_medium"
                                 android:layout_marginStart="16dp"
                                 android:layout_width="wrap_content"
@@ -196,6 +199,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:text="계좌번호"
+                                android:textSize="16dp"
                                 android:layout_marginStart="16dp"
                                 android:textColor="@color/grey4"
                                 android:fontFamily="@font/hansneo_medium"
@@ -204,8 +208,9 @@
                             </TextView>
                             <TextView
                                 android:id="@+id/donationFeedAccount"
-                                android:textColor="@color/black"
+                                android:textColor="@color/Gray_01"
                                 android:layout_marginStart="8dp"
+                                android:textSize="16dp"
                                 android:fontFamily="@font/hansneo_medium"
                                 android:text="하나은행 | 123-09319-88910"
                                 android:layout_width="wrap_content"
@@ -219,6 +224,7 @@
                         android:layout_height="wrap_content"
                         android:text="기부 전 꼭 읽어주세요!"
                         android:textColor="@color/Gray_02"
+                        android:textSize="16dp"
                         android:fontFamily="@font/hansansneobold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -226,6 +232,20 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
                         app:layout_constraintVertical_bias="0.114" />
+
+                    <TextView
+                        android:id="@+id/donationConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@color/mainColor"
+                        android:fontFamily="@font/hansansneobold"
+                        android:gravity="center"
+                        android:text="참여했어요!"
+                        android:textColor="@color/white"
+                        android:textSize="18.5dp"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                    </TextView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -239,23 +259,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.9" />
-
-        <TextView
-            android:id="@+id/donationConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/mainColor"
-            android:text="참여했어요!"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/hansansneobold"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline4">
-
-        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
