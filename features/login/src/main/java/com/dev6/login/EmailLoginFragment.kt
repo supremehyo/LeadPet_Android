@@ -6,7 +6,6 @@ import com.dev6.login.databinding.FragmentEmailLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class EmailLoginFragment :
     BindingFragment<FragmentEmailLoginBinding>(R.layout.fragment_email_login) {

@@ -30,17 +30,3 @@ suspend fun <DATA> DATA?.executeErrorHandling(
         return this ?: throw NotFormatingMethod("리스폰스 없음")
     }
 }
-
-//suspend fun <DATA> executeChangeResult(getData: suspend () -> DATA): NetworkResult<DATA> {
-//    return try {
-//        val data = getData()
-//        NetworkResult.Success(data)
-//    } catch (e: Exception) {
-//        when (e) {
-//            is IdleException -> NetworkResult.Idle(e.message)
-//            is ServerErrorException -> NetworkResult.ServerError(e.message)
-//            is ServerFailException -> NetworkResult.ServerFail(e.message)
-//            else -> NetworkResult.Exception(e)
-//        }
-//    }
-//}

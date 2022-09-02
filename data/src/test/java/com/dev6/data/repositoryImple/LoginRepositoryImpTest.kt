@@ -1,3 +1,4 @@
+/*
 package com.dev6.data.repositoryImple
 
 import com.dev6.core.enums.LoginType
@@ -16,22 +17,21 @@ class LoginRepositoryImpTest {
 
     @Before
     fun setUp() {
-        //이방식도 있고, Mock 방식도 있당
+        // 이방식도 있고, Mock 방식도 있당
         remoteSource = FakeLoginDataSource()
         repositoryImp = LoginRepositoryImp(remoteSource)
     }
 
     @Test
     fun `로그인 주어짐_아무거나 들어오면_로그인 성공`() = runBlocking {
-        //given
+        // given
         val login = Login(loginMethod = LoginType.KAKAO, "테스트", "테스트", "테스트")
 
-        //when
+        // when
         val response = repositoryImp.login(login)
 
-        //then
+        // then
         Truth.assertThat(response.isSuccessful).isTrue()
-
     }
-
 }
+*/

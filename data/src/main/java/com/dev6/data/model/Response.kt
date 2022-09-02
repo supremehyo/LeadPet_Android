@@ -4,6 +4,7 @@ import com.dev6.data.util.DefaultHandleServerStatus
 import com.google.gson.Gson
 import com.jydev.rest_api_util.extension.executeErrorHandling
 import retrofit2.Response
+import timber.log.Timber
 
 data class ErrorResponse(
     val error: Error
@@ -20,7 +21,8 @@ suspend fun <T> Response<T>.executeNetworkHandling(): T {
         null
     } else {
         val gson = Gson()
-        val errorResponse = gson.fromJson(errorBody()?.string(), ErrorResponse::class.java)
+        val errorBody = errorBody()!!.string()
+        val errorResponse = gson.fromJson(errorBody, ErrorResponse::class.java)
         DefaultHandleServerStatus(errorResponse.error)
     }
 

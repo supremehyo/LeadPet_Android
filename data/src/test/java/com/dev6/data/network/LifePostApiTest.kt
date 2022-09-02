@@ -1,3 +1,4 @@
+/*
 package com.dev6.data.network
 
 import com.dev6.data.MainCoroutinesRule
@@ -11,7 +12,6 @@ import java.io.IOException
 
 @ExperimentalCoroutinesApi
 class LoginApiTest : ApiAbstract<LifePostAPI>() {
-
 
     private lateinit var service: LifePostAPI
 
@@ -39,7 +39,6 @@ class LoginApiTest : ApiAbstract<LifePostAPI>() {
                 )
             )
             Truth.assertThat(response.body()?.userId).isEqualTo("테스트1app")
-
         }
     }
 
@@ -47,7 +46,6 @@ class LoginApiTest : ApiAbstract<LifePostAPI>() {
     @Test
     fun `게시글 삽입 테스트_404`() {
         runBlocking {
-
             enqueueResponse("/lifepostinsert404.json", status = 404)
             val response = service.addNewLifePost(
                 lifePostRequest = LifePostRequestResponse(
@@ -62,8 +60,7 @@ class LoginApiTest : ApiAbstract<LifePostAPI>() {
 
             Truth.assertThat(response.body()).isNull()
             Truth.assertThat(response.code()).isEqualTo(404)
-
         }
     }
-
 }
+*/

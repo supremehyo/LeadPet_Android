@@ -4,12 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.LoginType
-import com.dev6.core.exception.*
+import com.dev6.core.exception.NotCorrectException
+import com.dev6.core.exception.ServerFailException
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
 import com.dev6.domain.model.Login
 import com.dev6.domain.model.User
-import com.dev6.domain.usecase.login.GetEmailAccessUseCase
+import com.dev6.domain.usecase.login.GetLoginAccessUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepoUseCase: GetEmailAccessUseCase
+    private val loginRepoUseCase: GetLoginAccessUseCase
 ) : ViewModel() {
 
     private val _loginDto = MutableStateFlow<Login>(Login(loginMethod = LoginType.EMAIL))
@@ -31,13 +32,13 @@ class LoginViewModel @Inject constructor(
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    fun setloginDto(loginEntitiy: Login) {
-        _loginDto.value = loginEntitiy
+    fun setLogin(loginData: Login) {
+        _loginDto.value = loginData
     }
 
     fun getlogin() {
         viewModelScope.launch {
-            loginRepoUseCase.login(loginDto.value).collect { uiState ->
+            loginRepoUseCase(loginDto.value).collect { uiState ->
                 when (uiState) {
                     is UiState.Success<User> -> {
                         _lodingFlow.value = false
@@ -68,16 +69,16 @@ class LoginViewModel @Inject constructor(
 
     sealed class Event {
         data class LoginEvent(
-            val loginDto: Login
+            val loginData: Login
         ) : Event()
 
         data class JoinEvent(
-            val loginDto: Login
+            val loginData: Login
         ) : Event()
 
         data class ErrorEvent(
             val text: String,
-            val loginDto: Login
+            val loginData: Login
         ) : Event()
     }
 

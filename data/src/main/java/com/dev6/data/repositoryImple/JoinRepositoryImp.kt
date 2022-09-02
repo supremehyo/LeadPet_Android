@@ -7,7 +7,7 @@ import com.dev6.domain.model.Join
 import com.dev6.domain.repository.JoinRepository
 import javax.inject.Inject
 
-class JoinRepositoryImple @Inject constructor(private val joinRemoteSource: JoinRemoteSource) :
+class JoinRepositoryImp @Inject constructor(private val joinRemoteSource: JoinRemoteSource) :
     JoinRepository {
     override suspend fun signUp(userEntitiy: Join): String =
         joinRemoteSource.signUp(userEntitiy.toMapper())

@@ -3,7 +3,7 @@ package com.dev6.LeadPet.di
 import com.dev6.data.repositoryImple.*
 import com.dev6.domain.repository.*
 import com.dev6.data.repositoryImple.AccessTokenRepositoryImp
-import com.dev6.data.repositoryImple.JoinRepositoryImple
+import com.dev6.data.repositoryImple.JoinRepositoryImp
 import com.dev6.data.repositoryImple.LoginRepositoryImp
 import com.dev6.domain.repository.AccessTokenRepository
 import com.dev6.domain.repository.JoinRepository
@@ -24,7 +24,7 @@ abstract class RepositoryModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindsJoinRepository(repository: JoinRepositoryImple): JoinRepository
+    abstract fun bindsJoinRepository(repository: JoinRepositoryImp): JoinRepository
 
     @Binds
     @ViewModelScoped

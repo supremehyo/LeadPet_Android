@@ -5,7 +5,6 @@ import androidx.paging.PagingState
 import com.dev6.data.mapper.toDomain
 import com.dev6.data.remote.CommentRemoteSource
 import com.dev6.domain.model.comment.Comment
-import com.dev6.domain.model.comment.CommentPage
 import com.dev6.domain.repository.CommentPagingSource
 import javax.inject.Inject
 
