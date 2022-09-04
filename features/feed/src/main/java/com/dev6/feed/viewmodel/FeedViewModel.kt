@@ -57,8 +57,13 @@ class FeedViewModel
     private val _eventFlowComment = MutableEventFlow<Event>()
     val eventFlowComment = _eventFlowComment.asEventFlow()
 
+    private val _eventFlowCommentPost = MutableEventFlow<Event>()
+    val eventFlowCommentPost = _eventFlowCommentPost.asEventFlow()
+
     private val _eventPostLike = MutableEventFlow<Event>()
     val eventPostLike = _eventPostLike.asEventFlow()
+
+
 
     fun setSpinnerEntry(Entry: List<String>) {
         viewModelScope.launch {
@@ -102,6 +107,13 @@ class FeedViewModel
         }
     }
 
+    private fun eventCommentPost(event: Event) {
+        viewModelScope.launch {
+            _eventFlowCommentPost.emit(event)
+        }
+    }
+
+
     private fun eventPostLike(event: Event) {
         viewModelScope.launch {
             _eventPostLike.emit(event)
@@ -128,8 +140,8 @@ class FeedViewModel
         }
     }
 
-    fun getDonationList(userId: String) = viewModelScope.launch {
-        donationRepoUserCase.getDonationPagingData(userId).collect { uistate ->
+    fun getDonationList(userId: String , donationMethod : String) = viewModelScope.launch {
+        donationRepoUserCase.getDonationPagingData(userId , donationMethod).collect { uistate ->
             eventDonationList(Event.DonationUiEvent(uistate))
         }
     }
@@ -146,6 +158,12 @@ class FeedViewModel
         }
     }
 
+    fun postCommentListByPostId(content : String , normalPostId : String,userId: String) = viewModelScope.launch {
+        commentPagingRepoUseCase.postCommentData(content, normalPostId, userId).collect { uistate ->
+            eventCommentPost(Event.CommentPostUiEvnet(uistate))
+        }
+    }
+
     sealed class Event {
         data class DailyUiEvent(val uiState: UiState<Flow<PagingData<DailyPost>>>) : Event()
         data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPost>>>) : Event()
@@ -153,5 +171,6 @@ class FeedViewModel
         data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
         data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
         data class CommentLikeUiEvnet(val uiState: UiState<ResponseBody>) : Event()
+        data class CommentPostUiEvnet(val uiState: UiState<ResponseBody>) : Event()
     }
 }

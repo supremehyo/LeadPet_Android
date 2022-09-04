@@ -9,6 +9,7 @@ import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.Join
+import com.dev6.feed.view.FeedActivity
 import com.dev6.join.databinding.FragmentShelterUserMoreBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -96,8 +97,15 @@ class ShelterUserMoreFragment :
                     is JoinViewModel.Event.UiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
+                                /*
                                 val dailyIntent = Intent(context, JoinActivity::class.java)
+                                userType
                                 startActivity(dailyIntent)
+
+                                 */
+                                val feedIntent = Intent(context, FeedActivity::class.java)
+                                feedIntent.putExtra("userType", userType)
+                                startActivity(feedIntent)
                             }
                             is UiState.Error -> {
                                 Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()

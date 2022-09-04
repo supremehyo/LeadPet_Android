@@ -6,9 +6,27 @@
     android:id="@+id/feed_nav_graph">
 
     <fragment
+        android:id="@+id/fragmentFeedDaily"
+        android:name="com.dev6.feed.view.DailyFeedDetailFragment"
+        tools:layout="@layout/activity_daily_feed_detail">
+        <action
+            android:id="@+id/action_fragmentFeedDaily_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/feedFragment"
         android:name="com.dev6.feed.view.FeedFragment"
         tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/action_feedFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_fragmentFeedDaily2"
+            app:destination="@id/fragmentFeedDaily" />
     </fragment>
 
     <fragment
@@ -22,6 +40,12 @@
         android:id="@+id/profileFragment"
         android:name="com.dev6.feed.view.ShelterProfileFragment"
         tools:layout="@layout/fragment_profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.dev6.feed.view.UserFragment"
+        tools:layout="@layout/fragment_user">
     </fragment>
 
 

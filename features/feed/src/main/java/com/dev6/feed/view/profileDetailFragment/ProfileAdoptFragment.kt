@@ -49,7 +49,7 @@ class ProfileAdoptFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getAdoptList("app1")
+        feedViewModel.getAdoptList("")
     }
 
     override fun initListener() {

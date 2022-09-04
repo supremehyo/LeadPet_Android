@@ -12,9 +12,9 @@ import javax.inject.Inject
 class DonationRepositoryImp
 @Inject constructor(private val remoteSource: DonationRemoteSource) :
     DonationRepository {
-    override suspend fun getDonationData(userId: String): Flow<PagingData<DonationPost>> {
+    override suspend fun getDonationData(donationMethod : String ,userId: String): Flow<PagingData<DonationPost>> {
         return Pager(PagingConfig(pageSize = 3)) {
-            DonationPagingSourceImp(remoteSource, userId)
+            DonationPagingSourceImp(remoteSource, userId,donationMethod)
         }.flow
     }
 

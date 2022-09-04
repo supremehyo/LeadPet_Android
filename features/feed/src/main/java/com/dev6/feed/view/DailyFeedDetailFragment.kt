@@ -1,50 +1,49 @@
-package com.dev6.feed.view.feedDetailActivity
+package com.dev6.feed.view
 
 import android.graphics.Color
 import android.os.Build
-import android.service.autofill.UserData
+import android.text.InputType
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dev6.core.base.BindingActivity
+import com.dev6.core.UserData
+import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
-import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.extension.fewDay
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.feed.R
 import com.dev6.feed.adapter.comment.DailyCommentAdapter
-import com.dev6.feed.databinding.ActivityDailyFeedDetailBinding
+import com.dev6.feed.databinding.FragmentDailyFeedDetailBinding
 import com.dev6.feed.viewmodel.FeedViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
-@AndroidEntryPoint
-class DailyFeedDetailActivity :
-    BindingActivity<ActivityDailyFeedDetailBinding>(R.layout.activity_daily_feed_detail) {
+class DailyFeedDetailFragment :
+BindingFragment<FragmentDailyFeedDetailBinding>(R.layout.fragment_daily_feed_detail){
 
-    private val feedViewModel: FeedViewModel by viewModels()
+    private val feedViewModel: FeedViewModel by activityViewModels()
     lateinit var currentFeed: DailyPost
     private lateinit var dailycommentRc: RecyclerView
     private lateinit var commentAdapter: DailyCommentAdapter
     var likedBoolean = false
 
-
     override fun initView() {
         super.initView()
-        currentFeed = intent.getSerializableExtra("dailyPostFeed") as DailyPost
+
+        currentFeed = arguments?.get("dailyPost") as DailyPost
         makeCurrentView()
         commentAdapter = DailyCommentAdapter {
+            // 아래 if 문 조건에 해당 댓글을 작성한 userType 먼지 알아와서 분기처리 해주는 코드가 필요할듯 하다
             if(com.dev6.core.UserData.userType == "NORMAL"){
-           //     NavHostFragment.findNavController(fragment = this).navigate(R.id.action_feedFragment_to_userFragment)
+                findNavController().navigate(R.id.action_fragmentFeedDaily_to_userFragment)
             }else{
-             //   NavHostFragment.findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
+                findNavController().navigate(R.id.action_fragmentFeedDaily_to_userProfileFragment)
             }
         }
         dailycommentRc = binding.dailyCommentRv
@@ -62,12 +61,26 @@ class DailyFeedDetailActivity :
     override fun initListener() {
         super.initListener()
         binding.dailyLikeImage.setOnClickListener {
-            feedViewModel.postLike(currentFeed.normalPostId, "uidkko149")
+            feedViewModel.postLike(currentFeed.normalPostId, UserData.userId)
+        }
+        binding.dailyFeedCommentEt.apply {
+            imeOptions = EditorInfo.IME_ACTION_SEND
+            setRawInputType(InputType.TYPE_CLASS_TEXT)
+        }
+        binding.dailyFeedCommentEt.setOnKeyListener { view, keyCode, keyEvent ->
+            if((keyEvent.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                true
+            }else{
+                false
+            }
+        }
+        binding.dailyFeedCommentTv.setOnClickListener {
+            feedViewModel.postCommentListByPostId( binding.dailyFeedCommentEt.text.toString(),currentFeed.normalPostId,UserData.userId)
         }
     }
 
-    override fun afterOnCreate() {
-        super.afterOnCreate()
+    override fun afterViewCreated() {
+        super.afterViewCreated()
         repeatOnStarted {
             feedViewModel.eventFlowComment.collect { event ->
                 when (event) {
@@ -80,14 +93,14 @@ class DailyFeedDetailActivity :
                             }
                             is UiState.Error -> {
                                 Toast.makeText(
-                                    this@DailyFeedDetailActivity,
+                                    activity,
                                     "실패 했어여",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                             is UiState.Loding -> {
                                 Toast.makeText(
-                                    this@DailyFeedDetailActivity,
+                                    activity,
                                     "로딩 했어여",
                                     Toast.LENGTH_SHORT
                                 ).show()
@@ -96,6 +109,30 @@ class DailyFeedDetailActivity :
                     }else->{
 
                 }
+                }
+            }
+        }
+        
+        repeatOnStarted { 
+            feedViewModel.eventFlowCommentPost.collect{event->
+                when(event){
+                    is FeedViewModel.Event.CommentPostUiEvnet->{
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                Toast.makeText(
+                                    activity,
+                                    "댓글성공",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                //댓글입력 성공하면 내가 적은 댓글이 반영되서 보여야하기 때문에 새로 로딩
+                                feedViewModel.getCommentListByPostId(currentFeed.normalPostId)
+                            }
+                            is UiState.Error -> {}
+                            is UiState.Loding -> {}
+                        }
+                    }else -> {
+                        
+                    }
                 }
             }
         }
@@ -108,7 +145,7 @@ class DailyFeedDetailActivity :
                         when (event.uiState) {
                             is UiState.Success -> {
                                 Toast.makeText(
-                                    this@DailyFeedDetailActivity,
+                                    activity,
                                     "좋아요 성공",
                                     Toast.LENGTH_SHORT
                                 ).show()
@@ -116,14 +153,14 @@ class DailyFeedDetailActivity :
                             }
                             is UiState.Error -> {
                                 Toast.makeText(
-                                    this@DailyFeedDetailActivity,
+                                    activity,
                                     "실패 했어여",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                             is UiState.Loding -> {
                                 Toast.makeText(
-                                    this@DailyFeedDetailActivity,
+                                    activity,
                                     "로딩 했어여",
                                     Toast.LENGTH_SHORT
                                 ).show()
