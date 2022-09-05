@@ -3,11 +3,9 @@ package com.dev6.core.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.dev6.core.R
 import com.dev6.core.databinding.CustomViewSpinnerButtonBinding
-
 
 class CustomButtonSpinner @JvmOverloads constructor(
     context: Context,
@@ -29,9 +27,7 @@ class CustomButtonSpinner @JvmOverloads constructor(
         }
     }
 
-
     fun setText(text_string: String) {
         binding.text.text = text_string
     }
-
 }

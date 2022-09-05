@@ -23,8 +23,8 @@ class LoginViewModel @Inject constructor(
     private val loginRepoUseCase: GetLoginAccessUseCase
 ) : ViewModel() {
 
-    private val _loginDto = MutableStateFlow<Login>(Login(loginMethod = LoginType.EMAIL))
-    val loginDto = _loginDto.asStateFlow()
+    private val _loginStateFlow = MutableStateFlow<Login>(Login(loginMethod = LoginType.EMAIL))
+    val loginStateFlow = _loginStateFlow.asStateFlow()
 
     private val _lodingFlow = MutableStateFlow<Boolean>(false)
     val lodingFlow = _lodingFlow.asStateFlow()
@@ -33,12 +33,12 @@ class LoginViewModel @Inject constructor(
     val eventFlow = _eventFlow.asEventFlow()
 
     fun setLogin(loginData: Login) {
-        _loginDto.value = loginData
+        _loginStateFlow.value = loginData
     }
 
     fun getlogin() {
         viewModelScope.launch {
-            loginRepoUseCase(loginDto.value).collect { uiState ->
+            loginRepoUseCase(loginStateFlow.value).collect { uiState ->
                 when (uiState) {
                     is UiState.Success<User> -> {
                         _lodingFlow.value = false
@@ -49,11 +49,11 @@ class LoginViewModel @Inject constructor(
                         Timber.d(uiState.error?.message)
 
                         when (uiState.error) {
-                            is NotCorrectException -> event(Event.JoinEvent(loginDto.value))
+                            is NotCorrectException -> event(Event.JoinEvent(loginStateFlow.value))
                             is ServerFailException -> event(
                                 Event.ErrorEvent(
                                     "계정을 찾을수 없습니다.",
-                                    loginDto.value
+                                    loginStateFlow.value
                                 )
                             )
                         }
