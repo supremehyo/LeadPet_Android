@@ -33,6 +33,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginData.loginMethod)
             joinIntent.putExtra("uuid", event.loginData.uid)
+            joinIntent.putExtra("userType", event.loginData.userType)
             joinIntent.putExtra("exist", true)
             startActivity(joinIntent)
             finish()
@@ -42,11 +43,13 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginData.loginMethod)
             joinIntent.putExtra("uuid", event.loginData.uid)
+            joinIntent.putExtra("userType", event.loginData.userType)
             joinIntent.putExtra("exist", false)
             startActivity(joinIntent)
         }
 
         is LoginViewModel.Event.LoginEvent -> {
+       //     UserData.userId
             UserData.uid = event.loginData.uid.toString()
             UserData.loginMethod = event.loginData.loginMethod
             UserData.password = event.loginData.password

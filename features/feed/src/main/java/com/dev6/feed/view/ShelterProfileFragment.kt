@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.domain.model.ShelterEntitiyRepo
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileBinding
 import com.dev6.feed.view.profileDetailFragment.ProfileAdoptFragment
@@ -25,17 +26,19 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
 
     private val feedViewModel: FeedViewModel by activityViewModels()
     private val profileViewModel : ProfileViewModel by activityViewModels()
-
     lateinit var profileIntroduceFragment: ProfileIntroduceFragment
     lateinit var profileDailyFragment: ProfileDailyFragment
     lateinit var profileDonationFragment: ProfileDonationFragment
     lateinit var profileAdoptFragment: ProfileAdoptFragment
     lateinit var selected: Fragment
+    var shelterData : ShelterEntitiyRepo? = null
+
 
     override fun initView() {
         super.initView()
         initTabLayout()
 
+        shelterData = arguments?.get("shelterData") as ShelterEntitiyRepo?
         profileIntroduceFragment = ProfileIntroduceFragment()
         profileDailyFragment = ProfileDailyFragment()
         profileDonationFragment = ProfileDonationFragment()
@@ -47,7 +50,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     override fun initViewModel() {
         super.initViewModel()
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
-        profileViewModel.getShelterProfileDetailData("app1")
+        profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "app1")
     }
 
     override fun afterViewCreated() {

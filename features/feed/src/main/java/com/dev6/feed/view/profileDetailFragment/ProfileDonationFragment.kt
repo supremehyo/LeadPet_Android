@@ -41,7 +41,7 @@ class ProfileDonationFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getDonationList("app1")
+        feedViewModel.getDonationList("","")
     }
 
     override fun initListener() {

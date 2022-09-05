@@ -11,6 +11,7 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.LoginType
+import com.dev6.core.util.ImageUpload
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.data.model.JoinResponse
 import com.dev6.domain.model.Join
@@ -29,11 +30,12 @@ class NormalUserJoinFragment :
     lateinit var uid : String
     lateinit var loginType: String
     private lateinit var imageUri: Uri
+    lateinit var imageUpload: ImageUpload
 
 
     override fun initView() {
         super.initView()
-
+        imageUpload = ImageUpload()
         userType = arguments?.get("userType").toString()
         uid = arguments?.get("uid").toString()
 
@@ -54,7 +56,7 @@ class NormalUserJoinFragment :
                                 event.uiState.data
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
                                 val feedIntent = Intent(context, FeedActivity::class.java)
-                                feedIntent.putExtra("userType", "user")
+                                feedIntent.putExtra("userType", userType)
                                 startActivity(feedIntent)
                             }
                             is UiState.Error -> {
@@ -88,16 +90,7 @@ class NormalUserJoinFragment :
             }
 
             profileImageButton.setOnClickListener {
-                TedImagePicker.with(requireContext())
-                    .max(1, "")
-                    .startMultiImage { uriList ->
-                        imageUri = uriList[0]
-
-                        Glide.with(binding.root)
-                            .load(imageUri)
-                            .circleCrop()
-                            .into(binding.profileImageButton)
-                    }
+    1
 
             }
 

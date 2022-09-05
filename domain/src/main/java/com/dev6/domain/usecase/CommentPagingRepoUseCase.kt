@@ -21,5 +21,16 @@ class CommentPagingRepoUseCase @Inject constructor
             emit(UiState.Error(it))
         }
     }
+
+    fun postCommentData(content : String , normalPostId : String,userId: String) = flow {
+        emit(UiState.Loding)
+        runCatching {
+            commentPagingRepository.postCommentData(content, normalPostId, userId)
+        }.onSuccess { result ->
+            emit(UiState.Success(result))
+        }.onFailure {
+            emit(UiState.Error(it))
+        }
+    }
 }
 

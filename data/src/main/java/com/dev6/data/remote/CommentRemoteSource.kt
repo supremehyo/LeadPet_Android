@@ -4,11 +4,13 @@ import com.dev6.data.model.comment.CommentPaginationResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.model.executeNetworkHandling
 import com.dev6.data.service.FeedAPI
+import okhttp3.ResponseBody
 import timber.log.Timber
 import javax.inject.Inject
 
 interface CommentRemoteSource {
     suspend fun getCommentByPostId(postId: String, page: Int, size: Int): CommentPaginationResponse
+    suspend fun postCommentData(content: String, normalPostId: String, userId: String) : ResponseBody
 }
 
 class CommentRemoteSourceImpl @Inject constructor(
@@ -21,5 +23,13 @@ class CommentRemoteSourceImpl @Inject constructor(
         size: Int
     ): CommentPaginationResponse {
         return feedService.getDailyCommentList(0, postId, size).executeNetworkHandling()
+    }
+
+    override suspend fun postCommentData(
+        content: String,
+        normalPostId: String,
+        userId: String
+    ): ResponseBody {
+        return feedService.postCommentData(content, normalPostId, userId).executeNetworkHandling()
     }
 }

@@ -57,7 +57,7 @@ class HomeFragment :
     override fun initViewModel() {
         super.initViewModel()
 
-        feedViewModel.getDonationList("")
+        feedViewModel.getDonationList("","")
         feedViewModel.getAdoptList("")
         feedViewModel.getFeedList(userId, "")
 

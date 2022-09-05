@@ -1,8 +1,14 @@
 package com.dev6.post
 
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.util.ImageUpload
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.post.bottom.AgeBottomSeatFragment
 import com.dev6.post.bottom.GenderBottomSeatFragment
@@ -13,12 +19,14 @@ import com.dev6.post.viewmodel.AdoptPostViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import gun0912.tedimagepicker.builder.TedImagePicker
 import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
 class PetAdoptPostFragment :
     BindingFragment<FragmentPetAdoptPostBinding>(R.layout.fragment_pet_adopt_post) {
 
+    lateinit var imageUpload: ImageUpload
     private val adoptPostViewModel: AdoptPostViewModel by activityViewModels()
     private val genderBottomSeatFragment by lazy { GenderBottomSeatFragment() }
     private val ageBottomSeatFragment by lazy { AgeBottomSeatFragment() }
@@ -30,7 +38,7 @@ class PetAdoptPostFragment :
     override fun initView() {
         super.initView()
         val choiceAdapter = GroupieAdapter()
-
+        imageUpload = ImageUpload()
         binding.rvAnimalChoice.adapter = choiceAdapter
 
 
@@ -71,6 +79,12 @@ class PetAdoptPostFragment :
         binding.include.tvLeft.setOnClickListener {
             requireActivity().finish()
         }
+        binding.vCamera2.setOnClickListener {
+            TedImagePicker.with(requireContext())
+                .max(5, "")
+                .startMultiImage { uriList ->
+                }
+        }
 
         binding.cvStartDate.setClick { excuteDatePicker() }
         binding.cvEndDate.setClick { excuteDatePicker() }
@@ -90,4 +104,6 @@ class PetAdoptPostFragment :
         }
         dateRangePicker.show(this.parentFragmentManager, null)
     }
+
+
 }

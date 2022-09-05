@@ -39,7 +39,7 @@ class ProfileDailyFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getFeedList("app1","")//likedUser는 이 프로필을 보는 userId
+        feedViewModel.getFeedList("","")//likedUser는 이 프로필을 보는 userId
     }
 
     override fun initListener() {

@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 class JoinTypeFragment : BindingFragment<FragmentJoinTypeBinding>(R.layout.fragment_join_type){
 
-    var userType : String ="normal"
+    var userType : String ="NORMAL"
     private lateinit var exampleBinding: InclueTopBinding
     override fun initView() {
 
@@ -33,7 +33,7 @@ class JoinTypeFragment : BindingFragment<FragmentJoinTypeBinding>(R.layout.fragm
         }
 
         binding.shelterButton.setOnClickListener {
-            userType = "shelter"
+            userType = "SHELTER"
             findNavController().navigate(R.id.action_joinTypeFragment_to_shelterUserJoinFragment,
                 Bundle().apply {putString("userType", userType)})
         }

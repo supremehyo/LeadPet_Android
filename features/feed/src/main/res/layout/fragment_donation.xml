@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:text="리드펫님, 기부는 어떠세요?"
         android:textSize="20dp"
+        android:layout_marginTop="33dp"
         android:textColor="@color/Gray_01"
         android:fontFamily="@font/hansansneobold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0" />
 
     <ImageView
         android:layout_width="24dp"

@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingActivity
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.enums.PostType
@@ -34,7 +35,10 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         super.initView()
         initFab()
         initListener()
-        initNavController()
+        userType = intent.getStringExtra("userType") ?: "NORMAL"
+        initNavController(userType)
+        UserData.userType = userType
+
     }
 
     private fun initFab() {
@@ -101,12 +105,12 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         super.afterOnCreate()
     }
 
-    // 바텀 네비게이션 뷰 초기화
-    fun initNavController() {
+    //바텀 네비게이션 뷰 초기화
+    fun initNavController(userType : String?) {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         navController.setGraph(R.navigation.feed_nav_graph)
-        if (userType == "user") { // 유저 type이 user면 해당 바텀네비게이션으로 다시 그리기
+        if (userType == "NORMAL") { // 유저 type이 NORMAL면 해당 바텀네비게이션으로 다시 그리기
             navController.setGraph(R.navigation.feed_nav_graph2)
             binding.bottomNavigationView.menu.clear()
             binding.bottomNavigationView.inflateMenu(R.menu.bottome_menu2)
@@ -117,6 +121,11 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
 
     private fun changeHeader(state: FeedViewType) {
         when (state) {
+            FeedViewType.TOTAL->{
+                binding.constraintLayout.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.VISIBLE
+                binding.fabPost.visibility = View.VISIBLE
+            }
             FeedViewType.FEED -> {
                 binding.logoImage.visibility = View.GONE
                 binding.locationSpinner.visibility = View.VISIBLE
@@ -128,6 +137,27 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             FeedViewType.HOME -> {
                 binding.logoImage.visibility = View.VISIBLE
                 binding.locationSpinner.visibility = View.GONE
+            }
+            FeedViewType.SHELTERPROFILECLICK -> {
+                binding.constraintLayout.visibility = View.GONE
+                binding.logoImage.visibility = View.GONE
+                binding.locationSpinner.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.fabPost.visibility = View.GONE
+            }
+            FeedViewType.FEEDDETAIL->{
+                binding.constraintLayout.visibility = View.GONE
+                binding.logoImage.visibility = View.GONE
+                binding.locationSpinner.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.fabPost.visibility = View.GONE
+            }
+            FeedViewType.USERPROFILECLICK -> {
+                binding.constraintLayout.visibility = View.GONE
+                binding.logoImage.visibility = View.GONE
+                binding.locationSpinner.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.fabPost.visibility = View.GONE
             }
             else -> {}
         }
