@@ -3,6 +3,8 @@ package com.dev6.data.repositoryImple
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.dev6.data.mapper.toDomain
+import com.dev6.data.mapper.toMapper
 import com.dev6.data.remote.DailyRemoteSource
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.domain.repository.daily.DailyRepository
@@ -18,7 +20,6 @@ class DailyRepositoryImp @Inject constructor(private val dailyRemoteSource: Dail
     override suspend fun postLike(postId: String, userId: String): ResponseBody =
         dailyRemoteSource.postLike(postId, userId)
 
-    override suspend fun insertDailyPost(postEntity: DailyPost): DailyPost {
-        TODO("Not yet implemented")
-    }
+    override suspend fun insertDailyPost(dailyPost: DailyPost): DailyPost =
+        dailyRemoteSource.insert(dailyPost.toMapper()).toDomain()
 }

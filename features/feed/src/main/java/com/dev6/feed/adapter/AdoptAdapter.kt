@@ -7,34 +7,30 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.feed.databinding.ItemAdoptBinding
 
-class AdoptAdapter (private val callback : (String) -> Unit)
-    : ListAdapter<String, AdoptAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
-
+class AdoptAdapter(private val callback: (String) -> Unit) :
+    ListAdapter<String, AdoptAdapter.RecommendViewHolder>(RecommendDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding = ItemAdoptBinding.
-        inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemAdoptBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
         holder.onBind(currentList[position])
         holder.getLayoutParams()
-        holder.itemClickListener(currentList[position] , callback)
+        holder.itemClickListener(currentList[position], callback)
     }
 
     class RecommendViewHolder(private val binding: ItemAdoptBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: String) {
-
         }
 
         fun getLayoutParams(): ViewGroup.LayoutParams {
             return binding.root.layoutParams
         }
 
-        fun itemClickListener(item: String , callback: (String) -> Unit) {
-
+        fun itemClickListener(item: String, callback: (String) -> Unit) {
         }
     }
 
@@ -45,5 +41,4 @@ class AdoptAdapter (private val callback : (String) -> Unit)
         override fun areContentsTheSame(oldItem: String, newItem: String) =
             oldItem == newItem
     }
-
 }

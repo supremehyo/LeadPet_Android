@@ -109,6 +109,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                     val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                     try {
                         val account = task.getResult(ApiException::class.java)!!
+
                         loginViewModel.setLogin(
                             Login(
                                 LoginType.GOOGLE,

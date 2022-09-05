@@ -100,17 +100,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/adoptContentImage"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/bookmark"
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="13dp"
+                    android:button="@drawable/bookmarker_selector"
                     app:layout_constraintBottom_toBottomOf="@+id/adoptFeedTitle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/adoptFeedTitle"
-                    app:layout_constraintTop_toTopOf="@+id/adoptFeedTitle"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toTopOf="@+id/adoptFeedTitle" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

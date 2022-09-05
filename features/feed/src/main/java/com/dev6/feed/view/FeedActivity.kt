@@ -24,9 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed) {
 
-
-    private  val feedViewModel : FeedViewModel by viewModels()
-    var list  = listOf("경기도 성남시" , "서울특별시")
+    private val feedViewModel: FeedViewModel by viewModels()
+    var list = listOf("경기도 성남시", "서울특별시")
     var userType = ""
 
     lateinit var navController: NavController
@@ -46,14 +45,12 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         binding.llFab.translationX = 100f
         binding.llFab.alpha = 0f
         binding.flDim.alpha = 0f
-
     }
 
     private fun clickPostFab() {
         isFabOpen = !isFabOpen
 
         if (isFabOpen) {
-
             AnimatorSet().apply {
                 play(ObjectAnimator.ofFloat(binding.fabPost, View.ROTATION, 45f))
                     .with(ObjectAnimator.ofFloat(binding.llFab, View.TRANSLATION_X, 0f))
@@ -94,7 +91,6 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         feedViewModel.setSpinnerEntry(list)
         repeatOnStarted {
             feedViewModel.spinnerData.collect {
-
             }
         }
 
@@ -121,7 +117,6 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         }
         navHostFragment?.let { binding.bottomNavigationView.setupWithNavController(navController) }
         binding.bottomNavigationView.itemIconTintList = null
-
     }
 
     private fun changeHeader(state: FeedViewType) {

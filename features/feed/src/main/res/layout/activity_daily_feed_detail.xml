@@ -104,16 +104,15 @@
                     app:layout_constraintTop_toBottomOf="@+id/dailyContentImage"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <ImageView
-                    android:layout_width="12.5dp"
-                    android:layout_height="17.5dp"
-                    android:src="@drawable/bookmark"
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/bookmarker_selector"
                     app:layout_constraintBottom_toBottomOf="@+id/dailyFeedTitleTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.918"
                     app:layout_constraintStart_toEndOf="@+id/dailyFeedTitleTv"
-                    app:layout_constraintTop_toTopOf="@+id/dailyFeedTitleTv"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/dailyFeedTitleTv" />
 
                 <TextView
                     android:id="@+id/dailyFeedContentTv"
