@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_16dp_maincolor"
-            android:backgroundTint="@color/mainColor"
+            android:backgroundTint="@color/Main"
             android:fontFamily="@font/hansneo_medium"
             android:paddingHorizontal="28dp"
             android:paddingVertical="4dp"
@@ -117,13 +117,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
             app:layout_constraintVertical_bias="0.0"
-            app:tabIndicatorColor="@color/mainColor"
+            app:tabIndicatorColor="@color/Main"
             app:tabIndicatorHeight="10dp"
             app:tabIndicator="@drawable/tab_selector"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/grey5"
+            app:tabSelectedTextColor="@color/gray_05"
             app:tabTextAppearance="@style/tabTextSetting"
-            app:tabTextColor="@color/subTitle2" />
+            app:tabTextColor="@color/Gray_06" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
