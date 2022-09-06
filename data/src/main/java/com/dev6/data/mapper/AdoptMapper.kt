@@ -1,5 +1,8 @@
 package com.dev6.data.mapper // ktlint-disable filename
 
+import com.dev6.core.enum.AnimalType
+import com.dev6.core.enum.Gender
+import com.dev6.core.enum.Neutering
 import com.dev6.data.entity.adopt.AdoptSortResponse
 import com.dev6.data.model.adopt.AdoptFeedResponse
 import com.dev6.data.model.adopt.AdoptPageResponse
@@ -44,16 +47,16 @@ internal fun List<AdoptFeedResponse>.toDomain(): List<AdoptPostFeed> {
 
 internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
     contents = contents ?: "",
-    animalType = animalType,
+    animalType = animalType ?: AnimalType.DOG,
     adoptionPostId = adoptionPostId ?: "",
     endDate = endDate ?: "",
     images = images,
     startDate = startDate ?: "",
     title = title ?: "",
     userId = userId ?: "",
-    neutering = neutering,
-    species = species ?: "",
-    gender = gender,
-    euthanasiaDate = euthanasiaDate ?: "",
+    neutering = neutering?: Neutering.NO,
+    species = species?: "",
+    gender = gender?: Gender.MALE,
+    euthanasiaDate = euthanasiaDate?: "",
     age = age
 )

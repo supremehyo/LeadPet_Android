@@ -8,6 +8,7 @@ import com.dev6.domain.model.comment.Comment
 import com.dev6.domain.model.comment.CommentPage
 import com.dev6.domain.repository.CommentPagingRepository
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class CommentRepositoryImp
@@ -17,4 +18,11 @@ class CommentRepositoryImp
     override suspend fun getCommentPagingData(postId: String): Flow<PagingData<Comment>> {
         return Pager(PagingConfig(pageSize = 10)) { CommentPagingSourceImp(postId, commentRemoteSource) }.flow
     }
+
+    override suspend fun postCommentData(
+        content: String,
+        normalPostId: String,
+        userId: String
+    ): ResponseBody =
+        commentRemoteSource.postCommentData(content, normalPostId, userId)
 }

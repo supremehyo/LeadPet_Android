@@ -16,8 +16,7 @@ class DailyCommentAdapter(private val callback: (Comment) -> Unit) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding =
-            ItemDailycommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemDailycommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendViewHolder(binding)
     }
 
@@ -27,13 +26,16 @@ class DailyCommentAdapter(private val callback: (Comment) -> Unit) :
         holder.getLayoutParams()
     }
 
-    class RecommendViewHolder(private val binding: ItemDailycommentBinding) :
+    inner class RecommendViewHolder(private val binding: ItemDailycommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: Comment) {
-            Log.v("asdfsdf", item.userId)
             binding.dailyCommentContentTv.text = item.content
-            binding.dailyCommentShelterNameTv.text = item.userName
-
+            binding.apply {
+                dailyCommentShelterNameTv.text = item.userName
+                dailyCommentShelterNameTv.setOnClickListener {
+                    callback(item)
+                }
+            }
         }
 
         fun getLayoutParams(): ViewGroup.LayoutParams {

@@ -24,6 +24,7 @@ interface FeedAPI {
 
     @GET("/v1/post/donation")
     suspend fun donationAllFeed(
+        @Query("donationMethod") donationMethod: String,
         @Query("page") page: Int,
         @Query("size") size: Int,
         @Query("userId") userId: String
@@ -58,6 +59,15 @@ interface FeedAPI {
     suspend fun postLike(
         @Body likeDTO: LikeRequestResponse
     ): Response<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("/v1/reply/normal")
+    suspend fun postCommentData(
+        @Field("content") content : String,
+        @Field("normalPostId") normalPostId : String,
+        @Field("userId") userId : String
+    ): Response<ResponseBody>
+
 
     @GET("/v1/reply/normal")
     suspend fun getDailyCommentList(

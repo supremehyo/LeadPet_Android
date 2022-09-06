@@ -8,16 +8,17 @@ import com.dev6.domain.model.donate.DonationPost
 import com.dev6.domain.repository.donate.DonationPagingSource
 import javax.inject.Inject
 
-class DonationPagingSourceImp @Inject constructor(private val donationRemoteSource: DonationRemoteSource, userId: String) :
+class DonationPagingSourceImp @Inject constructor(private val donationRemoteSource: DonationRemoteSource, userId: String, donationMethod : String) :
     DonationPagingSource() {
 
     var _userId = userId
 
+    var _donationMethod = donationMethod
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DonationPost> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = donationRemoteSource.donationAllFeed(next, size, _userId)
+            val response = donationRemoteSource.donationAllFeed(_donationMethod,next, size, _userId)
             Log.v("dddddd1", response.donationFeedList.get(0).donationPostId)
             try {
                 Log.v("dddddd2", response.toDomain().donationFeedList.get(0).donationPostId)

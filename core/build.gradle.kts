@@ -26,8 +26,11 @@ dependencies {
     implementation(AndroidX.LIFECYCLE_LIVEDATA_KTX)
     implementation(AndroidX.LIFECYCLE_EXTENSIONNS)
     implementation(AndroidX.APP_COMPAT)
+    implementation(Image.FIREBASE_STORAGE)
     implementation(Google.MATERIAL)
     implementation(Debug.TIMBER)
+    implementation("com.google.firebase:firebase-storage-ktx:20.0.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.2.2")
 
 //    testImplementation(AndroidX.CORE_TESTING)
 //    testImplementation(UnitTest.JUNIT)

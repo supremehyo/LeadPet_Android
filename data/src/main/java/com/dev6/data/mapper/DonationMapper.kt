@@ -1,5 +1,6 @@
 package com.dev6.data.mapper
 
+import com.dev6.core.enums.DonationMethod
 import com.dev6.data.entity.SortXX
 import com.dev6.data.model.PageResponse
 import com.dev6.data.model.SortResponse
@@ -38,13 +39,6 @@ internal fun SortResponse?.toDomain() = Sort(
     unsorted = this?.unsorted ?: false
 )
 
-internal fun SortXX?.toXX() = Sort(
-    empty = this?.empty ?: false,
-    sorted = this?.sorted ?: false,
-    unsorted = this?.unsorted ?: false
-)
-
-// SortXX
 internal fun PageResponse?.toDomain() = Pageable(
     offset = this?.offset ?: 0,
     pageNumber = this?.pageNumber ?: 0,
@@ -69,14 +63,14 @@ internal fun DonationPostPage.toMapper() = DonationPaginationResponse(
 )
 
 internal fun DonationFeedResponse.toDomain() = DonationPost(
-    contents = this.contents,
-    donationMethod = this.donationMethod,
-    donationPostId = this.donationPostId,
-    endDate = this.endDate,
-    images = this.images,
-    startDate = this.startDate,
-    title = this.title,
-    userId = this.userId
+    contents = this?.contents ?: "",
+    donationMethod = this?.donationMethod ?: DonationMethod.GOODS,
+    donationPostId = this?.donationPostId ?: "",
+    endDate = this?.endDate ?: emptyList(),
+    images = this?.images ?: emptyList(),
+    startDate = this?.startDate ?: emptyList(),
+    title = this?.title ?: "",
+    userId = this?.userId ?: ""
 )
 
 internal fun DonationPostPage.toMakeViewLayer(temp: DonationFeedResponse) = DonationFeedResponse(

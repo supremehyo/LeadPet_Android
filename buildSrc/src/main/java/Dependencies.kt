@@ -50,6 +50,7 @@ object Image {
     const val GLIDE = "com.github.bumptech.glide:glide:4.13.2"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:4.13.2"
     const val TED_IMAGE_PICKER = "io.github.ParkSangGwon:tedimagepicker:1.2.8"
+    const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage"
 }
 
 object UnitTest {
