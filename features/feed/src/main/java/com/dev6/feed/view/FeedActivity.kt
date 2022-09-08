@@ -167,13 +167,13 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         binding.fabPost.setOnClickListener { clickPostFab() }
         binding.flDim.setOnClickListener { clickPostFab() }
         binding.btnAdopt.setOnClickListener {
-            startPostActivity(PostType.ADOPT)
+            startPostActivity(PostType.ADOPTION_POST)
         }
         binding.btnDonate.setOnClickListener {
-            startPostActivity(PostType.DONATE)
+            startPostActivity(PostType.DONATION_POST)
         }
         binding.btnLife.setOnClickListener {
-            startPostActivity(PostType.DAILY)
+            startPostActivity(PostType.NORMAL_POST)
         }
         super.initListener()
     }

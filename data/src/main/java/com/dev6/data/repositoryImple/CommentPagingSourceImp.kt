@@ -9,7 +9,8 @@ import com.dev6.domain.repository.CommentPagingSource
 import javax.inject.Inject
 
 class CommentPagingSourceImp @Inject constructor(
-    postId: String, private val commentRemoteSource: CommentRemoteSource
+    postId: String,
+    private val commentRemoteSource: CommentRemoteSource
 ) : CommentPagingSource() {
     var _postId = postId
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Comment> {
@@ -32,7 +33,6 @@ class CommentPagingSourceImp @Inject constructor(
             LoadResult.Error(e)
         }
     }
-
 
     override fun getRefreshKey(state: PagingState<Int, Comment>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

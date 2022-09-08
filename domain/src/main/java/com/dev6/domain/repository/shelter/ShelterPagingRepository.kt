@@ -5,5 +5,5 @@ import com.dev6.domain.model.ShelterEntitiyRepo
 import kotlinx.coroutines.flow.Flow
 
 interface ShelterPagingRepository {
-    suspend fun getPagingData(cityName:String,shelterName:String) : Flow<PagingData<ShelterEntitiyRepo>>
+    suspend fun getPagingData(cityName: String, shelterName: String): Flow<PagingData<ShelterEntitiyRepo>>
 }
