@@ -43,7 +43,7 @@ class LoginViewModel @Inject constructor(
                     is UiState.Success<User> -> {
                         _lodingFlow.value = false
                         Timber.d(uiState.data.toString())
-                        event(Event.LoginEvent(loginDto.value))
+                        event(Event.LoginEvent(uiState.data))
                     }
                     is UiState.Error -> {
                         _lodingFlow.value = false
@@ -70,7 +70,7 @@ class LoginViewModel @Inject constructor(
 
     sealed class Event {
         data class LoginEvent(
-            val loginData: Login
+            val loginData: User
         ) : Event()
 
         data class JoinEvent(

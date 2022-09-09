@@ -4,15 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/core/src/main/res/font/custom_font_family.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/drawable/bg_spinner_year.xml" value="0.125" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/drawable/bookmarker_selector.xml" value="0.125" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/drawable/bottom_feed_selector.xml" value="0.125" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/drawable/bottom_profile_selector.xml" value="0.125" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_adopt_feed_detail.xml" value="0.22" />
-        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_daily_feed_detail.xml" value="0.36752136752136755" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_daily_feed_detail.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_donation_feed_detail.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_feed.xml" value="0.21557971014492755" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/activity_feed.xml" value="0.17256637168141592" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_adopt.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_daily.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_daily_feed_detail.xml" value="0.22" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_donation.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_feed.xml" value="0.1" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile.xml" value="0.10380779691749774" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_adopt.xml" value="0.1659111514052584" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_daily.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_profile_donation.xml" value="0.1659111514052584" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/fragment_user.xml" value="0.22" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_adopt.xml" value="0.33" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/feed/src/main/res/layout/item_dailycomment.xml" value="0.5" />
@@ -28,7 +37,7 @@
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/join/src/main/res/layout/fragment_join_type.xml" value="0.22" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/join/src/main/res/layout/fragment_normal_user_join.xml" value="0.25" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/join/src/main/res/layout/fragment_shelter_user_join.xml" value="0.22" />
-        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/join/src/main/res/layout/fragment_shelter_user_more.xml" value="0.1526268115942029" />
+        <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/join/src/main/res/layout/fragment_shelter_user_more.xml" value="0.18" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/login/src/main/res/layout/activity_login.xml" value="0.2033514492753623" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/login/src/main/res/layout/fragment_login.xml" value="0.21105072463768115" />
         <entry key="..\:/AndroidProject/LeadPet/LeadPet_Android/features/post/src/main/res/layout/fragment_life_post.xml" value="0.2033514492753623" />

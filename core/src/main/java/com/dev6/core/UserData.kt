@@ -10,4 +10,5 @@ import com.dev6.core.enums.LoginType
     var email: String? = ""
     var password: String? = ""
      var userType : String? = "NORMAL"
+     var profileImage : String? = ""
 }

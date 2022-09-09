@@ -113,7 +113,7 @@
                 <ImageView
                     android:layout_width="12.5dp"
                     android:layout_height="17.5dp"
-                    android:src="@drawable/bookmark"
+                    android:src="@drawable/bookmarker_selector"
                     app:layout_constraintBottom_toBottomOf="@+id/dailyFeedTitleTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.918"

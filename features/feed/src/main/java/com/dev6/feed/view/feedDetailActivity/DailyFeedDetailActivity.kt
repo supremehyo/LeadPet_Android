@@ -62,7 +62,7 @@ class DailyFeedDetailActivity :
     override fun initListener() {
         super.initListener()
         binding.dailyLikeImage.setOnClickListener {
-            feedViewModel.postLike(currentFeed.normalPostId, "uidkko149")
+            feedViewModel.postLike(currentFeed.normalPostId, com.dev6.core.UserData.userId)
         }
     }
 
