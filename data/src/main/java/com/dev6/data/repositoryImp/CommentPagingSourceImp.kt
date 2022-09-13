@@ -1,31 +1,30 @@
-package com.dev6.data.repositoryImple
+package com.dev6.data.repositoryImp
 
 import android.util.Log
 import androidx.paging.PagingState
 import com.dev6.data.mapper.toDomain
-import com.dev6.data.remote.DailyRemoteSource
-import com.dev6.domain.model.daily.DailyPost
-import com.dev6.domain.repository.daily.DailyPagingSource
+import com.dev6.data.remote.CommentRemoteSource
+import com.dev6.domain.model.comment.Comment
+import com.dev6.domain.repository.CommentPagingSource
 import javax.inject.Inject
 
-class DailyPagingSourceImp @Inject constructor(
-    private val userId: String,
-    private val likedUser: String,
-    private val dailyRemoteSource: DailyRemoteSource
-) : DailyPagingSource() {
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DailyPost> {
+class CommentPagingSourceImp @Inject constructor(
+    postId: String,
+    private val commentRemoteSource: CommentRemoteSource
+) : CommentPagingSource() {
+    var _postId = postId
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Comment> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = dailyRemoteSource.dailyAllFeed(next, size, userId, likedUser)
+            val response = commentRemoteSource.getCommentByPostId(_postId, next, size)
             try {
-                Log.v("ssssfsfsf2", response.toDomain().dailyFeedEntitiy.get(0).normalPostId)
+                Log.v("ssssfsfsf2", response.toDomain().commentEntitiy.get(0).normalReplyId)
             } catch (e: Exception) {
                 throw Exception()
             }
             LoadResult.Page(
-                data = response.toDomain().dailyFeedEntitiy,
+                data = response.toDomain().commentEntitiy,
                 prevKey = if (next == 0) null else next - 1,
                 nextKey = next + 1
             )
@@ -35,7 +34,7 @@ class DailyPagingSourceImp @Inject constructor(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, DailyPost>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Comment>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(
                 anchorPosition

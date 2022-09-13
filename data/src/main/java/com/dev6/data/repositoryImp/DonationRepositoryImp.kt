@@ -1,4 +1,4 @@
-package com.dev6.data.repositoryImple
+package com.dev6.data.repositoryImp
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

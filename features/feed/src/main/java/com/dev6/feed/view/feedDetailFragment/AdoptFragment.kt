@@ -1,10 +1,8 @@
 package com.dev6.feed.view.feedDetailFragment
 
-
 import android.content.Intent
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.base.BindingFragment
@@ -12,18 +10,13 @@ import com.dev6.core.base.UiState
 import com.dev6.core.enums.PostOptionType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
-import com.dev6.feed.adapter.AdoptAdapter
 import com.dev6.feed.adapter.AdoptPagingAdapter
-import com.dev6.feed.adapter.DonationPagingAdapter
 import com.dev6.feed.databinding.FragmentAdoptBinding
 import com.dev6.feed.option.BottomSheet
 import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
-import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import timber.log.Timber
-
 
 class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_adopt) {
 
@@ -33,10 +26,8 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
     private lateinit var adoptRc: RecyclerView
     private lateinit var recommendAdoptAdapter: AdoptPagingAdapter
 
-
     override fun initView() {
-
-        recommendAdoptAdapter = AdoptPagingAdapter{
+        recommendAdoptAdapter = AdoptPagingAdapter {
             val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
             adoptIntent.putExtra("adoptPostFeed", it)
             startActivity(adoptIntent)
@@ -62,7 +53,8 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
         super.afterViewCreated()
 
         repeatOnStarted {
-            feedViewModel.eventAdoptList.collect { event ->2
+            feedViewModel.eventAdoptList.collect { event ->
+                2
                 when (event) {
                     is FeedViewModel.Event.AdoptUiEvent -> {
                         when (event.uiState) {
@@ -96,23 +88,19 @@ class AdoptFragment : BindingFragment<FragmentAdoptBinding>(R.layout.fragment_ad
         }, type)
     }
 
-    //아래 메소드에서 소팅 함수 and 리스트 변경 notify
+    // 아래 메소드에서 소팅 함수 and 리스트 변경 notify
     private fun sortFeed(type: PostOptionType) {
         when (type) {
             PostOptionType.FEED -> {
                 Timber.tag("sfsdf").v("피드")
             }
             PostOptionType.THING -> {
-
             }
             PostOptionType.DATE -> {
-
             }
             PostOptionType.TOTAL -> {
-
             }
             PostOptionType.RECENT -> {
-
             }
         }
     }

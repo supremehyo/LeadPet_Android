@@ -1,4 +1,4 @@
-package com.dev6.data.repositoryImple
+package com.dev6.data.repositoryImp
 
 import androidx.annotation.WorkerThread
 import com.dev6.data.mapper.toDomain

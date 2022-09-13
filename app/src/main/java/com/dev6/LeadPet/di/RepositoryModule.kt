@@ -1,10 +1,10 @@
 package com.dev6.LeadPet.di
 
-import com.dev6.data.repositoryImple.*
+import com.dev6.data.repositoryImp.*
 import com.dev6.domain.repository.*
-import com.dev6.data.repositoryImple.AccessTokenRepositoryImp
-import com.dev6.data.repositoryImple.JoinRepositoryImp
-import com.dev6.data.repositoryImple.LoginRepositoryImp
+import com.dev6.data.repositoryImp.AccessTokenRepositoryImp
+import com.dev6.data.repositoryImp.JoinRepositoryImp
+import com.dev6.data.repositoryImp.LoginRepositoryImp
 import com.dev6.domain.repository.AccessTokenRepository
 import com.dev6.domain.repository.JoinRepository
 import com.dev6.domain.repository.LoginRepository

@@ -1,6 +1,6 @@
 package com.dev6.LeadPet.di
 
-import com.dev6.data.remote.*
+import com.dev6.data.SavedRemoteSource.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

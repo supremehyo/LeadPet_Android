@@ -1,4 +1,4 @@
-package com.dev6.data.repositoryImple
+package com.dev6.data.repositoryImp
 
 //import com.dev6.data.fake.FakeLoginDataSource
 //import com.dev6.domain.repository.LoginRepository

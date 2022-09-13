@@ -1,4 +1,4 @@
-package com.dev6.data.repositoryImple
+package com.dev6.data.repositoryImp
 
 import android.util.Log
 import androidx.paging.PagingState
@@ -8,8 +8,11 @@ import com.dev6.domain.model.donate.DonationPost
 import com.dev6.domain.repository.donate.DonationPagingSource
 import javax.inject.Inject
 
-class DonationPagingSourceImp @Inject constructor(private val donationRemoteSource: DonationRemoteSource, userId: String, donationMethod : String) :
-    DonationPagingSource() {
+class DonationPagingSourceImp @Inject constructor(
+    private val donationRemoteSource: DonationRemoteSource,
+    userId: String,
+    donationMethod: String
+) : DonationPagingSource() {
 
     var _userId = userId
 
@@ -18,7 +21,7 @@ class DonationPagingSourceImp @Inject constructor(private val donationRemoteSour
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = donationRemoteSource.donationAllFeed(_donationMethod,next, size, _userId)
+            val response = donationRemoteSource.donationAllFeed(_donationMethod, next, size, _userId)
             Log.v("dddddd1", response.donationFeedList.get(0).donationPostId)
             try {
                 Log.v("dddddd2", response.toDomain().donationFeedList.get(0).donationPostId)

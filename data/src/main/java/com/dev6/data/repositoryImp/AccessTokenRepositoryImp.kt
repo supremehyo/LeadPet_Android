@@ -1,4 +1,4 @@
-package com.dev6.data.repositoryImple
+package com.dev6.data.repositoryImp
 
 import android.content.Context
 import com.dev6.domain.repository.AccessTokenRepository
