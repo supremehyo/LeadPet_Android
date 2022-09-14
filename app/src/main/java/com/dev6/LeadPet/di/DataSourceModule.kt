@@ -1,6 +1,6 @@
 package com.dev6.LeadPet.di
 
-import com.dev6.data.SavedRemoteSource.*
+import com.dev6.data.remote.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -45,4 +45,8 @@ abstract class DataSourceModule {
     @Singleton
     @Binds
     abstract fun bindsProfileRemoteSource(source: ProfileRemoteSourceImp): ProfileRemoteSource
+
+    @Singleton
+    @Binds
+    abstract fun bindsSaveRemoteSource(source: SavedRemoteSourceImp): SavedRemoteSource
 }

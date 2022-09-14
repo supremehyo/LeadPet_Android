@@ -1,5 +1,6 @@
 package com.dev6.data.service
 
+import com.dev6.core.enums.PostType
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
@@ -13,8 +14,10 @@ import retrofit2.http.POST
 interface SaveAPI {
     @POST("/v1/savedPost")
     suspend fun insertSavedPost(
-        @Field("savedPostId") savedPostId: String,
+        @Field("postId") postId: String,
+        @Field("postType") postType: PostType,
         @Field("userId") userId: String
+
     ): Response<SavedResponse>
 
     @DELETE("/v1/savedPost")

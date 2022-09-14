@@ -2,6 +2,7 @@ package com.dev6.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dev6.core.UserData
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.LoginType
 import com.dev6.core.exception.NotCorrectException
@@ -43,6 +44,13 @@ class LoginViewModel @Inject constructor(
                     is UiState.Success<User> -> {
                         _lodingFlow.value = false
                         Timber.d(uiState.data.toString())
+                        UserData.apply {
+                            loginMethod = loginStateFlow.value.loginMethod
+                            userType = uiState.data.userType
+                            email = loginStateFlow.value.email
+                            uid = uiState.data.uid
+                            userId = uiState.data.userId
+                        }
                         event(Event.LoginEvent(loginStateFlow.value))
                     }
                     is UiState.Error -> {

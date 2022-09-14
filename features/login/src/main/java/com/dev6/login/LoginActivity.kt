@@ -49,10 +49,9 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         }
 
         is LoginViewModel.Event.LoginEvent -> {
-       //     UserData.userId
+            //     UserData.userId
             UserData.uid = event.loginData.uid.toString()
             UserData.loginMethod = event.loginData.loginMethod
-            UserData.password = event.loginData.password
             UserData.email = event.loginData.email
 
             val loginIntent = Intent(this, FeedActivity::class.java)

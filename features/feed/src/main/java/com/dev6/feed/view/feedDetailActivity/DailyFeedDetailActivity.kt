@@ -6,16 +6,12 @@ import android.service.autofill.UserData
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingActivity
 import com.dev6.core.base.UiState
-import com.dev6.core.enums.FeedViewType
+import com.dev6.core.enums.PostType
 import com.dev6.core.util.extension.fewDay
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.daily.DailyPost
@@ -35,17 +31,16 @@ class DailyFeedDetailActivity :
     private lateinit var commentAdapter: DailyCommentAdapter
     var likedBoolean = false
 
-
     override fun initView() {
         super.initView()
         currentFeed = intent.getSerializableExtra("dailyPostFeed") as DailyPost
         makeCurrentView()
         commentAdapter = DailyCommentAdapter {
-            if(com.dev6.core.UserData.userType == "NORMAL"){
-           //     NavHostFragment.findNavController(fragment = this).navigate(R.id.action_feedFragment_to_userFragment)
-            }else{
-             //   NavHostFragment.findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
-            }
+//            if (com.dev6.core.UserData.userType == "NORMAL") {
+//                //     NavHostFragment.findNavController(fragment = this).navigate(R.id.action_feedFragment_to_userFragment)
+//            } else {
+//                //   NavHostFragment.findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
+//            }
         }
         dailycommentRc = binding.dailyCommentRv
         dailycommentRc.apply {
@@ -63,6 +58,24 @@ class DailyFeedDetailActivity :
         super.initListener()
         binding.dailyLikeImage.setOnClickListener {
             feedViewModel.postLike(currentFeed.normalPostId, "uidkko149")
+        }
+
+        binding.dailyLikeImage.setOnClickListener {
+            feedViewModel.postLike(currentFeed.normalPostId, "uidkko149")
+        }
+        binding.cbBookmark.setOnClickListener {
+            if (binding.cbBookmark.isChecked) {
+                feedViewModel.executeBookMark(
+                    currentFeed.normalPostId,
+                    PostType.NORMAL_POST,
+                    com.dev6.core.UserData.userId
+                )
+            } else {
+                feedViewModel.executeUnBookMark(
+                    currentFeed.normalPostId,
+                    com.dev6.core.UserData.userId
+                )
+            }
         }
     }
 
@@ -93,13 +106,12 @@ class DailyFeedDetailActivity :
                                 ).show()
                             }
                         }
-                    }else->{
-
-                }
+                    }
+                    else -> {
+                    }
                 }
             }
         }
-
 
         repeatOnStarted {
             feedViewModel.eventPostLike.collect { event ->
@@ -129,9 +141,9 @@ class DailyFeedDetailActivity :
                                 ).show()
                             }
                         }
-                    }else->{
-
-                }
+                    }
+                    else -> {
+                    }
                 }
             }
         }
@@ -173,7 +185,6 @@ class DailyFeedDetailActivity :
         } else {
             binding.dailyLikeImage.setColorFilter(Color.parseColor("#C4C4C4"))
         }
-
     }
 
     private fun changeLikedHeart() {

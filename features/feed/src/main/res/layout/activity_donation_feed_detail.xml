@@ -124,6 +124,7 @@
                         app:layout_constraintVertical_bias="0.428" />
 
                     <CheckBox
+                        android:id="@+id/cb_bookmark"
                         style="@style/Widget_Feed_CheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

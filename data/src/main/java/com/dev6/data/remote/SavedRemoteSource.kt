@@ -1,5 +1,6 @@
 package com.dev6.data.remote
 
+import com.dev6.core.enums.PostType
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
@@ -29,7 +30,8 @@ interface SavedRemoteSource {
     ): DailyPaginationResponse
 
     suspend fun insertSavedPost(
-        savedPostId: String,
+        postId: String,
+        postType: PostType,
         userId: String
     ): SavedResponse
 
@@ -60,8 +62,8 @@ class SavedRemoteSourceImp @Inject constructor(
     override suspend fun getSavedDailyPost(page: Int, size: Int, userId: String): DailyPaginationResponse =
         saveAPI.getSavedNormalPost(page = page, size = size, userId = userId).executeNetworkHandling()
 
-    override suspend fun insertSavedPost(savedPostId: String, userId: String): SavedResponse =
-        saveAPI.insertSavedPost(savedPostId, userId).executeNetworkHandling()
+    override suspend fun insertSavedPost(postId: String, postType: PostType, userId: String): SavedResponse =
+        saveAPI.insertSavedPost(postId, postType, userId).executeNetworkHandling()
 
     override suspend fun deleteSavedPost(savedPostId: String, userId: String): SavedResponse =
         saveAPI.deleteSavedPost(savedPostId = savedPostId, userId = userId).executeNetworkHandling()

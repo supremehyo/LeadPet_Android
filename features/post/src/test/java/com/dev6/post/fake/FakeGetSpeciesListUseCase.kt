@@ -6,6 +6,7 @@ import com.dev6.domain.usecase.post.GetSpeciesListBaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
+/*
 class FakeGetSpeciesListUseCase : GetSpeciesListBaseUseCase {
     override suspend fun invoke(params: Unit): Flow<UiState<List<IndexBreed>>> = flow {
         val speciesList = listOf<IndexBreed>(
@@ -16,3 +17,4 @@ class FakeGetSpeciesListUseCase : GetSpeciesListBaseUseCase {
         emit(UiState.Success(speciesList))
     }
 }
+*/
