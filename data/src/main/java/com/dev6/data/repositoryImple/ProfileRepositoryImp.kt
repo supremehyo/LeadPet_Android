@@ -1,5 +1,6 @@
 package com.dev6.data.repositoryImple
 
+import android.util.Log
 import com.dev6.data.mapper.toDomain
 import com.dev6.data.remote.ProfileRemoteSource
 import com.dev6.domain.model.NormalUserRepo
@@ -14,6 +15,7 @@ class ProfileRepositoryImp @Inject constructor(
     private val profileRemoteSource: ProfileRemoteSource
 ) : ProfileRepository {
     override suspend fun getProfileUserDetailData(userId: String): ProfileUserRepo {
+        Log.v("sdfsdfqvbwv3" , userId)
         return profileRemoteSource.getShelterProfileDetailData(userId).toDomain()
     }
 

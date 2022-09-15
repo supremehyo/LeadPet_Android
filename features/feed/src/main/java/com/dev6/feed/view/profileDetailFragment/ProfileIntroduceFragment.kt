@@ -29,7 +29,6 @@ class ProfileIntroduceFragment :
         super.initView()
 
         userId = arguments?.getString("userId") ?: ""
-
         //userId 가 "" 라는건 쉘터 클릭으로 들어온게 아니라는것
         when (userId) {
             "" -> when(UserData.userType){
@@ -40,7 +39,9 @@ class ProfileIntroduceFragment :
                     profileViewModel.getShelterProfileDetailData(UserData.userId)
                 }
             }
-            else -> profileViewModel.getShelterProfileDetailData(userId)
+            else -> {
+                profileViewModel.getClickShelterProfileDetailData(userId)
+            }
         }
     }
 
@@ -55,12 +56,15 @@ class ProfileIntroduceFragment :
     override fun afterViewCreated() {
         super.afterViewCreated()
         repeatOnStarted {
+            Log.v("sdfsdfqvbwv" ,"Sssdfsdfs1")
             //콜렉트가 잘 안되고 있음 이거 해결하면 쉘터클릭시 해당 데이터 가져오는거 끝
-            profileViewModel.eventProfileDetail.collect{ evnet->
+            profileViewModel.eventClickProfileDetail.collect{ evnet->
                 when(evnet){
                     is ProfileViewModel.Event.ProfileUiEvent->{
+
                         when(evnet.uiState){
                             is UiState.Success->{
+
                                 var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     shelterProfileLocationTv.text = userProfileData.shelterAddress
@@ -77,8 +81,7 @@ class ProfileIntroduceFragment :
                             }
                             else->{}
                         }
-                    }else->{
-                }
+                    }else->{}
                 }
             }
         }

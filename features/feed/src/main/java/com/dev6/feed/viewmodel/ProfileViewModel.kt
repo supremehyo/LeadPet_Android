@@ -1,5 +1,6 @@
 package com.dev6.feed.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
@@ -25,6 +26,9 @@ class ProfileViewModel
     private val _eventProfileDetail = MutableEventFlow<Event>()
     val eventProfileDetail = _eventProfileDetail.asEventFlow()
 
+    private val _eventClickProfileDetail = MutableEventFlow<Event>()
+    val eventClickProfileDetail = _eventClickProfileDetail.asEventFlow()
+
     private val _eventNormalUserProfileDetail = MutableEventFlow<Event>()
     val eventNormalUserProfileDetail = _eventNormalUserProfileDetail.asEventFlow()
 
@@ -42,12 +46,28 @@ class ProfileViewModel
         }
     }
 
+    ///쉘터 프로필 디테일 이벤트
+    fun eventClickShelterProfileDetailData(event :Event){
+        viewModelScope.launch {
+            _eventClickProfileDetail.emit(event)
+        }
+    }
+
     // 쉘터 프로필 디테일
     fun getShelterProfileDetailData(userId :String) = viewModelScope.launch{
         profileRepoUseCase.getShelterProfileDetailData(userId).collect{ uiState->
             eventShelterProfileDetailData(Event.ProfileUiEvent(uiState))
         }
     }
+
+    // 쉘터 프로필 디테일
+    fun getClickShelterProfileDetailData(userId :String) = viewModelScope.launch{
+        profileRepoUseCase.getShelterProfileDetailData(userId).collect{ uiState->
+            eventClickShelterProfileDetailData(Event.ProfileUiEvent(uiState))
+        }
+    }
+
+
 
     // 노말 유저 프로필 디테일 이ㅔㄴ트
     fun eventNormalUserProfileDetailData(event : Event){

@@ -1,5 +1,6 @@
 package com.dev6.domain.usecase
 
+import android.util.Log
 import com.dev6.core.base.UiState
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
@@ -15,6 +16,7 @@ class ProfileRepoUseCase @Inject constructor(
         runCatching {
             profileRepository.getProfileUserDetailData(userId)
         }.onSuccess { result ->
+
             emit(UiState.Success(result))
         }.onFailure {
             emit(UiState.Error(it))
