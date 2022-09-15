@@ -36,7 +36,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         initFab()
         initListener()
         userType = intent.getStringExtra("userType") ?: "NORMAL"
-        userType = "SHELTER"
+       // userType = "SHELTER"
         initNavController(userType)
         UserData.userType = userType
 

@@ -45,7 +45,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                 findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily , Bundle().apply {putSerializable("dailyPost", it)})
             }else{
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
-                findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily2 ,Bundle().apply {putSerializable("shelterData", it)})
+                findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily2 ,Bundle().apply {putSerializable("dailyPost", it)})
             }
         }
 
