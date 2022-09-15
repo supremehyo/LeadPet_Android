@@ -3,12 +3,16 @@ package com.dev6.feed.view.feedDetailActivity
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingActivity
+import com.dev6.core.base.UiState
 import com.dev6.core.enums.PostType
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ActivityAdoptFeedDetailBinding
 import com.dev6.feed.viewmodel.FeedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AdoptFeedDetailActivity :
@@ -33,7 +37,7 @@ class AdoptFeedDetailActivity :
             if (binding.cbBookmark.isChecked) {
                 feedViewModel.executeBookMark(
                     currentFeed.adoptionPostId,
-                    PostType.DONATION_POST,
+                    PostType.ADOPTION_POST,
                     com.dev6.core.UserData.userId
                 )
             } else {
@@ -62,5 +66,42 @@ class AdoptFeedDetailActivity :
 
     private fun makeImageView(uri: String) {
         Glide.with(this).load(uri).error(R.drawable.alarm).into(binding.adoptContentImage)
+    }
+
+    override fun afterOnCreate() {
+        super.afterOnCreate()
+        repeatOnStarted {
+            feedViewModel.eventFlow.collectLatest { event ->
+                when (event) {
+                    is FeedViewModel.Event.BookMarkUiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                Timber.tag("bookmark").d("북마크 성공")
+                            }
+                            is UiState.Error -> {
+                                Timber.tag("bookmark").d("북마크 실패 ${event.uiState.error}")
+                            }
+                            is UiState.Loding -> {
+                                Timber.tag("bookmark").d("북마크 로딩")
+                            }
+                        }
+                    }
+                    is FeedViewModel.Event.UnBookMarkUiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                Timber.tag("unbookmark").d("북마크 성공")
+                            }
+                            is UiState.Error -> {
+                                Timber.tag("unbookmark").d("북마크 실패 ${event.uiState.error}")
+                            }
+                            is UiState.Loding -> {
+                                Timber.tag("unbookmark").d("북마크 로딩")
+                            }
+                        }
+                    }
+                    else -> {}
+                }
+            }
+        }
     }
 }

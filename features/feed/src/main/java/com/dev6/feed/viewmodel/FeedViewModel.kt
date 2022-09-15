@@ -124,7 +124,7 @@ class FeedViewModel
 
     private fun emitEvent(event: Event) {
         viewModelScope.launch {
-            _eventFlowComment.emit(event)
+            _eventFlow.emit(event)
         }
     }
 

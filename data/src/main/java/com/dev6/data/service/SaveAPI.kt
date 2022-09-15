@@ -1,29 +1,29 @@
 package com.dev6.data.service
 
-import com.dev6.core.enums.PostType
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
+import com.dev6.data.model.saved.DeleteSavedRequest
+import com.dev6.data.model.saved.SavedRequest
 import com.dev6.data.model.saved.SavedResponse
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.HTTP
 import retrofit2.http.POST
 
 interface SaveAPI {
+
     @POST("/v1/savedPost")
     suspend fun insertSavedPost(
-        @Field("postId") postId: String,
-        @Field("postType") postType: PostType,
-        @Field("userId") userId: String
-
+        @Body savedPost: SavedRequest
     ): Response<SavedResponse>
 
-    @DELETE("/v1/savedPost")
+    @HTTP(method = "DELETE", path = "/v1/savedPost", hasBody = true)
     suspend fun deleteSavedPost(
-        @Field("savedPostId") savedPostId: String,
-        @Field("userId") userId: String
+        @Body savedPost: DeleteSavedRequest
     ): Response<SavedResponse>
 
     @GET("/v1/savedPost/adoptionPost/{userId}")

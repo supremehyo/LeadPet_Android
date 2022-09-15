@@ -13,12 +13,9 @@ import com.dev6.feed.R
 import com.dev6.feed.adapter.DonationPagingAdapter
 import com.dev6.feed.databinding.FragmentDonationBinding
 import com.dev6.feed.option.BottomSheet
-import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
-
 
 class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragment_donation) {
 
@@ -61,7 +58,7 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
     }
 
     private fun getDonationList() {
-        feedViewModel.getDonationList("","")
+        feedViewModel.getDonationList("", "")
     }
 
     private fun makeBottomSheet(type: Int) {
@@ -98,24 +95,18 @@ class DonationFragment : BindingFragment<FragmentDonationBinding>(R.layout.fragm
         }
     }
 
-
-    //아래 메소드에서 소팅 함수 and 리스트 변경 notify
+    // 아래 메소드에서 소팅 함수 and 리스트 변경 notify
     private fun sortFeed(type: PostOptionType) {
         when (type) {
             PostOptionType.FEED -> {
-
             }
             PostOptionType.THING -> {
-
             }
             PostOptionType.DATE -> {
-
             }
             PostOptionType.TOTAL -> {
-
             }
             PostOptionType.RECENT -> {
-
             }
         }
     }

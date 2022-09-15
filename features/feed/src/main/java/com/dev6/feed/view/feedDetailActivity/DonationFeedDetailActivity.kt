@@ -34,7 +34,7 @@ class DonationFeedDetailActivity :
 
     override fun initListener() {
         binding.cbBookmark.setOnClickListener {
-            if (binding.cbBookmark.isChecked) {
+            if (!binding.cbBookmark.isChecked) {
                 feedViewModel.executeBookMark(
                     currentFeed.donationPostId,
                     PostType.DONATION_POST,

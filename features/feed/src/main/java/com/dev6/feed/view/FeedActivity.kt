@@ -27,13 +27,13 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
 
     private val feedViewModel: FeedViewModel by viewModels()
     var list = listOf("경기도 성남시", "서울특별시")
-    var userType = ""
 
     lateinit var navController: NavController
     var isFabOpen = false
 
     override fun initView() {
         super.initView()
+        initNavController()
         initFab()
         initListener()
     }
@@ -53,7 +53,6 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                     .with(ObjectAnimator.ofFloat(binding.llFab, View.TRANSLATION_X, 0f))
                     .with(ObjectAnimator.ofFloat(binding.llFab, View.ALPHA, 1f))
                     .with(ObjectAnimator.ofFloat(binding.flDim, View.ALPHA, 1f))
-            }.apply {
                 addListener(object : AnimatorListenerAdapter() {
                     override fun onAnimationStart(animation: Animator, isReverse: Boolean) {
                         super.onAnimationStart(animation, isReverse)
@@ -69,7 +68,6 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                     .with(ObjectAnimator.ofFloat(binding.llFab, View.TRANSLATION_X, 100f))
                     .with(ObjectAnimator.ofFloat(binding.llFab, View.ALPHA, 0f))
                     .with(ObjectAnimator.ofFloat(binding.flDim, View.ALPHA, 0f))
-            }.apply {
                 addListener(object : AnimatorListenerAdapter() {
                     override fun onAnimationEnd(p0: Animator) {
                         binding.llFab.visibility = View.INVISIBLE

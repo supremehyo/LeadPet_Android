@@ -1,6 +1,7 @@
 package com.dev6.data.repositoryImp
 
 import androidx.paging.PagingData
+import com.dev6.data.mapper.toData
 import com.dev6.data.mapper.toDomain
 import com.dev6.data.remote.SavedRemoteSource
 import com.dev6.domain.model.adopt.AdoptPostFeed
@@ -29,14 +30,9 @@ class SavedRepositoryImp @Inject constructor(
     }
 
     override suspend fun insertSavedPost(savedPost: SavedPost): Save = savedRemoteSource.insertSavedPost(
-        savedPost.postId,
-        savedPost.postType,
-        savedPost.userId
+        savedPost.toData()
     ).toDomain()
 
     override suspend fun deleteSavedPost(deleteSavedPost: DeleteSavedPost): Save =
-        savedRemoteSource.deleteSavedPost(
-            deleteSavedPost.savedPostId,
-            deleteSavedPost.userId
-        ).toDomain()
+        savedRemoteSource.deleteSavedPost(deleteSavedPost.toData()).toDomain()
 }

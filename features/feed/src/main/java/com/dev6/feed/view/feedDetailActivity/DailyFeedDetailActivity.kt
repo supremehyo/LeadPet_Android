@@ -64,7 +64,7 @@ class DailyFeedDetailActivity :
             feedViewModel.postLike(currentFeed.normalPostId, "uidkko149")
         }
         binding.cbBookmark.setOnClickListener {
-            if (binding.cbBookmark.isChecked) {
+            if (!binding.cbBookmark.isChecked) {
                 feedViewModel.executeBookMark(
                     currentFeed.normalPostId,
                     PostType.NORMAL_POST,
