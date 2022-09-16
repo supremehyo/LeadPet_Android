@@ -70,7 +70,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/hansneo_medium"
                             android:text="2시간전"
-                            android:textColor="@color/grey4"
+                            android:textColor="@color/Gray_04"
                             android:textSize="10dp" />
                     </LinearLayout>
 
@@ -105,9 +105,10 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <CheckBox
+                    android:id="@+id/cb_bookmark"
+                    style="@style/Widget_Feed_CheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/bookmarker_selector"
                     app:layout_constraintBottom_toBottomOf="@+id/dailyFeedTitleTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.918"

@@ -20,13 +20,13 @@ class PostActivity : BindingActivity<ActivityPostBinding>(R.layout.activity_post
         var navGraph = navController.navInflater.inflate(R.navigation.post_nav_graph)
 
         when (postType) {
-            PostType.DAILY -> {
+            PostType.NORMAL_POST -> {
                 navGraph.setStartDestination(R.id.lifePostFragment)
             }
-            PostType.ADOPT -> {
+            PostType.ADOPTION_POST -> {
                 navGraph.setStartDestination(R.id.petAdoptPostFragment)
             }
-            PostType.DONATE -> {
+            PostType.DONATION_POST -> {
                 navGraph.setStartDestination(R.id.petDonateFragment)
             }
         }

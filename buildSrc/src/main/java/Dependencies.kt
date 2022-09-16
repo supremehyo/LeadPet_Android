@@ -23,12 +23,15 @@ object AndroidX {
 
     const val NAVIGATION = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
     const val NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
+
     const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
+    const val PAGING_DOMAIN = "androidx.paging:paging-common:${Versions.PAGING}"
+
     const val CORE_TESTING = "androidx.arch.core:core-testing:2.1.0"
 
-    const val  WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_VERSION}"
-    const val  WORK_TEST = "androidx.work:work-testing:${Versions.WORK_VERSION}"
-    const val  CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.4"
+    const val WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_VERSION}"
+    const val WORK_TEST = "androidx.work:work-testing:${Versions.WORK_VERSION}"
+    const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.4"
 }
 
 object Google {
@@ -38,7 +41,7 @@ object Google {
     const val HILT_WORKER = "androidx.hilt:hilt-work:1.0.0"
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
 
-    //CRASHLYTICS
+    // CRASHLYTICS
     const val GOOGLE_CORE = "com.google.android.play:core-ktx:1.8.1"
     const val FIREBASE_BOM = "com.google.firebase:firebase-bom:29.2.1"
     const val CRASHLYTICS = "com.google.firebase:firebase-crashlytics-ktx"
@@ -67,7 +70,7 @@ object AndroidTest {
     const val ANDROID_RUNNER = "androidx.test:runner:1.1.0"
 }
 
-//네트워크 관련
+// 네트워크 관련
 object Network {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:2.9.0"
     const val GSON = "com.squareup.retrofit2:converter-gson:2.9.0"
@@ -75,10 +78,9 @@ object Network {
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val OKHTTP3 = "com.squareup.okhttp3:logging-interceptor:4.9.1"
     const val MOCKWEBSERVER = "com.squareup.okhttp3:mockwebserver:4.10.0"
-
 }
 
-//Flipper 디버깅 편리하게 해주는 라이브러리
+// Flipper 디버깅 편리하게 해주는 라이브러리
 object Debug {
     const val TIMBER = "com.jakewharton.timber:timber:5.0.1"
     const val FLIPPER = "com.facebook.flipper:flipper:0.135.0"
@@ -86,10 +88,9 @@ object Debug {
     const val LEAK_FLIPPER = "com.facebook.flipper:flipper-leakcanary2-plugin:0.135.0"
 }
 
-//메모리 누수 잡는 라이브러리
+// 메모리 누수 잡는 라이브러리
 object Memory {
     const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.9.1"
-
 }
 
 object Kakao {
@@ -110,4 +111,3 @@ object Room {
     const val ROOM = "androidx.room:room-ktx:${Versions.ROOM}"
     const val ROOM_TESTING = "androidx.room:room-testing:${Versions.ROOM}"
 }
-

@@ -5,9 +5,7 @@ import com.dev6.domain.repository.adopt.AdoptRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
-class AdoptPagingRepoUseCase @Inject constructor
-    (
+class AdoptPagingRepoUseCase @Inject constructor(
     private val adoptPagingRepository: AdoptRepository
 ) {
 
@@ -22,4 +20,3 @@ class AdoptPagingRepoUseCase @Inject constructor
         }
     }
 }
-

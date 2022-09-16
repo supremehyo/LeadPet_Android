@@ -1,22 +1,35 @@
 package com.dev6.feed.viewmodel
 
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.core.enums.PostType
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.domain.model.adopt.AdoptPostFeed
-import com.dev6.domain.model.donate.DonationPost
 import com.dev6.domain.model.ShelterEntitiyRepo
+import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.domain.model.comment.Comment
-import com.dev6.domain.model.comment.CommentPage
 import com.dev6.domain.model.daily.DailyPost
-import com.dev6.domain.usecase.*
+import com.dev6.domain.model.donate.DonationPost
+import com.dev6.domain.model.save.DeleteSavedPost
+import com.dev6.domain.model.save.Save
+import com.dev6.domain.model.save.SavedPost
+import com.dev6.domain.usecase.AdoptPagingRepoUseCase
+import com.dev6.domain.usecase.CommentPagingRepoUseCase
+import com.dev6.domain.usecase.DailyPagingRepoUseCase
+import com.dev6.domain.usecase.DonationPagingRepoUseCase
+import com.dev6.domain.usecase.ShelterPagingRepoUseCase
+import com.dev6.domain.usecase.save.DeleteSavedPostBaseUseCase
+import com.dev6.domain.usecase.save.InsertSavedPostBaseUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import javax.inject.Inject
@@ -28,7 +41,9 @@ class FeedViewModel
     private val donationRepoUserCase: DonationPagingRepoUseCase,
     private val adoptRepoUserCase: AdoptPagingRepoUseCase,
     private val shelterUserCase: ShelterPagingRepoUseCase,
-    private val commentPagingRepoUseCase: CommentPagingRepoUseCase
+    private val commentPagingRepoUseCase: CommentPagingRepoUseCase,
+    private val insertSavedPostBaseUseCase: @JvmSuppressWildcards InsertSavedPostBaseUseCase,
+    private val deleteSavedPostBaseUseCase: @JvmSuppressWildcards DeleteSavedPostBaseUseCase
 ) : ViewModel() {
 
     private val _spinnerEntry = MutableStateFlow(emptyList<String>())
@@ -40,7 +55,6 @@ class FeedViewModel
 
     private val _donationPagingFlow = MutableSharedFlow<PagingData<DonationPost>>()
     val donationPagingFlow = _donationPagingFlow.asSharedFlow()
-
 
     private val _eventDailyList = MutableEventFlow<Event>()
     val eventDailyList = _eventDailyList.asEventFlow()
@@ -63,7 +77,8 @@ class FeedViewModel
     private val _eventPostLike = MutableEventFlow<Event>()
     val eventPostLike = _eventPostLike.asEventFlow()
 
-
+    private val _eventFlow = MutableEventFlow<Event>()
+    val eventFlow = _eventFlow.asEventFlow()
 
     fun setSpinnerEntry(Entry: List<String>) {
         viewModelScope.launch {
@@ -107,12 +122,17 @@ class FeedViewModel
         }
     }
 
+    private fun emitEvent(event: Event) {
+        viewModelScope.launch {
+            _eventFlow.emit(event)
+        }
+    }
+
     private fun eventCommentPost(event: Event) {
         viewModelScope.launch {
             _eventFlowCommentPost.emit(event)
         }
     }
-
 
     private fun eventPostLike(event: Event) {
         viewModelScope.launch {
@@ -120,16 +140,16 @@ class FeedViewModel
         }
     }
 
-    fun postLike(postId: String, userId: String){
+    fun postLike(postId: String, userId: String) {
         viewModelScope.launch {
-            pagingRepoUseCase.postLike(postId, userId).collect{ uistate->
+            pagingRepoUseCase.postLike(postId, userId).collect { uistate ->
                 eventPostLike(Event.CommentLikeUiEvnet(uistate))
             }
         }
     }
 
-    fun getFeedList(userId: String , likedUser : String) = viewModelScope.launch {
-        pagingRepoUseCase.getDailyDataPagingData(userId ,likedUser).collect { uistate ->
+    fun getFeedList(userId: String, likedUser: String) = viewModelScope.launch {
+        pagingRepoUseCase.getDailyDataPagingData(userId, likedUser).collect { uistate ->
             eventDailyList(Event.DailyUiEvent(uistate))
         }
     }
@@ -140,8 +160,8 @@ class FeedViewModel
         }
     }
 
-    fun getDonationList(userId: String , donationMethod : String) = viewModelScope.launch {
-        donationRepoUserCase.getDonationPagingData(userId , donationMethod).collect { uistate ->
+    fun getDonationList(userId: String, donationMethod: String) = viewModelScope.launch {
+        donationRepoUserCase.getDonationPagingData(userId, donationMethod).collect { uistate ->
             eventDonationList(Event.DonationUiEvent(uistate))
         }
     }
@@ -158,9 +178,23 @@ class FeedViewModel
         }
     }
 
-    fun postCommentListByPostId(content : String , normalPostId : String,userId: String) = viewModelScope.launch {
+    fun postCommentListByPostId(content: String, normalPostId: String, userId: String) = viewModelScope.launch {
         commentPagingRepoUseCase.postCommentData(content, normalPostId, userId).collect { uistate ->
             eventCommentPost(Event.CommentPostUiEvnet(uistate))
+        }
+    }
+
+    fun executeBookMark(postId: String, postType: PostType, userId: String) = viewModelScope.launch {
+        val savePost: SavedPost = SavedPost(postId, postType, userId)
+        insertSavedPostBaseUseCase(savePost).collectLatest { uiState ->
+            emitEvent(Event.BookMarkUiEvent(uiState))
+        }
+    }
+
+    fun executeUnBookMark(postId: String, userId: String) = viewModelScope.launch {
+        val savePost: DeleteSavedPost = DeleteSavedPost(postId, userId)
+        deleteSavedPostBaseUseCase(savePost).collectLatest { uiState ->
+            emitEvent(Event.UnBookMarkUiEvent(uiState))
         }
     }
 
@@ -172,5 +206,8 @@ class FeedViewModel
         data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
         data class CommentLikeUiEvnet(val uiState: UiState<ResponseBody>) : Event()
         data class CommentPostUiEvnet(val uiState: UiState<ResponseBody>) : Event()
+
+        data class BookMarkUiEvent(val uiState: UiState<Save>) : Event()
+        data class UnBookMarkUiEvent(val uiState: UiState<Save>) : Event()
     }
 }

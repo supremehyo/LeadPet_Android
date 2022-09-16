@@ -69,4 +69,10 @@ open class NetworkModule {
     fun provideBreedService(retrofit: Retrofit): BreedAPI {
         return retrofit.create(BreedAPI::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideSaveService(retrofit: Retrofit): SaveAPI {
+        return retrofit.create(SaveAPI::class.java)
+    }
 }

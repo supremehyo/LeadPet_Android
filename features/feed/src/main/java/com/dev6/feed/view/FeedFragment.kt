@@ -1,7 +1,5 @@
 package com.dev6.feed.view
 
-import android.animation.ObjectAnimator
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.dev6.core.base.BindingFragment
@@ -24,21 +22,17 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
     val adoptFragment: AdoptFragment by lazy { AdoptFragment() }
     lateinit var selected: Fragment
 
-
     override fun initView() {
         super.initView()
         initTabLayout()
 
-        //초기화면
+        // 초기화면
         childFragmentManager.beginTransaction().replace(R.id.nav_detail_fragment, dailyFragment).commit()
         feedViewModel.setCurrentView(FeedViewType.TOTAL)
     }
 
-
-
     override fun initViewModel() {
         super.initViewModel()
-
     }
 
     private fun initTabLayout() {
@@ -51,41 +45,27 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
 
             mainTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-
                     // 눌렀을때 색 변경이랑 네이게이션 이동 코드
                     when (tab?.position) {
                         0 -> {
                             selected = dailyFragment
-                            //feedViewModel.setCurrentView(FeedViewType.DAILY)
                         }
                         1 -> {
                             selected = donationFragment
-                            //feedViewModel.setCurrentView(FeedViewType.DONATION)
                         }
                         2 -> {
                             selected = adoptFragment
-
                         }
                     }
                     childFragmentManager.beginTransaction().replace(R.id.nav_detail_fragment, selected).commit()
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
-
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab?) {
-
                 }
             })
         }
     }
-
-
-
-
-
-
-
-
 }
