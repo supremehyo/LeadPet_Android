@@ -45,4 +45,8 @@ abstract class DataSourceModule {
     @Singleton
     @Binds
     abstract fun bindsProfileRemoteSource(source: ProfileRemoteSourceImp): ProfileRemoteSource
+
+    @Singleton
+    @Binds
+    abstract fun bindsSaveRemoteSource(source: SavedRemoteSourceImp): SavedRemoteSource
 }

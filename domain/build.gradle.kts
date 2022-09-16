@@ -11,9 +11,9 @@ android {
 }
 
 dependencies {
-    implementation (project(":core"))
+    implementation(project(":core"))
 
-    //retrofit2
+    // retrofit2
     implementation(Network.OKHTTP)
     implementation(Network.OKHTTP3)
     implementation(Network.RETROFIT)
@@ -22,18 +22,13 @@ dependencies {
     testImplementation(UnitTest.TRUTH)
     testImplementation(UnitTest.TURBINE)
 
-    implementation(AndroidX.PAGING)
+    implementation(AndroidX.PAGING_DOMAIN)
     implementation(Google.HILT_ANDROID)
     kapt(Google.HILT_ANDROID_COMPILER)
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation(AndroidTest.ESPRESSO_CORE)
 
-    //디버그용
+    // 디버그용
     implementation(Debug.TIMBER)
 
     implementation(Room.ROOM)

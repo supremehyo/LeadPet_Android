@@ -1,16 +1,11 @@
 package com.dev6.LeadPet.di
 
-import com.dev6.data.repositoryImple.*
+import com.dev6.data.repositoryImp.*
 import com.dev6.domain.repository.*
-import com.dev6.data.repositoryImple.AccessTokenRepositoryImp
-import com.dev6.data.repositoryImple.JoinRepositoryImp
-import com.dev6.data.repositoryImple.LoginRepositoryImp
-import com.dev6.domain.repository.AccessTokenRepository
-import com.dev6.domain.repository.JoinRepository
-import com.dev6.domain.repository.LoginRepository
 import com.dev6.domain.repository.adopt.AdoptRepository
 import com.dev6.domain.repository.daily.DailyRepository
 import com.dev6.domain.repository.donate.DonationRepository
+import com.dev6.domain.repository.saved.SavedRepository
 import com.dev6.domain.repository.shelter.ShelterPagingRepository
 import dagger.Binds
 import dagger.Module
@@ -61,5 +56,8 @@ abstract class RepositoryModule {
     @Binds
     @ViewModelScoped
     abstract fun bindsProfileRepository(repository: ProfileRepositoryImp): ProfileRepository
-}
 
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsSavedRepository(repository: SavedRepositoryImp): SavedRepository
+}

@@ -95,7 +95,7 @@
                         android:layout_height="24dp"
                         android:layout_marginStart="16dp"
                         android:background="@drawable/round_8dp_maincolor"
-                        android:textColor="@color/mainColor"
+                        android:textColor="@color/Main"
                         android:fontFamily="@font/hansneo_medium"
                         android:text="사료"
                         android:textSize="12dp"
@@ -124,10 +124,11 @@
                         app:layout_constraintVertical_bias="0.428" />
 
                     <CheckBox
+                        android:id="@+id/cb_bookmark"
+                        style="@style/Widget_Feed_CheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="13dp"
-                        android:button="@drawable/bookmarker_selector"
                         app:layout_constraintBottom_toBottomOf="@+id/donationTag"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
@@ -175,7 +176,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:text="마감일"
-                                android:textColor="@color/grey4"
+                                android:textColor="@color/Gray_04"
                                 android:textSize="16dp"
                                 android:fontFamily="@font/hansneo_medium"
                                 android:layout_marginStart="16dp"
@@ -200,7 +201,7 @@
                                 android:text="계좌번호"
                                 android:textSize="16dp"
                                 android:layout_marginStart="16dp"
-                                android:textColor="@color/grey4"
+                                android:textColor="@color/Gray_04"
                                 android:fontFamily="@font/hansneo_medium"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
@@ -236,7 +237,7 @@
                         android:id="@+id/donationConfirm"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:background="@color/mainColor"
+                        android:background="@color/Main"
                         android:fontFamily="@font/hansansneobold"
                         android:gravity="center"
                         android:text="참여했어요!"

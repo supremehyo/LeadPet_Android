@@ -5,6 +5,7 @@ import com.dev6.domain.model.donate.DonationPost
 import kotlinx.coroutines.flow.Flow
 
 interface DonationRepository {
-    suspend fun getDonationData(donationMethod:String,userId: String): Flow<PagingData<DonationPost>>
+    suspend fun getDonationData(donationMethod: String, userId: String): Flow<PagingData<DonationPost>>
+
     suspend fun insertDonatePost(donateFeed: DonationPost): DonationPost
 }

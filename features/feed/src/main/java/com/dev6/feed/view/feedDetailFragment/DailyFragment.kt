@@ -1,12 +1,9 @@
 package com.dev6.feed.view.feedDetailFragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,12 +11,12 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.core.enums.UserType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
-import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
 
@@ -40,28 +37,39 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         dailyNearShelterRc = binding.dailyNearShelterRc
 
         pagingAdapter = DailyPagingAdapter {
-            if(UserData.userType == "NORMAL"){
+            if (UserData.userType == UserType.NORMAL) {
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
-                findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily , Bundle().apply {putSerializable("dailyPost", it)})
-            }else{
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_fragmentFeedDaily,
+                    Bundle().apply { putSerializable("dailyPost", it) }
+                )
+            } else {
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
-                findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily2 ,Bundle().apply {putSerializable("shelterData", it)})
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_fragmentFeedDaily2,
+                    Bundle().apply { putSerializable("shelterData", it) }
+                )
             }
-            //val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            //dailyIntent.putExtra("dailyPostFeed", it)
-           // startActivity(dailyIntent)
+            // val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
+            // dailyIntent.putExtra("dailyPostFeed", it)
+            // startActivity(dailyIntent)
         }
 
         shelterAdapter = DailyshelterRecyclerAdapter {
-            if(UserData.userType == "NORMAL"){
+            if (UserData.userType == UserType.NORMAL) {
                 feedViewModel.setCurrentView(FeedViewType.SHELTERPROFILECLICK)
-                findNavController().navigate(R.id.action_feedFragment_to_profileFragment2 , Bundle().apply {putSerializable("shelterData", it)})
-            }else{
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_profileFragment2,
+                    Bundle().apply { putSerializable("shelterData", it) }
+                )
+            } else {
                 feedViewModel.setCurrentView(FeedViewType.SHELTERPROFILECLICK)
-                findNavController().navigate(R.id.action_feedFragment_to_profileFragment ,Bundle().apply {putSerializable("shelterData", it)})
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_profileFragment,
+                    Bundle().apply { putSerializable("shelterData", it) }
+                )
             }
         }
-
 
         dailyNearShelterRc.apply {
             adapter = shelterAdapter
@@ -80,13 +88,12 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     private fun getDailyList() {
-        feedViewModel.getFeedList("","")
+        feedViewModel.getFeedList("", "")
     }
 
     private fun getShelterList() {
         feedViewModel.getNearShelterList("", "")
     }
-
 
     override fun afterViewCreated() {
         super.afterViewCreated()
@@ -109,7 +116,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                         }
                     }
                     else -> {
-
                     }
                 }
             }
@@ -134,7 +140,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                         }
                     }
                     else -> {
-
                     }
                 }
             }
