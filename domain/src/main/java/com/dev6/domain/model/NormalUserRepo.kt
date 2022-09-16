@@ -1,8 +1,8 @@
-package com.dev6.data.model.profile
+package com.dev6.domain.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDetailResponse(
+data class NormalUserRepo(
     @SerializedName("address")
     val address: String,
     @SerializedName("allReplyCount")
@@ -17,5 +17,4 @@ data class UserDetailResponse(
     val userId: String,
     @SerializedName("userName")
     val userName: String,
-
 )

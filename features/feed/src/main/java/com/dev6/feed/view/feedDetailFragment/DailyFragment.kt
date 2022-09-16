@@ -45,14 +45,11 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                 )
             } else {
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
-                findNavController().navigate(
-                    R.id.action_feedFragment_to_fragmentFeedDaily2,
-                    Bundle().apply { putSerializable("shelterData", it) }
-                )
+                findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily2 ,Bundle().apply {putSerializable("dailyPost", it)})
             }
-            // val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            // dailyIntent.putExtra("dailyPostFeed", it)
-            // startActivity(dailyIntent)
+            //val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
+            //dailyIntent.putExtra("dailyPostFeed", it)
+           // startActivity(dailyIntent)
         }
 
         shelterAdapter = DailyshelterRecyclerAdapter {

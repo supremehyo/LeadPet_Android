@@ -1,6 +1,6 @@
 <resources>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="default_web_client_id">18772755543-ih41d4qsnil6rnm4shfe419ur4n12thk.apps.googleusercontent.com</string>
+    <string name="default_web_client_id">18772755543-sfof8gl4v7p2k01m4trnfs5l8p5917dp.apps.googleusercontent.com</string>
     <string name="NATIVE_APP_KEY">45fa1f09e164036bb1161caaf6d5fb8b</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="some_id">이메일로 로그인</string>

@@ -51,7 +51,8 @@ class LoginViewModel @Inject constructor(
                             uid = uiState.data.uid
                             userId = uiState.data.userId
                         }
-                        event(Event.LoginEvent(loginStateFlow.value))
+                      //  event(Event.LoginEvent(loginStateFlow.value))
+                        event(Event.LoginEvent(uiState.data))
                     }
                     is UiState.Error -> {
                         _lodingFlow.value = false
@@ -78,7 +79,7 @@ class LoginViewModel @Inject constructor(
 
     sealed class Event {
         data class LoginEvent(
-            val loginData: Login
+            val loginData: User
         ) : Event()
 
         data class JoinEvent(

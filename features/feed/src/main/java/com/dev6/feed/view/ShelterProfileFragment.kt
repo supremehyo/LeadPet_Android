@@ -1,10 +1,11 @@
 package com.dev6.feed.view
 
 import android.net.Uri
+import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
@@ -19,7 +20,6 @@ import com.dev6.feed.view.profileDetailFragment.ProfileIntroduceFragment
 import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.feed.viewmodel.ProfileViewModel
 import com.google.android.material.tabs.TabLayout
-import kotlinx.coroutines.flow.collect
 
 
 class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
@@ -43,6 +43,13 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
         profileDailyFragment = ProfileDailyFragment()
         profileDonationFragment = ProfileDonationFragment()
         profileAdoptFragment = ProfileAdoptFragment()
+
+        shelterData?.let {
+            val bundle = Bundle()
+            bundle.putString("userId", shelterData?.userId)
+            profileIntroduceFragment.setArguments(bundle)
+        }
+
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, profileIntroduceFragment).commit()
     }
@@ -50,7 +57,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     override fun initViewModel() {
         super.initViewModel()
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
-        profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "app1")
+        profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "")
     }
 
     override fun afterViewCreated() {
@@ -106,6 +113,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
                     when (tab?.position) {
                         0 -> {
                             selected = profileIntroduceFragment
+
                             //feedViewModel.setCurrentView(FeedViewType.TOTAL)
                         }
                         1 -> {

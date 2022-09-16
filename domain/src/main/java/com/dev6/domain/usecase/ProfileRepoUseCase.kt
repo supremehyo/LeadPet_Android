@@ -1,6 +1,8 @@
 package com.dev6.domain.usecase
 
+import android.util.Log
 import com.dev6.core.base.UiState
+import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.repository.ProfileRepository
 import kotlinx.coroutines.flow.flow
@@ -14,6 +16,7 @@ class ProfileRepoUseCase @Inject constructor(
         runCatching {
             profileRepository.getProfileUserDetailData(userId)
         }.onSuccess { result ->
+
             emit(UiState.Success(result))
         }.onFailure {
             emit(UiState.Error(it))
@@ -24,6 +27,28 @@ class ProfileRepoUseCase @Inject constructor(
         emit(UiState.Loding)
         runCatching {
             profileRepository.updateShelterProfileData(dto, userId)
+        }.onSuccess { result ->
+            emit(UiState.Success(result))
+        }.onFailure {
+            emit(UiState.Error(it))
+        }
+    }
+
+    fun getNormalUserProfileDetailData(userId: String) = flow{
+        emit(UiState.Loding)
+        runCatching {
+            profileRepository.getNormalUserDetail(userId)
+        }.onSuccess { result ->
+            emit(UiState.Success(result))
+        }.onFailure {
+            emit(UiState.Error(it))
+        }
+    }
+
+    fun updateNormalUserProfileDetailData(dto: NormalUserUpdateRepo, userId: String) = flow{
+        emit(UiState.Loding)
+        runCatching {
+            profileRepository.updateNormalUserData(dto,userId)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
