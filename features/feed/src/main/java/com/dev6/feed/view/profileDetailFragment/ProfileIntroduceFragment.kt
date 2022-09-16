@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.enums.UserType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileIntroduceBinding
@@ -32,12 +33,13 @@ class ProfileIntroduceFragment :
         //userId 가 "" 라는건 쉘터 클릭으로 들어온게 아니라는것
         when (userId) {
             "" -> when(UserData.userType){
-                "NORMAL"->{
+                UserType.NORMAL->{
                     profileViewModel.getNormalUserProfileDetailData(UserData.userId)
                 }
-                "SHELTER"->{
+                UserType.SHELTER->{
                     profileViewModel.getShelterProfileDetailData(UserData.userId)
                 }
+                else -> {}
             }
             else -> {
                 profileViewModel.getClickShelterProfileDetailData(userId)
