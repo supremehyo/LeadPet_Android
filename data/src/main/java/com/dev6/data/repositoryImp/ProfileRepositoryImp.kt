@@ -15,7 +15,7 @@ class ProfileRepositoryImp @Inject constructor(
     private val profileRemoteSource: ProfileRemoteSource
 ) : ProfileRepository {
     override suspend fun getProfileUserDetailData(userId: String): ProfileUserRepo {
-        Log.v("sdfsdfqvbwv3" , userId)
+
         return profileRemoteSource.getShelterProfileDetailData(userId).toDomain()
     }
 
@@ -27,6 +27,7 @@ class ProfileRepositoryImp @Inject constructor(
     }
 
     override suspend fun getNormalUserDetail(userId: String): NormalUserRepo {
+        Log.v("sdfsdfa" , userId)
         return profileRemoteSource.getNormalUserDetail(userId).toDomain()
     }
 
