@@ -11,8 +11,12 @@ import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.usecase.*
+import com.dev6.post.state.AdoptChoiceState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import javax.inject.Inject
@@ -38,6 +42,9 @@ class ProfileViewModel
 
     private val _eventNormalUserProfileUpdateDetail = MutableEventFlow<Event>()
     val eventNormalUserProfileUpdateDetail = _eventNormalUserProfileUpdateDetail.asEventFlow()
+
+    private val _cityChoiceStateFlow = MutableStateFlow<String>("서울")
+    val cityChoiceStateFlow = _cityChoiceStateFlow.asStateFlow()
 
     ///쉘터 프로필 디테일 이벤트
     fun eventShelterProfileDetailData(event :Event){
@@ -96,6 +103,10 @@ class ProfileViewModel
         profileRepoUseCase.updateShelterProfileDetailData(dto ,userId).collect{ uiState->
             eventUpdateShelterProfileData(Event.ProfileUpdateUiEvent(uiState))
         }
+    }
+
+    fun updateCitySelection(city: String) {
+        _cityChoiceStateFlow.value = city
     }
 
     //프로필 유저 데이터 업데이트 하기

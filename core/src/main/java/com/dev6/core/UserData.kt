@@ -9,4 +9,5 @@ object UserData {
     var userId: String = ""
     var email: String? = ""
     var userType: UserType? = UserType.NORMAL
+    var userCity : String? = ""
 }

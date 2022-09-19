@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
@@ -29,7 +30,7 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
     lateinit var selected: Fragment
 
     override fun initView() {
-      //  initTabLayout()
+        //  initTabLayout()
         //    profileUserDonationFragment = ProfileUserDonationFragment()
         profileUserScrapFragment = ProfileUserScrapFragment()
         childFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, profileUserScrapFragment).commit()
@@ -43,6 +44,9 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
 
     override fun initListener() {
         //TODO 해당 피드를 눌렀을때 post id 를 가지고 있다가 이동
+        binding.userFollowTv.setOnClickListener {
+            findNavController().navigate(R.id.action_userFragment_to_userProfileUpdateFragment)
+        }
     }
 
     override fun afterViewCreated() {

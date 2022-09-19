@@ -47,9 +47,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
                 findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily2 ,Bundle().apply {putSerializable("dailyPost", it)})
             }
-            //val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            //dailyIntent.putExtra("dailyPostFeed", it)
-           // startActivity(dailyIntent)
         }
 
         shelterAdapter = DailyshelterRecyclerAdapter {
@@ -89,7 +86,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     }
 
     private fun getShelterList() {
-        feedViewModel.getNearShelterList("", "")
+        feedViewModel.getNearShelterList(UserData.userCity ?: "", "")
     }
 
     override fun afterViewCreated() {
