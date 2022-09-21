@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.enums.FeedViewType
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentUserBinding
 import com.dev6.feed.view.profileDetailFragment.ProfileUserDonationFragment
@@ -30,15 +31,19 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
     lateinit var selected: Fragment
 
     override fun initView() {
-        //  initTabLayout()
-        //    profileUserDonationFragment = ProfileUserDonationFragment()
+        feedViewModel.setCurrentView(FeedViewType.PROFILE)
         profileUserScrapFragment = ProfileUserScrapFragment()
+        binding.apply {
+            userProfileNameTv.text = UserData.shelterName
+            userProfileDesTv.text = UserData.intro
+            Glide.with(binding.root).load(Uri.parse(UserData.profileImage)).error(R.drawable.dailay_image1).circleCrop()
+                .into(userProfileIv)
+        }
         childFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, profileUserScrapFragment).commit()
     }
 
     override fun initViewModel() {
         //TODO 해당 유저의 uuid 로 관련 피드 데이터 요청
-        Log.v("sdfsdfa" , UserData.userId)
         profileViewModel.getNormalUserProfileDetailData(UserData.userId)
     }
 
@@ -66,6 +71,7 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                                         .into(userProfileIv)
                                     userProfileDesTv.text = userProfileData.intro
                                     userProfileNameTv.text = userProfileData.userName
+                                    UserData.userName = userProfileData.userName
                                 }
                             }
                             is UiState.Error -> {
@@ -106,8 +112,7 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                             selected = profileUserScrapFragment
                         }
                     }
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, selected).commit()
+                    childFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, selected).commit()
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {

@@ -21,8 +21,8 @@
                 android:id="@+id/profileleftArrow"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:rotationY="180"
                 android:layout_marginLeft="16dp"
+                android:rotationY="180"
                 android:src="@drawable/ic_vector"
                 app:layout_constraintBottom_toBottomOf="@+id/appBar"
                 app:layout_constraintEnd_toStartOf="@+id/textView7"
@@ -46,16 +46,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/shelterProfileUpdateTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="완료"
-                android:textColor="@color/grey5"
-                android:fontFamily="@font/hansneo_medium"
-                android:textSize="12sp"
                 android:layout_marginRight="16dp"
-                app:layout_constraintHorizontal_bias="1"
+                android:fontFamily="@font/hansneo_medium"
+                android:text="완료"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -116,51 +116,47 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/normalUserNicknameUpdateEt"
+            android:id="@+id/shelterUserAccountUpdateEt"
             style="@style/CustomOutlineBox"
-            android:layout_width="0dp"
+            android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="17dp"
             android:gravity="center_horizontal"
             app:counterEnabled="true"
             app:counterMaxLength="16"
-            app:helperText="2~16자 이내로 작성해 주세요"
+            app:helperText="후원계좌"
             app:helperTextTextColor="@color/Gray_04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11"
-            app:layout_constraintVertical_bias="0.01">
+            app:layout_constraintTop_toBottomOf="@+id/shelterUserIntroUpdateEt"
+            app:layout_constraintVertical_bias="0.03"
+            tools:layout_editor_absoluteX="17dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nickNameUpdateInputText"
+                android:id="@+id/AccountUpdateInputText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
                 android:fontFamily="@font/custom_font_family_medium"
                 android:gravity="start|top"
-                android:hint="닉네임 변경"
+                android:hint="후원계좌변경"
                 android:paddingTop="10dp"
                 android:textColorHint="@color/text_color_hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/normalUserIntroUpdateEt"
+            android:id="@+id/shelterUserIntroUpdateEt"
             style="@style/CustomOutlineBox"
-            android:layout_width="0dp"
+            android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="17dp"
             android:gravity="center_horizontal"
             app:counterEnabled="true"
             app:counterMaxLength="16"
-            app:helperText="2~16자 이내로 작성해 주세요"
+            app:helperText="내 소개 작성"
             app:helperTextTextColor="@color/Gray_04"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/normalUserNicknameUpdateEt"
-            app:layout_constraintVertical_bias="0.03">
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            tools:layout_editor_absoluteX="17dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/IntroUpdateInputText"
@@ -174,5 +170,90 @@
                 android:paddingTop="10dp"
                 android:textColorHint="@color/text_color_hint" />
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/shelterUserHomepageUpdateEt"
+            style="@style/CustomOutlineBox"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="17dp"
+            android:gravity="center_horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:helperText="홈페이지 변경"
+            app:helperTextTextColor="@color/Gray_04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shelterUserAccountUpdateEt"
+            app:layout_constraintVertical_bias="0.03"
+            tools:layout_editor_absoluteX="17dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/HomepageUpdateInputText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/custom_font_family_medium"
+                android:gravity="start|top"
+                android:hint="홈페이지 변경"
+                android:paddingTop="10dp"
+                android:textColorHint="@color/text_color_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/shelterUserPhoneUpdateEt"
+            style="@style/CustomOutlineBox"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="17dp"
+            android:gravity="center_horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:helperText="연락처 변경"
+            app:helperTextTextColor="@color/Gray_04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shelterUserHomepageUpdateEt"
+            app:layout_constraintVertical_bias="0.03"
+            tools:layout_editor_absoluteX="17dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/PhoneUpdateInputText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/custom_font_family_medium"
+                android:gravity="start|top"
+                android:hint="연락처 변경"
+                android:paddingTop="10dp"
+                android:textColorHint="@color/text_color_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hansneo_medium"
+            android:text="지역정보 수정"
+            android:textSize="14dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guide3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shelterUserPhoneUpdateEt"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/citySelectBt"
+            style="@style/bottomSeatCheckStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서울"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

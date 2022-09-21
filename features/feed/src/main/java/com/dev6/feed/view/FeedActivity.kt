@@ -105,14 +105,12 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         navController.setGraph(R.navigation.feed_nav_graph)
-        /*여여기
         if (UserData.userType == UserType.NORMAL) { // 유저 type이 NORMAL면 해당 바텀네비게이션으로 다시 그리기
             navController.setGraph(R.navigation.feed_nav_graph2)
             binding.bottomNavigationView.menu.clear()
             binding.bottomNavigationView.inflateMenu(R.menu.bottome_menu2)
         }
 
-         */
         navHostFragment?.let { binding.bottomNavigationView.setupWithNavController(navController) }
         binding.bottomNavigationView.itemIconTintList = null
     }
@@ -130,8 +128,15 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             }
             FeedViewType.PROFILE -> {
                 binding.constraintLayout.visibility = View.GONE
-                binding.bottomNavigationView.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.logoImage.visibility = View.GONE
+                binding.locationSpinner.visibility = View.VISIBLE
+                binding.fabPost.visibility = View.GONE
+            }
+            FeedViewType.PROFILEUPDATE->{
+                binding.constraintLayout.visibility = View.GONE
+                binding.logoImage.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.GONE
                 binding.locationSpinner.visibility = View.VISIBLE
                 binding.fabPost.visibility = View.GONE
             }

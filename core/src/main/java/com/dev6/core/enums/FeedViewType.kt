@@ -4,6 +4,7 @@ enum class FeedViewType {
     HOME,
     FEED,
     PROFILE,
+    PROFILEUPDATE,
     TOTAL,
     SHELTERPROFILECLICK,
     USERPROFILECLICK,

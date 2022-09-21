@@ -5,15 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.enums.FeedViewType
+import com.dev6.domain.model.NormalUserUpdateRepo
+import com.dev6.domain.model.ProfileUserUpdateRepo
+import com.dev6.domain.model.ShelterResopnseEntitiyRepo
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentShelterProfileUpdateBinding
+import com.dev6.feed.viewmodel.FeedViewModel
+import com.dev6.feed.viewmodel.ProfileViewModel
+import gun0912.tedimagepicker.builder.TedImagePicker
 
 class ShelterProfileUpdateFragment :
     BindingFragment<FragmentShelterProfileUpdateBinding>(R.layout.fragment_shelter_profile_update) {
-
+    private val profileViewModel : ProfileViewModel by activityViewModels()
+    private val feedViewModel : FeedViewModel by activityViewModels()
+    private var profileImage : String = ""
     override fun initView() {
         super.initView()
+        feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
     }
 
     override fun initViewModel() {
@@ -22,9 +35,30 @@ class ShelterProfileUpdateFragment :
 
     override fun initListener() {
         super.initListener()
+        binding.shelterProfileUpdateTv.setOnClickListener {
+            /*
+            var shelterResopnseEntitiyRepo = ProfileUserUpdateRepo(
+
+            )
+            profileViewModel.updateShelterProfileData(shelterResopnseEntitiyRepo, UserData.userId)
+
+             */
+        }
+        binding.shelterProfileImageIv.setOnClickListener {
+            TedImagePicker.with(requireContext())
+                .max(1, "")
+                .startMultiImage { uriList ->
+                    profileImage = uriList[0].toString()
+                    Glide.with(binding.root)
+                        .load(uriList[0])
+                        .circleCrop()
+                        .into(binding.shelterProfileImageIv)
+                }
+        }
     }
 
     override fun afterViewCreated() {
         super.afterViewCreated()
     }
+
 }

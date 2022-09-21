@@ -18,6 +18,7 @@ dependencies {
     implementation (project(":domain"))
     implementation(project(":data"))
     implementation(project(mapOf("path" to ":features:post")))
+    implementation(Image.TED_IMAGE_PICKER)
     implementation(Kotlin.KOTLIN_STDLIB)
     implementation(Kotlin.COROUTINES_ANDROID)
     implementation(Kotlin.COROUTINES_CORE)

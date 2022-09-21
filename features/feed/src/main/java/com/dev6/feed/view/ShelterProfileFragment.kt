@@ -56,15 +56,14 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, profileIntroduceFragment).commit()
 
-        //여여기
-        /*
+
         if(shelterData?.userId == UserData.userId){
             binding.profileUpdateTv.visibility = View.VISIBLE
         }else{//자신의 계정이 아니면 프로필 수정 버튼 감춤
             binding.profileUpdateTv.visibility = View.INVISIBLE
         }
 
-         */
+
     }
 
     override fun initViewModel() {
