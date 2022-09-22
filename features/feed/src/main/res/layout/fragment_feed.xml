@@ -26,7 +26,26 @@
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/gray_05"
             app:tabTextAppearance="@style/tabTextSetting"
-            app:tabTextColor="@color/Gray_06" />
+            app:tabTextColor="@color/Gray_06" >
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일상" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기부" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="입양" />
+        </com.google.android.material.tabs.TabLayout>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_detail_fragment"
