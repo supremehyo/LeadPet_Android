@@ -97,12 +97,6 @@ class ShelterUserMoreFragment :
                     is JoinViewModel.Event.UiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
-                                /*
-                                val dailyIntent = Intent(context, JoinActivity::class.java)
-                                userType
-                                startActivity(dailyIntent)
-
-                                 */
                                 val feedIntent = Intent(context, FeedActivity::class.java)
                                 feedIntent.putExtra("userType", userType)
                                 startActivity(feedIntent)

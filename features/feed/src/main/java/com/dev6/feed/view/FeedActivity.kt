@@ -110,6 +110,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             binding.bottomNavigationView.menu.clear()
             binding.bottomNavigationView.inflateMenu(R.menu.bottome_menu2)
         }
+
         navHostFragment?.let { binding.bottomNavigationView.setupWithNavController(navController) }
         binding.bottomNavigationView.itemIconTintList = null
     }
@@ -126,8 +127,18 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                 binding.locationSpinner.visibility = View.VISIBLE
             }
             FeedViewType.PROFILE -> {
+                binding.constraintLayout.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.logoImage.visibility = View.GONE
                 binding.locationSpinner.visibility = View.VISIBLE
+                binding.fabPost.visibility = View.GONE
+            }
+            FeedViewType.PROFILEUPDATE->{
+                binding.constraintLayout.visibility = View.GONE
+                binding.logoImage.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.locationSpinner.visibility = View.VISIBLE
+                binding.fabPost.visibility = View.GONE
             }
             FeedViewType.HOME -> {
                 binding.logoImage.visibility = View.VISIBLE
@@ -142,9 +153,9 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             }
             FeedViewType.FEEDDETAIL -> {
                 binding.constraintLayout.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.GONE
                 binding.logoImage.visibility = View.GONE
                 binding.locationSpinner.visibility = View.VISIBLE
-                binding.bottomNavigationView.visibility = View.GONE
                 binding.fabPost.visibility = View.GONE
             }
             FeedViewType.USERPROFILECLICK -> {

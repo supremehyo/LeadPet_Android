@@ -46,9 +46,16 @@
         android:id="@+id/userFragment"
         android:name="com.dev6.feed.view.UserFragment"
         tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_userFragment_to_userProfileUpdateFragment"
+            app:destination="@id/userProfileUpdateFragment" />
     </fragment>
 
-
+    <fragment
+        android:id="@+id/userProfileUpdateFragment"
+        android:name="com.dev6.feed.view.UserProfileUpdateFragment"
+        tools:layout="@layout/fragment_user_profile_update">
+    </fragment>
 
 
 </navigation>
