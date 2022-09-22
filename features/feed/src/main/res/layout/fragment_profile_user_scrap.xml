@@ -7,15 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".view.profileDetailFragment.ProfileUserScrapFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="스크랩화면"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <View
+        android:id="@+id/view4"
+        style="@style/Divider"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/view6"
+        style="@style/Divider"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/Widget_Feed_Tab_Text"
+        tools:layout_editor_absoluteY="291dp">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="기부" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장" />
+
+    </com.google.android.material.tabs.TabLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

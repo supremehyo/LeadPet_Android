@@ -144,4 +144,13 @@
         <item name="android:buttonTint">@drawable/color_main_gray_06</item>
     </style>
 
+    <style name="Widget_Feed_Tab_Text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/hansneo_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:text">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DefaultTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+    </style>
 </resources>
