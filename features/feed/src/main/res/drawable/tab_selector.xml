@@ -4,7 +4,7 @@
     <item android:gravity="center">
         <shape>
             <size
-                android:width="15dp"
+                android:width="30dp"
                 android:height="3dp" />
             <solid android:color="@color/Main" />
         </shape>

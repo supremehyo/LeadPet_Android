@@ -31,7 +31,7 @@
                     style="@style/CustomTextViewTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="10dp"
                     android:text="안락사예정일 (비공개)"
                     app:layout_constraintStart_toStartOf="@id/gl_left2"
                     app:layout_constraintTop_toBottomOf="@id/til_disease" />
@@ -70,13 +70,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="25dp"
                     android:hint="@string/hint_title"
                     app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
                     app:layout_constraintEnd_toStartOf="@id/gi_light2"
                     app:layout_constraintHorizontal_bias="0.01"
                     app:layout_constraintStart_toEndOf="@id/v_camera2"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/v_camera2"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <com.dev6.core.view.CustomButtonSpinner
@@ -98,7 +97,7 @@
                     android:id="@+id/btn_choice_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:background="@drawable/round_8dp_gray06"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_choice_gender"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
@@ -200,7 +199,7 @@
                     style="@style/CustomOutlineBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     app:boxStrokeWidth="2dp"
                     app:endIconMode="clear_text"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
@@ -223,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@id/gl_left2"
                     app:layout_constraintTop_toBottomOf="@+id/tv_euthanasia">
@@ -232,13 +231,9 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_introduce"
-                    style="@style/CustomOutlineBox"
+                    style="@style/Widget_Feed_Introduce_OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingTop="15dp"
-                    app:boxStrokeWidth="2dp"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="1000"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
