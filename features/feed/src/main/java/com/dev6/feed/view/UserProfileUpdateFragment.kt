@@ -1,5 +1,6 @@
 package com.dev6.feed.view
 
+import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -24,6 +25,9 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
     override fun initView() {
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
+        binding.nickNameUpdateInputText.setText(UserData.userName)
+        binding.IntroUpdateInputText.setText(UserData.intro)
+        binding.citySelectBt.setText(UserData.userCity)
     }
 
     override fun initViewModel() {
@@ -46,9 +50,10 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
             var normalUserUpdateRepo = NormalUserUpdateRepo(
                 cityName,
                 binding.IntroUpdateInputText.text.toString(),
-                UserData.userName,
+                binding.nickNameUpdateInputText.text.toString(),
                 UserData.profileImage.toString()
             )
+            Log.v("dfasdfsdf" , binding.IntroUpdateInputText.text.toString())
             profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
         }
 

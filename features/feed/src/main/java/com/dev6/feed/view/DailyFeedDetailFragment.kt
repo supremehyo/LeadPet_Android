@@ -217,16 +217,17 @@ class DailyFeedDetailFragment :
     }
 
     private fun changeLikedHeart() {
-        if (likedBoolean) {
+        if (likedBoolean == false) {
             Log.v("initlike2", likedBoolean.toString())
-            binding.dailyLikeImage.setColorFilter(Color.parseColor("#C4C4C4"))
+            binding.dailyLikeImage.setColorFilter(Color.parseColor("#FF675E"))
+
             binding.dailyLikeCount.text = (binding.dailyLikeCount.text.toString().toInt() + 1).toString()
-            likedBoolean = false
+            likedBoolean = true
         } else {
             Log.v("initlike3", likedBoolean.toString())
-            binding.dailyLikeImage.setColorFilter(Color.parseColor("#FF675E"))
+            binding.dailyLikeImage.setColorFilter(Color.parseColor("#C4C4C4"))
             binding.dailyLikeCount.text = (binding.dailyLikeCount.text.toString().toInt() - 1).toString()
-            likedBoolean = true
+            likedBoolean = false
         }
     }
 }

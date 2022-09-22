@@ -118,7 +118,7 @@ class ProfileViewModel
 
     fun updateNormalUserProfileData(dto: NormalUserUpdateRepo ,userId :String) = viewModelScope.launch{
         profileRepoUseCase.updateNormalUserProfileDetailData(dto ,userId).collect{ uiState->
-            eventUpdateNormalUserProfileData(Event.ProfileUpdateUiEvent(uiState))
+            eventUpdateNormalUserProfileData(Event.NormalUserProfileUpdateUiEvent(uiState))
         }
     }
 

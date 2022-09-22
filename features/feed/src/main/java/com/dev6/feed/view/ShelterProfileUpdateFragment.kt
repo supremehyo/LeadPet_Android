@@ -13,6 +13,7 @@ import com.dev6.core.enums.FeedViewType
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.model.ShelterResopnseEntitiyRepo
+import com.dev6.domain.model.User
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentShelterProfileUpdateBinding
 import com.dev6.feed.viewmodel.FeedViewModel
@@ -27,6 +28,14 @@ class ShelterProfileUpdateFragment :
     override fun initView() {
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
+        binding.IntroUpdateInputText.setText(UserData.shelterIntro)
+        binding.AccountUpdateInputText.setText(UserData.shelterAccount)
+        binding.HomepageUpdateInputText.setText(UserData.shelterHomepage)
+        binding.PhoneUpdateInputText.setText(UserData.shelterPhoneNumber)
+        binding.citySelectBt.setText(UserData.userCity)
+
+
+
     }
 
     override fun initViewModel() {
@@ -36,13 +45,19 @@ class ShelterProfileUpdateFragment :
     override fun initListener() {
         super.initListener()
         binding.shelterProfileUpdateTv.setOnClickListener {
-            /*
-            var shelterResopnseEntitiyRepo = ProfileUserUpdateRepo(
 
+            var shelterResopnseEntitiyRepo = ProfileUserUpdateRepo(
+                UserData.shelterAccount?: "",
+                UserData.shelterAddress?: "",
+                UserData.shelterHomepage?: "",
+                UserData.shelterIntro?: "",
+                UserData.shelterManager?: "",
+                UserData.shelterName?: "",
+                UserData.shelterPhoneNumber?: ""
             )
             profileViewModel.updateShelterProfileData(shelterResopnseEntitiyRepo, UserData.userId)
 
-             */
+
         }
         binding.shelterProfileImageIv.setOnClickListener {
             TedImagePicker.with(requireContext())

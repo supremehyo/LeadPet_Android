@@ -23,14 +23,14 @@ interface ProfileAPI {
         @Path("userId") userId: String
     ): Response<UserDetailResponse>
 
-    @FormUrlEncoded
-    @PUT("/v1/shelter/{userId}")
+
+    @PUT("/v1/user/{userId}")
     suspend fun updateNormalUserData(
         @Path("userId") userId: String,
         @Body body: UserUpdateRequest
     ): Response<ResponseBody>
 
-    @FormUrlEncoded
+
     @PUT("/v1/shelter/{userId}")
     suspend fun updateShelterData(
         @Path("userId") userId: String,
