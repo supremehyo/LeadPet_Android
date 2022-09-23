@@ -63,7 +63,7 @@ class DonationPagingAdapter(private val callback: (DonationPost) -> Unit) :
             }
             Glide.with(binding.root)
                 .load(Uri.parse(""))
-                .error(R.drawable.dailay_image1)
+                .error(R.mipmap.img_1)
                 .circleCrop()
                 .into(binding.donationFeedIv)
         }

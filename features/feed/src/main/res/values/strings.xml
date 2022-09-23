@@ -6,4 +6,6 @@
         <item>최신순</item>
         <item>좋아요순</item>
     </string-array>
+
+    <string name="writer_polite_word">%1$s님</string>
 </resources>

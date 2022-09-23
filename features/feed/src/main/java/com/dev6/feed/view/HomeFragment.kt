@@ -74,7 +74,7 @@ class HomeFragment :
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
 
-        binding.recommendAdoptRc.apply {
+        binding.rvHelp.apply {
             adapter = adoptPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Build
 import android.service.autofill.UserData
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -91,6 +92,7 @@ class DailyFeedDetailActivity :
                                     commentAdapter.submitData(it)
                                 }
                             }
+
                             is UiState.Error -> {
                                 Toast.makeText(
                                     this@DailyFeedDetailActivity,
@@ -98,6 +100,7 @@ class DailyFeedDetailActivity :
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
+
                             is UiState.Loding -> {
                                 Toast.makeText(
                                     this@DailyFeedDetailActivity,
@@ -107,6 +110,7 @@ class DailyFeedDetailActivity :
                             }
                         }
                     }
+
                     else -> {
                     }
                 }
@@ -126,6 +130,7 @@ class DailyFeedDetailActivity :
                                 ).show()
                                 changeLikedHeart()
                             }
+
                             is UiState.Error -> {
                                 Toast.makeText(
                                     this@DailyFeedDetailActivity,
@@ -133,6 +138,7 @@ class DailyFeedDetailActivity :
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
+
                             is UiState.Loding -> {
                                 Toast.makeText(
                                     this@DailyFeedDetailActivity,
@@ -142,6 +148,7 @@ class DailyFeedDetailActivity :
                             }
                         }
                     }
+
                     else -> {
                     }
                 }
@@ -169,21 +176,21 @@ class DailyFeedDetailActivity :
                 }
                 Log.v("initlike", likedBoolean.toString())
                 likedBoolean = liked
-                makeLikedHeart(liked)
+                makeLikedHeart(liked, binding.dailyLikeImage)
                 makeImageView("")
             }
         }
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(uri).error(R.drawable.alarm).into(binding.dailyContentImage)
+        Glide.with(this).load(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
     }
 
-    private fun makeLikedHeart(boolean: Boolean) {
+    private fun makeLikedHeart(boolean: Boolean, imageView: ImageView) {
         if (boolean) {
-            binding.dailyLikeImage.setColorFilter(Color.parseColor("#FF675E"))
+            imageView.setColorFilter(Color.parseColor("#FF675E"))
         } else {
-            binding.dailyLikeImage.setColorFilter(Color.parseColor("#C4C4C4"))
+            imageView.setColorFilter(Color.parseColor("#C4C4C4"))
         }
     }
 
@@ -191,12 +198,14 @@ class DailyFeedDetailActivity :
         if (likedBoolean) {
             Log.v("initlike2", likedBoolean.toString())
             binding.dailyLikeImage.setColorFilter(Color.parseColor("#C4C4C4"))
-            binding.dailyLikeCount.text = (binding.dailyLikeCount.text.toString().toInt() + 1).toString()
+            binding.dailyLikeCount.text =
+                (binding.dailyLikeCount.text.toString().toInt() + 1).toString()
             likedBoolean = false
         } else {
             Log.v("initlike3", likedBoolean.toString())
             binding.dailyLikeImage.setColorFilter(Color.parseColor("#FF675E"))
-            binding.dailyLikeCount.text = (binding.dailyLikeCount.text.toString().toInt() - 1).toString()
+            binding.dailyLikeCount.text =
+                (binding.dailyLikeCount.text.toString().toInt() - 1).toString()
             likedBoolean = true
         }
     }

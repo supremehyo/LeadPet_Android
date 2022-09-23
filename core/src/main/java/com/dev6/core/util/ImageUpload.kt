@@ -7,6 +7,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import com.google.firebase.storage.FirebaseStorage
+import timber.log.Timber
 import java.io.ByteArrayOutputStream
 
 
@@ -24,7 +25,7 @@ class ImageUpload() {
                     taskSnapshot -> // 업로드 정보를 담는다
                 taskSnapshot.metadata?.reference?.downloadUrl?.addOnSuccessListener {
                         it-> var imageUrl=it.toString()
-                    Log.v("imageuriTest" , imageUrl)
+                    Timber.tag("imageuriTest")
                 }
             }
             .addOnFailureListener {

@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
@@ -71,8 +72,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
                                var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     Glide.with(binding.root)
-                                        .load(Uri.parse(""))
-                                        .error(R.drawable.dailay_image1)
+                                        .load(R.mipmap.img_1)
                                         .circleCrop()
                                         .into(shelterProfileImageIv)
                                     shelterProfileDesTv.text = userProfileData.shelterIntro

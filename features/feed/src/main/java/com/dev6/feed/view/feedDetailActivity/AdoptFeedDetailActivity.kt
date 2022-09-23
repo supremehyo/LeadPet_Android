@@ -65,7 +65,7 @@ class AdoptFeedDetailActivity :
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(uri).error(R.drawable.alarm).into(binding.adoptContentImage)
+        Glide.with(this).load(R.mipmap.img_3).centerCrop().into(binding.adoptContentImage)
     }
 
     override fun afterOnCreate() {
