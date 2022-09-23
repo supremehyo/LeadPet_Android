@@ -63,10 +63,8 @@ class ProfileIntroduceFragment :
             profileViewModel.eventClickProfileDetail.collect{ evnet->
                 when(evnet){
                     is ProfileViewModel.Event.ProfileUiEvent->{
-
                         when(evnet.uiState){
                             is UiState.Success->{
-
                                 var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     shelterProfileLocationTv.text = userProfileData.shelterAddress

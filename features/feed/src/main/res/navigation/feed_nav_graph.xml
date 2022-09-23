@@ -40,12 +40,21 @@
         android:id="@+id/profileFragment"
         android:name="com.dev6.feed.view.ShelterProfileFragment"
         tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_shelterProfileUpdateFragment"
+            app:destination="@id/shelterProfileUpdateFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.dev6.feed.view.UserFragment"
         tools:layout="@layout/fragment_user">
+    </fragment>
+
+    <fragment
+        android:id="@+id/shelterProfileUpdateFragment"
+        android:name="com.dev6.feed.view.ShelterProfileUpdateFragment"
+        tools:layout="@layout/fragment_shelter_profile_update">
     </fragment>
 
 

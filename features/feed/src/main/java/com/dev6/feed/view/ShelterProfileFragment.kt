@@ -3,11 +3,13 @@ package com.dev6.feed.view
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
@@ -53,12 +55,28 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
 
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, profileIntroduceFragment).commit()
+
+
+        if(shelterData?.userId == UserData.userId){
+            binding.profileUpdateTv.visibility = View.VISIBLE
+        }else{//자신의 계정이 아니면 프로필 수정 버튼 감춤
+            binding.profileUpdateTv.visibility = View.INVISIBLE
+        }
+
+
     }
 
     override fun initViewModel() {
         super.initViewModel()
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
         profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "")
+    }
+
+    override fun initListener() {
+        super.initListener()
+        binding.profileUpdateTv.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_shelterProfileUpdateFragment)
+        }
     }
 
     override fun afterViewCreated() {
