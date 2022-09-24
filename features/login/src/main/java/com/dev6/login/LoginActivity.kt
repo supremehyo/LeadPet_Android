@@ -127,6 +127,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             UserData.uid = event.loginData.uid.toString()
             UserData.userId = event.loginData.userId
             UserData.profileImage = event.loginData.profileImage
+
             when(event.loginData.userType){
                 UserType.NORMAL->{
                     profileViewModel.getNormalUserProfileDetailData(event.loginData.userId)

@@ -17,7 +17,7 @@ class ImageUpload() {
     var storage:FirebaseStorage = FirebaseStorage.getInstance()
     val storageRef = storage.reference
 
-    fun uploadPhoto(fileName :String , uri: Uri , context : Context){
+    fun uploadPhoto(fileName :String , uri: Uri , context : Context , response: (String) -> Unit){
         var temp = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri)
         storage.getReference().child("image").child(fileName)
             .putBytes(compressBitmap(temp))//어디에 업로드할지 지정
@@ -25,7 +25,8 @@ class ImageUpload() {
                     taskSnapshot -> // 업로드 정보를 담는다
                 taskSnapshot.metadata?.reference?.downloadUrl?.addOnSuccessListener {
                         it-> var imageUrl=it.toString()
-                    Timber.tag("imageuriTest")
+                    response(imageUrl)
+
                 }
             }
             .addOnFailureListener {

@@ -22,11 +22,11 @@ class ProfileDonationFragment :
     private  val feedViewModel : FeedViewModel by activityViewModels()
     private lateinit var profileDonationRc: RecyclerView
     private lateinit var profileDonationAdapter: DonationPagingAdapter
-
-
-
+    var userId: String = ""
     override fun initView() {
         super.initView()
+
+        userId = arguments?.getString("userId") ?: ""
         profileDonationRc = binding.profileDonationRc
         profileDonationAdapter = DonationPagingAdapter {
             val donationIntent = Intent(context, DonationFeedDetailActivity::class.java)
@@ -41,7 +41,7 @@ class ProfileDonationFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getDonationList("","")
+        feedViewModel.getDonationList(userId,"")
     }
 
     override fun initListener() {

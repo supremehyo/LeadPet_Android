@@ -3,6 +3,7 @@ package com.dev6.data.service
 import com.dev6.data.model.adopt.AdoptFeedResponse
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.comment.CommentPaginationResponse
+import com.dev6.data.model.comment.CommentUpdateRequest
 import com.dev6.data.model.comment.LikeRequestResponse
 import com.dev6.data.model.daily.DailyFeedRequestResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
@@ -60,12 +61,10 @@ interface FeedAPI {
         @Body likeDTO: LikeRequestResponse
     ): Response<ResponseBody>
 
-    @FormUrlEncoded
+
     @POST("/v1/reply/normal")
     suspend fun postCommentData(
-        @Field("content") content : String,
-        @Field("normalPostId") normalPostId : String,
-        @Field("userId") userId : String
+        @Body commentUpdateRequest : CommentUpdateRequest
     ): Response<ResponseBody>
 
 

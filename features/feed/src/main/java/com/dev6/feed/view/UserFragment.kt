@@ -36,9 +36,11 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
         binding.apply {
             userProfileNameTv.text = UserData.shelterName
             userProfileDesTv.text = UserData.intro
-            Glide.with(binding.root).load(Uri.parse(UserData.profileImage)).error(R.drawable.dailay_image1).circleCrop()
-                .into(userProfileIv)
         }
+        Glide.with(binding.root)
+            .load(Uri.parse(UserData.profileImage))
+            .circleCrop()
+            .into(binding.userProfileIv)
         childFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, profileUserScrapFragment).commit()
     }
 

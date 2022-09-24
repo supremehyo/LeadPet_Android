@@ -1,5 +1,6 @@
 package com.dev6.feed.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -11,6 +12,7 @@ import com.dev6.core.util.asEventFlow
 import com.dev6.domain.model.ShelterEntitiyRepo
 import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.domain.model.comment.Comment
+import com.dev6.domain.model.comment.CommentUpdate
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.domain.model.donate.DonationPost
 import com.dev6.domain.model.save.DeleteSavedPost
@@ -178,8 +180,8 @@ class FeedViewModel
         }
     }
 
-    fun postCommentListByPostId(content: String, normalPostId: String, userId: String) = viewModelScope.launch {
-        commentPagingRepoUseCase.postCommentData(content, normalPostId, userId).collect { uistate ->
+    fun postCommentListByPostId(commentUpdate : CommentUpdate) = viewModelScope.launch {
+        commentPagingRepoUseCase.postCommentData(commentUpdate).collect { uistate ->
             eventCommentPost(Event.CommentPostUiEvnet(uistate))
         }
     }

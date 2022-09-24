@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
@@ -21,9 +22,10 @@ class ProfileDailyFragment :
     private val feedViewModel: FeedViewModel by activityViewModels()
     private lateinit var profileDailyRc: RecyclerView
     private lateinit var pagingAdapter: DailyPagingAdapter
-
+    var userId: String = ""
     override fun initView() {
         super.initView()
+        userId = arguments?.getString("userId") ?: ""
         pagingAdapter = DailyPagingAdapter{
             val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
             dailyIntent.putExtra("dailyPostFeed", it)
@@ -39,7 +41,7 @@ class ProfileDailyFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getFeedList("","")//likedUser는 이 프로필을 보는 userId
+        feedViewModel.getFeedList(userId, UserData.userId)//likedUser는 이 프로필을 보는 userId
     }
 
     override fun initListener() {

@@ -1,6 +1,8 @@
 package com.dev6.domain.usecase
 
+import android.util.Log
 import com.dev6.core.base.UiState
+import com.dev6.domain.model.comment.CommentUpdate
 import com.dev6.domain.repository.CommentPagingRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -22,10 +24,10 @@ class CommentPagingRepoUseCase @Inject constructor
         }
     }
 
-    fun postCommentData(content : String , normalPostId : String,userId: String) = flow {
+    fun postCommentData(commentUpdate : CommentUpdate) = flow {
         emit(UiState.Loding)
         runCatching {
-            commentPagingRepository.postCommentData(content, normalPostId, userId)
+            commentPagingRepository.postCommentData(commentUpdate)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
