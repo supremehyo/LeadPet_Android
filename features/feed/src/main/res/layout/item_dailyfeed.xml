@@ -21,7 +21,6 @@
                 android:id="@+id/dailyFeedProfileIv"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:background="@drawable/round_8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/dailyFeedWriteTimeTv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/dailyFeedProfileTv"
@@ -87,8 +86,8 @@
                 android:id="@+id/dailyFeedIv"
                 android:layout_width="79dp"
                 android:layout_height="81dp"
-                android:background="@drawable/round_8dp"
                 android:layout_marginTop="16dp"
+                style="@style/Widget_Home_ImageView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dailyFeedProfileIv"
@@ -120,7 +119,7 @@
                     android:id="@+id/dailyLikeCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="4dp"
                     android:text="4"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
                     tools:layout_editor_absoluteY="0dp" />
@@ -136,7 +135,8 @@
                     android:id="@+id/dailyCommentCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginRight="4dp"
                     android:text="4"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>

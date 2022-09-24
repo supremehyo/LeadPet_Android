@@ -62,8 +62,22 @@
         <item name="android:fontFamily">@font/custom_font_family_medium</item>
         <item name="hintTextColor">@color/Gray_04</item>
         <item name="helperTextEnabled">true</item>
+
     </style>
 
+
+    <style name="Widget_Feed_Introduce_OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input_layout_stroke</item>
+        <item name="android:textColorHint">@color/text_color_hint</item>
+        <item name="android:fontFamily">@font/custom_font_family_medium</item>
+        <item name="hintTextColor">@color/Gray_04</item>
+        <item name="helperTextEnabled">true</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">1000</item>
+
+    </style>
 
     <style name="SpinnerTextViewStyle" parent="Widget.MaterialComponents.TextView">
         <item name="android:fontFamily">@font/custom_font_family_medium</item>
@@ -119,7 +133,7 @@
     </style>
 
     <style name="tabTextSetting" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">@dimen/tab_title</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/hansansneobold</item>
     </style>
@@ -144,6 +158,15 @@
         <item name="android:buttonTint">@drawable/color_main_gray_06</item>
     </style>
 
+    <style name="Widget_Home_ImageView">
+        <item name="android:layout_width">122dp</item>
+        <item name="android:layout_height">122dp</item>
+        <item name="android:background">@drawable/round_8dp</item>
+        <item name="android:clipToOutline">true</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+
     <style name="Widget_Feed_Tab_Text" parent="@android:style/TextAppearance.Widget.TabWidget">
         <item name="android:fontFamily">@font/hansneo_medium</item>
         <item name="android:textSize">14sp</item>
@@ -151,6 +174,5 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="DefaultTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
-    </style>
+    <style name="DefaultTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView"></style>
 </resources>

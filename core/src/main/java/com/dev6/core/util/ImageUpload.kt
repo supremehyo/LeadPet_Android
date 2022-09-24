@@ -7,6 +7,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import com.google.firebase.storage.FirebaseStorage
+import timber.log.Timber
 import java.io.ByteArrayOutputStream
 
 
@@ -25,6 +26,7 @@ class ImageUpload() {
                 taskSnapshot.metadata?.reference?.downloadUrl?.addOnSuccessListener {
                         it-> var imageUrl=it.toString()
                     response(imageUrl)
+
                 }
             }
             .addOnFailureListener {

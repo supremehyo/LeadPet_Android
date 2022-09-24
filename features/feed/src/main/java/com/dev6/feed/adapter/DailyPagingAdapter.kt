@@ -68,14 +68,12 @@ class DailyPagingAdapter(private val callback: (DailyPost) -> Unit) :
                 dailyLikeCount.text = item.likedCount.toString()
                 makeLikedHeart(item.liked)
                 Glide.with(binding.root)
-                    .load(Uri.parse(item.images[0]))
-                    .error(R.drawable.dailay_image1)
-                    .circleCrop()
+                    .load(R.mipmap.img_2)
+                    .centerCrop()
                     .into(dailyFeedIv)
 
                 Glide.with(binding.root)
-                    .load(Uri.parse(item.images[0]))
-                    .error(R.drawable.dailay_image1)
+                    .load(R.mipmap.img_1)
                     .circleCrop()
                     .into(dailyFeedProfileIv)
 

@@ -37,20 +37,14 @@
         android:includeFontPadding="false"
         android:text="빠른 도움이 필요해요⭐"
         android:textColor="@color/Gray_01"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/guide1"
+        android:textSize="@dimen/h3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="120dp" />
+
 
 
     <TextView
@@ -70,6 +64,7 @@
         app:layout_constraintVertical_bias="0" />
 
     <ImageView
+        android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_chevron_down"
@@ -84,11 +79,13 @@
         android:id="@+id/adoptRc"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="1.0"
+
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="@+id/guide2"
+        app:layout_constraintTop_toBottomOf="@+id/adoptOption"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

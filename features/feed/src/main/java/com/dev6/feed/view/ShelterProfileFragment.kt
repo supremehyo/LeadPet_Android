@@ -106,8 +106,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
                                var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     Glide.with(binding.root)
-                                        .load(Uri.parse(""))
-                                        .error(R.drawable.dailay_image1)
+                                        .load(R.mipmap.img_1)
                                         .circleCrop()
                                         .into(shelterProfileImageIv)
                                     shelterProfileDesTv.text = userProfileData.shelterIntro

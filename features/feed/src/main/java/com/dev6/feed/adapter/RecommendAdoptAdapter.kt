@@ -56,9 +56,8 @@ class RecommendAdoptAdapter(private val callback: (AdoptPostFeed) -> Unit) :
                 callback(item)
             }
             Glide.with(binding.root)
-                .load(Uri.parse(""))
-                .error(R.drawable.dailay_image1)
-                .circleCrop()
+                .load(R.mipmap.img_1)
+                .centerCrop()
                 .into(binding.recommendAdoptionIv)
         }
     }

@@ -20,13 +20,14 @@
             app:layout_constraintHeight_percent="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/Main"
-            app:tabIndicatorHeight="10dp"
             app:tabIndicator="@drawable/tab_selector"
+            app:tabIndicatorColor="@color/Main"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="20dp"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/gray_05"
+            app:tabSelectedTextColor="@color/Gray_01"
             app:tabTextAppearance="@style/tabTextSetting"
-            app:tabTextColor="@color/Gray_06" >
+            app:tabTextColor="@color/Gray_06">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem"

@@ -67,8 +67,7 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                                 var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     Glide.with(binding.root)
-                                        .load(Uri.parse(""))
-                                        .error(R.drawable.dailay_image1)
+                                        .load(R.mipmap.img_1)
                                         .circleCrop()
                                         .into(userProfileIv)
                                     userProfileDesTv.text = userProfileData.intro

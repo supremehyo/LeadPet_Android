@@ -11,7 +11,7 @@ import com.dev6.domain.model.daily.DailyPost
 import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemRecommendFeedBinding
 
-class RecommendFeedAdapter(private val callback: (DailyPost) -> Unit):
+class RecommendFeedAdapter(private val callback: (DailyPost) -> Unit) :
     PagingDataAdapter<DailyPost, RecommendFeedAdapter.ImageViewHolder>(
         object : DiffUtil.ItemCallback<DailyPost>() {
             override fun areItemsTheSame(oldItem: DailyPost, newItem: DailyPost): Boolean {
@@ -33,24 +33,27 @@ class RecommendFeedAdapter(private val callback: (DailyPost) -> Unit):
         parent: ViewGroup,
         viewType: Int
     ): RecommendFeedAdapter.ImageViewHolder {
-        return ImageViewHolder(binding = ItemRecommendFeedBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false)
+        return ImageViewHolder(
+            binding = ItemRecommendFeedBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
         )
     }
 
-    inner class ImageViewHolder(private val binding: ItemRecommendFeedBinding):
+    inner class ImageViewHolder(private val binding: ItemRecommendFeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: DailyPost) {
             binding.recommendFeeTv1.text = item.title
-            binding.recommendFeedTv2.text = item.userId
+            binding.writer = item.userId
             binding.recommendItemCl.setOnClickListener {
                 callback(item)
             }
+
             Glide.with(binding.root)
-                .load(Uri.parse(""))
-                .error(R.drawable.dailay_image1)
-                .circleCrop()
-                .into(binding.recommendFeedProfileIv)
+                .load(R.mipmap.img_2)
+                .centerCrop()
+                .into(binding.recommentFeedIv)
+
         }
     }
 }

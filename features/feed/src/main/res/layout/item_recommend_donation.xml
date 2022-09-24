@@ -11,10 +11,7 @@
 
         <ImageView
             android:id="@+id/recommendDonationIv"
-            android:layout_width="122dp"
-            android:layout_height="122dp"
-            android:background="@drawable/round_8dp"
-            android:src="@drawable/home"
+            style="@style/Widget_Home_ImageView"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -31,13 +28,13 @@
 
         <TextView
             android:id="@+id/recommendDonationFeedTv1"
-            android:layout_width="122dp"
+            android:layout_width="wrap_content"
             android:layout_height="16dp"
+            android:layout_marginTop="9dp"
             android:fontFamily="@font/hansneo_medium"
             android:text="고양이 사료가 부족해요!"
             android:textColor="@color/black"
             android:textSize="12dp"
-            android:layout_marginTop="9dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recommendDonationIv"
             app:layout_constraintHorizontal_bias="0.0"

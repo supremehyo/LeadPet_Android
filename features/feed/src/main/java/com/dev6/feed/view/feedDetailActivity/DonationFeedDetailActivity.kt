@@ -95,6 +95,8 @@ class DonationFeedDetailActivity :
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(uri).error(R.drawable.alarm).into(binding.dailyContentImage)
+        Glide.with(this)
+            .load(R.mipmap.img_3)
+            .into(binding.dailyContentImage)
     }
 }

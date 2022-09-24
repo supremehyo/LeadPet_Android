@@ -58,12 +58,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textin_introduce"
-        style="@style/CustomOutlineBox"
+        style="@style/Widget_Feed_Introduce_OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:paddingTop="15dp"
-        app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toStartOf="@+id/gi_light"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
@@ -76,17 +74,10 @@
             android:background="@null"
             android:fontFamily="@font/custom_font_family_medium"
             android:gravity="start|top"
-            android:hint="소개글 작성" />
+            android:hint="소개글 작성"
+            android:minHeight="200dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        style="@style/customTextViewFontStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="@{@string/text_ems_1000(tietIntroduce.text.length)}"
-        app:layout_constraintEnd_toStartOf="@+id/gi_light"
-        app:layout_constraintTop_toBottomOf="@+id/textin_introduce" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
