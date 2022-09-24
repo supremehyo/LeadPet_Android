@@ -1,12 +1,15 @@
 package com.dev6.feed.view
 
+import android.net.Uri
 import android.util.Log
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.enums.FeedViewType
+import com.dev6.core.util.ImageUpload
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.feed.R
@@ -22,9 +25,19 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
     private val feedViewModel : FeedViewModel by activityViewModels()
     private var cityName = ""
     private var profileImage = ""
+    private lateinit var    imageUpload : ImageUpload
     override fun initView() {
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
+        imageUpload = ImageUpload()
+        profileImage = UserData.profileImage.toString()
+
+        Glide.with(binding.root)
+            .load(Uri.parse(UserData.profileImage))
+            .error(R.drawable.dailay_image1)
+            .circleCrop()
+            .into(  binding.shelterProfileImageIv)
+
         binding.nickNameUpdateInputText.setText(UserData.userName)
         binding.IntroUpdateInputText.setText(UserData.intro)
         binding.citySelectBt.setText(UserData.userCity)
@@ -47,14 +60,21 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
         }
 
         binding.userProfileUpdateCompleteTv.setOnClickListener {
-            var normalUserUpdateRepo = NormalUserUpdateRepo(
-                cityName,
-                binding.IntroUpdateInputText.text.toString(),
-                binding.nickNameUpdateInputText.text.toString(),
-                UserData.profileImage.toString()
-            )
-            Log.v("dfasdfsdf" , binding.IntroUpdateInputText.text.toString())
-            profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
+            if(profileImage == ""){
+                Log.v("dfasdfsdf" , "에러남")
+            }else{
+                imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
+                    var normalUserUpdateRepo = NormalUserUpdateRepo(
+                        cityName,
+                        binding.IntroUpdateInputText.text.toString(),
+                        binding.nickNameUpdateInputText.text.toString(),
+                        (it ?: UserData.profileImage).toString()
+                    )
+                    UserData.profileImage = it
+                    Log.v("dfasdfsdf" , binding.IntroUpdateInputText.text.toString())
+                    profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
+                }
+            }
         }
 
         binding.shelterProfileImageIv.setOnClickListener {

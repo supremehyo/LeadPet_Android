@@ -2,11 +2,13 @@ package com.dev6.feed.view
 
 import android.graphics.Color
 import android.os.Build
+import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +20,7 @@ import com.dev6.core.base.UiState
 import com.dev6.core.enums.UserType
 import com.dev6.core.util.extension.fewDay
 import com.dev6.core.util.extension.repeatOnStarted
+import com.dev6.domain.model.comment.CommentUpdate
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.feed.R
 import com.dev6.feed.adapter.comment.DailyCommentAdapter
@@ -41,16 +44,29 @@ class DailyFeedDetailFragment :
         makeCurrentView()
         commentAdapter = DailyCommentAdapter {
             // 아래 if 문 조건에 해당 댓글을 작성한 userType 먼지 알아와서 분기처리 해주는 코드가 필요할듯 하다
+            /*
             if (UserData.userType == UserType.NORMAL) {
                 findNavController().navigate(R.id.action_fragmentFeedDaily_to_userFragment)
             } else {
                 findNavController().navigate(R.id.action_fragmentFeedDaily_to_userProfileFragment)
             }
+             */
         }
+
         dailycommentRc = binding.dailyCommentRv
         dailycommentRc.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = commentAdapter
+        }
+        binding.dailyFeedUserId.setOnClickListener {
+            if(UserType.NORMAL == UserData.userType){
+                val bundle = bundleOf("clickUserId" to currentFeed.userId)
+                findNavController().navigate(R.id.action_fragmentFeedDaily_to_profileFragment2 ,bundle)
+            }else{
+                val bundle = bundleOf("clickUserId" to currentFeed.userId)
+                findNavController().navigate(R.id.action_fragmentFeedDaily_to_profileFragment ,bundle)
+            }
+
         }
     }
 
@@ -76,11 +92,12 @@ class DailyFeedDetailFragment :
             }
         }
         binding.dailyFeedCommentTv.setOnClickListener {
-            feedViewModel.postCommentListByPostId(
+            val commentUpdate = CommentUpdate(
                 binding.dailyFeedCommentEt.text.toString(),
                 currentFeed.normalPostId,
                 UserData.userId
             )
+            feedViewModel.postCommentListByPostId(commentUpdate)
         }
     }
 
@@ -129,7 +146,6 @@ class DailyFeedDetailFragment :
                                     "댓글성공",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                // 댓글입력 성공하면 내가 적은 댓글이 반영되서 보여야하기 때문에 새로 로딩
                                 feedViewModel.getCommentListByPostId(currentFeed.normalPostId)
                             }
                             is UiState.Error -> {}

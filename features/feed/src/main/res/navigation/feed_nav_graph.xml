@@ -10,8 +10,8 @@
         android:name="com.dev6.feed.view.DailyFeedDetailFragment"
         tools:layout="@layout/activity_daily_feed_detail">
         <action
-            android:id="@+id/action_fragmentFeedDaily_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
+            android:id="@+id/action_fragmentFeedDaily_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment

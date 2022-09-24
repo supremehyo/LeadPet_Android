@@ -13,7 +13,7 @@ interface ShelterRemoteSource {
         page: Int,
         shelterName: String,
         size: Int
-    ): ShelterPagingResponse?
+    ): ShelterPagingResponse
 }
 
 class ShelterRemoteSourceImpl @Inject constructor(
@@ -25,7 +25,7 @@ class ShelterRemoteSourceImpl @Inject constructor(
         page: Int,
         shelterName: String,
         size: Int
-    ): ShelterPagingResponse? {
+    ): ShelterPagingResponse {
         return feedService.nearShelterList(cityName, page, shelterName, size).executeNetworkHandling()
     }
 }

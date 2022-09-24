@@ -13,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.util.ImageUpload
 import com.dev6.join.databinding.FragmentShelterUserJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import gun0912.tedimagepicker.builder.TedImagePicker
@@ -24,6 +25,8 @@ class ShelterUserJoinFragment :
 
     private val PICK_IMAGE_REQUEST = 1
     private val joinViewModel: JoinViewModel by activityViewModels()
+    private lateinit var imageUri: String
+    lateinit var imageUpload: ImageUpload
 
     private lateinit var userType: String
     override fun initView() {

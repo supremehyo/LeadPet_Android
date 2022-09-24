@@ -29,7 +29,7 @@ class NormalUserJoinFragment :
     lateinit var userType: String
     lateinit var uid : String
     lateinit var loginType: String
-    private lateinit var imageUri: Uri
+    private lateinit var imageUri: String
     lateinit var imageUpload: ImageUpload
 
 
@@ -90,8 +90,19 @@ class NormalUserJoinFragment :
             }
 
             profileImageButton.setOnClickListener {
-    1
+                TedImagePicker.with(requireContext())
+                    .max(1, "")
+                    .startMultiImage { uriList ->
+                        joinViewModel.setJoinImage(uriList)
+                        Glide.with(binding.root)
+                            .load(uriList[0])
+                            .circleCrop()
+                            .into(profileImageButton)
 
+                        imageUpload.uploadPhoto(nickNameInputText.text.toString(),uriList[0],requireContext()){
+                            imageUri = it
+                        }
+                    }
             }
 
             noramlJoinBackButton.setOnClickListener {
@@ -120,7 +131,7 @@ class NormalUserJoinFragment :
         return Join(
             makeLoginType(UserData.loginMethod), UserData.uid,
             "", "",
-            "", binding.nickNameInputText.text.toString(), "", "",
+            imageUri, binding.nickNameInputText.text.toString(), "", "",
             "",
             "", "", "" ,userType,""
         )

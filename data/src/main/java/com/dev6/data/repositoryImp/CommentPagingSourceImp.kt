@@ -6,6 +6,8 @@ import com.dev6.data.mapper.toDomain
 import com.dev6.data.remote.CommentRemoteSource
 import com.dev6.domain.model.comment.Comment
 import com.dev6.domain.repository.CommentPagingSource
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 class CommentPagingSourceImp @Inject constructor(
@@ -15,19 +17,30 @@ class CommentPagingSourceImp @Inject constructor(
     var _postId = postId
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Comment> {
         return try {
-            val next = params.key ?: 0
+            val next = params.key ?: 1
             val size = params.loadSize
             val response = commentRemoteSource.getCommentByPostId(_postId, next, size)
             try {
                 Log.v("ssssfsfsf2", response.toDomain().commentEntitiy.get(0).normalReplyId)
-            } catch (e: Exception) {
-                throw Exception()
+            } catch (e: IOException) {
+                return LoadResult.Error(e)
+            } catch (e: HttpException) {
+                return LoadResult.Error(e)
             }
-            LoadResult.Page(
-                data = response.toDomain().commentEntitiy,
-                prevKey = if (next == 0) null else next - 1,
-                nextKey = next + 1
-            )
+            if(response.last){
+                LoadResult.Page(
+                    data = response.toDomain().commentEntitiy,
+                    prevKey = null,
+                    nextKey = null
+                )
+            }else{
+                LoadResult.Page(
+                    data = response.toDomain().commentEntitiy,
+                    prevKey = null,
+                    nextKey = next+1
+                )
+            }
+
         } catch (e: Exception) {
             Log.v("ssssssssssssss", e.message.toString())
             LoadResult.Error(e)

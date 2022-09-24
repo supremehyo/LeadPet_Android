@@ -24,11 +24,19 @@ class DailyPagingSourceImp @Inject constructor(
             } catch (e: Exception) {
                 throw Exception()
             }
-            LoadResult.Page(
-                data = response.toDomain().dailyFeedEntitiy,
-                prevKey = if (next == 0) null else next - 1,
-                nextKey = next + 1
-            )
+            if(response.last){
+                LoadResult.Page(
+                    data = response.toDomain().dailyFeedEntitiy,
+                    prevKey = null,
+                    nextKey = null
+                )
+            }else{
+                LoadResult.Page(
+                    data = response.toDomain().dailyFeedEntitiy,
+                    prevKey = null,
+                    nextKey = next+1
+                )
+            }
         } catch (e: Exception) {
             Log.v("ssssssssssssss", e.message.toString())
             LoadResult.Error(e)

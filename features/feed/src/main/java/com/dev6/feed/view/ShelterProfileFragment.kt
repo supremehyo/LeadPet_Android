@@ -35,22 +35,38 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     lateinit var profileAdoptFragment: ProfileAdoptFragment
     lateinit var selected: Fragment
     var shelterData : ShelterEntitiyRepo? = null
-
+    var clickUserId : String? = null
 
     override fun initView() {
         super.initView()
         initTabLayout()
 
+        clickUserId = arguments?.getString("clickUserId")
         shelterData = arguments?.get("shelterData") as ShelterEntitiyRepo?
         profileIntroduceFragment = ProfileIntroduceFragment()
         profileDailyFragment = ProfileDailyFragment()
         profileDonationFragment = ProfileDonationFragment()
         profileAdoptFragment = ProfileAdoptFragment()
 
-        shelterData?.let {
+        clickUserId?.let {
             val bundle = Bundle()
+            bundle.putString("userId", clickUserId)
+            Log.v("Ssssfsf" , it)
+            profileIntroduceFragment.setArguments(bundle)
+            profileDailyFragment.setArguments(bundle)
+            profileDonationFragment.setArguments(bundle)
+            profileAdoptFragment.setArguments(bundle)
+            profileViewModel.getShelterProfileDetailData(clickUserId?: "")
+        }
+
+        shelterData?.let {
+           val bundle = Bundle()
             bundle.putString("userId", shelterData?.userId)
             profileIntroduceFragment.setArguments(bundle)
+            profileDailyFragment.setArguments(bundle)
+            profileDonationFragment.setArguments(bundle)
+            profileAdoptFragment.setArguments(bundle)
+            profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "")
         }
 
         childFragmentManager.beginTransaction()
@@ -69,7 +85,7 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
     override fun initViewModel() {
         super.initViewModel()
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
-        profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "")
+
     }
 
     override fun initListener() {

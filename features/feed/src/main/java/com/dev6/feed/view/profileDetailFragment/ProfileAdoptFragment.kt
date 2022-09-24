@@ -30,9 +30,10 @@ class ProfileAdoptFragment :
     private val feedViewModel: FeedViewModel by activityViewModels()
     private lateinit var profileAdoptRc: RecyclerView
     private lateinit var profiledoptAdapter: AdoptPagingAdapter
-
+    var userId: String = ""
     override fun initView() {
         super.initView()
+        userId = arguments?.getString("userId") ?: ""
         profileAdoptRc = binding.profileAdoptRc
         profiledoptAdapter = AdoptPagingAdapter{
             val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
@@ -50,7 +51,7 @@ class ProfileAdoptFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        feedViewModel.getAdoptList("")
+        feedViewModel.getAdoptList(userId)
     }
 
     override fun initListener() {

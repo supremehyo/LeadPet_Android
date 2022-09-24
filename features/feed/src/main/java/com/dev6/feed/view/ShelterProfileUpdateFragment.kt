@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.enums.FeedViewType
+import com.dev6.core.util.ImageUpload
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.model.ShelterResopnseEntitiyRepo
@@ -25,9 +26,11 @@ class ShelterProfileUpdateFragment :
     private val profileViewModel : ProfileViewModel by activityViewModels()
     private val feedViewModel : FeedViewModel by activityViewModels()
     private var profileImage : String = ""
+    private lateinit var    imageUpload : ImageUpload
     override fun initView() {
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
+
         binding.IntroUpdateInputText.setText(UserData.shelterIntro)
         binding.AccountUpdateInputText.setText(UserData.shelterAccount)
         binding.HomepageUpdateInputText.setText(UserData.shelterHomepage)

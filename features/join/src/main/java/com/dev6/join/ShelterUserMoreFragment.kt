@@ -2,11 +2,14 @@ package com.dev6.join
 
 import android.content.Intent
 import android.net.Uri
+import android.service.autofill.UserData
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.enums.LoginType
+import com.dev6.core.util.ImageUpload
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.Join
 import com.dev6.feed.view.FeedActivity
@@ -20,6 +23,8 @@ class ShelterUserMoreFragment :
 
     private val joinViewModel: JoinViewModel by activityViewModels()
     lateinit var joinDto: Join
+    private lateinit var imageUri: String
+    lateinit var imageUpload: ImageUpload
 
     private lateinit var userType: String
     private lateinit var shelterName: String
@@ -29,6 +34,7 @@ class ShelterUserMoreFragment :
     private lateinit var shelterHomePage: String
     private lateinit var shelterIntro: String
     private lateinit var joinImages: List<Uri>
+    lateinit var loginType: String
 
     override fun initView() {
         super.initView()
@@ -38,7 +44,7 @@ class ShelterUserMoreFragment :
         shelterAccount = arguments?.get("shelterAccount").toString()
         shelterAddress = arguments?.get("shelterAddress").toString()
         shelterHomePage = arguments?.get("shelterHomePage").toString() ?: ""
-        shelterIntro =""
+        shelterIntro = ""
 
     }
 
@@ -46,23 +52,27 @@ class ShelterUserMoreFragment :
         super.initListener()
         binding.apply {
             additionalProfileButton.setOnClickListener {
-                if (shelterDescriptionTv.text.toString().isNotEmpty()) {
-                    joinViewModel.signUp(
-                        makeJoinDto(
-                            shelterName,
-                            shelterPhone,
-                            shelterAccount,
-                            shelterAddress,
-                            shelterHomePage,
-                            userType,
-                            shelterDescriptionTv.text.toString()
+                if (shelterDescriptionTv.text.toString().isNotEmpty() && joinImages.isNotEmpty()) {
+
+                    imageUpload.uploadPhoto(shelterName, joinImages[0], requireContext()) {
+                        imageUri = it
+                        joinViewModel.signUp(
+                            makeJoinDto(
+                                shelterName,
+                                shelterPhone,
+                                shelterAccount,
+                                shelterAddress,
+                                shelterHomePage,
+                                userType,
+                                shelterDescriptionTv.text.toString()
+                            )
                         )
-                    )
+                    }
                 } else {
                     Toast.makeText(context, "소개글이 비어있습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
-
+/*
             additionalProfileButtonNext.setOnClickListener {
                 joinViewModel.signUp(
                     makeJoinDto(
@@ -77,6 +87,8 @@ class ShelterUserMoreFragment :
                 )
             }
 
+ */
+
             shelterMoreleftArrow.setOnClickListener {
                 findNavController().popBackStack()
             }
@@ -86,7 +98,7 @@ class ShelterUserMoreFragment :
     override fun initViewModel() {
         super.initViewModel()
         repeatOnStarted {
-            joinViewModel.joinImageFlow.collect{
+            joinViewModel.joinImageFlow.collect {
                 joinImages = it
             }
         }
@@ -115,7 +127,23 @@ class ShelterUserMoreFragment :
         }
     }
 
-    private fun makeJoinDto(
+    private fun makeLoginType(loginTypeEnum: LoginType): String {
+        loginType = when (loginTypeEnum) {
+            LoginType.EMAIL -> {
+                return "EMAIL"
+            }
+            LoginType.KAKAO -> {
+                return "KAKAO"
+            }
+            LoginType.GOOGLE -> {
+                return "GOOGLE"
+            }
+        }
+
+
+    }
+
+    fun makeJoinDto(
         shelterName: String,
         shelterPhone: String,
         shelterAccount: String,
@@ -125,9 +153,9 @@ class ShelterUserMoreFragment :
         shelterIntro: String
     ): Join {
         return Join(
-            "GOOGLE", "uid",
-            "dev6@gmail.com", "12345",
-            "", shelterName, shelterName, shelterAddress,shelterAccount,
+            makeLoginType(com.dev6.core.UserData.loginMethod), com.dev6.core.UserData.uid,
+            "", "",
+            imageUri, shelterName, shelterName, shelterAddress, shelterAccount,
             shelterPhone,
             "", shelterHomePage, userType, shelterIntro
         )

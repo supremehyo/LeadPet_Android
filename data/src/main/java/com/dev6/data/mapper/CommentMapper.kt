@@ -1,13 +1,11 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.comment.CommentPageResposne
-import com.dev6.data.model.comment.CommentPaginationResponse
-import com.dev6.data.model.comment.CommentResponse
-import com.dev6.data.model.comment.CommentSortResponse
+import com.dev6.data.model.comment.*
 import com.dev6.domain.model.Page
 import com.dev6.domain.model.Sort
 import com.dev6.domain.model.comment.Comment
 import com.dev6.domain.model.comment.CommentPage
+import com.dev6.domain.model.comment.CommentUpdate
 
 internal fun CommentPaginationResponse?.toDomain() = CommentPage(
     commentEntitiy = this?.commentEntitiy?.map { it.toDomain() } ?: listOf(),
@@ -41,3 +39,16 @@ internal fun CommentResponse.toDomain() = Comment(
     userName = userName,
     normalReplyId = normalReplyId
 )
+
+internal fun CommentUpdateRequest.toDomain() = CommentUpdate(
+    content = content,
+    userId = userId,
+    normalPostId = normalPostId
+)
+
+internal fun CommentUpdate.toData() = CommentUpdateRequest(
+    content = content,
+    userId = userId,
+    normalPostId = normalPostId
+)
+
