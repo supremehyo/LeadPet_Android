@@ -30,7 +30,7 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
         imageUpload = ImageUpload()
-        profileImage = UserData.profileImage.toString()
+        //profileImage = UserData.profileImage.toString()
 
         Glide.with(binding.root)
             .load(Uri.parse(UserData.profileImage))
@@ -61,7 +61,13 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
 
         binding.userProfileUpdateCompleteTv.setOnClickListener {
             if(profileImage == ""){
-                Log.v("dfasdfsdf" , "에러남")
+                var normalUserUpdateRepo = NormalUserUpdateRepo(
+                    cityName,
+                    binding.IntroUpdateInputText.text.toString(),
+                    binding.nickNameUpdateInputText.text.toString(),
+                    (it ?: UserData.profileImage).toString()
+                )
+                profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
             }else{
                 imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
                     var normalUserUpdateRepo = NormalUserUpdateRepo(
@@ -71,7 +77,6 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
                         (it ?: UserData.profileImage).toString()
                     )
                     UserData.profileImage = it
-                    Log.v("dfasdfsdf" , binding.IntroUpdateInputText.text.toString())
                     profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
                 }
             }

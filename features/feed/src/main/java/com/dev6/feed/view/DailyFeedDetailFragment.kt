@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.enums.PostType
 import com.dev6.core.enums.UserType
 import com.dev6.core.util.extension.fewDay
 import com.dev6.core.util.extension.repeatOnStarted
@@ -98,6 +99,22 @@ class DailyFeedDetailFragment :
                 UserData.userId
             )
             feedViewModel.postCommentListByPostId(commentUpdate)
+        }
+
+        binding.cbBookmark.setOnClickListener {
+            if (!binding.cbBookmark.isChecked) {
+                feedViewModel.executeUnBookMark(
+                    currentFeed.normalPostId,
+                    com.dev6.core.UserData.userId
+                )
+            } else {
+
+                            feedViewModel.executeBookMark(
+                            currentFeed.normalPostId,
+                    PostType.NORMAL_POST,
+                    com.dev6.core.UserData.userId
+                )
+            }
         }
     }
 

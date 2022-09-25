@@ -57,6 +57,7 @@ class ShelterProfileUpdateFragment :
                 UserData.shelterManager?: "",
                 UserData.shelterName?: "",
                 UserData.shelterPhoneNumber?: ""
+            //profileImage 추가 예정
             )
             profileViewModel.updateShelterProfileData(shelterResopnseEntitiyRepo, UserData.userId)
 
