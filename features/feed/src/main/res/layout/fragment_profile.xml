@@ -32,8 +32,8 @@
 
         <ImageView
             android:id="@+id/shelterProfileImageIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:elevation="20dp"
             android:src="@drawable/search"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
