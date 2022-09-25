@@ -6,6 +6,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
+import com.dev6.core.util.ImageUpload.compressBitmap
+import com.dev6.core.util.ImageUpload.convertUrlToBitmap
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.post.databinding.FragmentLifePostBinding
 import com.dev6.post.viewmodel.LifePostViewModel
@@ -25,7 +27,11 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
         if (postViewModel.postImageFlow.value.isEmpty()) {
             TedImagePicker.with(requireContext()).max(5, "더이상 사진을 넣을수 없습니다")
                 .startMultiImage { uriList ->
-                    postViewModel.setPostImage(uriList)
+                    val imageList: List<ByteArray> =
+                        uriList.map { convertUrlToBitmap(it, this.requireContext()) }
+                            .map { compressBitmap(it) }
+
+                    postViewModel.setPostImage(imageList)
                 }
         }
     }
@@ -49,11 +55,13 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
                             is UiState.Success -> {
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
                             }
+
                             is UiState.Error -> {
                                 Toast.makeText(
                                     context, event.uiState.error?.message, Toast.LENGTH_SHORT
                                 ).show()
                             }
+
                             is UiState.Loding -> {
                                 Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
                             }
@@ -88,4 +96,5 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
         }
         super.initListener()
     }
+
 }

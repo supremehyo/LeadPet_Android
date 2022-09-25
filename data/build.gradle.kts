@@ -46,5 +46,7 @@ dependencies {
     implementation(Room.ROOM)
     kapt(Room.ROOM_COMPILER)
     testImplementation(Room.ROOM_TESTING)
+    implementation("com.google.firebase:firebase-storage-ktx:20.0.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.2.2")
 
 }

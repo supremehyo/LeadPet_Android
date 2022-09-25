@@ -11,6 +11,7 @@ import com.dev6.domain.usecase.post.InsertDailyPostBaseUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,11 +22,11 @@ class LifePostViewModel @Inject constructor(
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    private val _postImageFlow = MutableStateFlow<List<Uri>>(emptyList())
+    private val _postImageFlow = MutableStateFlow<List<ByteArray>>(emptyList())
     val postImageFlow = _postImageFlow.asStateFlow()
 
-    fun setPostImage(uriList: List<Uri>) {
-        _postImageFlow.value = uriList
+    fun setPostImage(imageList: List<ByteArray>) {
+        _postImageFlow.update { imageList }
     }
 
     private fun event(event: Event) {
@@ -44,8 +45,10 @@ class LifePostViewModel @Inject constructor(
             likedCount = 0,
             createdDate = listOf(),
             commentCount = 0,
-            liked = false
+            liked = false,
+            imageList = postImageFlow.value,
         )
+
         insertDailyPostBaseUseCase(repo).collect { uiState ->
             event(Event.UiEvent(uiState))
         }

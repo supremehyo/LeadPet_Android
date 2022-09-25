@@ -10,14 +10,13 @@ repositories {
 }
 
 object PluginVersion {
-    const val GRADLE = "7.1.0-beta05"
     const val KOTLIN = "1.7.0"
     const val GRADLE_PLUGIN = "0.41.0"
     const val NAVIGATION = "2.5.0"
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.1.1")
+    implementation("com.android.tools.build:gradle:7.3.0")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginVersion.KOTLIN}")
     implementation("com.github.ben-manes:gradle-versions-plugin:${PluginVersion.GRADLE_PLUGIN}")
     implementation("com.google.gms:google-services:4.3.10")
