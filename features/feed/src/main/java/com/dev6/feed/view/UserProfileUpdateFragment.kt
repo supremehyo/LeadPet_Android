@@ -45,6 +45,20 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
 
     override fun initViewModel() {
         super.initViewModel()
+
+        binding.shelterProfileImageIv.setOnClickListener {
+            TedImagePicker.with(requireContext())
+                .max(1, "")
+                .startMultiImage { uriList ->
+                    Log.v("asfsdfasdf ", uriList[0].toString())
+                    val imageList: List<ByteArray> =
+                        uriList.map { ImageUpload.convertUrlToBitmap(it, this.requireContext()) }
+                            .map { ImageUpload.compressBitmap(it) }
+
+                    profileViewModel.setProfileImage(imageList)
+                }
+        }
+
         repeatOnStarted {
             profileViewModel.cityChoiceStateFlow.collectLatest {
                 cityName = it
@@ -59,40 +73,35 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
             bottomSheet.show(parentFragmentManager,bottomSheet.tag)
         }
 
-//        binding.userProfileUpdateCompleteTv.setOnClickListener {
-//            if(profileImage == ""){
-//                var normalUserUpdateRepo = NormalUserUpdateRepo(
-//                    cityName,
-//                    binding.IntroUpdateInputText.text.toString(),
-//                    binding.nickNameUpdateInputText.text.toString(),
-//                    (it ?: UserData.profileImage).toString()
-//                )
-//                profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
-//            }else{
-//                imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
-//                    var normalUserUpdateRepo = NormalUserUpdateRepo(
-//                        cityName,
-//                        binding.IntroUpdateInputText.text.toString(),
-//                        binding.nickNameUpdateInputText.text.toString(),
-//                        (it ?: UserData.profileImage).toString()
-//                    )
-//                    UserData.profileImage = it
-//                    profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
-//                }
-//            }
-//        }
+        binding.userProfileUpdateCompleteTv.setOnClickListener {
 
-        binding.shelterProfileImageIv.setOnClickListener {
-            TedImagePicker.with(requireContext())
-                .max(1, "")
-                .startMultiImage { uriList ->
-                    profileImage = uriList[0].toString()
-                    Glide.with(binding.root)
-                        .load(uriList[0])
-                        .circleCrop()
-                        .into(binding.shelterProfileImageIv)
+                var normalUserUpdateRepo = NormalUserUpdateRepo(
+                    cityName,
+                    binding.IntroUpdateInputText.text.toString(),
+                    binding.nickNameUpdateInputText.text.toString(),
+                    (it ?: UserData.profileImage).toString(),
+                    emptyList()
+                )
+                profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
+
+            /*
+            else{
+                imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
+                    var normalUserUpdateRepo = NormalUserUpdateRepo(
+                        cityName,
+                        binding.IntroUpdateInputText.text.toString(),
+                        binding.nickNameUpdateInputText.text.toString(),
+                        (it ?: UserData.profileImage).toString()
+                    )
+                    UserData.profileImage = it
+                    profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
                 }
+            }
+
+             */
         }
+
+
 
 
     }
@@ -110,6 +119,15 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
                 findNavController().popBackStack()
             }
         }
+        repeatOnStarted {
+            profileViewModel.userUpdateImageFlow.collect { urlList ->
+                if (urlList.isNotEmpty()) {
+                    UserData.profileImage = urlList[0].toString()
 
+                    Glide.with(requireActivity()).load(urlList[0])
+                        .into(binding.shelterProfileImageIv)
+                }
+            }
+        }
     }
 }

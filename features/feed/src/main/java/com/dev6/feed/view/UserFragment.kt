@@ -12,6 +12,7 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentUserBinding
 import com.dev6.feed.view.profileDetailFragment.ProfileUserDonationFragment
@@ -58,6 +59,16 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
 
     override fun afterViewCreated() {
         super.afterViewCreated()
+
+        repeatOnStartedFragment {
+            profileViewModel.userUpdateImageFlow.collect { urlList ->
+                if (urlList.isNotEmpty()) {
+                    Glide.with(requireActivity()).load(urlList[0])
+                        .into(binding.userProfileIv)
+                }
+            }
+        }
+
         repeatOnStartedFragment {
             profileViewModel.eventNormalUserProfileDetail.collect{ evnet->
                 when(evnet){

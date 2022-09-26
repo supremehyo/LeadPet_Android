@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
@@ -105,6 +106,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         navController.setGraph(R.navigation.feed_nav_graph)
+
         if (UserData.userType == UserType.NORMAL) { // 유저 type이 NORMAL면 해당 바텀네비게이션으로 다시 그리기
             navController.setGraph(R.navigation.feed_nav_graph2)
             binding.bottomNavigationView.menu.clear()

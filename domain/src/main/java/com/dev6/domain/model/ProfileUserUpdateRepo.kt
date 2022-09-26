@@ -17,4 +17,6 @@ data class ProfileUserUpdateRepo(
     val shelterName: String,
     @SerializedName("shelterPhoneNumber")
     val shelterPhoneNumber: String,
+
+    val imageList : List<ByteArray>
 )

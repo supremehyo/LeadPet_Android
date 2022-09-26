@@ -19,7 +19,7 @@ class ShelterPagingSourceImp @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ShelterEntitiyRepo> {
         return try {
-            val next = params.key ?: 0
+            val next = params.key ?: 1
             val size = params.loadSize
             val response = dailyRemoteSource.getShelterList(_cityName, next, _shelterName, size)
             try {

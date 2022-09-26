@@ -1,5 +1,6 @@
 package com.dev6.data.repositoryImp
 
+import android.util.Log
 import com.dev6.domain.image.FirebaseStorageRepository
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -17,6 +18,7 @@ class FirebaseStorageRepositoryImp @Inject constructor(private val storage: Fire
             storage.reference.child("image").child(uuid)
                 .putBytes(byteArray)
                 .addOnSuccessListener {
+                    //continuation.resume(it.storage.downloadUrl.toString())
                     continuation.resume(uuid)
                 }.addOnFailureListener {
                     continuation.resumeWithException(it)

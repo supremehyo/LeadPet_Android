@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class DailyRepositoryImp @Inject constructor(private val dailyRemoteSource: DailyRemoteSource) : DailyRepository {
     override suspend fun getPagingData(userId: String, likedUser: String): Flow<PagingData<DailyPost>> {
-        return Pager(PagingConfig(pageSize = 3)) { DailyPagingSourceImp(userId, likedUser, dailyRemoteSource) }.flow
+        return Pager(PagingConfig(pageSize = 20)) { DailyPagingSourceImp(userId, likedUser, dailyRemoteSource) }.flow
     }
 
     override suspend fun postLike(postId: String, userId: String): ResponseBody =

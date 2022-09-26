@@ -16,7 +16,7 @@ class DailyPagingSourceImp @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DailyPost> {
         return try {
-            val next = params.key ?: 0
+            val next = params.key ?: 1
             val size = params.loadSize
             val response = dailyRemoteSource.dailyAllFeed(next, size, userId, likedUser)
             try {

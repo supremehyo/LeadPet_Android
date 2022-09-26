@@ -13,7 +13,7 @@ class AdoptRepositoryImp
 @Inject constructor(private val remoteSource: AdoptRemoteSource) :
     AdoptRepository {
     override suspend fun getAdoptData(userId: String): Flow<PagingData<AdoptPostFeed>> {
-        return Pager(PagingConfig(pageSize = 3)) {
+        return Pager(PagingConfig(pageSize = 20)) {
             AdoptPagingSourceImp(remoteSource, userId)
         }.flow
     }

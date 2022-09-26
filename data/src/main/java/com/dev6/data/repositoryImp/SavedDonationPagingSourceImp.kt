@@ -16,7 +16,7 @@ class SavedDonationPagingSourceImp @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DonationPost> {
         return try {
-            val next = params.key ?: 0
+            val next = params.key ?: 1
             val size = params.loadSize
             val response = donationRemoteSource.donationAllFeed(userId, next, size, donationMethod)
             Log.v("dddddd1", response.donationFeedList.get(0).donationPostId)

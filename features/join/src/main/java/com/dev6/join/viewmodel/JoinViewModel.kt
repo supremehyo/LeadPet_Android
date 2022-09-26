@@ -1,5 +1,6 @@
 package com.dev6.join.viewmodel
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
@@ -32,6 +33,17 @@ class JoinViewModel
     )
     val joinDTOData =  _joinDTOData.asSharedFlow()
 
+    private val _userUpdateImageFlow = MutableStateFlow<List<ByteArray>>(emptyList())
+    val userUpdateImageFlow = _userUpdateImageFlow.asStateFlow()
+
+    fun setProfileImage(imageList: List<ByteArray>) {
+        _userUpdateImageFlow.update { imageList }
+    }
+
+    fun getProfileImage() : List<ByteArray>{
+       return _userUpdateImageFlow.value
+    }
+
 
 
     private fun event(event: Event) {
@@ -48,12 +60,44 @@ class JoinViewModel
     }
 
 
-    fun signUp(joinEntitiyRepo: Join) {
-        viewModelScope.launch {
-            joinReposUseCase(joinEntitiyRepo).collect{uiState ->
+    fun signUp(
+        loginMethod: String,
+        uid : String,
+        email: String,
+        password : String,
+        profileImage: String,
+        name: String,
+        shelterName: String,
+                shelterPhone: String,
+                shelterAccount: String,
+                shelterAddress: String,
+                shelterHomePage: String,
+                userType: String,
+                shelterIntro: String)  =viewModelScope.launch {
+        Log.v("ASdfasdf1",    userUpdateImageFlow.value.toString())
+
+        val join = Join(
+            loginMethod = loginMethod,
+            uid = uid,
+            email = email,
+            password = password,
+            profileImage = profileImage,
+            name = name,
+            shelterName = shelterName,
+            shelterPhoneNumber = shelterPhone,
+            shelterAccount = shelterAccount,
+            shelterAddress = shelterAddress,
+            shelterManager = "매니저",
+            shelterHomePage = shelterHomePage,
+            userType =userType ,
+            shelterIntro = shelterIntro,
+            imageList = userUpdateImageFlow.value
+        )
+
+            joinReposUseCase(join).collect{uiState ->
                 event(Event.UiEvent(uiState))
             }
-        }
+
     }
 
     fun setJoinDTOData(dto : Join){

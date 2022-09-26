@@ -13,7 +13,7 @@ class DonationRepositoryImp
 @Inject constructor(private val remoteSource: DonationRemoteSource) :
     DonationRepository {
     override suspend fun getDonationData(donationMethod : String ,userId: String): Flow<PagingData<DonationPost>> {
-        return Pager(PagingConfig(pageSize = 3)) {
+        return Pager(PagingConfig(pageSize = 20)) {
             DonationPagingSourceImp(remoteSource, userId,donationMethod)
         }.flow
     }

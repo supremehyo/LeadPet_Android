@@ -19,14 +19,14 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
     lateinit var loginMethod : LoginType
     lateinit var uuid : String
     var exist : Boolean = false
-    lateinit var userType : String
+     var userType : String? = null
     lateinit var navController  : NavController
     override fun initView() {
         super.initView()
 
         loginMethod = intent.getSerializableExtra("loginMethod") as LoginType
         uuid = intent.getStringExtra("uuid")!!
-        userType = intent.getStringExtra("userType")!!
+        userType = intent.getStringExtra("userType") ?: "NORMAL"
         exist = intent.getBooleanExtra("exist" , false)
 
         UserData.uid = uuid

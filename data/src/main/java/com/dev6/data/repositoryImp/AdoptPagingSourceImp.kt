@@ -18,7 +18,7 @@ class AdoptPagingSourceImp @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AdoptPostFeed> {
         return try {
-            val next = params.key ?: 0
+            val next = params.key ?: 1
             val size = params.loadSize
             val response = adoptRemoteSource.AdoptAllFeed(next, size, _userId)
             response?.adoptFeedEntitiyList?.get(0)?.adoptionPostId?.let { Log.v("ssssfsfsf1", it) }
@@ -27,11 +27,19 @@ class AdoptPagingSourceImp @Inject constructor(
             } catch (e: Exception) {
                 throw Exception()
             }
-            LoadResult.Page(
-                data = response.toDomain().adoptPostFeed,
-                prevKey = if (next == 0) null else next - 1,
-                nextKey = next + 1
-            )
+            if(response.last){
+                LoadResult.Page(
+                    data = response.toDomain().adoptPostFeed,
+                    prevKey = null,
+                    nextKey = null
+                )
+            }else{
+                LoadResult.Page(
+                    data = response.toDomain().adoptPostFeed,
+                    prevKey = null,
+                    nextKey = next+1
+                )
+            }
         } catch (e: Exception) {
             LoadResult.Error(e)
         }

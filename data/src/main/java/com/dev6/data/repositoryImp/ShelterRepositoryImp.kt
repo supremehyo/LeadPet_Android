@@ -13,7 +13,7 @@ class ShelterRepositoryImp
 @Inject constructor(private val shelterRemoteSource: ShelterRemoteSource) :
     ShelterPagingRepository {
     override suspend fun getPagingData(cityName:String,shelterName:String): Flow<PagingData<ShelterEntitiyRepo>> {
-        return Pager(PagingConfig(pageSize = 10))
+        return Pager(PagingConfig(pageSize = 20))
         { ShelterPagingSourceImp(shelterRemoteSource , cityName, shelterName) }.flow
     }
 

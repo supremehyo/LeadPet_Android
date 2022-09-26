@@ -18,7 +18,8 @@ internal fun JoinResponse?.toDomain() = Join(
     shelterManager = this?.shelterManager ?: "",
     shelterHomePage = this?.shelterHomePage ?: "",
     userType = this?.userType ?: "",
-    shelterIntro = this?.shelterIntro ?: ""
+    shelterIntro = this?.shelterIntro ?: "",
+    imageList = emptyList()
 )
 
 internal fun Join.toMapper() = JoinResponse(

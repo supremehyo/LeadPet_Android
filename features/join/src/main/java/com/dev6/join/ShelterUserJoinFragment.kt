@@ -6,14 +6,17 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.util.ImageUpload
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.join.databinding.FragmentShelterUserJoinBinding
 import com.dev6.join.viewmodel.JoinViewModel
 import gun0912.tedimagepicker.builder.TedImagePicker
@@ -44,11 +47,14 @@ class ShelterUserJoinFragment :
                 TedImagePicker.with(requireContext())
                     .max(1, "")
                     .startMultiImage { uriList ->
-                        joinViewModel.setJoinImage(uriList)
-                        Glide.with(binding.root)
-                            .load(uriList[0])
-                            .circleCrop()
+                        val imageList: List<ByteArray> =
+                            uriList.map { ImageUpload.convertUrlToBitmap(it, requireContext()) }
+                                .map { ImageUpload.compressBitmap(it) }
+                        Log.v("asfsdfasdf ", imageList[0].toString())
+                        Glide.with(requireActivity()).load(imageList[0]).centerCrop()
                             .into(binding.shelterProfileImageButton)
+
+                        joinViewModel.setProfileImage(imageList)
                     }
             }
 
@@ -86,6 +92,24 @@ class ShelterUserJoinFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        joinViewModel.initJoinImage()
+       // joinViewModel.initJoinImage()
+        binding.shelterProfileImageButton.setOnClickListener {
+            TedImagePicker.with(requireContext())
+                .max(1, "")
+                .startMultiImage { uriList ->
+                    val imageList: List<ByteArray> =
+                        uriList.map { ImageUpload.convertUrlToBitmap(it, this.requireContext()) }
+                            .map { ImageUpload.compressBitmap(it) }
+                    Log.v("asfsdfasdf ", imageList[0].toString())
+                    Glide.with(requireActivity()).load(imageList[0]).centerCrop()
+                        .into(binding.shelterProfileImageButton)
+
+                    joinViewModel.setProfileImage(imageList)
+                }
+        }
+    }
+
+    override fun afterViewCreated() {
+        super.afterViewCreated()
     }
 }

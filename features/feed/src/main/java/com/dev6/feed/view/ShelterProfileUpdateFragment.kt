@@ -11,6 +11,7 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.ImageUpload
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.model.ShelterResopnseEntitiyRepo
@@ -23,10 +24,10 @@ import gun0912.tedimagepicker.builder.TedImagePicker
 
 class ShelterProfileUpdateFragment :
     BindingFragment<FragmentShelterProfileUpdateBinding>(R.layout.fragment_shelter_profile_update) {
-    private val profileViewModel : ProfileViewModel by activityViewModels()
-    private val feedViewModel : FeedViewModel by activityViewModels()
-    private var profileImage : String = ""
-    private lateinit var    imageUpload : ImageUpload
+    private val profileViewModel: ProfileViewModel by activityViewModels()
+    private val feedViewModel: FeedViewModel by activityViewModels()
+    private var profileImage: String = ""
+    private lateinit var imageUpload: ImageUpload
     override fun initView() {
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
@@ -36,7 +37,6 @@ class ShelterProfileUpdateFragment :
         binding.HomepageUpdateInputText.setText(UserData.shelterHomepage)
         binding.PhoneUpdateInputText.setText(UserData.shelterPhoneNumber)
         binding.citySelectBt.setText(UserData.userCity)
-
 
 
     }
@@ -50,14 +50,15 @@ class ShelterProfileUpdateFragment :
         binding.shelterProfileUpdateTv.setOnClickListener {
 
             var shelterResopnseEntitiyRepo = ProfileUserUpdateRepo(
-                UserData.shelterAccount?: "",
-                UserData.shelterAddress?: "",
-                UserData.shelterHomepage?: "",
-                UserData.shelterIntro?: "",
-                UserData.shelterManager?: "",
-                UserData.shelterName?: "",
-                UserData.shelterPhoneNumber?: ""
-            //profileImage 추가 예정
+                UserData.shelterAccount ?: "",
+                UserData.shelterAddress ?: "",
+                UserData.shelterHomepage ?: "",
+                UserData.shelterIntro ?: "",
+                UserData.shelterManager ?: "",
+                UserData.shelterName ?: "",
+                UserData.shelterPhoneNumber ?: "",
+                 emptyList()
+                //profileImage 추가 예정,
             )
             profileViewModel.updateShelterProfileData(shelterResopnseEntitiyRepo, UserData.userId)
 
@@ -68,16 +69,31 @@ class ShelterProfileUpdateFragment :
                 .max(1, "")
                 .startMultiImage { uriList ->
                     profileImage = uriList[0].toString()
+                    val imageList: List<ByteArray> =
+                        uriList.map { ImageUpload.convertUrlToBitmap(it, this.requireContext()) }
+                            .map { ImageUpload.compressBitmap(it) }
                     Glide.with(binding.root)
-                        .load(uriList[0])
+                        .load(profileImage)
                         .circleCrop()
                         .into(binding.shelterProfileImageIv)
+
+                    profileViewModel.setProfileImage(imageList)
                 }
         }
     }
 
     override fun afterViewCreated() {
         super.afterViewCreated()
+
+        repeatOnStarted {
+            profileViewModel.userUpdateImageFlow.collect { urlList ->
+                if (urlList.isNotEmpty()) {
+                    UserData.profileImage = urlList[0].toString()
+                    Glide.with(requireContext()).load(urlList[0])
+                        .into(binding.shelterProfileImageIv)
+                }
+            }
+        }
     }
 
 }

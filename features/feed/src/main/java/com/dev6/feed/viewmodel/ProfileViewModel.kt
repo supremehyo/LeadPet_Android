@@ -27,6 +27,8 @@ class ProfileViewModel
     private val profileRepoUseCase: ProfileRepoUseCase
 ) : ViewModel() {
 
+
+
     private val _eventProfileDetail = MutableEventFlow<Event>()
     val eventProfileDetail = _eventProfileDetail.asEventFlow()
 
@@ -45,6 +47,14 @@ class ProfileViewModel
 
     private val _cityChoiceStateFlow = MutableStateFlow<String>("서울")
     val cityChoiceStateFlow = _cityChoiceStateFlow.asStateFlow()
+
+    private val _userUpdateImageFlow = MutableStateFlow<List<ByteArray>>(emptyList())
+    val userUpdateImageFlow = _userUpdateImageFlow.asStateFlow()
+
+    fun setProfileImage(imageList: List<ByteArray>) {
+        _userUpdateImageFlow.update { imageList }
+    }
+
 
     ///쉘터 프로필 디테일 이벤트
     fun eventShelterProfileDetailData(event :Event){
@@ -117,6 +127,8 @@ class ProfileViewModel
     }
 
     fun updateNormalUserProfileData(dto: NormalUserUpdateRepo ,userId :String) = viewModelScope.launch{
+        Log.v("sdfasdf" , userUpdateImageFlow.value.toString())
+        dto.copy(imageList = userUpdateImageFlow.value)
         profileRepoUseCase.updateNormalUserProfileDetailData(dto ,userId).collect{ uiState->
             eventUpdateNormalUserProfileData(Event.NormalUserProfileUpdateUiEvent(uiState))
         }

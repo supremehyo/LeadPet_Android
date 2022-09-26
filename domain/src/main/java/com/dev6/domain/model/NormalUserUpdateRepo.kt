@@ -11,4 +11,6 @@ data class NormalUserUpdateRepo(
     val name: String,
     @SerializedName("profileImage")
     val profileImage: String,
+
+    val imageList : List<ByteArray>
 )
