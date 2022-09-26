@@ -16,7 +16,7 @@ class InsertDonatePostUseCase @Inject constructor(private val donationRepository
     override suspend fun invoke(donationPost: DonationPost): Flow<UiState<DonationPost>> = flow {
         emit(UiState.Loding)
         runCatching {
-            imageRepository.uploadImage()
+//            imageRepository.uploadImage()
             donationRepository.insertDonatePost(donationPost)
 
         }.onSuccess { result ->

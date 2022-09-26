@@ -29,7 +29,7 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
     override fun initView() {
         super.initView()
         feedViewModel.setCurrentView(FeedViewType.PROFILEUPDATE)
-        imageUpload = ImageUpload()
+//        imageUpload = ImageUpload()
         //profileImage = UserData.profileImage.toString()
 
         Glide.with(binding.root)
@@ -59,28 +59,28 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
             bottomSheet.show(parentFragmentManager,bottomSheet.tag)
         }
 
-        binding.userProfileUpdateCompleteTv.setOnClickListener {
-            if(profileImage == ""){
-                var normalUserUpdateRepo = NormalUserUpdateRepo(
-                    cityName,
-                    binding.IntroUpdateInputText.text.toString(),
-                    binding.nickNameUpdateInputText.text.toString(),
-                    (it ?: UserData.profileImage).toString()
-                )
-                profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
-            }else{
-                imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
-                    var normalUserUpdateRepo = NormalUserUpdateRepo(
-                        cityName,
-                        binding.IntroUpdateInputText.text.toString(),
-                        binding.nickNameUpdateInputText.text.toString(),
-                        (it ?: UserData.profileImage).toString()
-                    )
-                    UserData.profileImage = it
-                    profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
-                }
-            }
-        }
+//        binding.userProfileUpdateCompleteTv.setOnClickListener {
+//            if(profileImage == ""){
+//                var normalUserUpdateRepo = NormalUserUpdateRepo(
+//                    cityName,
+//                    binding.IntroUpdateInputText.text.toString(),
+//                    binding.nickNameUpdateInputText.text.toString(),
+//                    (it ?: UserData.profileImage).toString()
+//                )
+//                profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
+//            }else{
+//                imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
+//                    var normalUserUpdateRepo = NormalUserUpdateRepo(
+//                        cityName,
+//                        binding.IntroUpdateInputText.text.toString(),
+//                        binding.nickNameUpdateInputText.text.toString(),
+//                        (it ?: UserData.profileImage).toString()
+//                    )
+//                    UserData.profileImage = it
+//                    profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
+//                }
+//            }
+//        }
 
         binding.shelterProfileImageIv.setOnClickListener {
             TedImagePicker.with(requireContext())

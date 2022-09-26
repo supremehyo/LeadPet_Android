@@ -140,19 +140,19 @@ class HomeFragment :
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                event.uiState.data.collect {
-                                    dailyPagingAdapter.submitData(it)
-                                }
-                            }
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+//                        when (event.uiState) {
+//                            is UiState.Success -> {
+//                                event.uiState.data.collect {
+//                                    dailyPagingAdapter.submitData(it)
+//                                }
+//                            }
+//                            is UiState.Error -> {
+//                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+//                            }
+//                            is UiState.Loding -> {
+//                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
+//                            }
+//                        }
                     }
                     else -> {
                     }

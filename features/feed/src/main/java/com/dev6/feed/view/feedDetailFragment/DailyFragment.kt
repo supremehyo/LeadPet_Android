@@ -12,13 +12,13 @@ import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.enums.UserType
-import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 
 class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_daily) {
 
@@ -45,7 +45,10 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
                 )
             } else {
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
-                findNavController().navigate(R.id.action_feedFragment_to_fragmentFeedDaily2 ,Bundle().apply {putSerializable("dailyPost", it)})
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_fragmentFeedDaily2,
+                    Bundle().apply { putSerializable("dailyPost", it) }
+                )
             }
         }
 
@@ -89,50 +92,58 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         feedViewModel.getNearShelterList(UserData.userCity ?: "", "")
     }
 
+    override fun onStart() {
+        pagingAdapter.refresh()
+        Timber.tag("테스트").d("Start")
+        super.onStart()
+    }
+
+    override fun onResume() {
+        Timber.tag("테스트").d("onResume")
+        super.onResume()
+    }
+
+    override fun onStop() {
+        Timber.tag("테스트").d("onStop")
+        super.onStop()
+    }
+
     override fun afterViewCreated() {
         super.afterViewCreated()
-        repeatOnStarted {
+        repeatOnStartedFragment {
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                event.uiState.data.collectLatest {
-                                    pagingAdapter.submitData(it)
-                                }
-                            }
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                        pagingAdapter.submitData(event.uiState)
                     }
+
                     else -> {
                     }
                 }
             }
         }
 
-        repeatOnStarted {
+        repeatOnStartedFragment {
             feedViewModel.eventShelterList.collect { event ->
                 when (event) {
-                    is FeedViewModel.Event.ShelterUiEvnet -> {
+                    is FeedViewModel.Event.ShelterUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 event.uiState.data.collectLatest {
                                     shelterAdapter.submitData(it)
                                 }
                             }
+
                             is UiState.Error -> {
                                 Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
                             }
+
                             is UiState.Loding -> {
                                 Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
+
                     else -> {
                     }
                 }

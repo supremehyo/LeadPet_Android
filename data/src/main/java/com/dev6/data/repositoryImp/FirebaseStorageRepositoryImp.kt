@@ -1,12 +1,8 @@
 package com.dev6.data.repositoryImp
 
-import android.graphics.Bitmap
-import android.util.Log
-import com.dev6.data.remote.DonationRemoteSource
 import com.dev6.domain.image.FirebaseStorageRepository
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.suspendCancellableCoroutine
-import java.io.ByteArrayOutputStream
 import java.util.UUID
 import javax.inject.Inject
 import kotlin.coroutines.resume
@@ -30,5 +26,4 @@ class FirebaseStorageRepositoryImp @Inject constructor(private val storage: Fire
     override suspend fun fetchImage() {
         TODO("Not yet implemented")
     }
-
 }

@@ -2,7 +2,6 @@ package com.dev6.feed.view.feedDetailActivity
 
 import android.graphics.Color
 import android.os.Build
-import android.service.autofill.UserData
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
@@ -85,7 +84,7 @@ class DailyFeedDetailActivity :
         repeatOnStarted {
             feedViewModel.eventFlowComment.collect { event ->
                 when (event) {
-                    is FeedViewModel.Event.CommentUiEvnet -> {
+                    is FeedViewModel.Event.CommentUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 event.uiState.data.collect {
@@ -120,7 +119,7 @@ class DailyFeedDetailActivity :
         repeatOnStarted {
             feedViewModel.eventPostLike.collect { event ->
                 when (event) {
-                    is FeedViewModel.Event.CommentLikeUiEvnet -> {
+                    is FeedViewModel.Event.CommentLikeUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 Toast.makeText(

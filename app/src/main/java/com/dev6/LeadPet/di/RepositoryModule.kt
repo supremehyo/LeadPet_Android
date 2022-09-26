@@ -1,6 +1,7 @@
 package com.dev6.LeadPet.di
 
 import com.dev6.data.repositoryImp.*
+import com.dev6.domain.image.FirebaseStorageRepository
 import com.dev6.domain.repository.*
 import com.dev6.domain.repository.adopt.AdoptRepository
 import com.dev6.domain.repository.daily.DailyRepository
@@ -60,4 +61,8 @@ abstract class RepositoryModule {
     @Binds
     @ViewModelScoped
     abstract fun bindsSavedRepository(repository: SavedRepositoryImp): SavedRepository
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindsFirebaseStorageRepository(repository: FirebaseStorageRepositoryImp): FirebaseStorageRepository
 }

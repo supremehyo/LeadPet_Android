@@ -2,7 +2,6 @@ package com.dev6.feed.view
 
 import android.graphics.Color
 import android.os.Build
-import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.KeyEvent
@@ -27,7 +26,6 @@ import com.dev6.feed.R
 import com.dev6.feed.adapter.comment.DailyCommentAdapter
 import com.dev6.feed.databinding.FragmentDailyFeedDetailBinding
 import com.dev6.feed.viewmodel.FeedViewModel
-import kotlinx.coroutines.flow.collect
 
 class DailyFeedDetailFragment :
     BindingFragment<FragmentDailyFeedDetailBinding>(R.layout.fragment_daily_feed_detail) {
@@ -123,7 +121,7 @@ class DailyFeedDetailFragment :
         repeatOnStarted {
             feedViewModel.eventFlowComment.collect { event ->
                 when (event) {
-                    is FeedViewModel.Event.CommentUiEvnet -> {
+                    is FeedViewModel.Event.CommentUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 event.uiState.data.collect {
@@ -155,7 +153,7 @@ class DailyFeedDetailFragment :
         repeatOnStarted {
             feedViewModel.eventFlowCommentPost.collect { event ->
                 when (event) {
-                    is FeedViewModel.Event.CommentPostUiEvnet -> {
+                    is FeedViewModel.Event.CommentPostUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 Toast.makeText(
@@ -178,7 +176,7 @@ class DailyFeedDetailFragment :
         repeatOnStarted {
             feedViewModel.eventPostLike.collect { event ->
                 when (event) {
-                    is FeedViewModel.Event.CommentLikeUiEvnet -> {
+                    is FeedViewModel.Event.CommentLikeUiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
                                 Toast.makeText(

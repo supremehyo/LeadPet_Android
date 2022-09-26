@@ -95,7 +95,7 @@ dependencies {
     implementation(platform(Google.FIREBASE_BOM))
     implementation(Google.CRASHLYTICS)
     implementation(Google.ANALYTICS)
-
+    implementation(Image.FIREBASE_STORAGE)
 
     testImplementation(UnitTest.JUNIT)
     //androidTestImplementation(AndroidTest.ANDROID_JUNIT)

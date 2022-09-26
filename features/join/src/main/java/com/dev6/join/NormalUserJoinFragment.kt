@@ -35,7 +35,7 @@ class NormalUserJoinFragment :
 
     override fun initView() {
         super.initView()
-        imageUpload = ImageUpload()
+//        imageUpload = ImageUpload()
         userType = arguments?.get("userType").toString()
         uid = arguments?.get("uid").toString()
 
@@ -89,21 +89,21 @@ class NormalUserJoinFragment :
                 }
             }
 
-            profileImageButton.setOnClickListener {
-                TedImagePicker.with(requireContext())
-                    .max(1, "")
-                    .startMultiImage { uriList ->
-                        joinViewModel.setJoinImage(uriList)
-                        Glide.with(binding.root)
-                            .load(uriList[0])
-                            .circleCrop()
-                            .into(profileImageButton)
-
-                        imageUpload.uploadPhoto(nickNameInputText.text.toString(),uriList[0],requireContext()){
-                            imageUri = it
-                        }
-                    }
-            }
+//            profileImageButton.setOnClickListener {
+//                TedImagePicker.with(requireContext())
+//                    .max(1, "")
+//                    .startMultiImage { uriList ->
+//                        joinViewModel.setJoinImage(uriList)
+//                        Glide.with(binding.root)
+//                            .load(uriList[0])
+//                            .circleCrop()
+//                            .into(profileImageButton)
+//
+//                        imageUpload.uploadPhoto(nickNameInputText.text.toString(),uriList[0],requireContext()){
+//                            imageUri = it
+//                        }
+//                    }
+//            }
 
             noramlJoinBackButton.setOnClickListener {
                 findNavController().popBackStack()

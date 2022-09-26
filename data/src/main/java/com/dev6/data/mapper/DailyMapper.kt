@@ -51,7 +51,9 @@ internal fun DailyFeedRequestResponse.toDomain() = DailyPost(
     likedCount = likedCount,
     createdDate = createdDate,
     liked = liked,
-    commentCount = commentCount
+    commentCount = commentCount,
+    imageList = listOf()
+
 )
 
 internal fun DailyPost.toMapper() = DailyFeedRequestResponse(

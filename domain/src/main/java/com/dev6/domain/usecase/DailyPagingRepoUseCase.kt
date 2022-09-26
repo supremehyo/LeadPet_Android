@@ -5,23 +5,15 @@ import com.dev6.domain.repository.daily.DailyRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
-class DailyPagingRepoUseCase @Inject constructor
-    (
+class DailyPagingRepoUseCase @Inject constructor(
     private val dailyPagingRepository: DailyRepository
 ) {
 
-    fun getDailyDataPagingData(userId: String, likedUser: String) = flow {
-        emit(UiState.Loding)
-        runCatching {
-            dailyPagingRepository.getPagingData(userId, likedUser)
-        }.onSuccess { result ->
-            emit(UiState.Success(result))
-        }.onFailure {
-            emit(UiState.Error(it))
-        }
-    }
+    suspend fun getDailyDataPagingData(userId: String, likedUser: String) =
+        dailyPagingRepository.getPagingData(userId, likedUser)
 
+    // Paging UseCase 에 postLike가 들어가는 단일책임원칙에 위배되는것 같아용
+    // 해당 Like를 따로 분리하는게 좀더 좋을것같아요.
     fun postLike(postId: String, userId: String) = flow {
         emit(UiState.Loding)
         runCatching {
@@ -33,4 +25,3 @@ class DailyPagingRepoUseCase @Inject constructor
         }
     }
 }
-

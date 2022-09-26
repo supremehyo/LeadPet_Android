@@ -1,8 +1,8 @@
 package com.dev6.post.viewmodel
 
-import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dev6.core.UserData
 import com.dev6.core.base.UiState
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
@@ -37,7 +37,7 @@ class LifePostViewModel @Inject constructor(
 
     fun insertLifePost(text: String, content: String) = viewModelScope.launch {
         val repo = DailyPost(
-            userId = "",
+            userId = UserData.userId,
             title = text,
             contents = content,
             images = listOf(),
@@ -46,7 +46,7 @@ class LifePostViewModel @Inject constructor(
             createdDate = listOf(),
             commentCount = 0,
             liked = false,
-            imageList = postImageFlow.value,
+            imageList = postImageFlow.value
         )
 
         insertDailyPostBaseUseCase(repo).collect { uiState ->

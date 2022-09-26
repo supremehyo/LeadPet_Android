@@ -54,20 +54,20 @@ class ShelterUserMoreFragment :
             additionalProfileButton.setOnClickListener {
                 if (shelterDescriptionTv.text.toString().isNotEmpty() && joinImages.isNotEmpty()) {
 
-                    imageUpload.uploadPhoto(shelterName, joinImages[0], requireContext()) {
-                        imageUri = it
-                        joinViewModel.signUp(
-                            makeJoinDto(
-                                shelterName,
-                                shelterPhone,
-                                shelterAccount,
-                                shelterAddress,
-                                shelterHomePage,
-                                userType,
-                                shelterDescriptionTv.text.toString()
-                            )
-                        )
-                    }
+//                    imageUpload.uploadPhoto(shelterName, joinImages[0], requireContext()) {
+//                        imageUri = it
+//                        joinViewModel.signUp(
+//                            makeJoinDto(
+//                                shelterName,
+//                                shelterPhone,
+//                                shelterAccount,
+//                                shelterAddress,
+//                                shelterHomePage,
+//                                userType,
+//                                shelterDescriptionTv.text.toString()
+//                            )
+//                        )
+//                    }
                 } else {
                     Toast.makeText(context, "소개글이 비어있습니다.", Toast.LENGTH_SHORT).show()
                 }

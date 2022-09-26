@@ -7,5 +7,5 @@ interface FirebaseStorageRepository {
 
 
     suspend fun fetchImage()
-    suspend fun uploadImage(bitmap: ByteArray): String
+    suspend fun uploadImage( bitmap: ByteArray): String
 }

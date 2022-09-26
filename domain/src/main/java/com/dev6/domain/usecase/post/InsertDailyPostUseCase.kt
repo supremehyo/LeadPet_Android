@@ -16,11 +16,12 @@ class InsertDailyPostUseCase @Inject constructor(
     private val imageRepository: FirebaseStorageRepository
 ) : InsertDailyPostBaseUseCase {
 
-    override suspend fun invoke(lifePost: DailyPost) = flow {
+    override suspend fun invoke(dailyPost: DailyPost) = flow {
         emit(UiState.Loding)
         runCatching {
-            lifePost.imageList.map { imageRepository.uploadImage(it) }
-            repo.insertDailyPost(lifePost)
+            repo.insertDailyPost(
+                dailyPost.copy(images = dailyPost.imageList.map { imageRepository.uploadImage(it) })
+            )
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {

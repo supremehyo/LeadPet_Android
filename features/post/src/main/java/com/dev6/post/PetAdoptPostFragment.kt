@@ -38,7 +38,7 @@ class PetAdoptPostFragment :
     override fun initView() {
         super.initView()
         val choiceAdapter = GroupieAdapter()
-        imageUpload = ImageUpload()
+//        imageUpload = ImageUpload()
         binding.rvAnimalChoice.adapter = choiceAdapter
 
 

@@ -1,5 +1,6 @@
 package com.dev6.LeadPet.di
 
+import com.dev6.domain.image.FirebaseStorageRepository
 import com.dev6.domain.repository.BreedRepository
 import com.dev6.domain.repository.daily.DailyRepository
 import com.dev6.domain.repository.donate.DonationRepository
@@ -20,13 +21,13 @@ import dagger.hilt.android.scopes.ViewModelScoped
 object UseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideDailyPostUsecase(repository: DailyRepository): InsertDailyPostBaseUseCase =
-        InsertDailyPostUseCase(repository)
+    fun provideDailyPostUsecase(repository: DailyRepository, firebaseStorageRepository: FirebaseStorageRepository): InsertDailyPostBaseUseCase =
+        InsertDailyPostUseCase(repository, firebaseStorageRepository)
 
     @Provides
     @ViewModelScoped
-    fun provideInsertDonatePostUseCase(repository: DonationRepository): InsertDonatePostBaseUseCase =
-        InsertDonatePostUseCase(repository)
+    fun provideInsertDonatePostUseCase(repository: DonationRepository, firebaseStorageRepository: FirebaseStorageRepository): InsertDonatePostBaseUseCase =
+        InsertDonatePostUseCase(repository, firebaseStorageRepository)
 
     @Provides
     @ViewModelScoped

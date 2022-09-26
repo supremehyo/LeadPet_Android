@@ -1,9 +1,9 @@
 package com.dev6.feed.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.enums.PostType
@@ -145,13 +145,13 @@ class FeedViewModel
     fun postLike(postId: String, userId: String) {
         viewModelScope.launch {
             pagingRepoUseCase.postLike(postId, userId).collect { uistate ->
-                eventPostLike(Event.CommentLikeUiEvnet(uistate))
+                eventPostLike(Event.CommentLikeUiEvent(uistate))
             }
         }
     }
 
     fun getFeedList(userId: String, likedUser: String) = viewModelScope.launch {
-        pagingRepoUseCase.getDailyDataPagingData(userId, likedUser).collect { uistate ->
+        pagingRepoUseCase.getDailyDataPagingData(userId, likedUser).cachedIn(viewModelScope).collect { uistate ->
             eventDailyList(Event.DailyUiEvent(uistate))
         }
     }
@@ -170,19 +170,19 @@ class FeedViewModel
 
     fun getNearShelterList(cityName: String, shelterName: String) = viewModelScope.launch {
         shelterUserCase.getShelterPagingData(cityName, shelterName).collect { uistate ->
-            eventShelterList(Event.ShelterUiEvnet(uistate))
+            eventShelterList(Event.ShelterUiEvent(uistate))
         }
     }
 
     fun getCommentListByPostId(postId: String) = viewModelScope.launch {
         commentPagingRepoUseCase.getCommentDataPagingData(postId).collect { uistate ->
-            eventComment(Event.CommentUiEvnet(uistate))
+            eventComment(Event.CommentUiEvent(uistate))
         }
     }
 
     fun postCommentListByPostId(commentUpdate : CommentUpdate) = viewModelScope.launch {
         commentPagingRepoUseCase.postCommentData(commentUpdate).collect { uistate ->
-            eventCommentPost(Event.CommentPostUiEvnet(uistate))
+            eventCommentPost(Event.CommentPostUiEvent(uistate))
         }
     }
 
@@ -201,13 +201,13 @@ class FeedViewModel
     }
 
     sealed class Event {
-        data class DailyUiEvent(val uiState: UiState<Flow<PagingData<DailyPost>>>) : Event()
+        data class DailyUiEvent(val uiState: PagingData<DailyPost>) : Event()
         data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPost>>>) : Event()
         data class AdoptUiEvent(val uiState: UiState<Flow<PagingData<AdoptPostFeed>>>) : Event()
-        data class ShelterUiEvnet(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
-        data class CommentUiEvnet(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
-        data class CommentLikeUiEvnet(val uiState: UiState<ResponseBody>) : Event()
-        data class CommentPostUiEvnet(val uiState: UiState<ResponseBody>) : Event()
+        data class ShelterUiEvent(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
+        data class CommentUiEvent(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
+        data class CommentLikeUiEvent(val uiState: UiState<ResponseBody>) : Event()
+        data class CommentPostUiEvent(val uiState: UiState<ResponseBody>) : Event()
 
         data class BookMarkUiEvent(val uiState: UiState<Save>) : Event()
         data class UnBookMarkUiEvent(val uiState: UiState<Save>) : Event()
