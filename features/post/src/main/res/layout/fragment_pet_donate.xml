@@ -92,7 +92,7 @@
                     android:layout_marginTop="10dp"
                     android:text="게시 기간"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/textin_introduce" />
 
                 <ImageView
                     android:id="@+id/iv_info"
@@ -159,16 +159,6 @@
                         android:hint="소개글 작성"
                         android:minHeight="200dp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textView3"
-                    style="@style/customTextViewFontStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{@string/text_ems_1000(tietIntroduce.text.length)}"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-                    app:layout_constraintTop_toBottomOf="@+id/textin_introduce" />
 
                 <com.dev6.core.view.CustomButtonCalandar
                     android:id="@+id/cv_start_date"

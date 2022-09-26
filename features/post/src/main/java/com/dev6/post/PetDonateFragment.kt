@@ -1,17 +1,11 @@
 package com.dev6.post
 
-import android.app.DatePickerDialog
-import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.*
-import androidx.fragment.app.Fragment
 import com.dev6.core.base.BindingFragment
 import com.dev6.post.databinding.FragmentPetDonateBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -31,6 +25,7 @@ class PetDonateFragment : BindingFragment<FragmentPetDonateBinding>(R.layout.fra
         super.initView()
 
         with(binding) {
+            include.tvTop.text = "기부글 작성"
             cvEndDate.setHint("종료일")
         }
     }
@@ -72,7 +67,6 @@ class PetDonateFragment : BindingFragment<FragmentPetDonateBinding>(R.layout.fra
 
         binding.cvStartDate.setClick { excuteDatePicker() }
         binding.cvEndDate.setClick { excuteDatePicker() }
-
     }
 
     private fun excuteDatePicker() {
@@ -89,5 +83,4 @@ class PetDonateFragment : BindingFragment<FragmentPetDonateBinding>(R.layout.fra
         }
         dateRangePicker.show(this.parentFragmentManager, null)
     }
-
 }
