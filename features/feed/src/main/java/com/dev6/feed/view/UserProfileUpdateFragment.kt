@@ -2,12 +2,14 @@ package com.dev6.feed.view
 
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.ImageUpload
 import com.dev6.core.util.extension.repeatOnStarted
@@ -17,6 +19,7 @@ import com.dev6.feed.databinding.FragmentUserProfileUpdateBinding
 import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.feed.viewmodel.ProfileViewModel
 import gun0912.tedimagepicker.builder.TedImagePicker
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 
 
@@ -46,15 +49,17 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
     override fun initViewModel() {
         super.initViewModel()
 
+
+
         binding.shelterProfileImageIv.setOnClickListener {
             TedImagePicker.with(requireContext())
                 .max(1, "")
                 .startMultiImage { uriList ->
-                    Log.v("asfsdfasdf ", uriList[0].toString())
                     val imageList: List<ByteArray> =
                         uriList.map { ImageUpload.convertUrlToBitmap(it, this.requireContext()) }
                             .map { ImageUpload.compressBitmap(it) }
 
+                    Glide.with(requireActivity()).load(uriList[0].toString()).into(binding.shelterProfileImageIv)
                     profileViewModel.setProfileImage(imageList)
                 }
         }
@@ -83,22 +88,6 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
                     emptyList()
                 )
                 profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
-
-            /*
-            else{
-                imageUpload.uploadPhoto(UserData.uid,profileImage.toUri(),requireContext()){
-                    var normalUserUpdateRepo = NormalUserUpdateRepo(
-                        cityName,
-                        binding.IntroUpdateInputText.text.toString(),
-                        binding.nickNameUpdateInputText.text.toString(),
-                        (it ?: UserData.profileImage).toString()
-                    )
-                    UserData.profileImage = it
-                    profileViewModel.updateNormalUserProfileData(normalUserUpdateRepo,UserData.userId)
-                }
-            }
-
-             */
         }
 
 
@@ -108,6 +97,7 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
 
     override fun afterViewCreated() {
         super.afterViewCreated()
+        
         repeatOnStartedFragment {
             profileViewModel.cityChoiceStateFlow.collect{
                 binding.citySelectBt.text = it
@@ -115,19 +105,28 @@ class UserProfileUpdateFragment : BindingFragment<FragmentUserProfileUpdateBindi
         }
 
         repeatOnStartedFragment {
-            profileViewModel.eventNormalUserProfileUpdateDetail.collectLatest {
-                findNavController().popBackStack()
-            }
-        }
-        repeatOnStarted {
-            profileViewModel.userUpdateImageFlow.collect { urlList ->
-                if (urlList.isNotEmpty()) {
-                    UserData.profileImage = urlList[0].toString()
-
-                    Glide.with(requireActivity()).load(urlList[0])
-                        .into(binding.shelterProfileImageIv)
+            profileViewModel.eventNormalUserProfileUpdateDetail.collectLatest { event ->
+                when (event) {
+                    is ProfileViewModel.Event.NormalUserProfileUpdateUiEvent -> {
+                        when (event.uiState) {
+                            is UiState.Success -> {
+                                UserData.profileImage = event.uiState.data
+                                Glide.with(requireActivity()).load(UserData.profileImage)
+                                    .into(binding.shelterProfileImageIv)
+                                findNavController().popBackStack()
+                            }
+                            is UiState.Error -> {}
+                            is UiState.Loding -> {}
+                        }
+                    }
+                    else -> {
+                    }
                 }
+
             }
         }
+
+
+
     }
 }

@@ -55,13 +55,17 @@ class ShelterUserMoreFragment :
         binding.apply {
             additionalProfileButton.setOnClickListener {
                 if (shelterDescriptionTv.text.toString().isNotEmpty()) {
-
-                        joinViewModel.signUp(
-                            makeLoginType(com.dev6.core.UserData.loginMethod),
-                            com.dev6.core.UserData.uid,
-                            "이메일", "패스워드",
-                            imageUri, shelterName, shelterName,"0000", shelterAccount,
-                            shelterAddress,"",userType,binding.shelterDescriptionTv.text.toString())
+                    joinViewModel.signUp(
+                        makeJoinDto(
+                            shelterName,
+                            shelterPhone,
+                            shelterAccount,
+                            shelterAddress,
+                            shelterHomePage,
+                            userType,
+                            shelterIntro
+                        )
+                    )
                 } else {
                     Toast.makeText(context, "소개글이 비어있습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -91,22 +95,6 @@ class ShelterUserMoreFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        /*
-        repeatOnStarted {
-            joinViewModel.joinImageFlow.collect {
-                joinImages = it
-            }
-        }
-
-         */
-        repeatOnStarted {
-            joinViewModel.userUpdateImageFlow.collect { urlList ->
-                if (urlList.isNotEmpty()) {
-
-
-                }
-            }
-        }
 
         repeatOnStarted {
             joinViewModel.joinEvnetFlow.collect { event ->
@@ -114,6 +102,8 @@ class ShelterUserMoreFragment :
                     is JoinViewModel.Event.UiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
+                                Log.v("asdfasdfwef" ,event.uiState.data)
+                                com.dev6.core.UserData.profileImage = event.uiState.data
                                 val feedIntent = Intent(context, FeedActivity::class.java)
                                 feedIntent.putExtra("userType", userType)
                                 startActivity(feedIntent)
@@ -173,7 +163,6 @@ class ShelterUserMoreFragment :
             joinViewModel.userUpdateImageFlow.collect { urlList ->
                 if (urlList.isNotEmpty()) {
                     imageUri = urlList[0].toString()
-                    Log.v("dfgsdfh" , imageUri)
                 }
             }
         }

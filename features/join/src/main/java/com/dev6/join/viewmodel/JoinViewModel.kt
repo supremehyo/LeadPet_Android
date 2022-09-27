@@ -59,45 +59,13 @@ class JoinViewModel
         _joinImageFlow.value = emptyList()
     }
 
-
-    fun signUp(
-        loginMethod: String,
-        uid : String,
-        email: String,
-        password : String,
-        profileImage: String,
-        name: String,
-        shelterName: String,
-                shelterPhone: String,
-                shelterAccount: String,
-                shelterAddress: String,
-                shelterHomePage: String,
-                userType: String,
-                shelterIntro: String)  =viewModelScope.launch {
-        Log.v("ASdfasdf1",    userUpdateImageFlow.value.toString())
-
-        val join = Join(
-            loginMethod = loginMethod,
-            uid = uid,
-            email = email,
-            password = password,
-            profileImage = profileImage,
-            name = name,
-            shelterName = shelterName,
-            shelterPhoneNumber = shelterPhone,
-            shelterAccount = shelterAccount,
-            shelterAddress = shelterAddress,
-            shelterManager = "매니저",
-            shelterHomePage = shelterHomePage,
-            userType =userType ,
-            shelterIntro = shelterIntro,
-            imageList = userUpdateImageFlow.value
-        )
-
-            joinReposUseCase(join).collect{uiState ->
+    fun signUp(joinEntitiyRepo: Join) {
+        var tempDto = joinEntitiyRepo.copy(imageList = userUpdateImageFlow.value)
+        viewModelScope.launch {
+            joinReposUseCase(tempDto).collect{uiState ->
                 event(Event.UiEvent(uiState))
             }
-
+        }
     }
 
     fun setJoinDTOData(dto : Join){

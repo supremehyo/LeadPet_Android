@@ -58,8 +58,6 @@ class ProfileIntroduceFragment :
     override fun afterViewCreated() {
         super.afterViewCreated()
         repeatOnStarted {
-            Log.v("sdfsdfqvbwv" ,"Sssdfsdfs1")
-            //콜렉트가 잘 안되고 있음 이거 해결하면 쉘터클릭시 해당 데이터 가져오는거 끝
             profileViewModel.eventClickProfileDetail.collect{ evnet->
                 when(evnet){
                     is ProfileViewModel.Event.ProfileUiEvent->{

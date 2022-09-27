@@ -21,10 +21,10 @@ class JoinReposUseCase @Inject constructor(
     override suspend fun invoke(join: Join) = flow {
         emit(UiState.Loding)
         runCatching {
-            joinRepository.signUp(join.copy(
-                profileImage = join.imageList.map{imageRepository.uploadImage(it)}[0])
-            )
-
+            val imageUpload = join.imageList.map{imageRepository.uploadImage(it)}[0]
+            val updateDTO = join.copy(profileImage = imageRepository.fetchImage(imageUpload))
+            joinRepository.signUp(updateDTO)
+            updateDTO.profileImage
         }.onSuccess { result ->
             Log.v("ASdfasdf",join.profileImage)
             emit(UiState.Success(result))

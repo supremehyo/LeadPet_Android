@@ -27,7 +27,6 @@ class ProfileRepositoryImp @Inject constructor(
     }
 
     override suspend fun getNormalUserDetail(userId: String): NormalUserRepo {
-        Log.v("sdfsdfa" , userId)
         return profileRemoteSource.getNormalUserDetail(userId).toDomain()
     }
 

@@ -22,6 +22,7 @@ abstract class BindingFragment<T : ViewDataBinding>(
     protected val binding: T
         get() = requireNotNull(_binding)
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

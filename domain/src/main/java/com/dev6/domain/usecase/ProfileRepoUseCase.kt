@@ -51,7 +51,21 @@ class ProfileRepoUseCase @Inject constructor(
     fun updateNormalUserProfileDetailData(dto: NormalUserUpdateRepo, userId: String) = flow{
         emit(UiState.Loding)
         runCatching {
-            profileRepository.updateNormalUserData(dto.copy(profileImage = dto.imageList.map{imageRepository.uploadImage(it)}[0]),userId)
+            val imageUpload = dto.imageList.map{imageRepository.uploadImage(it)}[0]
+            val updateDTO = dto.copy(profileImage =  imageRepository.fetchImage(imageUpload))
+            profileRepository.updateNormalUserData(updateDTO,userId)
+            updateDTO.profileImage
+        }.onSuccess { result ->
+            emit(UiState.Success(result))
+        }.onFailure {
+            emit(UiState.Error(it))
+        }
+    }
+
+    fun normalUserProfileImageUri(uuid: String) = flow{
+        emit(UiState.Loding)
+        runCatching {
+            imageRepository.fetchImage(uuid)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {

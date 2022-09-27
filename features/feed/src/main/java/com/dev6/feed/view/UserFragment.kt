@@ -31,6 +31,9 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
 
     lateinit var selected: Fragment
 
+
+
+
     override fun initView() {
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
         profileUserScrapFragment = ProfileUserScrapFragment()
@@ -61,15 +64,6 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
         super.afterViewCreated()
 
         repeatOnStartedFragment {
-            profileViewModel.userUpdateImageFlow.collect { urlList ->
-                if (urlList.isNotEmpty()) {
-                    Glide.with(requireActivity()).load(urlList[0])
-                        .into(binding.userProfileIv)
-                }
-            }
-        }
-
-        repeatOnStartedFragment {
             profileViewModel.eventNormalUserProfileDetail.collect{ evnet->
                 when(evnet){
                     is ProfileViewModel.Event.NormalUserProfileUiEvent->{
@@ -78,7 +72,8 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                                 var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     Glide.with(binding.root)
-                                        .load(R.mipmap.img_1)
+                                        .load(UserData.profileImage)
+                                        .error(R.mipmap.img_1)
                                         .circleCrop()
                                         .into(userProfileIv)
                                     userProfileDesTv.text = userProfileData.intro
@@ -95,6 +90,26 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                             else->{
 
                             }
+                        }
+                    }else->{
+
+                }
+                }
+            }
+        }
+
+        repeatOnStarted {
+            profileViewModel.eventNormalUserProfileImage.collect{event->
+                when(event){
+                    is ProfileViewModel.Event.NormalUserProfileImageUiEvent->{
+                        when(event.uiState){
+                            is UiState.Success -> {
+                                Log.v("Sgrsegrerge1" , event.uiState.data.toString())
+                                Glide.with(requireActivity()).load(event.uiState.data)
+                                    .into(binding.userProfileIv)
+                            }
+                            is UiState.Error -> {}
+                            is UiState.Loding -> {}
                         }
                     }else->{
 

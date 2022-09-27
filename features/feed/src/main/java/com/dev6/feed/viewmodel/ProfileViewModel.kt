@@ -45,6 +45,9 @@ class ProfileViewModel
     private val _eventNormalUserProfileUpdateDetail = MutableEventFlow<Event>()
     val eventNormalUserProfileUpdateDetail = _eventNormalUserProfileUpdateDetail.asEventFlow()
 
+    private val _eventNormalUserProfileImage = MutableEventFlow<Event>()
+    val eventNormalUserProfileImage = _eventNormalUserProfileImage.asEventFlow()
+
     private val _cityChoiceStateFlow = MutableStateFlow<String>("서울")
     val cityChoiceStateFlow = _cityChoiceStateFlow.asStateFlow()
 
@@ -126,11 +129,22 @@ class ProfileViewModel
         }
     }
 
+    fun eventNormalUserImage(event: Event){
+        viewModelScope.launch {
+            _eventNormalUserProfileImage.emit(event)
+        }
+    }
+
     fun updateNormalUserProfileData(dto: NormalUserUpdateRepo ,userId :String) = viewModelScope.launch{
-        Log.v("sdfasdf" , userUpdateImageFlow.value.toString())
-        dto.copy(imageList = userUpdateImageFlow.value)
-        profileRepoUseCase.updateNormalUserProfileDetailData(dto ,userId).collect{ uiState->
+        var tempdto = dto.copy(imageList = userUpdateImageFlow.value)
+        profileRepoUseCase.updateNormalUserProfileDetailData(tempdto ,userId).collect{ uiState->
             eventUpdateNormalUserProfileData(Event.NormalUserProfileUpdateUiEvent(uiState))
+        }
+    }
+
+    fun normalUserProfileImageUri(uuid: String) = viewModelScope.launch{
+        profileRepoUseCase.normalUserProfileImageUri(uuid).collect{
+            eventNormalUserImage(Event.NormalUserProfileImageUiEvent(it))
         }
     }
 
@@ -141,6 +155,7 @@ class ProfileViewModel
         data class ProfileUiEvent(val uiState: UiState<ProfileUserRepo>) : Event()
         data class ProfileUpdateUiEvent(val uiState: UiState<ResponseBody>) : Event()
         data class NormalUserProfileUiEvent(val uiState: UiState<NormalUserRepo>) : Event()
-        data class NormalUserProfileUpdateUiEvent(val uiState: UiState<ResponseBody>) : Event()
+        data class NormalUserProfileUpdateUiEvent(val uiState: UiState<String>) : Event()
+        data class NormalUserProfileImageUiEvent(val uiState: UiState<String>) : Event()
     }
 }
