@@ -1,6 +1,7 @@
 package com.dev6.feed.view.feedDetailFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
@@ -17,7 +18,9 @@ import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
 import com.dev6.feed.viewmodel.FeedViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_daily) {
@@ -35,6 +38,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
 
         dailyRc = binding.dailyRc
         dailyNearShelterRc = binding.dailyNearShelterRc
+        feedViewModel.setCurrentView(FeedViewType.FEED)
 
         pagingAdapter = DailyPagingAdapter {
             if (UserData.userType == UserType.NORMAL) {
@@ -81,15 +85,14 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
 
     override fun initViewModel() {
         getDailyList()
-        getShelterList()
     }
 
     private fun getDailyList() {
         feedViewModel.getFeedList("", "")
     }
 
-    private fun getShelterList() {
-        feedViewModel.getNearShelterList(UserData.userCity ?: "", "")
+    private fun getShelterList(citiy : String) {
+        feedViewModel.getNearShelterList(citiy?:"서울", "")
     }
 
     override fun onStart() {
@@ -111,6 +114,17 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
     override fun afterViewCreated() {
         super.afterViewCreated()
         repeatOnStartedFragment {
+
+            repeatOnStartedFragment {
+                feedViewModel.spinnerData.collectLatest{
+                    withContext(Dispatchers.IO){
+                        getShelterList(it)
+                    }
+                    shelterAdapter.refresh()
+                }
+            }
+
+
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
@@ -125,27 +139,14 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
 
         repeatOnStartedFragment {
             feedViewModel.eventShelterList.collect { event ->
+                Log.v("Afsdfas13" , "콜렉트")
                 when (event) {
                     is FeedViewModel.Event.ShelterUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                event.uiState.data.collectLatest {
-                                    shelterAdapter.submitData(it)
-                                }
-                            }
+                        Log.v("Afsdfas12" , "콜렉트")
+                        shelterAdapter.submitData(event.uiState)
+                    }else->{
 
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-
-                    else -> {
-                    }
+                }
                 }
             }
         }

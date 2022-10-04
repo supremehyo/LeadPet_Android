@@ -29,11 +29,14 @@ class FirebaseStorageRepositoryImp @Inject constructor(private val storage: Fire
     override suspend fun fetchImage(uuid: String):String =
         suspendCancellableCoroutine<String> {continuation->
             var temp = storage.reference.child("image").child(uuid)
-            temp.downloadUrl.addOnSuccessListener(object :OnSuccessListener<Uri>{
+            temp.downloadUrl
+                .addOnSuccessListener(object :OnSuccessListener<Uri>{
                 override fun onSuccess(p0: Uri?) {
                     continuation.resume(p0.toString())
                 }
-            })
+            }).addOnFailureListener {
+                continuation.resumeWithException(it)
+            }
         }
 
 }

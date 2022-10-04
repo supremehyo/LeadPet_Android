@@ -43,7 +43,7 @@ class LifePostViewModel @Inject constructor(
             images = listOf(),
             normalPostId = "",
             likedCount = 0,
-            createdDate = listOf(),
+            createdDate = listOf(""),
             commentCount = 0,
             liked = false,
             imageList = postImageFlow.value

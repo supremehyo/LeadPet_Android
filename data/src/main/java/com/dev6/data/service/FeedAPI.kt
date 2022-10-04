@@ -47,10 +47,10 @@ interface FeedAPI {
     @POST("/v1/post/normal")
     suspend fun insertDailyPost(@Body dailyFeedRequestResponse: DailyFeedRequestResponse): Response<DailyFeedRequestResponse>
 
+    @Headers("content-type: text/plain; charset=utf8")
     @GET("/v1/shelter/list")
-    @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
     suspend fun nearShelterList(
-        @Query("cityName") cityName: String,
+        @Query("cityName",encoded=true) cityName: String,
         @Query("page") page: Int,
         @Query("shelterName") shelterName: String?,
         @Query("size") size: Int

@@ -67,10 +67,20 @@ class DailyPagingAdapter(private val callback: (DailyPost) -> Unit) :
                 dailyCommentCount.text = item.commentCount.toString()
                 dailyLikeCount.text = item.likedCount.toString()
                 makeLikedHeart(item.liked)
-                Glide.with(binding.root)
-                    .load(R.mipmap.img_2)
-                    .centerCrop()
-                    .into(dailyFeedIv)
+                if(item.images.isEmpty()){
+                    Glide.with(binding.root)
+                        .load( "")
+                        .error(R.mipmap.img_2)
+                        .centerCrop()
+                        .into(dailyFeedIv)
+                }else{
+                    Glide.with(binding.root)
+                        .load( item.images[0])
+                        .error(R.mipmap.img_2)
+                        .centerCrop()
+                        .into(dailyFeedIv)
+                }
+
 
                 Glide.with(binding.root)
                     .load(R.mipmap.img_1)

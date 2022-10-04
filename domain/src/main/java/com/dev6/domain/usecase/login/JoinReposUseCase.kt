@@ -26,7 +26,6 @@ class JoinReposUseCase @Inject constructor(
             joinRepository.signUp(updateDTO)
             updateDTO.profileImage
         }.onSuccess { result ->
-            Log.v("ASdfasdf",join.profileImage)
             emit(UiState.Success(result))
         }.onFailure {
 

@@ -42,6 +42,7 @@
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
+            android:id="@+id/announceTv"
             android:layout_width="0dp"
             android:layout_height="22dp"
             android:background="@drawable/round_8dp"

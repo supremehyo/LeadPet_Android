@@ -102,7 +102,6 @@ class ShelterUserMoreFragment :
                     is JoinViewModel.Event.UiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
-                                Log.v("asdfasdfwef" ,event.uiState.data)
                                 com.dev6.core.UserData.profileImage = event.uiState.data
                                 val feedIntent = Intent(context, FeedActivity::class.java)
                                 feedIntent.putExtra("userType", userType)

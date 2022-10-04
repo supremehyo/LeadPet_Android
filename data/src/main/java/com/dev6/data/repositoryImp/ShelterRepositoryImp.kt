@@ -1,5 +1,6 @@
 package com.dev6.data.repositoryImp
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -14,7 +15,9 @@ class ShelterRepositoryImp
     ShelterPagingRepository {
     override suspend fun getPagingData(cityName:String,shelterName:String): Flow<PagingData<ShelterEntitiyRepo>> {
         return Pager(PagingConfig(pageSize = 20))
-        { ShelterPagingSourceImp(shelterRemoteSource , cityName, shelterName) }.flow
+        {
+            ShelterPagingSourceImp(shelterRemoteSource , cityName, shelterName)
+        }.flow
     }
 
 }

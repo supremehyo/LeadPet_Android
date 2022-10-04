@@ -52,6 +52,7 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
             binding.adoptTitleTv.text = item.title
             binding.adoptBreedTv.text = item.animalType.name+"+"+item.species+"+"+item.gender
             binding.adoptDateTv.text = ""
+            //binding.announceTv.text =
             /*
             makeTimeString(item.startDate[0], item.startDate[1], item.startDate[2]) +
                     "~" + makeTimeString(item.endDate[0], item.endDate[1], item.endDate[2])

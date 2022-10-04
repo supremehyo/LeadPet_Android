@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.dev6.core.UserData
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.enums.PostType
@@ -48,9 +49,15 @@ class FeedViewModel
     private val deleteSavedPostBaseUseCase: @JvmSuppressWildcards DeleteSavedPostBaseUseCase
 ) : ViewModel() {
 
+    /*
     private val _spinnerEntry = MutableStateFlow(emptyList<String>())
     val spinnerEntry: StateFlow<List<String>?> = _spinnerEntry
-    val spinnerData = MutableStateFlow<String>("")
+    val spinnerData = MutableStateFlow<String>(UserData.userCity ?: "서울")
+     */
+
+    private val _spinnerEntry = MutableSharedFlow<String>(replay = 1)
+    val spinnerData = _spinnerEntry.asSharedFlow()
+
 
     val _viewNameData = MutableStateFlow<FeedViewType>(FeedViewType.HOME)
     val viewNameData: StateFlow<FeedViewType> = _viewNameData
@@ -82,9 +89,10 @@ class FeedViewModel
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    fun setSpinnerEntry(Entry: List<String>) {
+
+    fun setCityName(city: String){
         viewModelScope.launch {
-            _spinnerEntry.emit(Entry)
+            _spinnerEntry.emit(city)
         }
     }
 
@@ -169,7 +177,7 @@ class FeedViewModel
     }
 
     fun getNearShelterList(cityName: String, shelterName: String) = viewModelScope.launch {
-        shelterUserCase.getShelterPagingData(cityName, shelterName).collect { uistate ->
+        shelterUserCase.getShelterPagingData(cityName, shelterName).cachedIn(viewModelScope).collect { uistate ->
             eventShelterList(Event.ShelterUiEvent(uistate))
         }
     }
@@ -204,7 +212,7 @@ class FeedViewModel
         data class DailyUiEvent(val uiState: PagingData<DailyPost>) : Event()
         data class DonationUiEvent(val uiState: UiState<Flow<PagingData<DonationPost>>>) : Event()
         data class AdoptUiEvent(val uiState: UiState<Flow<PagingData<AdoptPostFeed>>>) : Event()
-        data class ShelterUiEvent(val uiState: UiState<Flow<PagingData<ShelterEntitiyRepo>>>) : Event()
+        data class ShelterUiEvent(val uiState: PagingData<ShelterEntitiyRepo>) : Event()
         data class CommentUiEvent(val uiState: UiState<Flow<PagingData<Comment>>>) : Event()
         data class CommentLikeUiEvent(val uiState: UiState<ResponseBody>) : Event()
         data class CommentPostUiEvent(val uiState: UiState<ResponseBody>) : Event()
