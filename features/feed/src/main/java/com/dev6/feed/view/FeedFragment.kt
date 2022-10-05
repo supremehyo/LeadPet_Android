@@ -25,11 +25,10 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>(R.layout.fragment_feed
     override fun initView() {
         super.initView()
         initTabLayout()
-
         // 초기화면
         childFragmentManager.beginTransaction().replace(R.id.nav_detail_fragment, dailyFragment)
             .commit()
-        feedViewModel.setCurrentView(FeedViewType.TOTAL)
+        feedViewModel.setCurrentView(FeedViewType.FEED)
     }
 
     override fun initViewModel() {

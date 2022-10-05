@@ -3,9 +3,11 @@ package com.dev6.join
 import android.content.Intent
 import android.net.Uri
 import android.service.autofill.UserData
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.LoginType
@@ -52,22 +54,18 @@ class ShelterUserMoreFragment :
         super.initListener()
         binding.apply {
             additionalProfileButton.setOnClickListener {
-                if (shelterDescriptionTv.text.toString().isNotEmpty() && joinImages.isNotEmpty()) {
-
-//                    imageUpload.uploadPhoto(shelterName, joinImages[0], requireContext()) {
-//                        imageUri = it
-//                        joinViewModel.signUp(
-//                            makeJoinDto(
-//                                shelterName,
-//                                shelterPhone,
-//                                shelterAccount,
-//                                shelterAddress,
-//                                shelterHomePage,
-//                                userType,
-//                                shelterDescriptionTv.text.toString()
-//                            )
-//                        )
-//                    }
+                if (shelterDescriptionTv.text.toString().isNotEmpty()) {
+                    joinViewModel.signUp(
+                        makeJoinDto(
+                            shelterName,
+                            shelterPhone,
+                            shelterAccount,
+                            shelterAddress,
+                            shelterHomePage,
+                            userType,
+                            shelterIntro
+                        )
+                    )
                 } else {
                     Toast.makeText(context, "소개글이 비어있습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -97,11 +95,6 @@ class ShelterUserMoreFragment :
 
     override fun initViewModel() {
         super.initViewModel()
-        repeatOnStarted {
-            joinViewModel.joinImageFlow.collect {
-                joinImages = it
-            }
-        }
 
         repeatOnStarted {
             joinViewModel.joinEvnetFlow.collect { event ->
@@ -109,12 +102,13 @@ class ShelterUserMoreFragment :
                     is JoinViewModel.Event.UiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
+                                com.dev6.core.UserData.profileImage = event.uiState.data
                                 val feedIntent = Intent(context, FeedActivity::class.java)
                                 feedIntent.putExtra("userType", userType)
                                 startActivity(feedIntent)
                             }
                             is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, event.uiState.error.toString(), Toast.LENGTH_SHORT).show()
                             }
                             is UiState.Loding -> {
                                 Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
@@ -157,7 +151,19 @@ class ShelterUserMoreFragment :
             "", "",
             imageUri, shelterName, shelterName, shelterAddress, shelterAccount,
             shelterPhone,
-            "", shelterHomePage, userType, shelterIntro
+            "", shelterHomePage, userType, shelterIntro,
+            emptyList()
         )
+    }
+
+    override fun afterViewCreated() {
+        super.afterViewCreated()
+        repeatOnStarted {
+            joinViewModel.userUpdateImageFlow.collect { urlList ->
+                if (urlList.isNotEmpty()) {
+                    imageUri = urlList[0].toString()
+                }
+            }
+        }
     }
 }

@@ -1,13 +1,11 @@
 package com.dev6.data.mapper
 
-import com.dev6.data.model.daily.DailyFeedRequestResponse
-import com.dev6.data.model.daily.DailyPageResponse
-import com.dev6.data.model.daily.DailyPaginationResponse
-import com.dev6.data.model.daily.DailySortResponse
+import com.dev6.data.model.daily.*
 import com.dev6.domain.model.Page
 import com.dev6.domain.model.Sort
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.domain.model.daily.DailyPostPage
+import com.dev6.domain.model.daily.DailyPostRequest
 
 internal fun DailyPaginationResponse?.toDomain() = DailyPostPage(
     dailyFeedEntitiy = this?.dailyFeedEntitiy?.map { it.toDomain() } ?: listOf(),
@@ -54,6 +52,15 @@ internal fun DailyFeedRequestResponse.toDomain() = DailyPost(
     commentCount = commentCount,
     imageList = listOf()
 
+)
+
+
+
+internal fun DailyPostRequest.toMapper() = DailyPostRequestResponse(
+    contents = contents,
+    images = images?: emptyList(),
+    title = title,
+    userId = userId,
 )
 
 internal fun DailyPost.toMapper() = DailyFeedRequestResponse(

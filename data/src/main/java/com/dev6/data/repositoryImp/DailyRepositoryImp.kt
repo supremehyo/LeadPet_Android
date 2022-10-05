@@ -7,6 +7,7 @@ import com.dev6.data.mapper.toDomain
 import com.dev6.data.mapper.toMapper
 import com.dev6.data.remote.DailyRemoteSource
 import com.dev6.domain.model.daily.DailyPost
+import com.dev6.domain.model.daily.DailyPostRequest
 import com.dev6.domain.repository.daily.DailyRepository
 import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
@@ -20,6 +21,6 @@ class DailyRepositoryImp @Inject constructor(private val dailyRemoteSource: Dail
     override suspend fun postLike(postId: String, userId: String): ResponseBody =
         dailyRemoteSource.postLike(postId, userId)
 
-    override suspend fun insertDailyPost(dailyPost: DailyPost): DailyPost =
+    override suspend fun insertDailyPost(dailyPost: DailyPostRequest): DailyPost =
         dailyRemoteSource.insert(dailyPost.toMapper()).toDomain()
 }

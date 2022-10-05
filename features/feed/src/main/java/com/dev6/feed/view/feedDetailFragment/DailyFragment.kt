@@ -1,8 +1,10 @@
 package com.dev6.feed.view.feedDetailFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +19,10 @@ import com.dev6.feed.adapter.DailyPagingAdapter
 import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
 import com.dev6.feed.viewmodel.FeedViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_daily) {
@@ -32,7 +37,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
 
     override fun initView() {
         super.initView()
-
         dailyRc = binding.dailyRc
         dailyNearShelterRc = binding.dailyNearShelterRc
 
@@ -81,72 +85,71 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
 
     override fun initViewModel() {
         getDailyList()
-        getShelterList()
-    }
 
+    }
     private fun getDailyList() {
         feedViewModel.getFeedList("", "")
     }
-
-    private fun getShelterList() {
-        feedViewModel.getNearShelterList(UserData.userCity ?: "", "")
+    private fun getShelterList(citiy : String) {
+        feedViewModel.getNearShelterList(citiy?:"서울", "")
     }
-
     override fun onStart() {
         pagingAdapter.refresh()
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO){
+                getShelterList(feedViewModel.city)
+            }
+          //  shelterAdapter.refresh()
+        }
         Timber.tag("테스트").d("Start")
         super.onStart()
     }
-
     override fun onResume() {
         Timber.tag("테스트").d("onResume")
         super.onResume()
     }
-
     override fun onStop() {
         Timber.tag("테스트").d("onStop")
         super.onStop()
     }
-
     override fun afterViewCreated() {
         super.afterViewCreated()
+        repeatOnStartedFragment {
+            feedViewModel.spinnerData.collect{
+                Log.v("adfavw", it)
+                withContext(Dispatchers.IO){
+                    getShelterList(it)
+                }
+                shelterAdapter.refresh()
+            }
+        }
+
         repeatOnStartedFragment {
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
                         pagingAdapter.submitData(event.uiState)
                     }
-
                     else -> {
                     }
                 }
             }
         }
-
         repeatOnStartedFragment {
             feedViewModel.eventShelterList.collect { event ->
+                Log.v("Afsdfas13" , "콜렉트")
+                shelterAdapter.submitData(event)
+                /*
                 when (event) {
                     is FeedViewModel.Event.ShelterUiEvent -> {
-                        when (event.uiState) {
-                            is UiState.Success -> {
-                                event.uiState.data.collectLatest {
-                                    shelterAdapter.submitData(it)
-                                }
-                            }
+                        Log.v("Afsdfas12" , "콜렉트")
+                        shelterAdapter.submitData(event.uiState)
+                    }else->{
 
-                            is UiState.Error -> {
-                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-                            }
-
-                            is UiState.Loding -> {
-                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-
-                    else -> {
                     }
                 }
+
+                 */
             }
         }
     }

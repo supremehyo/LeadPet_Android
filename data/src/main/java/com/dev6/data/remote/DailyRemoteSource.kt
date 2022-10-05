@@ -4,6 +4,7 @@ import android.util.Log
 import com.dev6.data.model.comment.LikeRequestResponse
 import com.dev6.data.model.daily.DailyFeedRequestResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
+import com.dev6.data.model.daily.DailyPostRequestResponse
 import com.dev6.data.model.executeNetworkHandling
 import com.dev6.data.service.FeedAPI
 import okhttp3.ResponseBody
@@ -12,7 +13,7 @@ import javax.inject.Inject
 interface DailyRemoteSource {
     suspend fun dailyAllFeed(page: Int, size: Int, userId: String, likedUserId: String): DailyPaginationResponse
     suspend fun postLike(postId: String, userId: String): ResponseBody
-    suspend fun insert(dailyFeedRequestResponse: DailyFeedRequestResponse): DailyFeedRequestResponse
+    suspend fun insert(dailyPostRequestResponse: DailyPostRequestResponse): DailyFeedRequestResponse
 }
 
 class DailyRemoteSourceImpl @Inject constructor(
@@ -33,7 +34,7 @@ class DailyRemoteSourceImpl @Inject constructor(
         return feedService.postLike(LikeRequestResponse(postId, userId)).executeNetworkHandling()
     }
 
-    override suspend fun insert(dailyFeedRequestResponse: DailyFeedRequestResponse): DailyFeedRequestResponse {
-        return feedService.insertDailyPost(dailyFeedRequestResponse).executeNetworkHandling()
+    override suspend fun insert(dailyPostRequestResponse: DailyPostRequestResponse): DailyFeedRequestResponse {
+        return feedService.insertDailyPost(dailyPostRequestResponse).executeNetworkHandling()
     }
 }
