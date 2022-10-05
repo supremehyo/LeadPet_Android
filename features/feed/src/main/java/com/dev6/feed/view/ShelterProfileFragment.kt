@@ -59,25 +59,36 @@ class ShelterProfileFragment : BindingFragment<FragmentProfileBinding>(R.layout.
             profileViewModel.getShelterProfileDetailData(clickUserId?: "")
         }
 
-        shelterData?.let {
-           val bundle = Bundle()
-            bundle.putString("userId", shelterData?.userId)
+        if(shelterData == null){
+            val bundle = Bundle()
+            bundle.putString("userId", UserData.userId)
             profileIntroduceFragment.setArguments(bundle)
             profileDailyFragment.setArguments(bundle)
             profileDonationFragment.setArguments(bundle)
             profileAdoptFragment.setArguments(bundle)
-            profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "")
+            profileViewModel.getShelterProfileDetailData(UserData.userId ?: "")
+        }else{
+            shelterData?.let {
+                val bundle = Bundle()
+                bundle.putString("userId", shelterData?.userId)
+                profileIntroduceFragment.setArguments(bundle)
+                profileDailyFragment.setArguments(bundle)
+                profileDonationFragment.setArguments(bundle)
+                profileAdoptFragment.setArguments(bundle)
+                profileViewModel.getShelterProfileDetailData(shelterData?.userId ?: "")
+            }
         }
 
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, profileIntroduceFragment).commit()
 
 
-        if(shelterData?.userId == UserData.userId){
+        if(((shelterData?.userId) ?: UserData.userId) == UserData.userId){
             binding.profileUpdateTv.visibility = View.VISIBLE
         }else{//자신의 계정이 아니면 프로필 수정 버튼 감춤
             binding.profileUpdateTv.visibility = View.INVISIBLE
         }
+
 
 
     }

@@ -133,8 +133,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.4"
-                tools:entries="@{viewmodel.spinnerEntry}"
-                tools:selectedValue="@={viewmodel.spinnerData}" />
+                tools:entries="@array/mysdfrray" />
 
             <ImageView
                 android:id="@+id/logoImage"

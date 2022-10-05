@@ -16,19 +16,19 @@ data class AdoptPostFeed(
     @SerializedName("contents")
     val contents: String,
     @SerializedName("endDate")
-    val endDate: String,
+    val endDate: List<String>?,
     @SerializedName("euthanasiaDate")
     val euthanasiaDate: String,
     @SerializedName("gender")
     val gender: Gender,
     @SerializedName("images")
-    val images: List<String>,
+    val images: List<String>?,
     @SerializedName("neutering")
     val neutering: Neutering,
     @SerializedName("breed")
     val species: String,
     @SerializedName("startDate")
-    val startDate: String,
+    val startDate: List<String>,
     @SerializedName("title")
     val title: String,
     @SerializedName("userId")

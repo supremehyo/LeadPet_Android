@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.dev6.core.util.extension.makeProceedingString
 import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.feed.databinding.ItemAdoptBinding
 
@@ -51,12 +52,10 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
             binding.adoptUserId.text = item.userId
             binding.adoptTitleTv.text = item.title
             binding.adoptBreedTv.text = item.animalType.name+"+"+item.species+"+"+item.gender
-            binding.adoptDateTv.text = ""
-            /*
-            makeTimeString(item.startDate[0], item.startDate[1], item.startDate[2]) +
-                    "~" + makeTimeString(item.endDate[0], item.endDate[1], item.endDate[2])
+            binding.adoptDateTv.text = "" //여기도 다 null인 상태라 비워뒀음.
+            binding.announceTv.text = makeProceedingString(item.endDate ?: listOf("2022","10","5","12","00","00"))
 
-             */
+
             binding.adoptAgeTv.text = item.age.toString()
             binding.adoptDiseaseTv.text = "아픔"
             binding.itemAdoptCl.setOnClickListener {

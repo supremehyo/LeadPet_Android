@@ -10,15 +10,6 @@ class ShelterPagingRepoUseCase @Inject constructor(
     private val shelterPagingRepository: ShelterPagingRepository
 ) {
 
-    fun getShelterPagingData(cityName:String,shelterName:String) = flow {
-        emit(UiState.Loding)
-        runCatching {
-            shelterPagingRepository.getPagingData(cityName, shelterName)
-        }.onSuccess { result ->
-            emit(UiState.Success(result))
-        }.onFailure {
-            emit(UiState.Error(it))
-        }
-    }
+    suspend fun getShelterPagingData(cityName:String,shelterName:String) = shelterPagingRepository.getPagingData(cityName, shelterName)
 }
 

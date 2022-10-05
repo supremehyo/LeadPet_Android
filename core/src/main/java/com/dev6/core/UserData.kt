@@ -10,7 +10,7 @@ object UserData {
     var userName: String = ""
     var email: String? = ""
     var userType: UserType? = UserType.NORMAL
-    var userCity : String? = ""
+    var userCity : String? = null
     var intro: String? = ""
 
     var profileImage : String? = ""

@@ -12,7 +12,7 @@ data class Join(
     @SerializedName("password")
     val password: String?,
     @SerializedName("profileImage")
-    val profileImage: String?,
+    val profileImage: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("shelterName")
@@ -30,5 +30,7 @@ data class Join(
     @SerializedName("userType")
     val userType: String,
     @SerializedName("shelterIntro")
-    val shelterIntro: String
+    val shelterIntro: String,
+
+    val imageList : List<ByteArray>
 )

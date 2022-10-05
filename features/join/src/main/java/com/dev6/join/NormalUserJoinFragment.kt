@@ -35,7 +35,6 @@ class NormalUserJoinFragment :
 
     override fun initView() {
         super.initView()
-//        imageUpload = ImageUpload()
         userType = arguments?.get("userType").toString()
         uid = arguments?.get("uid").toString()
 
@@ -81,7 +80,7 @@ class NormalUserJoinFragment :
         binding.apply {
             profileButton.setOnClickListener {
                 if (nickNameInputText.text.toString().isNotEmpty()) {
-                    joinViewModel.signUp(makeJoinDto())
+                    //    joinViewModel.signUp(makeJoinDto())
                 } else if (nickNameInputText.text.toString().isEmpty()) {
                     Toast.makeText(context, "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 } else if (nickNameInputText.text.toString().length < 2 || nickNameInputText.text.toString().length > 16) {
@@ -89,21 +88,17 @@ class NormalUserJoinFragment :
                 }
             }
 
-//            profileImageButton.setOnClickListener {
-//                TedImagePicker.with(requireContext())
-//                    .max(1, "")
-//                    .startMultiImage { uriList ->
-//                        joinViewModel.setJoinImage(uriList)
-//                        Glide.with(binding.root)
-//                            .load(uriList[0])
-//                            .circleCrop()
-//                            .into(profileImageButton)
-//
-//                        imageUpload.uploadPhoto(nickNameInputText.text.toString(),uriList[0],requireContext()){
-//                            imageUri = it
-//                        }
-//                    }
-//            }
+            profileImageButton.setOnClickListener {
+                TedImagePicker.with(requireContext())
+                    .max(1, "")
+                    .startMultiImage { uriList ->
+                        val imageList: List<ByteArray> =
+                            uriList.map { ImageUpload.convertUrlToBitmap(it, requireContext()) }
+                                .map { ImageUpload.compressBitmap(it) }
+
+                        joinViewModel.setProfileImage(imageList)
+                    }
+            }
 
             noramlJoinBackButton.setOnClickListener {
                 findNavController().popBackStack()
@@ -111,11 +106,24 @@ class NormalUserJoinFragment :
         }
     }
 
+    override fun afterViewCreated() {
+        super.afterViewCreated()
+        repeatOnStarted {
+            joinViewModel.userUpdateImageFlow.collect { urlList ->
+                if (urlList.isNotEmpty()) {
+                    UserData.profileImage = urlList[0].toString()
+                    Glide.with(requireContext()).load(urlList[0])
+                        .into(binding.profileImageButton)
+                }
+            }
+        }
+
+    }
 
     private fun makeLoginType(loginTypeEnum: LoginType) : String{
         loginType = when(loginTypeEnum){
             LoginType.EMAIL ->{
-               return "EMAIL"
+                return "EMAIL"
             }
             LoginType.KAKAO ->{
                 return "KAKAO"
@@ -133,7 +141,7 @@ class NormalUserJoinFragment :
             "", "",
             imageUri, binding.nickNameInputText.text.toString(), "", "",
             "",
-            "", "", "" ,userType,""
+            "", "", "" ,userType,"", emptyList()
         )
     }
 

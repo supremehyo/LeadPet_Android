@@ -7,6 +7,7 @@ import com.dev6.data.model.comment.CommentUpdateRequest
 import com.dev6.data.model.comment.LikeRequestResponse
 import com.dev6.data.model.daily.DailyFeedRequestResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
+import com.dev6.data.model.daily.DailyPostRequestResponse
 import com.dev6.data.model.donation.DonationFeedResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
 import com.dev6.data.model.shelter.ShelterPagingResponse
@@ -45,7 +46,7 @@ interface FeedAPI {
     suspend fun insertDonatePost(@Body donateFeedResponse: DonationFeedResponse): Response<DonationFeedResponse>
 
     @POST("/v1/post/normal")
-    suspend fun insertDailyPost(@Body dailyFeedRequestResponse: DailyFeedRequestResponse): Response<DailyFeedRequestResponse>
+    suspend fun insertDailyPost(@Body dailyPostRequestResponse: DailyPostRequestResponse): Response<DailyFeedRequestResponse>
 
     @GET("/v1/shelter/list")
     @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")

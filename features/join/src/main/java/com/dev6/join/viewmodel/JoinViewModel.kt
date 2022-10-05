@@ -1,5 +1,6 @@
 package com.dev6.join.viewmodel
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev6.core.base.UiState
@@ -32,6 +33,17 @@ class JoinViewModel
     )
     val joinDTOData =  _joinDTOData.asSharedFlow()
 
+    private val _userUpdateImageFlow = MutableStateFlow<List<ByteArray>>(emptyList())
+    val userUpdateImageFlow = _userUpdateImageFlow.asStateFlow()
+
+    fun setProfileImage(imageList: List<ByteArray>) {
+        _userUpdateImageFlow.update { imageList }
+    }
+
+    fun getProfileImage() : List<ByteArray>{
+        return _userUpdateImageFlow.value
+    }
+
 
 
     private fun event(event: Event) {
@@ -47,10 +59,10 @@ class JoinViewModel
         _joinImageFlow.value = emptyList()
     }
 
-
     fun signUp(joinEntitiyRepo: Join) {
+        var tempDto = joinEntitiyRepo.copy(imageList = userUpdateImageFlow.value)
         viewModelScope.launch {
-            joinReposUseCase(joinEntitiyRepo).collect{uiState ->
+            joinReposUseCase(tempDto).collect{uiState ->
                 event(Event.UiEvent(uiState))
             }
         }
