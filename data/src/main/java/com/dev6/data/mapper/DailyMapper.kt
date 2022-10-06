@@ -43,24 +43,22 @@ internal fun List<DailyFeedRequestResponse>.toDomain(): List<DailyPost> {
 internal fun DailyFeedRequestResponse.toDomain() = DailyPost(
     contents = contents,
     images = images,
-    title = title,
-    userId = userId,
+    title = title ?: "",
+    userId = userId ?: "",
     normalPostId = normalPostId,
     likedCount = likedCount,
-    createdDate = createdDate,
-    liked = liked,
-    commentCount = commentCount,
+    createdDate = createdDate ?: listOf(),
+    liked = liked ?: false,
+    commentCount = commentCount ?: 0,
     imageList = listOf()
 
 )
 
-
-
 internal fun DailyPostRequest.toMapper() = DailyPostRequestResponse(
     contents = contents,
-    images = images?: emptyList(),
+    images = images ?: emptyList(),
     title = title,
-    userId = userId,
+    userId = userId
 )
 
 internal fun DailyPost.toMapper() = DailyFeedRequestResponse(
@@ -74,4 +72,3 @@ internal fun DailyPost.toMapper() = DailyFeedRequestResponse(
     liked = liked,
     commentCount = commentCount
 )
-

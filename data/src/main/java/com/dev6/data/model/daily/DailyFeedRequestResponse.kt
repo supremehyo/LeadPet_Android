@@ -10,15 +10,15 @@ data class DailyFeedRequestResponse(
     @SerializedName("normalPostId")
     val normalPostId: String,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("userId")
-    val userId: String,
+    val userId: String?,
     @SerializedName("likedCount")
     val likedCount: Int,
     @SerializedName("createdDate")
-    val createdDate: List<String>,
+    val createdDate: List<String>?,
     @SerializedName("commentCount")
-    val commentCount: Int,
+    val commentCount: Int?,
     @SerializedName("liked")
-    val liked: Boolean
+    val liked: Boolean?
 )
