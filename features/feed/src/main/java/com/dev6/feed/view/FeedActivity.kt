@@ -29,7 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed) {
 
     private val feedViewModel: FeedViewModel by viewModels()
-    var list = listOf("서울","대전","대구")
+    var list = listOf("서울", "대전", "대구")
 
     lateinit var navController: NavController
     var isFabOpen = false
@@ -39,7 +39,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         initNavController()
         initFab()
         initListener()
-        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list)
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list)
         binding.locationSpinner.adapter = adapter
     }
 
@@ -49,8 +49,8 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         binding.flDim.alpha = 0f
     }
 
-    private fun getShelterList(citiy : String) {
-        feedViewModel.getNearShelterList(citiy?:"서울", "")
+    private fun getShelterList(citiy: String) {
+        feedViewModel.getNearShelterList(citiy ?: "서울", "")
     }
 
     private fun clickPostFab() {
@@ -147,7 +147,7 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                 binding.locationSpinner.visibility = View.VISIBLE
                 binding.fabPost.visibility = View.GONE
             }
-            FeedViewType.PROFILEUPDATE->{
+            FeedViewType.PROFILEUPDATE -> {
                 binding.constraintLayout.visibility = View.GONE
                 binding.logoImage.visibility = View.GONE
                 binding.bottomNavigationView.visibility = View.GONE
@@ -196,12 +196,13 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             startPostActivity(PostType.NORMAL_POST)
         }
 
-        binding.locationSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+        binding.locationSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                Log.v("selectCitiy" ,list[p2] )
+                Log.v("selectCitiy", list[p2])
                 feedViewModel.setCityName(list[p2])
                 feedViewModel.city = list[p2]
             }
+
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
 
