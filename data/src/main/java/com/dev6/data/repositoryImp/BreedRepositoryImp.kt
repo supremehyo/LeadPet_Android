@@ -9,5 +9,5 @@ import javax.inject.Inject
 
 class BreedRepositoryImp @Inject constructor(private val remoteSource: BreedRemoteSource) : BreedRepository {
     @WorkerThread
-    override suspend fun fetchBreedList(): List<IndexBreed> = remoteSource.getBreedList().map { it.toDomain() }
+    override suspend fun fetchBreedList(): List<IndexBreed> = remoteSource.getBreedList().results.map { it.toDomain() }
 }
