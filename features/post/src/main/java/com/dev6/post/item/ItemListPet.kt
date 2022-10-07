@@ -10,7 +10,7 @@ import com.xwray.groupie.viewbinding.BindableItem
  * 품종 목록 리스트
  *
  */
-class ItemListPet(val breed: Breed,val setOnClickListener: (String) -> Unit) : BindableItem<ItemPetListBinding>() {
+class ItemListPet(val breed: Breed, val setOnClickListener: (String) -> Unit) : BindableItem<ItemPetListBinding>() {
 
     override fun bind(binding: ItemPetListBinding, position: Int) {
         binding.tvName.text = breed.breedName
@@ -23,5 +23,4 @@ class ItemListPet(val breed: Breed,val setOnClickListener: (String) -> Unit) : B
 
     override fun initializeViewBinding(view: View): ItemPetListBinding =
         ItemPetListBinding.bind(view)
-
 }

@@ -4,7 +4,6 @@ import android.view.View
 import com.dev6.post.R
 import com.dev6.post.databinding.ItemChoiceAnimalBinding
 import com.xwray.groupie.viewbinding.BindableItem
-import okhttp3.internal.threadName
 
 class ItemChoiceAnimal(private val nameAnimal: String) : BindableItem<ItemChoiceAnimalBinding>() {
 
@@ -17,5 +16,4 @@ class ItemChoiceAnimal(private val nameAnimal: String) : BindableItem<ItemChoice
     override fun initializeViewBinding(view: View): ItemChoiceAnimalBinding {
         return ItemChoiceAnimalBinding.bind(view)
     }
-
 }
