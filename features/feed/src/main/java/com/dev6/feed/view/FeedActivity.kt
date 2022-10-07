@@ -5,12 +5,14 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.dev6.core.UserData
@@ -121,6 +123,13 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             navController.setGraph(R.navigation.feed_nav_graph2)
             binding.bottomNavigationView.menu.clear()
             binding.bottomNavigationView.inflateMenu(R.menu.bottome_menu2)
+        }
+
+        // TODO: 아래의 메소드를 통해, 특정 View만 Bottom Navigation 표출할것, Top Bar도 마찬가지
+        navController.addOnDestinationChangedListener { navController: NavController, navDestination: NavDestination, bundle: Bundle? ->
+//            binding.bottomNavigationView.visibility = when (navDestination) {
+//
+//            }
         }
 
         navHostFragment?.let { binding.bottomNavigationView.setupWithNavController(navController) }
