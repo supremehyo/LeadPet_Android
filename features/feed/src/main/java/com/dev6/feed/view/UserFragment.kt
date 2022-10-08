@@ -26,7 +26,6 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
     private val feedViewModel: FeedViewModel by activityViewModels()
     private val profileViewModel : ProfileViewModel by activityViewModels()
     lateinit var profileUserScrapFragment: ProfileUserScrapFragment
-    lateinit var profileUserDonationFragment: ProfileUserDonationFragment
 
     lateinit var selected: Fragment
 

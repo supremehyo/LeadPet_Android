@@ -1,41 +1,37 @@
 package com.dev6.data.repositoryImp
-
 import android.util.Log
 import androidx.paging.PagingState
 import com.dev6.data.mapper.toDomain
-import com.dev6.data.remote.DonationRemoteSource
 import com.dev6.data.remote.SavedRemoteSource
-import com.dev6.domain.model.donate.DonationPost
-import com.dev6.domain.model.save.SavedDonationData
-import com.dev6.domain.repository.donate.DonationPagingSource
-import com.dev6.domain.repository.saved.SavedDonationPagingSource
+import com.dev6.domain.model.save.SavedDailyData
+import com.dev6.domain.repository.saved.SavedDailyPagingSource
 import javax.inject.Inject
 
-class SavedDonationPagingSourceImp @Inject constructor(
+class SavedDailyPagingSourceImp @Inject constructor(
     userId: String,
-    private val savedDonationRemoteSource: SavedRemoteSource
-) : SavedDonationPagingSource() {
+    private val savedDailyRemoteSource: SavedRemoteSource
+) : SavedDailyPagingSource() {
     var _userId = userId
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SavedDonationData> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SavedDailyData> {
         return try {
             val next = params.key ?: 0
             val size = params.loadSize
-            val response = savedDonationRemoteSource.getSavedDonationPost(next,size,_userId)
-            Log.v("dddddd1", response.toDomain().savedDonationRequestResponse.get(0).donationPostId)
+            val response = savedDailyRemoteSource.getSavedDailyPost(next,size,_userId)
+            Log.v("dddddd1", response.toDomain().savedDailyRequestResponse.get(0).normalPostId)
             try {
-                Log.v("dddddd2", response.toDomain().savedDonationRequestResponse.get(0).donationPostId)
+                Log.v("dddddd2", response.toDomain().savedDailyRequestResponse.get(0).normalPostId)
             } catch (e: Exception) {
                 throw Exception()
             }
             if(response.last){
                 LoadResult.Page(
-                    data = response.toDomain().savedDonationRequestResponse,
+                    data = response.toDomain().savedDailyRequestResponse,
                     prevKey = null,
                     nextKey = null
                 )
             }else{
                 LoadResult.Page(
-                    data = response.toDomain().savedDonationRequestResponse,
+                    data = response.toDomain().savedDailyRequestResponse,
                     prevKey = null,
                     nextKey = next+1
                 )
@@ -45,7 +41,7 @@ class SavedDonationPagingSourceImp @Inject constructor(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, SavedDonationData>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, SavedDailyData>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(
                 anchorPosition
