@@ -135,7 +135,7 @@
     <style name="tabTextSetting" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/tab_title</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">@font/hansansneobold</item>
+        <item name="android:fontFamily">@font/hansneo_bold</item>
     </style>
 
     <style name="Widget_Feed_Fab_button" parent="Widget.MaterialComponents.Button.TextButton">
@@ -174,5 +174,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="DefaultTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView"></style>
+    <style name="DefaultTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView" />
+
+
 </resources>

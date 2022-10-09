@@ -45,56 +45,54 @@
 
         <TextView
             android:id="@+id/profileUpdateTv"
+            style="@style/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_16dp_maincolor"
             android:backgroundTint="@color/Main"
-            android:fontFamily="@font/hansneo_medium"
-            android:paddingHorizontal="28dp"
-            android:paddingVertical="4dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
             android:text="프로필 수정"
             android:textColor="@color/white"
-            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/shelterProfileImageIv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.659"
+            app:layout_constraintHorizontal_bias="0.589"
             app:layout_constraintStart_toStartOf="@+id/guide2"
             app:layout_constraintTop_toTopOf="@+id/shelterProfileImageIv"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
+            style="@style/tab1"
             android:id="@+id/shelterProfileNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/hansansneobold"
             android:text="보호소이름"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintEnd_toStartOf="@+id/guide3"
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shelterProfileImageIv" />
 
         <TextView
+            style="@style/subtitle2"
             android:id="@+id/shelterProfileDesTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="20명의 아이들을 보호하고있는 꿈나무 보호소입니다.\n아이들이 행ㄴ복하게 살아갈 수 있는 보호소를 만들고 있습니다."
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shelterProfileNameTv" />
 
         <TextView
+            style="@style/textField3"
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="일상 3 | 기부 3 | 입양 3"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"

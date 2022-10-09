@@ -46,13 +46,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                style="@style/subtitle3"
                 android:id="@+id/userProfileUpdateCompleteTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/hansneo_medium"
                 android:text="완료"
-                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"
@@ -133,12 +132,12 @@
             app:layout_constraintVertical_bias="0.01">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/subtitle3"
                 android:id="@+id/nickNameUpdateInputText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:fontFamily="@font/custom_font_family_medium"
                 android:gravity="start|top"
                 android:hint="닉네임 변경"
                 android:paddingTop="10dp"
@@ -163,12 +162,12 @@
             app:layout_constraintVertical_bias="0.03">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/subtitle3"
                 android:id="@+id/IntroUpdateInputText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:fontFamily="@font/custom_font_family_medium"
                 android:gravity="start|top"
                 android:hint="내 소개 변경"
                 android:paddingTop="10dp"

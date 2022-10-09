@@ -28,10 +28,10 @@
             android:layout_height="24dp" />
 
         <TextView
+            style="@style/subtitle2"
             android:id="@+id/shelterProfileLocationTv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/hansneo_medium"
             android:gravity="center"
             android:textColor="@color/black"
             tools:text="경기도 가평군 123123길 123123" />
@@ -57,10 +57,10 @@
             android:layout_height="24dp" />
 
         <TextView
+            style="@style/subtitle2"
             android:id="@+id/shelterProfileNumberTv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/hansneo_medium"
             android:gravity="center"
             android:textColor="@color/black"
             tools:text="010-0000-0000" />
@@ -85,10 +85,10 @@
             android:layout_height="24dp" />
 
         <TextView
+            style="@style/subtitle2"
             android:id="@+id/shelterProfileAccountTv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/hansneo_medium"
             android:gravity="center"
             android:textColor="@color/black"
             tools:text="리드은행 000000000000" />
@@ -111,10 +111,10 @@
             android:layout_height="24dp" />
 
         <TextView
+            style="@style/subtitle2"
             android:id="@+id/shelterProfileHomePageTv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/hansneo_medium"
             android:gravity="center"
             android:textColor="@color/black"
             tools:text="instagram/asdfsadf" />
