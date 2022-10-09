@@ -31,7 +31,7 @@
                     android:text="밤비쨩님이 좋아할 피드"
                     android:textColor="@color/black"
                     android:textSize="@dimen/h3"
-                    app:layout_constraintBottom_toTopOf="@+id/recommendFeedRc"
+                    app:layout_constraintBottom_toTopOf="@+id/rv_recommend_feed"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recommendFeedRc"
+                    android:id="@+id/rv_recommend_feed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -84,7 +84,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recommendFeedRc"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_recommend_feed"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
