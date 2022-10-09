@@ -51,14 +51,14 @@ class RecommendDonationAdapter(private val callback: (DonationPost) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
         fun onBind(item: DonationPost) {
-            binding.recommendDonationEndDate.text = "까지"
+            binding.recommendDonationEndDate.text = "${item.startDate}~${item.endDate}"
             binding.recommendDonationFeedTv1.text = item.title
             binding.recommendDonationCl.setOnClickListener {
                 callback(item)
             }
             Glide.with(binding.root)
                 .load(R.mipmap.img_1)
-                .circleCrop()
+                .centerCrop()
                 .into(binding.recommendDonationIv)
         }
     }

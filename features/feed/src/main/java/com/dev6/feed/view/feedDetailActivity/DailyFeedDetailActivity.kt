@@ -177,7 +177,11 @@ class DailyFeedDetailActivity :
                 Log.v("initlike", likedBoolean.toString())
                 likedBoolean = liked
                 makeLikedHeart(liked, binding.dailyLikeImage)
-                makeImageView(images[0])
+                if(images!=null && images.isNotEmpty()){
+                    makeImageView(images[0])
+                }else{
+                    makeImageView("")
+                }
             }
         }
     }

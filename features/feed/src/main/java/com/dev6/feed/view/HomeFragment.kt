@@ -1,17 +1,21 @@
 package com.dev6.feed.view
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
+import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.core.enums.UserType
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.feed.R
 import com.dev6.feed.adapter.RecommendAdoptAdapter
@@ -33,12 +37,28 @@ class HomeFragment :
     var userId = ""
     override fun initView() {
         super.initView()
-
+        feedViewModel.setCurrentView(FeedViewType.HOME)
         dailyPagingAdapter = RecommendFeedAdapter {
             Timber.d(it.toString())
+            if (UserData.userType == UserType.NORMAL) {
+                feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
+                findNavController().navigate(
+                    R.id.action_homeFragment_to_fragmentFeedDaily2,
+                    Bundle().apply { putSerializable("dailyPost", it) }
+                )
+            } else {
+                feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
+                findNavController().navigate(
+                    R.id.action_homeFragment_to_fragmentFeedDaily,
+                    Bundle().apply { putSerializable("dailyPost", it) }
+                )
+            }
+            /*
             val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
             dailyIntent.putExtra("dailyPostFeed", it)
             startActivity(dailyIntent)
+
+             */
         }
         adoptPagingAdapter = RecommendAdoptAdapter {
             val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
@@ -59,7 +79,7 @@ class HomeFragment :
 
         feedViewModel.getDonationList("","")
         feedViewModel.getAdoptList("")
-        feedViewModel.getFeedList(userId, "")
+        feedViewModel.getFeedList("", "")
 
         feedViewModel.setCurrentView(FeedViewType.HOME)
     }
@@ -140,19 +160,7 @@ class HomeFragment :
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-//                        when (event.uiState) {
-//                            is UiState.Success -> {
-//                                event.uiState.data.collect {
-//                                    dailyPagingAdapter.submitData(it)
-//                                }
-//                            }
-//                            is UiState.Error -> {
-//                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-//                            }
-//                            is UiState.Loding -> {
-//                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-//                            }
-//                        }
+                        dailyPagingAdapter.submitData(event.uiState)
                     }
                     else -> {
                     }

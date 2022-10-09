@@ -155,8 +155,11 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
                 binding.fabPost.visibility = View.GONE
             }
             FeedViewType.HOME -> {
+                binding.constraintLayout.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.logoImage.visibility = View.VISIBLE
                 binding.locationSpinner.visibility = View.GONE
+                binding.fabPost.visibility = View.VISIBLE
             }
             FeedViewType.SHELTERPROFILECLICK -> {
                 binding.constraintLayout.visibility = View.GONE
