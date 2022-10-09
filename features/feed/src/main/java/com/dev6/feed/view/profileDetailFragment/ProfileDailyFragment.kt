@@ -51,23 +51,9 @@ class ProfileDailyFragment :
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-                        when (event.uiState) {
-//                            is UiState.Success -> {
-//                                event.uiState.data.collectLatest {
-//                                    pagingAdapter.submitData(it)
-//                                }
-//                            }
-//                            is UiState.Error -> {
-//                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-//                            }
-//                            is UiState.Loding -> {
-//                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-//                            }
-                        }
+                        pagingAdapter.submitData(event.pagingData)
                     }
-
-                    else -> {
-                    }
+                    else -> {}
                 }
             }
         }

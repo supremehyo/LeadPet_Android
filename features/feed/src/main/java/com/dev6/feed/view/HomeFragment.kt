@@ -1,14 +1,9 @@
 package com.dev6.feed.view
 
 import android.content.Intent
-import android.view.animation.OvershootInterpolator
 import android.widget.Toast
-import androidx.annotation.LayoutRes
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
@@ -57,7 +52,7 @@ class HomeFragment :
     override fun initViewModel() {
         super.initViewModel()
 
-        feedViewModel.getDonationList("","")
+        feedViewModel.getDonationList("", "")
         feedViewModel.getAdoptList("")
         feedViewModel.getFeedList(userId, "")
 
@@ -69,7 +64,7 @@ class HomeFragment :
             adapter = donationPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
-        binding.recommendFeedRc.apply {
+        binding.rvRecommendFeed.apply {
             adapter = dailyPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
@@ -80,14 +75,14 @@ class HomeFragment :
         }
     }
 
-    fun updateConstraints(@LayoutRes id: Int) {
-        val newConstraintSet = ConstraintSet()
-        newConstraintSet.clone(this.context, id)
-        newConstraintSet.applyTo(binding.clHome)
-        val transition = ChangeBounds()
-        transition.interpolator = OvershootInterpolator()
-        TransitionManager.beginDelayedTransition(binding.clHome, transition)
-    }
+//    fun updateConstraints(@LayoutRes id: Int) {
+//        val newConstraintSet = ConstraintSet()
+//        newConstraintSet.clone(this.context, id)
+//        newConstraintSet.applyTo(binding.clHome)
+//        val transition = ChangeBounds()
+//        transition.interpolator = OvershootInterpolator()
+//        TransitionManager.beginDelayedTransition(binding.clHome, transition)
+//    }
 
     override fun afterViewCreated() {
         repeatOnStarted {
@@ -140,19 +135,7 @@ class HomeFragment :
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-//                        when (event.uiState) {
-//                            is UiState.Success -> {
-//                                event.uiState.data.collect {
-//                                    dailyPagingAdapter.submitData(it)
-//                                }
-//                            }
-//                            is UiState.Error -> {
-//                                Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
-//                            }
-//                            is UiState.Loding -> {
-//                                Toast.makeText(context, "로딩 했어여", Toast.LENGTH_SHORT).show()
-//                            }
-//                        }
+                        dailyPagingAdapter.submitData(event.pagingData)
                     }
                     else -> {
                     }

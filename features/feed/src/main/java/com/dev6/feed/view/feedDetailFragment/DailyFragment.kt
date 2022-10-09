@@ -2,7 +2,6 @@ package com.dev6.feed.view.feedDetailFragment
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
-import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.enums.UserType
 import com.dev6.feed.R
@@ -20,7 +18,6 @@ import com.dev6.feed.adapter.DailyshelterRecyclerAdapter
 import com.dev6.feed.databinding.FragmentDailyBinding
 import com.dev6.feed.viewmodel.FeedViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -128,7 +125,7 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-                        pagingAdapter.submitData(event.uiState)
+                        pagingAdapter.submitData(event.pagingData)
                     }
                     else -> {
                     }
