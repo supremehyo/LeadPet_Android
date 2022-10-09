@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="h1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="h2" parent="DefaultTextViewStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subtitle1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subtitle2" parent="DefaultTextViewStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subtitle3" parent="DefaultTextViewStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">regular</item>
+    </style>
+    <style name="username1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">medium</item>
+    </style>
+    <style name="category1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">medium</item>
+    </style>
+    <style name="caption1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">regular</item>
+    </style>
+    <style name="caption2" parent="DefaultTextViewStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">regular</item>
+    </style>
+    <style name="tab1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button2" parent="DefaultTextViewStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">regular</item>
+    </style>
+    <style name="button3" parent="DefaultTextViewStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button4" parent="DefaultTextViewStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="textField1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">regular</item>
+    </style>
+    <style name="textField2" parent="DefaultTextViewStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">regular</item>
+    </style>
+    <style name="textField3" parent="DefaultTextViewStyle">
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="tag1" parent="DefaultTextViewStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/font_family_hansneo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
