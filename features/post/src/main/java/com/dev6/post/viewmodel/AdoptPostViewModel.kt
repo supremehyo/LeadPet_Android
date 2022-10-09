@@ -18,8 +18,11 @@ class AdoptPostViewModel @Inject constructor(
     private val getSpeciesListUseCase: @JvmSuppressWildcards GetSpeciesListBaseUseCase
 ) : ViewModel() {
 
+    private val _postImageFlow = MutableStateFlow<List<ByteArray>>(emptyList())
+    val postImageFlow = _postImageFlow.asStateFlow()
+
     private val _adoptChoiceStateFlow = MutableStateFlow<AdoptChoiceState>(AdoptChoiceState("동물선택", "암수구분", "나이"))
-    val adoptChoizceStateFlow = _adoptChoiceStateFlow.asStateFlow()
+    val adoptChoiceStateFlow = _adoptChoiceStateFlow.asStateFlow()
 
     private val _speciesListStateFlow = MutableStateFlow<UiState<List<IndexBreed>>>(UiState.Loding)
     val speciesListStateFlow = _speciesListStateFlow.asStateFlow()
@@ -28,13 +31,11 @@ class AdoptPostViewModel @Inject constructor(
     val indexStateFlow = _indexStateFlow.asStateFlow()
 
     private val _speciesStateFlow = MutableStateFlow<String>("품종선택")
-    val speciesStateFlow = _indexStateFlow.asStateFlow()
+    val speciesStateFlow = _speciesStateFlow.asStateFlow()
 
-    init {
-        viewModelScope.launch {
-            getSpeciesListUseCase(Unit).collect { uiState ->
-                _speciesListStateFlow.update { uiState }
-            }
+    fun getSpeciesList() = viewModelScope.launch {
+        getSpeciesListUseCase(Unit).collect { uiState ->
+            _speciesListStateFlow.update { uiState }
         }
     }
 
@@ -61,4 +62,8 @@ class AdoptPostViewModel @Inject constructor(
     }
 
     fun updateSpecies(breed: String) = _speciesStateFlow.update { _ -> breed }
+
+    fun updatePostImage(imageList: List<ByteArray>) {
+        _postImageFlow.update { imageList }
+    }
 }

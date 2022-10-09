@@ -3,7 +3,6 @@ package com.dev6.post.item
 import android.widget.AbsListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING
 
 class VisiblePositionChangeListener(
     linearLayoutManager: LinearLayoutManager,
@@ -23,15 +22,15 @@ class VisiblePositionChangeListener(
     private var layoutManager: LinearLayoutManager = linearLayoutManager
 
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-        when(newState){
-            AbsListView.OnScrollListener.SCROLL_STATE_IDLE-> isTouched = false
+        when (newState) {
+            AbsListView.OnScrollListener.SCROLL_STATE_IDLE -> isTouched = false
             AbsListView.OnScrollListener.SCROLL_STATE_FLING -> isTouched = true
         }
     }
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
-        if(!isTouched) return
+        if (!isTouched) return
 
         val firstPosition = layoutManager.findFirstVisibleItemPosition()
         val lastPosition = layoutManager.findLastVisibleItemPosition()
@@ -80,4 +79,3 @@ class VisiblePositionChangeListener(
         }
     }
 }
-
