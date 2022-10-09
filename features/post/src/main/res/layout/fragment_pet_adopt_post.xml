@@ -212,7 +212,6 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:background="@null"
-                        android:fontFamily="@font/custom_font_family_medium"
                         android:hint="질병상태" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -241,7 +240,6 @@
                         android:id="@+id/tiet_introduce"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/custom_font_family_medium"
                         android:gravity="start|top"
                         android:hint="소개글 작성"
                         android:minHeight="200dp" />

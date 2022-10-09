@@ -96,7 +96,6 @@
                 android:layout_weight="1"
                 android:autofillHints="name"
                 android:background="@null"
-                android:fontFamily="@font/custom_font_family_medium"
                 android:gravity="start|top"
                 android:hint="보호소 소개"
                 android:paddingTop="20dp"
