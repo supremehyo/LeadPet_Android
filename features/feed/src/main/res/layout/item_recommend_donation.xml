@@ -27,14 +27,13 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <TextView
+            style="@style/caption1"
             android:id="@+id/recommendDonationFeedTv1"
             android:layout_width="wrap_content"
             android:layout_height="16dp"
             android:layout_marginTop="9dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="고양이 사료가 부족해요!"
             android:textColor="@color/black"
-            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recommendDonationIv"
             app:layout_constraintHorizontal_bias="0.0"
@@ -43,13 +42,12 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            style="@style/caption1"
             android:id="@+id/recommendDonationEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hansneo_regular"
             android:text="2022 03월 27일까지"
             android:textColor="@color/gray_05"
-            android:textSize="12dp"
             android:layout_marginTop="7dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recommendDonationFeedTv1"

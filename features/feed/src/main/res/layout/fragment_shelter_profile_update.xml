@@ -32,27 +32,25 @@
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
+                style="@style/h2"
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:text="프로필 수정"
                 android:textColor="@color/Gray_01"
-                android:textSize="18dp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                style="@style/subtitle3"
                 android:id="@+id/shelterProfileUpdateTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/hansneo_medium"
                 android:text="완료"
-                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"
@@ -102,13 +100,12 @@
             app:layout_constraintGuide_percent="0.45" />
 
         <TextView
+            style="@style/textField3"
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="프로필정보 수정"
-            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/shelterProfileImageIv"
@@ -232,12 +229,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            style="@style/textField3"
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hansneo_medium"
             android:text="지역정보 수정"
-            android:textSize="14dp"
             android:layout_marginLeft="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guide3"

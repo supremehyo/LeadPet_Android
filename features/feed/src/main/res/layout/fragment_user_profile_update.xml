@@ -32,13 +32,13 @@
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
+                style="@style/h2"
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:text="프로필 수정"
                 android:textColor="@color/Gray_01"
-                android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -101,13 +101,12 @@
             app:layout_constraintGuide_percent="0.45" />
 
         <TextView
+            style="@style/textField3"
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="닉네임 자기소개 수정"
-            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/shelterProfileImageIv"
@@ -176,13 +175,12 @@
 
 
         <TextView
+            style="@style/textField3"
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="지역정보 수정"
-            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guide3"
             app:layout_constraintHorizontal_bias="0"
