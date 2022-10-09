@@ -73,7 +73,7 @@
                 android:id="@+id/dailyFeedTitleTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansansneobold"
+                android:fontFamily="@font/hansneo_bold"
                 android:text="웅이 근황"
                 android:textColor="@color/black"
                 android:textSize="14dp"

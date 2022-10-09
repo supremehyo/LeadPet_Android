@@ -23,13 +23,11 @@
 
 
         <TextView
+            style="@style/subtitle2"
             android:id="@+id/donation_ShelterNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hansneo_medium"
             android:text="율리아펫 보호소"
-            android:textSize="12dp"
-            android:textStyle="bold"
             android:textColor="@color/Gray_02"
             app:layout_constraintBottom_toBottomOf="@+id/donation_ShelterIv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,11 +37,11 @@
             app:layout_constraintVertical_bias="0" />
 
         <TextView
+            style="@style/textField1"
             android:id="@+id/donation_ShelterDetailTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="입양 20 | 기부 5 | 일상 17"
-            android:textSize="10dp"
             android:textColor="@color/Gray_06"
             app:layout_constraintBottom_toBottomOf="@+id/donation_ShelterIv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,13 +64,12 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            style="@style/subtitle1"
             android:id="@+id/recommentdonationTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hansansneobold"
             android:text="고양이 사료가 부족해요!"
             android:textColor="@color/Gray_01"
-            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/donation_feedIv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.063"
@@ -81,14 +78,13 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            style="@style/caption1"
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:text="최근 보호소에 유기묘가 많이 생겨서 고양이사료가\n부족한 산태라 도움 요청합니다."
-            android:textSize="12dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/Gray_01"
-            android:fontFamily="@font/hansneo_medium"
             app:layout_constraintBottom_toBottomOf="@+id/donation_feedIv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.16"
@@ -97,13 +93,13 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            style="@style/button4"
             android:id="@+id/donation_typeTv"
             android:textColor="@color/Main"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:text="사료"
-            android:fontFamily="@font/hansansneobold"
             android:background="@drawable/round_8dp"
             android:backgroundTint="#FCEFE7"
             app:layout_constraintWidth_percent="0.15"
@@ -114,13 +110,12 @@
             app:layout_constraintTop_toTopOf="@+id/donation_ShelterNameTv" />
 
         <TextView
+            style="@style/caption1"
             android:id="@+id/donationEndTimeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hansneo_medium"
             android:text="2022.03.27일 까지"
             android:textColor="#5274EE"
-            android:textSize="12dp"
             android:layout_marginVertical="11dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

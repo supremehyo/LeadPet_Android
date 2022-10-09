@@ -20,13 +20,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        style="@style/subtitle2"
         android:id="@+id/adoptUserId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/hansneo_medium"
         android:text="율리아펫 보호소"
         android:textColor="@color/Gray_02"
-        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
@@ -38,7 +37,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_8dp"
         android:backgroundTint="#FCEFE7"
-        android:fontFamily="@font/hansansneobold"
+        android:fontFamily="@font/hansneo_bold"
         android:gravity="center"
         android:paddingLeft="6dp"
         android:paddingTop="5dp"
@@ -69,15 +68,14 @@
         app:layout_constraintTop_toTopOf="@+id/linearLayout6" />
 
     <TextView
+        style="@style/subtitle1"
         android:id="@+id/adoptTitleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="100dp"
-        android:fontFamily="@font/hansneo_medium"
         android:text="새로운 가족을 찾고 있어요"
         android:textColor="@color/Gray_01"
-        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -102,19 +100,17 @@
             >
 
             <TextView
+                style="@style/subtitle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansneo_regular"
                 android:text="품종  "
-                android:textSize="12dp"
                 android:textColor="@color/Gray_04" />
 
             <TextView
+                style="@style/subtitle3"
                 android:id="@+id/adoptBreedTv"
-                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansneo_medium"
                 android:layout_marginLeft="@dimen/shelter_adopt_margin_left"
                 android:text="고양이 + 스코티쉬폴드 아메숏 + 암컷"
                 android:textColor="@color/black" />
@@ -133,12 +129,11 @@
                 android:textColor="@color/Gray_04" />
 
             <TextView
+                style="@style/subtitle3"
                 android:id="@+id/adoptAgeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansneo_medium"
                 android:text="3개월"
-                android:textSize="12dp"
                 android:layout_marginLeft="@dimen/shelter_adopt_margin_left"
                 android:textColor="@color/black" />
         </LinearLayout>
@@ -146,42 +141,37 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
             <TextView
+                style="@style/subtitle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansneo_regular"
                 android:text="질병  "
-                android:textSize="12dp"
-
                 android:textColor="@color/Gray_04" />
 
             <TextView
+                style="@style/subtitle3"
                 android:id="@+id/adoptDiseaseTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansneo_regular"
                 android:text="없음"
                 android:layout_marginLeft="@dimen/shelter_adopt_margin_left"
-                android:textSize="12dp"
                 android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
             <TextView
+                style="@style/subtitle3"
                 android:textSize="12dp"
-                android:fontFamily="@font/hansneo_regular"
                 android:textColor="@color/Gray_04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="공고  " />
 
             <TextView
+                style="@style/subtitle3"
                 android:id="@+id/adoptDateTv"
-                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2022.03.19 - 2022.04.02"

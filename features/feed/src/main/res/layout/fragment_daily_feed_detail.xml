@@ -62,22 +62,22 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/username1"
                             android:id="@+id/dailyFeedUserId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/hansneo_regular"
                             android:text="투게더펫"
                             android:textColor="@color/black"
-                            android:textSize="12dp" />
+                            />
 
                         <TextView
+                            style="@style/textField1"
                             android:id="@+id/dailyFeedTimeTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/hansneo_medium"
                             android:text="2시간전"
                             android:textColor="@color/Gray_04"
-                            android:textSize="10dp" />
+                            />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -95,14 +95,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
                 <TextView
+                    style="@style/h2"
                     android:id="@+id/dailyFeedTitleTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:fontFamily="@font/hansansneobold"
                     android:text="웅이 근황"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -123,6 +122,7 @@
                     app:layout_constraintTop_toTopOf="@+id/dailyFeedTitleTv" />
 
                 <TextView
+                    style="@style/h"
                     android:id="@+id/dailyFeedContentTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,7 +130,6 @@
                     android:layout_marginVertical="8dp"
                     android:text="꿈나무 보호소의 자랑 개구쟁이 삼둥이에요! 오늘은 아이들\n꿈나무 보호소의 자랑 개구쟁이 삼둥이에요! 오늘은 아이들"
                     android:textColor="@color/Gray_01"
-                    android:textSize="14dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -200,17 +199,16 @@
 
 
                 <EditText
+                    style="@style/caption2"
                     android:id="@+id/dailyFeedCommentEt"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="16dp"
                     android:background="@null"
-                    android:fontFamily="@font/hansneo_medium"
                     android:hint="댓글을 입력하세요."
                     android:imeOptions="actionDone"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="14dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -220,11 +218,11 @@
                     app:layout_constraintWidth_percent="0.8" />
 
                 <TextView
+                    style="@style/button4"
                     android:id="@+id/dailyFeedCommentTv"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@color/Main"
-                    android:fontFamily="@font/hansneo_medium"
                     android:gravity="center"
                     android:text="버튼"
                     android:textColor="@color/white"

@@ -23,22 +23,22 @@
             android:layout_height="match_parent">
 
             <TextView
+                style="@style/h2"
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="33dp"
-                android:fontFamily="@font/hansansneobold"
                 android:text="리드펫님과 가까운 보호소에요!"
                 android:textColor="@color/Gray_01"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="33dp"
                 android:src="@drawable/house_with_garden"
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
