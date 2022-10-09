@@ -51,17 +51,18 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
         fun onBind(item: AdoptPostFeed) {
-            binding.adoptUserId.text = item.userId
+            binding.adoptUserId.text = item.userName
             binding.adoptTitleTv.text = item.title
             binding.adoptBreedTv.text = item.animalType.name+"+"+item.species+"+"+item.gender
             binding.adoptDateTv.text = "" //여기도 다 null인 상태라 비워뒀음.
            // binding.announceTv.text = makeProceedingString(item.endDate ?: listOf("2022","10","5","12","00","00"))
             binding.adoptAgeTv.text = item.age.toString()+"년 출생"
             binding.adoptDiseaseTv.text = item.disease
+
             Glide.with(binding.root)
-                .load("")
+                .load(item.profileImage)
                 .error(R.mipmap.img_2)
-                .centerCrop()
+                .circleCrop()
                 .into(binding.imageView4)
             binding.itemAdoptCl.setOnClickListener {
                 callback(item)

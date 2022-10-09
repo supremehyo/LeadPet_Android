@@ -62,7 +62,7 @@ class DonationPagingAdapter(private val callback: (DonationPost) -> Unit) :
                 callback(item)
             }
             Glide.with(binding.root)
-                .load(Uri.parse(""))
+                .load(Uri.parse(item.profileImage))
                 .error(R.mipmap.img_1)
                 .circleCrop()
                 .into(binding.donationFeedIv)

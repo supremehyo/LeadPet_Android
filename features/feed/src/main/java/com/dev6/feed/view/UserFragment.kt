@@ -36,10 +36,13 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
             userProfileNameTv.text = UserData.shelterName
             userProfileDesTv.text = UserData.intro
         }
+        /*
         Glide.with(binding.root)
             .load(Uri.parse(UserData.profileImage))
             .circleCrop()
             .into(binding.userProfileIv)
+
+         */
         childFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, profileUserScrapFragment).commit()
     }
 
@@ -66,7 +69,8 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                                 var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     Glide.with(binding.root)
-                                        .load(R.mipmap.img_1)
+                                        .load(userProfileData.profileImage)
+                                        .error(R.mipmap.img_1)
                                         .circleCrop()
                                         .into(userProfileIv)
                                     userProfileDesTv.text = userProfileData.intro

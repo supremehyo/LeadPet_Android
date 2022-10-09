@@ -32,6 +32,10 @@ data class AdoptFeedResponse(
     val startDate: List<String>?,
     @SerializedName("title")
     val title: String?,
+    @SerializedName("userName")
+    val userName: String,
+    @SerializedName("profileImage")
+    val profileImage: String,
     @SerializedName("userId")
     val userId: String?
 )

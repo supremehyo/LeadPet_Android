@@ -227,20 +227,6 @@ class DailyFeedDetailFragment :
                             createdDate[5]
                         )
                 }
-                if(images.isEmpty()){
-                    Glide.with(binding.root)
-                        .load( "")
-                        .error(R.mipmap.img_2)
-                        .centerCrop()
-                        .into(dailyContentImage)
-                }else{
-                    Glide.with(binding.root)
-                        .load(images[0])
-                        .error(R.mipmap.img_2)
-                        .centerCrop()
-                        .into(dailyContentImage)
-                }
-
                 Log.v("initlike", likedBoolean.toString())
                 likedBoolean = liked
                 makeLikedHeart(liked)

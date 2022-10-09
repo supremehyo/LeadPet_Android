@@ -1,6 +1,7 @@
 package com.dev6.domain.model.daily
 
 import com.dev6.domain.model.Page
+import com.dev6.domain.model.Pageable
 import com.dev6.domain.model.Sort
 import com.google.gson.annotations.SerializedName
 
@@ -18,7 +19,7 @@ data class DailyPostPage(
     @SerializedName("numberOfElements")
     val numberOfElements: Int,
     @SerializedName("pageable")
-    val pageable: Page,
+    val pageable: Pageable,
     @SerializedName("size")
     val size: Int,
     @SerializedName("sort")
