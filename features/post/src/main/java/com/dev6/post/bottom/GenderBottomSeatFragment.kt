@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.dev6.core.base.BaseBottomSheetDialogFragment
+import com.dev6.core.enum.Gender
 import com.dev6.post.R
 import com.dev6.post.databinding.FragmentBottomSeatBinding
 import com.dev6.post.viewmodel.AdoptPostViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-/// TODO 시간날때, BottomSeatFragment 통합시키기
+
 @AndroidEntryPoint
 class GenderBottomSeatFragment :
     BaseBottomSheetDialogFragment<FragmentBottomSeatBinding>(R.layout.fragment_bottom_seat) {
@@ -46,10 +47,9 @@ class GenderBottomSeatFragment :
 
     override fun initListener() {
         binding.include.tvRight.setOnClickListener {
-
             val radioButtonText = when (binding.rgGender.checkedRadioButtonId) {
-                R.id.mrb_one -> binding.mrbOne.text.toString()
-                R.id.mrb_two -> binding.mrbTwo.text.toString()
+                R.id.mrb_one -> Gender.FEMALE
+                R.id.mrb_two -> Gender.MALE
                 else -> null
             }
             radioButtonText?.run {

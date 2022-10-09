@@ -1,9 +1,11 @@
 package com.dev6.post
 
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.base.BindingFragment
+import com.dev6.core.enum.Neutering
 import com.dev6.core.util.ImageUpload
 import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.post.bottom.AgeBottomSeatFragment
@@ -18,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
@@ -34,13 +37,29 @@ class PetAdoptPostFragment :
         repeatOnStarted {
             launch {
                 adoptPostViewModel.adoptChoiceStateFlow.collect {
-                    binding.btnChoiceGender.setText(it.gender)
+                    binding.btnChoiceGender.setText(it.gender.item)
                     binding.btnChoiceAge.setText(it.age)
+                    when (it.neutering) {
+                        Neutering.YES -> binding.btnYesNeutering.isChecked = true
+                        Neutering.NO -> binding.btnNoNeutering.isChecked = true
+                        Neutering.NONE -> {}
+                    }
                 }
             }
             launch {
                 adoptPostViewModel.speciesStateFlow.collectLatest { result ->
-                    binding.cbBreedChoice.setText(result)
+                    binding.cbBreedChoice.setText(result.breedName)
+                }
+            }
+            launch {
+                adoptPostViewModel.titleStateFlow.collectLatest { result ->
+                    binding.tvTitle.setText(result)
+                }
+            }
+
+            launch {
+                adoptPostViewModel.contentStateFlow.collectLatest { result ->
+                    binding.tietIntroduce.setText(result)
                 }
             }
             launch {
@@ -97,6 +116,17 @@ class PetAdoptPostFragment :
             findNavController().navigate(R.id.action_petAdoptPostFragment_to_speciesChoiceFragment)
         }
 
+        binding.btgNeutering.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            when (checkedId) {
+                R.id.btn_yes_neutering -> if (isChecked) adoptPostViewModel.updateNeuteringSelection(
+                    Neutering.YES
+                )
+                R.id.btn_no_neutering -> if (isChecked) adoptPostViewModel.updateNeuteringSelection(
+                    Neutering.NO
+                )
+            }
+        }
+
         binding.include.tvLeft.setOnClickListener {
             requireActivity().finish()
         }
@@ -109,6 +139,14 @@ class PetAdoptPostFragment :
                 )
 
             findNavController().navigate(galleryFragmentDirections)
+        }
+
+        binding.tvTitle.addTextChangedListener {
+            adoptPostViewModel.updateTitle(it.toString())
+        }
+
+        binding.tietIntroduce.addTextChangedListener {
+            adoptPostViewModel.updateContent(it.toString())
         }
 
         binding.cvStartDate.setClick { executePostingPeriodPicker() }
@@ -140,6 +178,7 @@ class PetAdoptPostFragment :
                 .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {
+            Timber.tag("datapicker").d(it.toString())
             binding.cvEuthanasiaDate.setText(simpleDateFormat.format(it))
         }
         dateRangePicker.show(this.parentFragmentManager, null)

@@ -54,9 +54,10 @@ internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
     startDate = startDate ?: emptyList(),
     title = title ?: "",
     userId = userId ?: "",
-    neutering = neutering?: Neutering.NO,
-    species = species?: "",
-    gender = gender?: Gender.MALE,
-    euthanasiaDate = euthanasiaDate?: "",
-    age = age
+    neutering = neutering ?: Neutering.NO,
+    species = species ?: "",
+    gender = gender ?: Gender.MALE,
+    euthanasiaDate = euthanasiaDate ?: "",
+    age = age,
+    imageByteArrayList = listOf()
 )

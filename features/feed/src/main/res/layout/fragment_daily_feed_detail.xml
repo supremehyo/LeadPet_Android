@@ -122,7 +122,7 @@
                     app:layout_constraintTop_toTopOf="@+id/dailyFeedTitleTv" />
 
                 <TextView
-                    style="@style/h"
+                    style="@style/h2"
                     android:id="@+id/dailyFeedContentTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
