@@ -2,7 +2,7 @@ package com.dev6.data.model.daily
 
 import com.google.gson.annotations.SerializedName
 
-data class DailyPostRequestResponse (
+data class DailyPostRequestResponse(
     @SerializedName("contents")
     val contents: String,
     @SerializedName("images")
@@ -12,4 +12,3 @@ data class DailyPostRequestResponse (
     @SerializedName("userId")
     val userId: String
 )
-

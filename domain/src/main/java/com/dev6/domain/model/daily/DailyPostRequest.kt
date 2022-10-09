@@ -12,5 +12,5 @@ data class DailyPostRequest(
     @SerializedName("userId")
     val userId: String,
 
-    val imageList : List<ByteArray>
+    val imageByteList : List<ByteArray>
 )

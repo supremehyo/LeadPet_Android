@@ -23,5 +23,5 @@ data class DailyPost(
     @SerializedName("liked")
     val liked: Boolean,
 
-    val imageList : List<ByteArray>
+    val imageList: List<ByteArray>
 ) : Serializable

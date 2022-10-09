@@ -119,7 +119,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/v_camera2" />
 
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/materialButtonToggleGroup"
+                    android:id="@+id/btg_neutering"
                     style="@style/ButtonSelecterStyle"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -203,7 +203,7 @@
                     app:endIconMode="clear_text"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
-                    app:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup">
+                    app:layout_constraintTop_toBottomOf="@+id/btg_neutering">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tiet_disease"
