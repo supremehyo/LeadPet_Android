@@ -158,6 +158,7 @@ class DailyFeedDetailActivity :
     private fun makeCurrentView() {
         binding.apply {
             currentFeed.apply {
+                dailyFeedUserId.text = userId
                 dailyFeedTitleTv.text = title
                 dailyFeedContentTv.text = contents
                 dailyLikeCount.text = likedCount.toString()
@@ -176,13 +177,13 @@ class DailyFeedDetailActivity :
                 Log.v("initlike", likedBoolean.toString())
                 likedBoolean = liked
                 makeLikedHeart(liked, binding.dailyLikeImage)
-                makeImageView("")
+                makeImageView(images[0])
             }
         }
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
+        Glide.with(this).load(uri).error(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
     }
 
     private fun makeLikedHeart(boolean: Boolean, imageView: ImageView) {

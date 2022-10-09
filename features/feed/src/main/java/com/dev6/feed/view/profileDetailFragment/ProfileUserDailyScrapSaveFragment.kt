@@ -1,5 +1,6 @@
 package com.dev6.feed.view.profileDetailFragment
 
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -26,6 +27,7 @@ class ProfileUserDailyScrapSaveFragment : BindingFragment<FragmentProfileUserScr
     private lateinit var savedDailyAdapter: SavedDailyAdapter
     override fun initView() {
         super.initView()
+        Log.v("dfgsdrgg" , "gergergerg")
         savedDailyAdapter()
     }
 

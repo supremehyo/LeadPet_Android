@@ -66,14 +66,9 @@ class FeedViewModel
     private val _eventAdoptList = MutableEventFlow<Event>()
     val eventAdoptList = _eventAdoptList.asEventFlow()
 
-
     private val _eventShelterList = MutableSharedFlow<PagingData<ShelterEntitiyRepo>>(replay = 0,extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val eventShelterList = _eventShelterList.asSharedFlow()
-    /*
-    private val _eventShelterList = MutableEventFlow<Event>()
-    val eventShelterList = _eventShelterList.asEventFlow()
-     */
 
     private val _eventFlowComment = MutableEventFlow<Event>()
     val eventFlowComment = _eventFlowComment.asEventFlow()

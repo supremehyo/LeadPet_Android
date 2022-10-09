@@ -19,6 +19,8 @@ data class AdoptPostFeed(
     val endDate: List<String>?,
     @SerializedName("euthanasiaDate")
     val euthanasiaDate: String,
+    @SerializedName("disease")
+    val disease : String,
     @SerializedName("gender")
     val gender: Gender,
     @SerializedName("images")

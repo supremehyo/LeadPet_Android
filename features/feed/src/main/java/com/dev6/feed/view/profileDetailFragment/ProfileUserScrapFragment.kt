@@ -6,6 +6,7 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentProfileUserScrapBinding
+import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.feed.viewmodel.SaveViewModel
 import com.google.android.material.tabs.TabLayout
 
@@ -14,6 +15,7 @@ class ProfileUserScrapFragment : BindingFragment<FragmentProfileUserScrapBinding
     (R.layout.fragment_profile_user_scrap){
 
     private val saveViewModel : SaveViewModel by activityViewModels()
+    private val feedViewModel : FeedViewModel by activityViewModels()
 
     val profileUserDailyScrapSaveFragment: ProfileUserDailyScrapSaveFragment by lazy { ProfileUserDailyScrapSaveFragment() }
     val profileUserDonationScrapSaveFragment: ProfileUserDonationScrapSaveFragment by lazy { ProfileUserDonationScrapSaveFragment() }
@@ -36,6 +38,21 @@ class ProfileUserScrapFragment : BindingFragment<FragmentProfileUserScrapBinding
     override fun afterViewCreated() {
         super.afterViewCreated()
 
+        repeatOnStartedFragment {
+            feedViewModel.scrapDetailEvent.collect{
+                when(it.scrapType){
+                    "NORMAL"->{
+
+                    }
+                    "DONATION"->{
+
+                    }
+                    "ADOPT"->{
+
+                    }
+                }
+            }
+        }
     }
 
     private fun initTabLayout(){
