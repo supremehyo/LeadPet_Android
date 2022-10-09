@@ -114,8 +114,8 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                             Login(
                                 LoginType.GOOGLE,
                                 account.id,
-                                null,
-                                null
+                                "",
+                                ""
                             )
                         )
                         loginViewModel.getlogin()

@@ -59,7 +59,7 @@ class AdoptFeedDetailActivity :
                 adoptFeedDisease.text = disease
                 adoptFeedTitle.text = title
                 adoptFeedUserId.text = userId
-                makeImageView(images?.get(0) ?: "")
+                makeImageView("")
             }
         }
     }

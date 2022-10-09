@@ -3,6 +3,7 @@ package com.dev6.join
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -29,7 +30,7 @@ class NormalUserJoinFragment :
     lateinit var userType: String
     lateinit var uid : String
     lateinit var loginType: String
-    private lateinit var imageUri: String
+
     lateinit var imageUpload: ImageUpload
 
 
@@ -37,7 +38,7 @@ class NormalUserJoinFragment :
         super.initView()
         userType = arguments?.get("userType").toString()
         uid = arguments?.get("uid").toString()
-
+        Log.v("wsefwgeg", userType+uid)
 
     }
 
@@ -80,7 +81,7 @@ class NormalUserJoinFragment :
         binding.apply {
             profileButton.setOnClickListener {
                 if (nickNameInputText.text.toString().isNotEmpty()) {
-                    //    joinViewModel.signUp(makeJoinDto())
+                    joinViewModel.signUp(makeJoinDto())
                 } else if (nickNameInputText.text.toString().isEmpty()) {
                     Toast.makeText(context, "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 } else if (nickNameInputText.text.toString().length < 2 || nickNameInputText.text.toString().length > 16) {
@@ -139,7 +140,7 @@ class NormalUserJoinFragment :
         return Join(
             makeLoginType(UserData.loginMethod), UserData.uid,
             "", "",
-            imageUri, binding.nickNameInputText.text.toString(), "", "",
+            "", binding.nickNameInputText.text.toString(), "", "",
             "",
             "", "", "" ,userType,"", emptyList()
         )
