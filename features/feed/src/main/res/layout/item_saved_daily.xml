@@ -8,27 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/savedDailyUserId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="UserId"
-            android:fontFamily="@font/hansneo_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/savedDailyTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:maxLines="10"
-            android:text="title"
-            android:fontFamily="@font/hansneo_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/savedDailyUserId" />
-
         <ImageView
             android:id="@+id/savedDailyIv"
             android:layout_width="wrap_content"
@@ -40,7 +19,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/savedDailyTitle"
             app:layout_constraintVertical_bias="1.0"></ImageView>
-
 
     </com.dev6.core.view.SquareFrameLayout>
 </layout>

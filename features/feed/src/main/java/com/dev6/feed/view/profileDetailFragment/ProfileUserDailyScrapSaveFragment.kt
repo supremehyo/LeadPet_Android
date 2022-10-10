@@ -25,6 +25,13 @@ class ProfileUserDailyScrapSaveFragment : BindingFragment<FragmentProfileUserScr
     private val feedViewModel : FeedViewModel by activityViewModels()
     private val saveViewModel : SaveViewModel by activityViewModels()
     private lateinit var savedDailyAdapter: SavedDailyAdapter
+
+    override fun onStart() {
+        super.onStart()
+        Log.v("떼스트","데일리")
+        savedDailyAdapter.refresh()
+    }
+
     override fun initView() {
         super.initView()
         Log.v("dfgsdrgg" , "gergergerg")

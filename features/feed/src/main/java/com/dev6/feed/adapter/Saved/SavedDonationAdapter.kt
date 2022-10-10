@@ -54,8 +54,8 @@ class SavedDonationAdapter (private val callback: (SavedDonationData) -> Unit) :
             binding.savedDonationCl.setOnClickListener {
                 callback(item)
             }
-            binding.savedDonationTitle.text = item.title
-            binding.savedDonationUserId.text = item.userId
+            //binding.savedDonationTitle.text = item.title
+           // binding.savedDonationUserId.text = item.userId
 
             Glide.with(binding.root)
                 .load(Uri.parse(item.images?.get(0) ?: ""))

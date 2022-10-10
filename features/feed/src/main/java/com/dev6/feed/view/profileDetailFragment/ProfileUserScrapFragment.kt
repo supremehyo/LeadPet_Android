@@ -1,4 +1,5 @@
 package com.dev6.feed.view.profileDetailFragment
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -17,14 +18,17 @@ class ProfileUserScrapFragment : BindingFragment<FragmentProfileUserScrapBinding
     private val saveViewModel : SaveViewModel by activityViewModels()
     private val feedViewModel : FeedViewModel by activityViewModels()
 
-    val profileUserDailyScrapSaveFragment: ProfileUserDailyScrapSaveFragment by lazy { ProfileUserDailyScrapSaveFragment() }
+    lateinit var profileUserDailyScrapSaveFragment: ProfileUserDailyScrapSaveFragment
     val profileUserDonationScrapSaveFragment: ProfileUserDonationScrapSaveFragment by lazy { ProfileUserDonationScrapSaveFragment() }
     val profileUserAdoptionScrapSaveFragment: ProfileUserAdoptionScrapSaveFragment by lazy { ProfileUserAdoptionScrapSaveFragment() }
     lateinit var selected: Fragment
 
     override fun initView() {
         super.initView()
+        profileUserDailyScrapSaveFragment = ProfileUserDailyScrapSaveFragment()
+        childFragmentManager.beginTransaction().replace(R.id.profileSavedFc, profileUserDailyScrapSaveFragment).commit()
         initTabLayout()
+        Log.v("떼스트","유저프라그먼트스크랩")
     }
 
     override fun initViewModel() {
@@ -37,22 +41,6 @@ class ProfileUserScrapFragment : BindingFragment<FragmentProfileUserScrapBinding
 
     override fun afterViewCreated() {
         super.afterViewCreated()
-
-        repeatOnStartedFragment {
-            feedViewModel.scrapDetailEvent.collect{
-                when(it.scrapType){
-                    "NORMAL"->{
-
-                    }
-                    "DONATION"->{
-
-                    }
-                    "ADOPT"->{
-
-                    }
-                }
-            }
-        }
     }
 
     private fun initTabLayout(){

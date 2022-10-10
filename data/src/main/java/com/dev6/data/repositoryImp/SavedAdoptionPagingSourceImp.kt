@@ -17,7 +17,7 @@ class SavedAdoptionPagingSourceImp
     var _userId = userId
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SavedAdoptionData> {
         return try {
-            val next = params.key ?: 1
+            val next = params.key ?: 0
             val size = params.loadSize
             val response = savedAdoptRemoteSource.getSavedAdoptionPost(next,size,_userId)
             try {

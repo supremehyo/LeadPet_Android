@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_userFragment_to_userProfileUpdateFragment"
             app:destination="@id/userProfileUpdateFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_fragmentFeedDaily"
+            app:destination="@id/fragmentFeedDaily" />
     </fragment>
 
     <fragment

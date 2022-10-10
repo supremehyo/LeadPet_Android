@@ -35,13 +35,7 @@ class DailyFeedDetailActivity :
         super.initView()
         currentFeed = intent.getSerializableExtra("dailyPostFeed") as DailyPost
         makeCurrentView()
-        commentAdapter = DailyCommentAdapter {
-//            if (com.dev6.core.UserData.userType == "NORMAL") {
-//                //     NavHostFragment.findNavController(fragment = this).navigate(R.id.action_feedFragment_to_userFragment)
-//            } else {
-//                //   NavHostFragment.findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
-//            }
-        }
+        commentAdapter = DailyCommentAdapter {}
         dailycommentRc = binding.dailyCommentRv
         dailycommentRc.apply {
             layoutManager = LinearLayoutManager(context)

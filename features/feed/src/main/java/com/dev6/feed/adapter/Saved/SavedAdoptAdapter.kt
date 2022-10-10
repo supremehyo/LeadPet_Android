@@ -55,13 +55,20 @@ class SavedAdoptAdapter(private val callback: (SavedAdoptionData) -> Unit) :
             binding.savedAdoptionCl.setOnClickListener {
                 callback(item)
             }
-            binding.savedAdoptionTitle.text = item.title
-            binding.savedAdoptionUserId.text = item.userId
+            //binding.savedAdoptionTitle.text = item.title
+           // binding.savedAdoptionUserId.text = item.userId
 
-            Glide.with(binding.root)
-                .load(Uri.parse(item.images?.get(0) ?: ""))
-                .error(R.mipmap.img_1)
-                .into(binding.savedAdoptionIv)
+            if(item.images!=null && item.images.isNotEmpty()){
+                Glide.with(binding.root)
+                    .load(Uri.parse(item.images?.get(0)))
+                    .error(R.mipmap.img_1)
+                    .into(binding.savedAdoptionIv)
+            }else{
+                Glide.with(binding.root)
+                    .load(Uri.parse( ""))
+                    .error(R.mipmap.img_1)
+                    .into(binding.savedAdoptionIv)
+            }
         }
     }
 }

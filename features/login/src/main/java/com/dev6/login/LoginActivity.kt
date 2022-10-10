@@ -47,6 +47,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                                 UserData.intro = userProfileData.intro
                                 UserData.userName = userProfileData.userName
                                 UserData.email = userProfileData.email
+                                UserData.userId = userProfileData.userId
                                 UserData.profileImage = userProfileData.profileImage
 
                                 val loginIntent = Intent(this@LoginActivity, FeedActivity::class.java)
@@ -117,6 +118,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         is LoginViewModel.Event.ErrorEvent -> {
             val joinIntent = Intent(this, JoinActivity::class.java)
             joinIntent.putExtra("loginMethod", event.loginData.loginMethod)
+            Log.v("Agwgewg", event.loginData.uid.toString())
             joinIntent.putExtra("uuid", event.loginData.uid)
             joinIntent.putExtra("userType", event.loginData.userType)
             joinIntent.putExtra("exist", false)

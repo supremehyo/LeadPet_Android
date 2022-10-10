@@ -149,7 +149,7 @@ class ShelterUserMoreFragment :
         return Join(
             makeLoginType(com.dev6.core.UserData.loginMethod), com.dev6.core.UserData.uid,
             "", "",
-            imageUri, shelterName, shelterName, shelterAddress, shelterAccount,
+            "", shelterName, shelterName, shelterAddress, shelterAccount,
             shelterPhone,
             "", shelterHomePage, userType, shelterIntro,
             emptyList()

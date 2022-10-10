@@ -3,6 +3,7 @@ package com.dev6.join
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -50,9 +51,13 @@ class NormalUserJoinFragment :
                             is UiState.Success -> {
                                 event.uiState.data
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
+                                requireActivity().finish()
+                                /*
                                 val feedIntent = Intent(context, FeedActivity::class.java)
                                 feedIntent.putExtra("userType", userType)
                                 startActivity(feedIntent)
+
+                                 */
                             }
                             is UiState.Error -> {
                                 Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()

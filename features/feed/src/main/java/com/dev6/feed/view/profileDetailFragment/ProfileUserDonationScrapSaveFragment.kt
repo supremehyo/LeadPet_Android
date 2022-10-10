@@ -9,16 +9,26 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.util.extension.repeatOnStarted
+import com.dev6.data.model.saved.ScrapEventData
 import com.dev6.feed.R
 import com.dev6.feed.adapter.Saved.SavedDonationAdapter
 import com.dev6.feed.databinding.FragmentProfileUserDonationScrapSaveBinding
+import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.feed.viewmodel.SaveViewModel
 import kotlinx.coroutines.flow.collect
 
 class ProfileUserDonationScrapSaveFragment : BindingFragment<FragmentProfileUserDonationScrapSaveBinding>
     (R.layout.fragment_profile_user_donation_scrap_save){
+
     private val saveViewModel : SaveViewModel by activityViewModels()
+    private val feedViewModel : FeedViewModel by activityViewModels()
     private lateinit var savedDonationAdapter : SavedDonationAdapter
+
+
+    override fun onStart() {
+        super.onStart()
+        savedDonationAdapter.refresh()
+    }
 
     override fun initView() {
         super.initView()
@@ -62,7 +72,9 @@ class ProfileUserDonationScrapSaveFragment : BindingFragment<FragmentProfileUser
     }
 
     private fun savedDonationAdapter(){
-        savedDonationAdapter = SavedDonationAdapter {}
+        savedDonationAdapter = SavedDonationAdapter {
+            feedViewModel.setScrapDetailEvent(ScrapEventData("DONATION", it))
+        }
         binding.donationRc.apply {
             adapter = savedDonationAdapter
             layoutManager = GridLayoutManager(requireContext(), 3)

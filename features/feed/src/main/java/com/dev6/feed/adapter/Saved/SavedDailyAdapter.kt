@@ -54,13 +54,20 @@ class SavedDailyAdapter(private val callback: (SavedDailyData) -> Unit) :
             binding.savedDailyCl.setOnClickListener {
                 callback(item)
             }
-            binding.savedDailyTitle.text = item.title
-            binding.savedDailyUserId.text = item.userId
+            //binding.savedDailyTitle.text = item.title
+            //binding.savedDailyUserId.text = item.userId
 
-            Glide.with(binding.root)
-                .load(Uri.parse(item.images?.get(0) ?: ""))
-                .error(R.mipmap.img_1)
-                .into(binding.savedDailyIv)
+            if(item.images!=null && item.images.isNotEmpty()){
+                Glide.with(binding.root)
+                    .load(Uri.parse(item.images?.get(0)))
+                    .error(R.mipmap.img_1)
+                    .into(binding.savedDailyIv)
+            }else{
+                Glide.with(binding.root)
+                    .load(Uri.parse( ""))
+                    .error(R.mipmap.img_1)
+                    .into(binding.savedDailyIv)
+            }
         }
     }
 }
