@@ -22,6 +22,7 @@ class DailyPagingSourceImp @Inject constructor(
             try {
                 Log.v("ssssfsfsf2", response.toDomain().dailyFeedEntitiy.get(0).normalPostId)
             } catch (e: Exception) {
+                Log.v("ssssssssssssss2", e.message.toString())
                 throw Exception()
             }
             if(response.last){

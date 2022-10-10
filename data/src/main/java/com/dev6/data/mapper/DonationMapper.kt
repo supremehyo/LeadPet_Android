@@ -70,7 +70,9 @@ internal fun DonationFeedResponse.toDomain() = DonationPost(
     images = this?.images ?: emptyList(),
     startDate = this?.startDate ?: emptyList(),
     title = this?.title ?: "",
-    userId = this?.userId ?: ""
+    userId = this?.userId ?: "",
+    userName = userName,
+    profileImage = profileImage
 )
 
 internal fun DonationPostPage.toMakeViewLayer(temp: DonationFeedResponse) = DonationFeedResponse(
@@ -81,5 +83,7 @@ internal fun DonationPostPage.toMakeViewLayer(temp: DonationFeedResponse) = Dona
     images = temp.images,
     startDate = temp.startDate,
     title = temp.title,
-    userId = temp.userId
+    userId = temp.userId,
+    userName = temp.userName,
+    profileImage = temp.profileImage
 )

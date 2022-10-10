@@ -53,7 +53,7 @@ class DailyPagingAdapter(private val callback: (DailyPost) -> Unit) :
             binding.apply {
                 dailyFeedContentTv.text = item.contents
                 dailyFeedTitleTv.text = item.title
-                dailyFeedProfileTv.text = item.userId
+                dailyFeedProfileTv.text = item.userName
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     dailyFeedWriteTimeTv.text = fewDay(
                         item.createdDate[0],
@@ -71,19 +71,20 @@ class DailyPagingAdapter(private val callback: (DailyPost) -> Unit) :
                     Glide.with(binding.root)
                         .load( "")
                         .error(R.mipmap.img_2)
-                        .centerCrop()
+                        .circleCrop()
                         .into(dailyFeedIv)
                 }else{
                     Glide.with(binding.root)
                         .load( item.images[0])
                         .error(R.mipmap.img_2)
-                        .centerCrop()
+                        .circleCrop()
                         .into(dailyFeedIv)
                 }
 
 
                 Glide.with(binding.root)
-                    .load(R.mipmap.img_1)
+                    .load(item.profileImage)
+                    .error(R.mipmap.img_1)
                     .circleCrop()
                     .into(dailyFeedProfileIv)
 

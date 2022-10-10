@@ -1,10 +1,13 @@
 package com.dev6.feed.view
 
+import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.replace
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -12,12 +15,21 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
 import com.dev6.core.enums.FeedViewType
+import com.dev6.domain.model.adopt.AdoptPostFeed
+import com.dev6.domain.model.daily.DailyPost
+import com.dev6.domain.model.donate.DonationPost
+import com.dev6.domain.model.save.SavedAdoptionData
+import com.dev6.domain.model.save.SavedDailyData
+import com.dev6.domain.model.save.SavedDonationData
 import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentUserBinding
+import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
+import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.view.profileDetailFragment.ProfileUserDonationFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileUserScrapFragment
 import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.feed.viewmodel.ProfileViewModel
+import com.dev6.feed.viewmodel.SaveViewModel
 import com.google.android.material.tabs.TabLayout
 
 
@@ -26,9 +38,13 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
     private val feedViewModel: FeedViewModel by activityViewModels()
     private val profileViewModel : ProfileViewModel by activityViewModels()
     lateinit var profileUserScrapFragment: ProfileUserScrapFragment
-    lateinit var profileUserDonationFragment: ProfileUserDonationFragment
 
     lateinit var selected: Fragment
+
+    override fun onStart() {
+        super.onStart()
+        Log.v("떼스트","유저프라그먼트")
+   }
 
     override fun initView() {
         feedViewModel.setCurrentView(FeedViewType.PROFILE)
@@ -37,20 +53,14 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
             userProfileNameTv.text = UserData.shelterName
             userProfileDesTv.text = UserData.intro
         }
-        Glide.with(binding.root)
-            .load(Uri.parse(UserData.profileImage))
-            .circleCrop()
-            .into(binding.userProfileIv)
         childFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, profileUserScrapFragment).commit()
     }
 
     override fun initViewModel() {
-        //TODO 해당 유저의 uuid 로 관련 피드 데이터 요청
         profileViewModel.getNormalUserProfileDetailData(UserData.userId)
     }
 
     override fun initListener() {
-        //TODO 해당 피드를 눌렀을때 post id 를 가지고 있다가 이동
         binding.userFollowTv.setOnClickListener {
             findNavController().navigate(R.id.action_userFragment_to_userProfileUpdateFragment)
         }
@@ -58,6 +68,66 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
 
     override fun afterViewCreated() {
         super.afterViewCreated()
+
+        repeatOnStartedFragment {
+            feedViewModel.scrapDetailEvent.collect{
+                when(it.scrapType){
+                    "NORMAL"->{
+                        var temp = it.data as SavedDailyData
+                        var dailyPost = DailyPost(temp.contents,temp.images,temp.normalPostId,
+                            temp.title,temp.userName,temp.profileImage,temp.userId
+                        ,0, temp.createdDate,0,false , emptyList())
+
+                        feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
+                        findNavController().navigate(R.id.action_userFragment_to_fragmentFeedDaily ,
+                            Bundle().apply { putSerializable("dailyPost", dailyPost)})
+                    }
+                    "DONATION"->{
+                        var temp = it.data as SavedDonationData
+                        var donationPost = DonationPost(
+                            temp.contents,
+                            temp.donationMethod,
+                            temp.donationPostId,
+                            temp.endDate,
+                            temp.images,
+                            temp.startDate,
+                            temp.userName,
+                            temp.profileImage,
+                            temp.title,
+                            temp.userId
+                        )
+                        val donationIntent = Intent(context, DonationFeedDetailActivity::class.java)
+                        donationIntent.putExtra("donationPostFeed", donationPost)
+                    }
+                    "ADOPT"->{
+                        var temp = it.data as SavedAdoptionData
+                        var adoptPostFeed = AdoptPostFeed(
+                            temp.adoptionPostId,
+                            temp.age,
+                            temp.animalType,
+                            temp.contents ?: "",
+                            temp.endDate ,
+                            temp.euthanasiaDate ?: "",
+                            temp.disease,
+                            temp.gender,
+                            temp.images,
+                            temp.neutering,
+                            temp.species ?: "",
+                            temp.startDate ?: emptyList(),
+                            temp.userName,
+                            temp.profileImage,
+                            temp.title ?: "",
+                            temp.userId ?: ""
+                        )
+                        val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
+                        adoptIntent.putExtra("adoptPostFeed", adoptPostFeed)
+                        startActivity(adoptIntent)
+                    }
+                }
+            }
+        }
+
+
         repeatOnStartedFragment {
             profileViewModel.eventNormalUserProfileDetail.collect{ evnet->
                 when(evnet){
@@ -67,7 +137,8 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                                 var userProfileData = evnet.uiState.data
                                 binding.apply {
                                     Glide.with(binding.root)
-                                        .load(R.mipmap.img_1)
+                                        .load(userProfileData.profileImage)
+                                        .error(R.mipmap.img_1)
                                         .circleCrop()
                                         .into(userProfileIv)
                                     userProfileDesTv.text = userProfileData.intro
@@ -103,12 +174,6 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
             userProfileTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     when (tab?.position) {
-                        /*
-                        0 -> {
-                            selected = profileUserDonationFragment
-                        }
-
-                         */
                         0 -> {
                             selected = profileUserScrapFragment
                         }

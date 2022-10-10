@@ -35,13 +35,7 @@ class DailyFeedDetailActivity :
         super.initView()
         currentFeed = intent.getSerializableExtra("dailyPostFeed") as DailyPost
         makeCurrentView()
-        commentAdapter = DailyCommentAdapter {
-//            if (com.dev6.core.UserData.userType == "NORMAL") {
-//                //     NavHostFragment.findNavController(fragment = this).navigate(R.id.action_feedFragment_to_userFragment)
-//            } else {
-//                //   NavHostFragment.findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
-//            }
-        }
+        commentAdapter = DailyCommentAdapter {}
         dailycommentRc = binding.dailyCommentRv
         dailycommentRc.apply {
             layoutManager = LinearLayoutManager(context)
@@ -158,6 +152,7 @@ class DailyFeedDetailActivity :
     private fun makeCurrentView() {
         binding.apply {
             currentFeed.apply {
+                dailyFeedUserId.text = userId
                 dailyFeedTitleTv.text = title
                 dailyFeedContentTv.text = contents
                 dailyLikeCount.text = likedCount.toString()
@@ -176,13 +171,17 @@ class DailyFeedDetailActivity :
                 Log.v("initlike", likedBoolean.toString())
                 likedBoolean = liked
                 makeLikedHeart(liked, binding.dailyLikeImage)
-                makeImageView("")
+                if(images!=null && images.isNotEmpty()){
+                    makeImageView(images[0])
+                }else{
+                    makeImageView("")
+                }
             }
         }
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
+        Glide.with(this).load(uri).error(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
     }
 
     private fun makeLikedHeart(boolean: Boolean, imageView: ImageView) {

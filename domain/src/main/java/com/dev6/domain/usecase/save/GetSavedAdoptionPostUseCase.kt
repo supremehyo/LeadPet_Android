@@ -1,22 +1,22 @@
-/*
 package com.dev6.domain.usecase.save
 
 import androidx.paging.PagingData
 import com.dev6.core.base.UiState
 import com.dev6.domain.model.donate.DonationPost
+import com.dev6.domain.model.save.SavedAdoptionData
 import com.dev6.domain.repository.saved.SavedRepository
 import com.dev6.domain.usecase.BaseUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-typealias GetSavedAdoptionPostBaseUseCase = BaseUseCase<DonationPost, Flow<UiState<PagingData<DonationPost>>>>
 
-class GetSavedAdoptionPostUseCase(private val repo: SavedRepository) : GetSavedAdoptionPostBaseUseCase {
+class GetSavedAdoptionPostUseCase @Inject constructor (private val repo: SavedRepository) {
 
-    override suspend fun invoke(params: DonationPost): Flow<UiState<PagingData<DonationPost>>> = flow {
+    fun getSavedAdoptPagingData(userId: String) = flow {
         emit(UiState.Loding)
         runCatching {
-            repo.getSavedAdoptionPagingData(params.userId)
+            repo.getSavedAdoptionPagingData(userId)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
@@ -24,4 +24,4 @@ class GetSavedAdoptionPostUseCase(private val repo: SavedRepository) : GetSavedA
         }
     }
 }
-*/
+

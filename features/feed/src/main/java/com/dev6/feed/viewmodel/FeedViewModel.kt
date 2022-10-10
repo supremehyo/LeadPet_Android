@@ -10,6 +10,7 @@ import com.dev6.core.enums.FeedViewType
 import com.dev6.core.enums.PostType
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
+import com.dev6.data.model.saved.ScrapEventData
 import com.dev6.domain.model.ShelterEntitiyRepo
 import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.domain.model.comment.Comment
@@ -65,14 +66,9 @@ class FeedViewModel
     private val _eventAdoptList = MutableEventFlow<Event>()
     val eventAdoptList = _eventAdoptList.asEventFlow()
 
-
     private val _eventShelterList = MutableSharedFlow<PagingData<ShelterEntitiyRepo>>(replay = 0,extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val eventShelterList = _eventShelterList.asSharedFlow()
-    /*
-    private val _eventShelterList = MutableEventFlow<Event>()
-    val eventShelterList = _eventShelterList.asEventFlow()
-     */
 
     private val _eventFlowComment = MutableEventFlow<Event>()
     val eventFlowComment = _eventFlowComment.asEventFlow()
@@ -86,14 +82,15 @@ class FeedViewModel
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    /*
-    fun setSpinnerEntry(Entry: List<String>) {
+    private val _scrapDetailEvent = MutableSharedFlow<ScrapEventData>()
+    val scrapDetailEvent = _scrapDetailEvent.asSharedFlow()
+
+    fun setScrapDetailEvent(data : ScrapEventData){
         viewModelScope.launch {
-            _spinnerEntry.emit(Entry)
+            _scrapDetailEvent.emit(data)
         }
     }
 
-     */
     fun setCityName(city: String){
         viewModelScope.launch {
             _spinnerEntry.emit(city)

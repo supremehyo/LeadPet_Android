@@ -26,7 +26,7 @@ class JoinActivity : BindingActivity<ActivityJoinBinding>(R.layout.activity_join
 
         loginMethod = intent.getSerializableExtra("loginMethod") as LoginType
         uuid = intent.getStringExtra("uuid")!!
-        userType = intent.getStringExtra("userType")!!
+        userType = intent.getStringExtra("userType") ?: "NORMAL"
         exist = intent.getBooleanExtra("exist" , false)
 
         UserData.uid = uuid

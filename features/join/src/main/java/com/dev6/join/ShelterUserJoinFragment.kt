@@ -44,7 +44,11 @@ class ShelterUserJoinFragment :
                 TedImagePicker.with(requireContext())
                     .max(1, "")
                     .startMultiImage { uriList ->
-                        joinViewModel.setJoinImage(uriList)
+                        val imageList: List<ByteArray> =
+                            uriList.map { ImageUpload.convertUrlToBitmap(it, requireContext()) }
+                                .map { ImageUpload.compressBitmap(it) }
+
+                        joinViewModel.setProfileImage(imageList)
                         Glide.with(binding.root)
                             .load(uriList[0])
                             .circleCrop()

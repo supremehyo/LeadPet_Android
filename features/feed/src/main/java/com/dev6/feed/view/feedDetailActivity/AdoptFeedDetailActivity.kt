@@ -54,18 +54,22 @@ class AdoptFeedDetailActivity :
             currentFeed.apply {
                 AdoptFeedContent.text = contents
                 adoptFeedAnimalType.text = animalType.item + " " + species
-                adoptFeedAge.text = "10"
+                adoptFeedAge.text = age.toString()+"년 출생"
                 adoptFeedDate.text = "$startDate~$endDate"
-                adoptFeedDisease.text = "질병"
+                adoptFeedDisease.text = disease
                 adoptFeedTitle.text = title
                 adoptFeedUserId.text = userId
-                makeImageView("")
+                if(images!=null && images.isNotEmpty()){
+                    makeImageView(images[0])
+                }else{
+                    makeImageView("")
+                }
             }
         }
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(R.mipmap.img_3).centerCrop().into(binding.adoptContentImage)
+        Glide.with(this).load(uri).error(R.mipmap.img_3).centerCrop().into(binding.adoptContentImage)
     }
 
     override fun afterOnCreate() {

@@ -230,13 +230,17 @@ class DailyFeedDetailFragment :
                 Log.v("initlike", likedBoolean.toString())
                 likedBoolean = liked
                 makeLikedHeart(liked)
-                makeImageView("")
+                if(images!=null && images.isNotEmpty()){
+                    makeImageView(images[0])
+                }else{
+                    makeImageView("")
+                }
             }
         }
     }
 
     private fun makeImageView(uri: String) {
-        Glide.with(this).load(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
+        Glide.with(this).load(uri).error(R.mipmap.img_3).centerCrop().into(binding.dailyContentImage)
     }
 
     private fun makeLikedHeart(boolean: Boolean) {

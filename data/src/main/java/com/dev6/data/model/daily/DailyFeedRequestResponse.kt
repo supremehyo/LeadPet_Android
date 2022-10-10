@@ -11,6 +11,10 @@ data class DailyFeedRequestResponse(
     val normalPostId: String,
     @SerializedName("title")
     val title: String,
+    @SerializedName("userName")
+    val userName: String,
+    @SerializedName("profileImage")
+    val profileImage: String?,
     @SerializedName("userId")
     val userId: String,
     @SerializedName("likedCount")
