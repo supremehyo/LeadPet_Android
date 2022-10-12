@@ -31,5 +31,8 @@ data class AdoptFeedResponse(
     @SerializedName("title")
     val title: String?,
     @SerializedName("userId")
-    val userId: String?
+    val userId: String?,
+
+    @SerializedName("disease")
+    val disease: String?
 )

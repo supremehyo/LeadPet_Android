@@ -59,5 +59,7 @@ internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
     gender = gender ?: Gender.MALE,
     euthanasiaDate = euthanasiaDate ?: "",
     age = age,
-    imageByteArrayList = listOf()
+    imageByteArrayList = listOf(),
+    disease = disease ?: "없음"
+
 )

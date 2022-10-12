@@ -33,6 +33,6 @@ data class AdoptPostFeed(
     val title: String,
     @SerializedName("userId")
     val userId: String,
-
-    val imageByteArrayList: List<ByteArray>
+    val disease: String,
+    val imageByteArrayList: List<ByteArray>?
 ) : Serializable
