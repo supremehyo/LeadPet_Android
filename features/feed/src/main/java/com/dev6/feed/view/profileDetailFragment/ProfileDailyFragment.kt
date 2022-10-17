@@ -31,7 +31,7 @@ class ProfileDailyFragment :
             if (UserData.userType == UserType.NORMAL) {
                 feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
                 findNavController().navigate(
-                    R.id.action_feedFragment_to_fragmentFeedDaily,
+                    R.id.action_profileFragment_to_fragmentFeedDaily2,
                     Bundle().apply { putSerializable("dailyPost", it) }
                 )
             } else {
