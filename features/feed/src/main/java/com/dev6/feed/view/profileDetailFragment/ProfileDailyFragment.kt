@@ -24,6 +24,19 @@ class ProfileDailyFragment :
         super.initView()
         userId = arguments?.getString("userId") ?: ""
         pagingAdapter = DailyPagingAdapter {
+            if (UserData.userType == UserType.NORMAL) {
+                feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
+                findNavController().navigate(
+                    R.id.action_profileFragment_to_fragmentFeedDaily,
+                    Bundle().apply { putSerializable("dailyPost", it) }
+                )
+            } else {
+                feedViewModel.setCurrentView(FeedViewType.FEEDDETAIL)
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_fragmentFeedDaily2,
+                    Bundle().apply { putSerializable("dailyPost", it) }
+                )
+            }
             val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
             dailyIntent.putExtra("dailyPostFeed", it)
             startActivity(dailyIntent)
