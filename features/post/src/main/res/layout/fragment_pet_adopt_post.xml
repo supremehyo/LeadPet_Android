@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dev6.post.viewmodel.AdoptPostViewModel" />
+    </data>
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,8 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     app:layout_constraintStart_toStartOf="@id/gl_left2"
-                    app:layout_constraintTop_toTopOf="parent">
-                </com.dev6.core.view.CustomButtonCamera>
+                    app:layout_constraintTop_toTopOf="parent"></com.dev6.core.view.CustomButtonCamera>
 
 
                 <androidx.constraintlayout.widget.Guideline
@@ -71,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:hint="@string/hint_title"
+                    android:text="@={viewModel.titleStateFlow}"
                     app:layout_constraintBottom_toBottomOf="@+id/v_camera2"
                     app:layout_constraintEnd_toStartOf="@id/gi_light2"
                     app:layout_constraintHorizontal_bias="0.01"
@@ -82,9 +91,9 @@
                     android:id="@+id/btn_choice_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_8dp_gray06"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="17dp"
+                    android:background="@drawable/round_8dp_gray06"
                     app:layout_constraintBottom_toBottomOf="@id/v_camera2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -112,8 +121,8 @@
                     android:id="@+id/cb_breed_choice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_8dp_gray07"
                     android:layout_marginTop="32dp"
+                    android:background="@drawable/round_8dp_gray07"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
                     app:layout_constraintStart_toStartOf="@+id/gl_left2"
                     app:layout_constraintTop_toBottomOf="@+id/v_camera2" />
@@ -190,8 +199,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_animal_choice"
                     app:layout_constraintEnd_toStartOf="@+id/gi_light2"
-                    app:layout_constraintHorizontal_bias="1.0">
-                </com.google.android.material.card.MaterialCardView>
+                    app:layout_constraintHorizontal_bias="1.0"></com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_disease"
@@ -212,7 +220,8 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:background="@null"
-                        android:hint="질병상태" />
+                        android:hint="질병상태"
+                        android:text="@={viewModel.diseaseStateFlow}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.dev6.core.view.CustomButtonCalandar
@@ -242,7 +251,8 @@
                         android:layout_height="match_parent"
                         android:gravity="start|top"
                         android:hint="소개글 작성"
-                        android:minHeight="200dp" />
+                        android:minHeight="200dp"
+                        android:text="@={viewModel.contentStateFlow}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

@@ -30,11 +30,11 @@ class AdoptPostViewModel @Inject constructor(
     private val _postImageFlow = MutableStateFlow<List<ByteArray>>(emptyList())
     val postImageFlow = _postImageFlow.asStateFlow()
 
-    private val _titleStateFlow = MutableStateFlow<String>("")
-    val titleStateFlow = _titleStateFlow.asStateFlow()
+    val titleStateFlow = MutableStateFlow<String>("")
 
-    private val _contentStateFlow = MutableStateFlow<String>("")
-    val contentStateFlow = _contentStateFlow.asStateFlow()
+    val contentStateFlow = MutableStateFlow<String>("")
+
+    val diseaseStateFlow = MutableStateFlow<String>("")
 
     private val _adoptChoiceStateFlow =
         MutableStateFlow<AdoptChoiceState>(
@@ -92,14 +92,6 @@ class AdoptPostViewModel @Inject constructor(
         }
     }
 
-    fun updateTitle(text: String) {
-        _titleStateFlow.update { text }
-    }
-
-    fun updateContent(text: String) {
-        _contentStateFlow.update { text }
-    }
-
     fun insertAdoptPost() = viewModelScope.launch {
         val repo = AdoptPostFeed(
             age = adoptChoiceStateFlow.value.age.toIntOrNull(),
@@ -115,7 +107,8 @@ class AdoptPostViewModel @Inject constructor(
             title = titleStateFlow.value,
             userId = "",
             imageByteArrayList = listOf(),
-            adoptionPostId = ""
+            adoptionPostId = "",
+            disease = diseaseStateFlow.value
         )
 
         InsertAdoptPostUseCase(repo).collect { uiState ->
