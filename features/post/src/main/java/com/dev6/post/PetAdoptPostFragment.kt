@@ -1,6 +1,5 @@
 package com.dev6.post
 
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -52,17 +51,6 @@ class PetAdoptPostFragment :
                 }
             }
             launch {
-                adoptPostViewModel.titleStateFlow.collectLatest { result ->
-                    binding.tvTitle.setText(result)
-                }
-            }
-
-            launch {
-                adoptPostViewModel.contentStateFlow.collectLatest { result ->
-                    binding.tietIntroduce.setText(result)
-                }
-            }
-            launch {
                 adoptPostViewModel.postImageFlow.collect { urlList ->
                     if (urlList.isNotEmpty()) {
                         Glide.with(this@PetAdoptPostFragment).load(urlList[0])
@@ -77,14 +65,18 @@ class PetAdoptPostFragment :
         super.initView()
         val choiceAdapter = GroupieAdapter()
         binding.rvAnimalChoice.adapter = choiceAdapter
+        binding.viewModel = adoptPostViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.include.tvTop.text = resources.getString(R.string.title_adaption_insert)
         // todo 이것도 깔끔하게 정리하기
-        choiceAdapter.add(ItemChoiceAnimal("믹스견"))
-        choiceAdapter.add(ItemChoiceAnimal("치와와"))
-        choiceAdapter.add(ItemChoiceAnimal("골든 리트리버"))
-        choiceAdapter.add(ItemChoiceAnimal("말티즈"))
-        choiceAdapter.add(ItemSearchAnimal())
+        choiceAdapter.apply {
+            add(ItemChoiceAnimal("믹스견"))
+            add(ItemChoiceAnimal("치와와"))
+            add(ItemChoiceAnimal("골든 리트리버"))
+            add(ItemChoiceAnimal("말티즈"))
+            add(ItemSearchAnimal())
+        }
 
         binding.cvEndDate.setHint("종료일")
     }
@@ -115,6 +107,7 @@ class PetAdoptPostFragment :
         binding.cbBreedChoice.setOnClickListener {
             findNavController().navigate(R.id.action_petAdoptPostFragment_to_speciesChoiceFragment)
         }
+        binding.include.tvRight.setOnClickListener { adoptPostViewModel.insertAdoptPost() }
 
         binding.btgNeutering.addOnButtonCheckedListener { group, checkedId, isChecked ->
             when (checkedId) {
@@ -139,14 +132,6 @@ class PetAdoptPostFragment :
                 )
 
             findNavController().navigate(galleryFragmentDirections)
-        }
-
-        binding.tvTitle.addTextChangedListener {
-            adoptPostViewModel.updateTitle(it.toString())
-        }
-
-        binding.tietIntroduce.addTextChangedListener {
-            adoptPostViewModel.updateContent(it.toString())
         }
 
         binding.cvStartDate.setClick { executePostingPeriodPicker() }

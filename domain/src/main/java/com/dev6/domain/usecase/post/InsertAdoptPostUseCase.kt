@@ -17,16 +17,15 @@ class InsertAdoptPostUseCase @Inject constructor(
 ) :
     InsertAdoptPostBaseUseCase {
     override suspend fun invoke(adoptPostFeed: AdoptPostFeed): Flow<UiState<AdoptPostFeed>> = flow {
-//        emit(UiState.Loding)
-//        runCatching {
-//            adoptPostFeed.images?.let {imageList->
-//                imageList.map {imageRepository.uploadImage(it)}
-//                adoptPostFeed.copy()
-//            }
-//        }.onSuccess { result ->
-//            emit(UiState.Success(result))
-//        }.onFailure {
-//            emit(UiState.Error(it))
-//        }
+        emit(UiState.Loding)
+        runCatching {
+            repo.insertAdoptPost(
+                adoptPostFeed.copy(images = adoptPostFeed.imageByteArrayList?.map { imageRepository.uploadImage(it) })
+            )
+        }.onSuccess { result ->
+            emit(UiState.Success(result))
+        }.onFailure {
+            emit(UiState.Error(it))
+        }
     }
 }
