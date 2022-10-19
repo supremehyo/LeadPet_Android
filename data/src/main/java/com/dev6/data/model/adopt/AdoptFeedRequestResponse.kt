@@ -5,7 +5,7 @@ import com.dev6.core.enum.Gender
 import com.dev6.core.enum.Neutering
 import com.google.gson.annotations.SerializedName
 
-data class AdoptFeedResponse(
+data class AdoptFeedRequestResponse(
     @SerializedName("adoptionPostId")
     val adoptionPostId: String?,
     @SerializedName("age")
@@ -21,7 +21,7 @@ data class AdoptFeedResponse(
     @SerializedName("gender")
     val gender: Gender,
     @SerializedName("images")
-    val images: List<String>,
+    val images: List<String>?,
     @SerializedName("neutering")
     val neutering: Neutering,
     @SerializedName("breed")
