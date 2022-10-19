@@ -134,7 +134,6 @@ class DailyFragment : BindingFragment<FragmentDailyBinding>(R.layout.fragment_da
         }
         repeatOnStartedFragment {
             feedViewModel.eventShelterList.collect { event ->
-                Log.v("Afsdfas13" , "콜렉트")
                 shelterAdapter.submitData(event)
                 /*
                 when (event) {
