@@ -75,4 +75,9 @@ interface FeedAPI {
         @Query("postId") postId: String,
         @Query("size") size: Int
     ): Response<CommentPaginationResponse>
+
+    @GET("/v1/post/normal/{postId}")
+    suspend fun getDailyScarpDetail(
+        @Path("postId") postId: String,
+    ): Response<CommentPaginationResponse>
 }

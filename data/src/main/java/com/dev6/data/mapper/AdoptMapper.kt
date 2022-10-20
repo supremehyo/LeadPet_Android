@@ -78,6 +78,7 @@ internal fun AdoptPostFeed.toMapper() = AdoptFeedRequestResponse(
     gender = gender ?: Gender.MALE,
     euthanasiaDate = euthanasiaDate ?: "",
     age = age,
-    disease = disease ?: "없음"
-
+    disease = disease ?: "없음",
+    userName = userName,
+    profileImage = profileImage
 )

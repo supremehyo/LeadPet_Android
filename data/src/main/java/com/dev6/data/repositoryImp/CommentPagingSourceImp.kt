@@ -17,7 +17,7 @@ class CommentPagingSourceImp @Inject constructor(
     var _postId = postId
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Comment> {
         return try {
-            val next = params.key ?: 1
+            val next = params.key ?: 0
             val size = params.loadSize
             val response = commentRemoteSource.getCommentByPostId(_postId, next, size)
             try {
@@ -42,7 +42,6 @@ class CommentPagingSourceImp @Inject constructor(
             }
 
         } catch (e: Exception) {
-            Log.v("ssssssssssssss", e.message.toString())
             LoadResult.Error(e)
         }
     }

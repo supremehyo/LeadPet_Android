@@ -3,16 +3,9 @@ package com.dev6.data.service
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.daily.DailyPaginationResponse
 import com.dev6.data.model.donation.DonationPaginationResponse
-import com.dev6.data.model.saved.DeleteSavedRequest
-import com.dev6.data.model.saved.SavedRequest
-import com.dev6.data.model.saved.SavedResponse
+import com.dev6.data.model.saved.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.HTTP
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface SaveAPI {
 
@@ -28,22 +21,22 @@ interface SaveAPI {
 
     @GET("/v1/savedPost/adoptionPost/{userId}")
     suspend fun getSavedAdoptionPost(
-        @Field("page") page: Int,
-        @Field("size") size: Int,
-        @Field("userId") userId: String
-    ): Response<AdoptPaginationResponse>
+        @Path("userId") userId: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Response<SavedAdoptonPagingResponse>
 
     @GET("/v1/savedPost/donationPost/{userId}")
     suspend fun getSavedDonationPost(
-        @Field("page") page: Int,
-        @Field("size") size: Int,
-        @Field("userId") userId: String
-    ): Response<DonationPaginationResponse>
+        @Path("userId") userId: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Response<SavedDonationPagingResponse>
 
     @GET("/v1/savedPost/normalPost/{userId}")
     suspend fun getSavedNormalPost(
-        @Field("page") page: Int,
-        @Field("size") size: Int,
-        @Field("userId") userId: String
-    ): Response<DailyPaginationResponse>
+        @Path("userId") userId: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Response<SavedDailyPagingResponse>
 }

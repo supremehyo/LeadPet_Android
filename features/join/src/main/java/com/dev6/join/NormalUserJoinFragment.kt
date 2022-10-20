@@ -3,6 +3,7 @@ package com.dev6.join
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -23,14 +24,10 @@ import gun0912.tedimagepicker.builder.TedImagePicker
 class NormalUserJoinFragment :
     BindingFragment<FragmentNormalUserJoinBinding>(R.layout.fragment_normal_user_join) {
 
-    private val PICK_IMAGE_REQUEST = 1
     private val joinViewModel: JoinViewModel by activityViewModels()
-    lateinit var joinDto: JoinResponse
     lateinit var userType: String
     lateinit var uid : String
     lateinit var loginType: String
-    private lateinit var imageUri: String
-    lateinit var imageUpload: ImageUpload
 
 
     override fun initView() {
@@ -54,9 +51,13 @@ class NormalUserJoinFragment :
                             is UiState.Success -> {
                                 event.uiState.data
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
+                                requireActivity().finish()
+                                /*
                                 val feedIntent = Intent(context, FeedActivity::class.java)
                                 feedIntent.putExtra("userType", userType)
                                 startActivity(feedIntent)
+
+                                 */
                             }
                             is UiState.Error -> {
                                 Toast.makeText(context, "실패 했어여", Toast.LENGTH_SHORT).show()
@@ -80,7 +81,7 @@ class NormalUserJoinFragment :
         binding.apply {
             profileButton.setOnClickListener {
                 if (nickNameInputText.text.toString().isNotEmpty()) {
-                    //    joinViewModel.signUp(makeJoinDto())
+                    joinViewModel.signUp(makeJoinDto())
                 } else if (nickNameInputText.text.toString().isEmpty()) {
                     Toast.makeText(context, "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 } else if (nickNameInputText.text.toString().length < 2 || nickNameInputText.text.toString().length > 16) {
@@ -112,7 +113,7 @@ class NormalUserJoinFragment :
             joinViewModel.userUpdateImageFlow.collect { urlList ->
                 if (urlList.isNotEmpty()) {
                     UserData.profileImage = urlList[0].toString()
-                    Glide.with(requireContext()).load(urlList[0])
+                    Glide.with(requireContext()).load(urlList[0]).circleCrop()
                         .into(binding.profileImageButton)
                 }
             }
@@ -139,7 +140,7 @@ class NormalUserJoinFragment :
         return Join(
             makeLoginType(UserData.loginMethod), UserData.uid,
             "", "",
-            imageUri, binding.nickNameInputText.text.toString(), "", "",
+            "", binding.nickNameInputText.text.toString(), "", "",
             "",
             "", "", "" ,userType,"", emptyList()
         )

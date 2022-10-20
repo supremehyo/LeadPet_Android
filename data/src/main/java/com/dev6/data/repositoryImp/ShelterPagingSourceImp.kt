@@ -42,7 +42,6 @@ class ShelterPagingSourceImp @Inject constructor(
                 )
             }
         } catch (e: Exception) {
-            Log.v("ssssssssssssss", e.message.toString())
             LoadResult.Error(e)
         }
 

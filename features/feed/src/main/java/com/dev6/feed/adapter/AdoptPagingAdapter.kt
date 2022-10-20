@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dev6.core.util.extension.makeProceedingString
 import com.dev6.domain.model.adopt.AdoptPostFeed
+import com.dev6.feed.R
 import com.dev6.feed.databinding.ItemAdoptBinding
 
 class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
@@ -49,15 +51,19 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("CheckResult")
         fun onBind(item: AdoptPostFeed) {
-            binding.adoptUserId.text = item.userId
+            binding.adoptUserId.text = item.userName
             binding.adoptTitleTv.text = item.title
             binding.adoptBreedTv.text = item.animalType.name+"+"+item.species+"+"+item.gender
             binding.adoptDateTv.text = "" //여기도 다 null인 상태라 비워뒀음.
            // binding.announceTv.text = makeProceedingString(item.endDate ?: listOf("2022","10","5","12","00","00"))
+            binding.adoptAgeTv.text = item.age.toString()+"년 출생"
+            binding.adoptDiseaseTv.text = item.disease
 
-
-            binding.adoptAgeTv.text = item.age.toString()
-            binding.adoptDiseaseTv.text = "아픔"
+            Glide.with(binding.root)
+                .load(item.profileImage)
+                .error(R.mipmap.img_2)
+                .circleCrop()
+                .into(binding.imageView4)
             binding.itemAdoptCl.setOnClickListener {
                 callback(item)
             }

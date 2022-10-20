@@ -18,7 +18,7 @@ class CommentRepositoryImp
     private val commentRemoteSource: CommentRemoteSource
 ) : CommentPagingRepository {
     override suspend fun getCommentPagingData(postId: String): Flow<PagingData<Comment>> {
-        return Pager(PagingConfig(pageSize = 1)) { CommentPagingSourceImp(postId, commentRemoteSource) }.flow
+        return Pager(PagingConfig(pageSize = 10)) { CommentPagingSourceImp(postId, commentRemoteSource) }.flow
     }
 
     override suspend fun postCommentData(
