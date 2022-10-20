@@ -50,7 +50,7 @@ internal fun AdoptFeedRequestResponse.toDomain() = AdoptPostFeed(
     animalType = animalType ?: AnimalType.DOG,
     adoptionPostId = adoptionPostId ?: "",
     endDate = endDate ?: emptyList(),
-    images = images,
+    images = images ?: listOf(),
     startDate = startDate ?: emptyList(),
     title = title ?: "",
     userId = userId ?: "",
@@ -60,8 +60,9 @@ internal fun AdoptFeedRequestResponse.toDomain() = AdoptPostFeed(
     euthanasiaDate = euthanasiaDate ?: "",
     age = age,
     imageByteArrayList = listOf(),
-    disease = disease ?: "없음"
-
+    disease = disease ?: "없음",
+    userName = userName,
+    profileImage = profileImage
 )
 
 internal fun AdoptPostFeed.toMapper() = AdoptFeedRequestResponse(

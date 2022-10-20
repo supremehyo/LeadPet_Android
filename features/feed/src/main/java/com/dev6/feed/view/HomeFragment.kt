@@ -2,13 +2,10 @@ package com.dev6.feed.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
 import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.base.UiState
@@ -20,7 +17,6 @@ import com.dev6.feed.adapter.RecommendAdoptAdapter
 import com.dev6.feed.adapter.RecommendDonationAdapter
 import com.dev6.feed.adapter.RecommendFeedAdapter
 import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
-import com.dev6.feed.view.feedDetailActivity.DailyFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
 import com.dev6.feed.viewmodel.FeedViewModel
 import timber.log.Timber
@@ -51,12 +47,6 @@ class HomeFragment :
                     Bundle().apply { putSerializable("dailyPost", it) }
                 )
             }
-            /*
-            val dailyIntent = Intent(context, DailyFeedDetailActivity::class.java)
-            dailyIntent.putExtra("dailyPostFeed", it)
-            startActivity(dailyIntent)
-
-             */
         }
         adoptPagingAdapter = RecommendAdoptAdapter {
             val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
@@ -96,15 +86,6 @@ class HomeFragment :
             adapter = adoptPagingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
-    }
-
-    fun updateConstraints(@LayoutRes id: Int) {
-        val newConstraintSet = ConstraintSet()
-        newConstraintSet.clone(this.context, id)
-        newConstraintSet.applyTo(binding.clHome)
-        val transition = ChangeBounds()
-        transition.interpolator = OvershootInterpolator()
-        TransitionManager.beginDelayedTransition(binding.clHome, transition)
     }
 
     override fun afterViewCreated() {

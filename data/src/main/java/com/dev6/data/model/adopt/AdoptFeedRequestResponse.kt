@@ -16,8 +16,6 @@ data class AdoptFeedRequestResponse(
     val contents: String?,
     @SerializedName("endDate")
     val endDate: List<String>?,
-    @SerializedName("disease")
-    val disease : String,
     @SerializedName("euthanasiaDate")
     val euthanasiaDate: String?,
     @SerializedName("gender")

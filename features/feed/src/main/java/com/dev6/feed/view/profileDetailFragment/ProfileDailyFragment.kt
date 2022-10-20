@@ -71,7 +71,7 @@ class ProfileDailyFragment :
             feedViewModel.eventDailyList.collect { event ->
                 when (event) {
                     is FeedViewModel.Event.DailyUiEvent -> {
-                        pagingAdapter.submitData(event.uiState)
+                        pagingAdapter.submitData(event.pagingData)
                     }
                     else -> {
                     }
