@@ -6,7 +6,6 @@ import com.dev6.core.UserData
 import com.dev6.core.base.UiState
 import com.dev6.core.util.MutableEventFlow
 import com.dev6.core.util.asEventFlow
-import com.dev6.core.util.extension.getCurrentTime
 import com.dev6.domain.model.daily.DailyPost
 import com.dev6.domain.model.daily.DailyPostRequest
 import com.dev6.domain.usecase.post.InsertDailyPostBaseUseCase
@@ -40,27 +39,11 @@ class LifePostViewModel @Inject constructor(
     fun insertLifePost(text: String, content: String) = viewModelScope.launch {
         val repo = DailyPostRequest(
             contents = content,
-            imageList = postImageFlow.value,
+            imageByteList = postImageFlow.value,
             title = text,
             images = null,
             userId = UserData.userId
         )
-        /*
-        val repo = DailyPost(
-            userId = UserData.userId,
-            title = text,
-            contents = content,
-            images = listOf(),
-            normalPostId = "",
-            likedCount = 0,
-            createdDate = getCurrentTime() ,
-            commentCount = 0,
-            liked = false,
-            imageList = postImageFlow.value
-        )
-
-         */
-
         insertDailyPostBaseUseCase(repo).collect { uiState ->
             event(Event.UiEvent(uiState))
         }

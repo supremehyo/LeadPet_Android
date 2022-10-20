@@ -14,7 +14,6 @@ import com.dev6.domain.model.ProfileUserRepo
 import com.dev6.feed.view.FeedActivity
 import com.dev6.feed.viewmodel.ProfileViewModel
 import com.dev6.join.JoinActivity
-import com.dev6.join.viewmodel.JoinViewModel
 import com.dev6.login.databinding.ActivityLoginBinding
 import com.dev6.login.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,12 +60,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                                 Toast.makeText(this@LoginActivity, "로딩 했어여", Toast.LENGTH_SHORT).show()
                             }
                         }
-                    }else->{
-
+                    }
+                    else -> {
                     }
                 }
             }
-
         }
 
         repeatOnStarted {
@@ -94,12 +92,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                                 Toast.makeText(this@LoginActivity, "로딩 했어여", Toast.LENGTH_SHORT).show()
                             }
                         }
-                    }else->{
-
+                    }
+                    else -> {
                     }
                 }
             }
-
         }
     }
 
@@ -130,14 +127,14 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             UserData.userId = event.loginData.userId
             UserData.profileImage = event.loginData.profileImage
 
-            when(event.loginData.userType){
-                UserType.NORMAL->{
+            when (event.loginData.userType) {
+                UserType.NORMAL -> {
                     profileViewModel.getNormalUserProfileDetailData(event.loginData.userId)
                 }
-                UserType.SHELTER->{
+                UserType.SHELTER -> {
                     profileViewModel.getShelterProfileDetailData(event.loginData.userId)
-                }else->{
-
+                }
+                else -> {
                 }
             }
         }

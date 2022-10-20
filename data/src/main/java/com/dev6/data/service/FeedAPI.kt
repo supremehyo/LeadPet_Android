@@ -1,6 +1,6 @@
 package com.dev6.data.service
 
-import com.dev6.data.model.adopt.AdoptFeedResponse
+import com.dev6.data.model.adopt.AdoptFeedRequestResponse
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.data.model.comment.CommentPaginationResponse
 import com.dev6.data.model.comment.CommentUpdateRequest
@@ -40,7 +40,7 @@ interface FeedAPI {
     ): Response<AdoptPaginationResponse>
 
     @POST("/v1/post/adoption")
-    suspend fun insertAdoptPost(@Body adoptFeedResponse: AdoptFeedResponse): Response<AdoptFeedResponse>
+    suspend fun insertAdoptPost(@Body adoptFeedResponse: AdoptFeedRequestResponse): Response<AdoptFeedRequestResponse>
 
     @POST("/v1/post/donation")
     suspend fun insertDonatePost(@Body donateFeedResponse: DonationFeedResponse): Response<DonationFeedResponse>

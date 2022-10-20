@@ -27,13 +27,12 @@
                 app:layout_constraintWidth_percent="0.1" />
 
             <TextView
+                style="@style/username1"
                 android:id="@+id/dailyFeedProfileTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansneo_medium"
                 android:text="투게더펫"
                 android:textColor="@color/Gray_02"
-                android:textSize="12dp"
                 android:layout_marginStart="7dp"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,12 +41,12 @@
 
 
             <TextView
+                style="@style/textField1"
                 android:id="@+id/dailyFeedWriteTimeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2시간 전"
                 android:textColor="@color/Gray_06"
-                android:textSize="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/dailyFeedProfileTv"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/dailyFeedProfileTv"
@@ -55,12 +54,12 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                style="@style/caption1"
                 android:id="@+id/dailyFeedContentTv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/hansneo_medium"
                 android:text="내용입니다.\n내용입니다."
                 app:layout_constraintBottom_toBottomOf="@+id/dailyFeedIv"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,13 +69,12 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                style="@style/subtitle1"
                 android:id="@+id/dailyFeedTitleTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hansansneobold"
                 android:text="웅이 근황"
                 android:textColor="@color/black"
-                android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.043"
                 app:layout_constraintStart_toEndOf="@+id/dailyFeedIv"
@@ -116,6 +114,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    style="@style/caption1"
                     android:id="@+id/dailyLikeCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -132,6 +131,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    style="@style/caption1"
                     android:id="@+id/dailyCommentCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

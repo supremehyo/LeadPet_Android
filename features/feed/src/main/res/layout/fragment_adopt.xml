@@ -29,32 +29,27 @@
 
 
     <TextView
+        style="@style/h1"
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/hansansneobold"
         android:includeFontPadding="false"
-        android:text="빠른 도움이 필요해요⭐"
+        android:text="빠른 도움이 필요해요 ⭐"
         android:textColor="@color/Gray_01"
-        android:textSize="@dimen/h3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-
-
-
     <TextView
+        style="@style/subtitle2"
         android:id="@+id/adoptOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/hansneo_medium"
         android:text="최신순"
         android:textColor="@color/Gray_01"
-        android:textSize="12dp"
         android:layout_marginTop="19dp"
         app:layout_constraintBottom_toTopOf="@+id/guide2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="1.0"
-
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/adoptOption"
         app:layout_constraintVertical_bias="1.0" />

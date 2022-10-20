@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AdoptPaginationResponse(
     @SerializedName("content")
-    val adoptFeedEntitiyList: List<AdoptFeedResponse>,
+    val adoptFeedEntitiyList: List<AdoptFeedRequestResponse>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")

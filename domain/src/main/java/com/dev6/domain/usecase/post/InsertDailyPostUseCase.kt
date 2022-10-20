@@ -20,9 +20,9 @@ class InsertDailyPostUseCase @Inject constructor(
     override suspend fun invoke(dailyPost: DailyPostRequest) = flow {
         emit(UiState.Loding)
         runCatching {
-            val imageUpload = dailyPost.imageList.map{imageRepository.uploadImage(it)}
-            val updateDTO = dailyPost.copy(images = imageUpload.map {imageRepository.fetchImage(it)})
-            repo.insertDailyPost(updateDTO)
+            repo.insertDailyPost(
+                dailyPost.copy(images = dailyPost.imageByteList?.map { imageRepository.uploadImage(it) })
+            )
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {

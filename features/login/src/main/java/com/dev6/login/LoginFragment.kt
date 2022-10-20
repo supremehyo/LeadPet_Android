@@ -41,7 +41,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     override fun initListener() {
         super.initListener()
         with(binding) {
-            imageButton.setOnClickListener {
+            ibKakao.setOnClickListener {
                 kakaoLogin()
             }
 

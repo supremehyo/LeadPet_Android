@@ -72,7 +72,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
-            android:fontFamily="@font/custom_font_family_medium"
             android:gravity="start|top"
             android:hint="소개글 작성"
             android:minHeight="200dp" />

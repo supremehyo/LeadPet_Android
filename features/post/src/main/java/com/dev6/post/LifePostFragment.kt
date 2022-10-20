@@ -37,7 +37,6 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
     }
 
     override fun afterViewCreated() {
-
         repeatOnStarted {
             postViewModel.postImageFlow.collect { urlList ->
                 if (urlList.isNotEmpty()) {
@@ -58,7 +57,9 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
 
                             is UiState.Error -> {
                                 Toast.makeText(
-                                    context, event.uiState.error?.message, Toast.LENGTH_SHORT
+                                    context,
+                                    event.uiState.error?.message,
+                                    Toast.LENGTH_SHORT
                                 ).show()
                             }
 
@@ -69,25 +70,26 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
                     }
                 }
             }
-
         }
         super.afterViewCreated()
     }
 
     override fun initListener() {
         binding.vCamera.setOnClickListener {
-            val gallraryFragmentDirections =
-                LifePostFragmentDirections.actionLifePostFragmentToGallraryFragment(postViewModel.postImageFlow.value.map {
-                    it.toString()
-                }.toTypedArray())
+            val galleryFragmentDirections =
+                LifePostFragmentDirections.actionLifePostFragmentToGallraryFragment(
+                    postViewModel.postImageFlow.value.map {
+                        it.toString()
+                    }.toTypedArray()
+                )
 
-            findNavController().navigate(gallraryFragmentDirections)
+            findNavController().navigate(galleryFragmentDirections)
         }
 
         binding.include.tvRight.setOnClickListener {
             postViewModel.insertLifePost(
                 binding.tvLifeTitle.text.toString(),
-                binding.tietIntroduce.text.toString(),
+                binding.tietIntroduce.text.toString()
             )
         }
 
@@ -96,5 +98,4 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
         }
         super.initListener()
     }
-
 }

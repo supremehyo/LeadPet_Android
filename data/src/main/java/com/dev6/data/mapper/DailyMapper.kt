@@ -43,15 +43,6 @@ internal fun DailyPageResponse.toDomain() = Pageable(
     unpaged = this?.unpaged ?: false,
 )
 
-/*
-    val offset: Int,
-    val pageNumber: Int,
-    val pageSize: Int,
-    val paged: Boolean,
-    val sort: Sort,
-    val unpaged: Boolean
- */
-
 internal fun List<DailyFeedRequestResponse>.toDomain(): List<DailyPost> {
     var temp: ArrayList<DailyPost> = ArrayList()
     this.forEach {
@@ -63,26 +54,24 @@ internal fun List<DailyFeedRequestResponse>.toDomain(): List<DailyPost> {
 internal fun DailyFeedRequestResponse.toDomain() = DailyPost(
     contents = contents,
     images = images,
-    title = title,
-    userId = userId,
+    title = title ?: "",
+    userId = userId ?: "",
     normalPostId = normalPostId,
     likedCount = likedCount,
-    createdDate = createdDate,
-    liked = liked,
-    commentCount = commentCount,
+    createdDate = createdDate ?: listOf(),
+    liked = liked ?: false,
+    commentCount = commentCount ?: 0,
     imageList = listOf(),
     userName = userName,
     profileImage = profileImage ?: ""
 
 )
 
-
-
 internal fun DailyPostRequest.toMapper() = DailyPostRequestResponse(
     contents = contents,
-    images = images?: emptyList(),
+    images = images ?: emptyList(),
     title = title,
-    userId = userId,
+    userId = userId
 )
 
 internal fun DailyPost.toMapper() = DailyFeedRequestResponse(
@@ -98,4 +87,3 @@ internal fun DailyPost.toMapper() = DailyFeedRequestResponse(
     userName = userName,
     profileImage = profileImage ?: ""
 )
-

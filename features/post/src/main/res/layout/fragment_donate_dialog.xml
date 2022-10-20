@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/tv_text"
-        style="@style/customTextViewFontStyle"
+        style="@style/caption1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"

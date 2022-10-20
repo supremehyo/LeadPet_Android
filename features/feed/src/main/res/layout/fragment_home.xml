@@ -24,14 +24,13 @@
                 tools:context=".view.HomeFragment">
 
                 <TextView
+                    style="@style/h1"
                     android:id="@+id/homeNickNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/hansansneobold"
                     android:text="밤비쨩님이 좋아할 피드"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/h3"
-                    app:layout_constraintBottom_toTopOf="@+id/recommendFeedRc"
+                    app:layout_constraintBottom_toTopOf="@+id/rv_recommend_feed"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +60,7 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recommendFeedRc"
+                    android:id="@+id/rv_recommend_feed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -72,19 +71,18 @@
 
 
                 <TextView
+                    style="@style/h1"
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="39dp"
-                    android:fontFamily="@font/hansansneobold"
                     android:text="오늘은 이런 기부 어떠세요?"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/h3"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recommendFeedRc"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_recommend_feed"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
@@ -122,14 +120,13 @@
                     app:layout_constraintVertical_bias="0" />
 
                 <TextView
+                    style="@style/h1"
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="39dp"
-                    android:fontFamily="@font/hansansneobold"
                     android:text="빠른 도움이 필요해요! ❤"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/h3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"

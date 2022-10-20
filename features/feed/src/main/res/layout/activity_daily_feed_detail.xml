@@ -56,22 +56,22 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/username1"
                             android:id="@+id/dailyFeedUserId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/hansneo_regular"
                             android:text="투게더펫"
                             android:textColor="@color/black"
-                            android:textSize="12dp" />
+                            />
 
                         <TextView
+                            style="@style/textField1"
                             android:id="@+id/dailyFeedTimeTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/hansneo_medium"
                             android:text="2시간전"
                             android:textColor="@color/Gray_04"
-                            android:textSize="10dp" />
+                            />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -89,14 +89,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
                 <TextView
+                    style="@style/h2"
                     android:id="@+id/dailyFeedTitleTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:fontFamily="@font/hansansneobold"
                     android:text="웅이 근황"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

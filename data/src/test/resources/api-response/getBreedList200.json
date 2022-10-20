@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "index": "가",
+      "breedList": [
+        {
+          "breedName": "골든 리트리버",
+          "animalType": "DOG"
+        },
+        {
+          "breedName": "고든셰터",
+          "animalType": "DOG"
+        }
+      ]
+    },
+    {
+      "index": "파",
+      "breedList": [
+        {
+          "breedName": "퍼그",
+          "animalType": "DOG"
+        }
+      ]
+    },
+    {
+      "index": "사",
+      "breedList": [
+        {
+          "breedName": "시츄",
+          "animalType": "DOG"
+        },
+        {
+          "breedName": "시바",
+          "animalType": "DOG"
+        },
+        {
+          "breedName": "스피츠",
+          "animalType": "DOG"
+        }
+      ]
+    }
+  ]
+}

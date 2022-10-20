@@ -9,15 +9,14 @@
     android:layout_height="wrap_content">
 
     <TextView
+        style="@style/h2"
         android:id="@+id/tv_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="15dp"
         android:text="일상글 작성"
-        android:textSize="@dimen/h3"
         android:textColor="#323232"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_left"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,9 +38,9 @@
         android:id="@+id/tv_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
         android:text="다음"
-        android:textColor="@color/color_title"
+        android:textColor="@color/Main"
         app:layout_constraintBottom_toBottomOf="@+id/tv_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_top" />

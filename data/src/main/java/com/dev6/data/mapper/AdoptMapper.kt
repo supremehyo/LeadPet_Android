@@ -4,7 +4,7 @@ import com.dev6.core.enum.AnimalType
 import com.dev6.core.enum.Gender
 import com.dev6.core.enum.Neutering
 import com.dev6.data.entity.adopt.AdoptSortResponse
-import com.dev6.data.model.adopt.AdoptFeedResponse
+import com.dev6.data.model.adopt.AdoptFeedRequestResponse
 import com.dev6.data.model.adopt.AdoptPageResponse
 import com.dev6.data.model.adopt.AdoptPaginationResponse
 import com.dev6.domain.model.Page
@@ -37,7 +37,7 @@ internal fun AdoptPageResponse?.toDomain() = Page(
     size = this?.size ?: 0
 )
 
-internal fun List<AdoptFeedResponse>.toDomain(): List<AdoptPostFeed> {
+internal fun List<AdoptFeedRequestResponse>.toDomain(): List<AdoptPostFeed> {
     var temp: ArrayList<AdoptPostFeed> = ArrayList()
     this.forEach {
         temp.add(it.toDomain())
@@ -45,7 +45,27 @@ internal fun List<AdoptFeedResponse>.toDomain(): List<AdoptPostFeed> {
     return temp
 }
 
-internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
+internal fun AdoptFeedRequestResponse.toDomain() = AdoptPostFeed(
+    contents = contents ?: "",
+    animalType = animalType ?: AnimalType.DOG,
+    adoptionPostId = adoptionPostId ?: "",
+    endDate = endDate ?: emptyList(),
+    images = images ?: listOf(),
+    startDate = startDate ?: emptyList(),
+    title = title ?: "",
+    userId = userId ?: "",
+    neutering = neutering ?: Neutering.NO,
+    species = species ?: "",
+    gender = gender ?: Gender.MALE,
+    euthanasiaDate = euthanasiaDate ?: "",
+    age = age,
+    imageByteArrayList = listOf(),
+    disease = disease ?: "없음",
+    userName = userName,
+    profileImage = profileImage
+)
+
+internal fun AdoptPostFeed.toMapper() = AdoptFeedRequestResponse(
     contents = contents ?: "",
     animalType = animalType ?: AnimalType.DOG,
     adoptionPostId = adoptionPostId ?: "",
@@ -54,12 +74,12 @@ internal fun AdoptFeedResponse.toDomain() = AdoptPostFeed(
     startDate = startDate ?: emptyList(),
     title = title ?: "",
     userId = userId ?: "",
-    neutering = neutering?: Neutering.NO,
-    species = species?: "",
-    gender = gender?: Gender.MALE,
-    euthanasiaDate = euthanasiaDate?: "",
-    disease = disease?: "없음",
+    neutering = neutering ?: Neutering.NO,
+    species = species ?: "",
+    gender = gender ?: Gender.MALE,
+    euthanasiaDate = euthanasiaDate ?: "",
     age = age,
+    disease = disease ?: "없음",
     userName = userName,
     profileImage = profileImage
 )

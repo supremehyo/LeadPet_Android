@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="82dp">
 
         <ImageView
             android:id="@+id/imageView8"
@@ -19,13 +20,12 @@
 
         <TextView
             android:id="@+id/dailyCommentShelterNameTv"
+            style="@style/subtitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="보호소 이름"
             android:textColor="@color/black"
-            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -35,31 +35,31 @@
 
         <TextView
             android:id="@+id/dailyCommentTimeTv"
+            style="@style/textField1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hansneo_regular"
+            android:layout_marginStart="8dp"
             android:text="2시간 전"
             android:textColor="@color/Gray_04"
-            android:textSize="10dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/dailyCommentShelterNameTv" />
+            app:layout_constraintTop_toBottomOf="@+id/dailyCommentShelterNameTv"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/dailyCommentContentTv"
+            style="@style/category1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text"
-            android:textSize="14dp"
-            android:fontFamily="@font/hansneo_regular"
-            app:layout_constraintHorizontal_bias="0"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/dailyCommentTimeTv"/>
+            app:layout_constraintTop_toBottomOf="@+id/dailyCommentTimeTv" />
 
         <ImageView
             android:layout_width="24dp"

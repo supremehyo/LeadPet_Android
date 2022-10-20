@@ -34,14 +34,13 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <TextView
+            style="@style/caption1"
             android:id="@+id/recommendFeeTv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="고양이 사료가 부족해요!"
             android:textColor="@color/black"
-            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recommentFeedIv"
             app:layout_constraintHorizontal_bias="0"
@@ -49,15 +48,13 @@
             app:layout_constraintTop_toBottomOf="@+id/recommentFeedIv"
             app:layout_constraintVertical_bias="0.0" />
 
-
         <TextView
+            style="@style/caption1"
             android:id="@+id/recommendFeedTv2"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:fontFamily="@font/hansneo_medium"
             android:text="@{@string/writer_polite_word(writer)}"
             android:textColor="@color/Gray_02"
-            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recommendFeeTv1"
             app:layout_constraintVertical_bias="0.07999998" />

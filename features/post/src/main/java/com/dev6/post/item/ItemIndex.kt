@@ -14,6 +14,4 @@ class ItemIndex(val index: String) : BindableItem<ItemIndexBinding>() {
     override fun bind(viewBinding: ItemIndexBinding, position: Int) {
         viewBinding.tvIndex.text = index
     }
-
-
 }

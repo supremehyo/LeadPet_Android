@@ -20,7 +20,7 @@
             android:layout_marginRight="9dp"
             android:layout_marginBottom="7dp"
 
-            android:fontFamily="@font/custom_font_family_medium"
+            android:fontFamily="@font/"
             android:text="TextView"
             android:textColor="@color/White"
             android:textSize="12sp" />

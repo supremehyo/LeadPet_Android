@@ -2,12 +2,10 @@ package com.dev6.post.item
 
 import android.view.View
 import com.dev6.post.R
-import com.dev6.post.databinding.ItemChoiceAnimalBinding
 import com.dev6.post.databinding.ItemChoiceSearchBinding
 import com.xwray.groupie.viewbinding.BindableItem
-import okhttp3.internal.threadName
 
-class ItemSerchAnimal() : BindableItem<ItemChoiceSearchBinding>() {
+class ItemSearchAnimal() : BindableItem<ItemChoiceSearchBinding>() {
 
     override fun getLayout(): Int = R.layout.item_choice_search
 
@@ -16,7 +14,5 @@ class ItemSerchAnimal() : BindableItem<ItemChoiceSearchBinding>() {
     }
 
     override fun bind(viewBinding: ItemChoiceSearchBinding, position: Int) {
-
     }
-
 }

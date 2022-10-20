@@ -58,14 +58,13 @@ class DailyFeedDetailFragment :
             adapter = commentAdapter
         }
         binding.dailyFeedUserId.setOnClickListener {
-            if(UserType.NORMAL == UserData.userType){
+            if (UserType.NORMAL == UserData.userType) {
                 val bundle = bundleOf("clickUserId" to currentFeed.userId)
-                findNavController().navigate(R.id.action_fragmentFeedDaily_to_profileFragment2 ,bundle)
-            }else{
+                findNavController().navigate(R.id.action_fragmentFeedDaily_to_profileFragment2, bundle)
+            } else {
                 val bundle = bundleOf("clickUserId" to currentFeed.userId)
-                findNavController().navigate(R.id.action_fragmentFeedDaily_to_profileFragment ,bundle)
+                findNavController().navigate(R.id.action_fragmentFeedDaily_to_profileFragment, bundle)
             }
-
         }
     }
 
@@ -84,12 +83,9 @@ class DailyFeedDetailFragment :
             setRawInputType(InputType.TYPE_CLASS_TEXT)
         }
         binding.dailyFeedCommentEt.setOnKeyListener { view, keyCode, keyEvent ->
-            if ((keyEvent.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                true
-            } else {
-                false
-            }
+            if ((keyEvent.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) true else false
         }
+
         binding.dailyFeedCommentTv.setOnClickListener {
             val commentUpdate = CommentUpdate(
                 binding.dailyFeedCommentEt.text.toString(),
@@ -106,9 +102,8 @@ class DailyFeedDetailFragment :
                     com.dev6.core.UserData.userId
                 )
             } else {
-
-                            feedViewModel.executeBookMark(
-                            currentFeed.normalPostId,
+                feedViewModel.executeBookMark(
+                    currentFeed.normalPostId,
                     PostType.NORMAL_POST,
                     com.dev6.core.UserData.userId
                 )

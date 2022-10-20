@@ -39,6 +39,7 @@ class SpeciesChoiceFragment :
     override fun initView() {
         super.initView()
         initIndexView()
+        adoptPostViewModel.getSpeciesList()
         binding.include.tvTop.setText("품종 선택")
         binding.include.tvRight.visibility = View.GONE
     }
@@ -69,7 +70,7 @@ class SpeciesChoiceFragment :
                 uiState.data.forEach { species ->
                     val speciesSection = Section().also { section ->
                         section.setHeader(ItemIndex(species.index))
-                        section.addAll(
+                        section.update(
                             species.breedList.map {
                                 ItemListPet(it) { breedName ->
                                     adoptPostViewModel.updateSpecies(breedName)
@@ -90,7 +91,6 @@ class SpeciesChoiceFragment :
 
     override fun initListener() {
         super.initListener()
-        // todo getCount 생기기 전까진
         binding.chipGroup.setOnClickListener {
             when (binding.chipGroup.checkedChipId) {
                 R.id.c_all -> binding.cAll.text.toString()
@@ -114,16 +114,18 @@ class SpeciesChoiceFragment :
     private fun addIndexView(indexList: List<String>) {
         val inflater = LayoutInflater.from(binding.root.context)
         indexList.forEachIndexed { index, item ->
-            val itemView = inflater.inflate(R.layout.view_index, null, false).also {
-                val view = it.findViewById<TextView>(R.id.tv_index)
-                view.text = item
+            val itemView = inflater.inflate(R.layout.view_index, null, false)
+            itemView.findViewById<TextView>(R.id.tv_index).also {
+                it.text = item
+                it.setTextColor(resources.getColor(if (index == 0) R.color.Main else R.color.color_bd, null))
             }
+
             itemView.setClickEvent(viewLifecycleOwner.lifecycleScope) {
                 adoptPostViewModel.setIndex(item)
                 isClicked = true
                 scrollSectionPosition(item)
             }
-            IndexMap.set(item, itemView)
+            IndexMap[item] = itemView
             binding.llAlpabet.addView(itemView)
             if (index == 0) adoptPostViewModel.setIndex(item)
         }
