@@ -1,7 +1,9 @@
 package com.dev6.domain.usecase
 
 import android.util.Log
+import com.dev6.core.UserData
 import com.dev6.core.base.UiState
+import com.dev6.domain.image.FirebaseStorageRepository
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.repository.ProfileRepository
@@ -9,7 +11,8 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ProfileRepoUseCase @Inject constructor(
-    private val profileRepository: ProfileRepository
+    private val profileRepository: ProfileRepository,
+    private val imageRepository: FirebaseStorageRepository
 ) {
     fun getShelterProfileDetailData(userId: String) = flow {
         emit(UiState.Loding)
@@ -26,7 +29,10 @@ class ProfileRepoUseCase @Inject constructor(
     fun updateShelterProfileDetailData(dto: ProfileUserUpdateRepo, userId: String) = flow {
         emit(UiState.Loding)
         runCatching {
-            profileRepository.updateShelterProfileData(dto, userId)
+            val imageUpload = imageRepository.uploadImage(dto.imageByte)
+            val updateDTO = dto.copy(profileImage = imageRepository.fetchImage(imageUpload))
+            profileRepository.updateShelterProfileData(updateDTO, userId)
+            //UserData.profileImage = updateDTO.profileImage
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
@@ -34,7 +40,7 @@ class ProfileRepoUseCase @Inject constructor(
         }
     }
 
-    fun getNormalUserProfileDetailData(userId: String) = flow{
+    fun getNormalUserProfileDetailData(userId: String) = flow {
         emit(UiState.Loding)
         runCatching {
             profileRepository.getNormalUserDetail(userId)
@@ -45,10 +51,12 @@ class ProfileRepoUseCase @Inject constructor(
         }
     }
 
-    fun updateNormalUserProfileDetailData(dto: NormalUserUpdateRepo, userId: String) = flow{
+    fun updateNormalUserProfileDetailData(dto: NormalUserUpdateRepo, userId: String) = flow {
         emit(UiState.Loding)
         runCatching {
-            profileRepository.updateNormalUserData(dto,userId)
+            val imageUpload = imageRepository.uploadImage(dto.imageByte)
+            val updateDTO = dto.copy(profileImage = imageRepository.fetchImage(imageUpload))
+            profileRepository.updateNormalUserData(updateDTO, userId)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {

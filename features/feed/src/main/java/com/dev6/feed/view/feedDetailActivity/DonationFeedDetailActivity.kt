@@ -35,14 +35,14 @@ class DonationFeedDetailActivity :
     override fun initListener() {
         binding.cbBookmark.setOnClickListener {
             if (!binding.cbBookmark.isChecked) {
-                feedViewModel.executeBookMark(
+                feedViewModel.executeUnBookMark(
                     currentFeed.donationPostId,
-                    PostType.DONATION_POST,
                     com.dev6.core.UserData.userId
                 )
             } else {
-                feedViewModel.executeUnBookMark(
+                feedViewModel.executeBookMark(
                     currentFeed.donationPostId,
+                    PostType.DONATION_POST,
                     com.dev6.core.UserData.userId
                 )
             }

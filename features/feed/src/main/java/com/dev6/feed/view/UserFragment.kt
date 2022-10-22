@@ -1,14 +1,11 @@
 package com.dev6.feed.view
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.replace
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dev6.core.UserData
@@ -25,11 +22,9 @@ import com.dev6.feed.R
 import com.dev6.feed.databinding.FragmentUserBinding
 import com.dev6.feed.view.feedDetailActivity.AdoptFeedDetailActivity
 import com.dev6.feed.view.feedDetailActivity.DonationFeedDetailActivity
-import com.dev6.feed.view.profileDetailFragment.ProfileUserDonationFragment
 import com.dev6.feed.view.profileDetailFragment.ProfileUserScrapFragment
 import com.dev6.feed.viewmodel.FeedViewModel
 import com.dev6.feed.viewmodel.ProfileViewModel
-import com.dev6.feed.viewmodel.SaveViewModel
 import com.google.android.material.tabs.TabLayout
 
 
@@ -98,6 +93,7 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                         )
                         val donationIntent = Intent(context, DonationFeedDetailActivity::class.java)
                         donationIntent.putExtra("donationPostFeed", donationPost)
+                        startActivity(donationIntent)
                     }
                     "ADOPT"->{
                         var temp = it.data as SavedAdoptionData
@@ -108,16 +104,18 @@ class UserFragment : BindingFragment<FragmentUserBinding>(R.layout.fragment_user
                             temp.contents ?: "",
                             temp.endDate ,
                             temp.euthanasiaDate ?: "",
-                            temp.disease,
                             temp.gender,
                             temp.images,
                             temp.neutering,
-                            temp.species ?: "",
+                            temp.species,
                             temp.startDate ?: emptyList(),
                             temp.userName,
                             temp.profileImage,
                             temp.title ?: "",
-                            temp.userId ?: ""
+                            temp.userId ?: "",
+                            temp.disease,
+                            emptyList()
+                           // temp.imageByteArrayList
                         )
                         val adoptIntent = Intent(context, AdoptFeedDetailActivity::class.java)
                         adoptIntent.putExtra("adoptPostFeed", adoptPostFeed)

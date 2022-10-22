@@ -33,16 +33,17 @@ class AdoptFeedDetailActivity :
 
     override fun initListener() {
         super.initListener()
+
         binding.cbBookmark.setOnClickListener {
-            if (binding.cbBookmark.isChecked) {
-                feedViewModel.executeBookMark(
+            if (!binding.cbBookmark.isChecked) {
+                feedViewModel.executeUnBookMark(
                     currentFeed.adoptionPostId,
-                    PostType.ADOPTION_POST,
                     com.dev6.core.UserData.userId
                 )
             } else {
-                feedViewModel.executeUnBookMark(
+                feedViewModel.executeBookMark(
                     currentFeed.adoptionPostId,
+                    PostType.ADOPTION_POST,
                     com.dev6.core.UserData.userId
                 )
             }
@@ -54,7 +55,7 @@ class AdoptFeedDetailActivity :
             currentFeed.apply {
                 AdoptFeedContent.text = contents
                 adoptFeedAnimalType.text = animalType.item + " " + species
-                adoptFeedAge.text = age.toString()+"년 출생"
+                adoptFeedAge.text = age.toString()+"살"
                 adoptFeedDate.text = "$startDate~$endDate"
                 adoptFeedDisease.text = disease
                 adoptFeedTitle.text = title

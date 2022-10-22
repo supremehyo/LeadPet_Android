@@ -6,7 +6,6 @@ import com.dev6.core.enum.Neutering
 import com.dev6.core.enums.DonationMethod
 import com.dev6.data.model.saved.*
 import com.dev6.domain.model.Page
-import com.dev6.domain.model.Pageable
 import com.dev6.domain.model.adopt.AdoptPostFeed
 import com.dev6.domain.model.save.*
 
@@ -53,7 +52,8 @@ internal fun SavedAdoptionRequestResponse.toDomain() = SavedAdoptionData(
     disease = disease?: "없음",
     age = age,
     userName = userName,
-    profileImage = profileImage
+    profileImage = profileImage,
+   // imageByteArrayList = imageByteArrayList
 )
 
 internal fun SavedAdoptonPagingResponse.toDomain() = SavedAdoption(
@@ -132,7 +132,7 @@ internal fun SavedAdoptionData.toFeed() = AdoptPostFeed(
     endDate =endDate,
     euthanasiaDate =euthanasiaDate ?: "",
     disease = disease,
-    gender= gender,
+    gender = gender,
     images = images,
     neutering =neutering,
     species = species ?: "",
@@ -140,5 +140,6 @@ internal fun SavedAdoptionData.toFeed() = AdoptPostFeed(
     profileImage = profileImage,
     userId = userId ?: "",
     startDate = startDate ?: emptyList(),
-    title =  title ?: ""
+    title =  title ?: "",
+    imageByteArrayList = emptyList()
 )

@@ -37,7 +37,8 @@ data class SavedAdoptionRequestResponse(
     @SerializedName("profileImage")
     val profileImage: String,
     @SerializedName("userId")
-    val userId: String?
+    val userId: String?,
+    val imageByteArrayList: List<ByteArray>
     /*
     @SerializedName("images")
     val images: List<String>,

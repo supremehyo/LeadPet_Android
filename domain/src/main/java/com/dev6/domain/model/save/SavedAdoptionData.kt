@@ -28,9 +28,9 @@ data class SavedAdoptionData(
     @SerializedName("neutering")
     val neutering: Neutering,
     @SerializedName("breed")
-    val species: String?,
+    val species: String,
     @SerializedName("startDate")
-    val startDate: List<String>?,
+    val startDate: List<String>,
     @SerializedName("title")
     val title: String?,
     @SerializedName("userName")
@@ -38,7 +38,8 @@ data class SavedAdoptionData(
     @SerializedName("profileImage")
     val profileImage: String,
     @SerializedName("userId")
-    val userId: String?
+    val userId: String?,
+   // val imageByteArrayList: List<ByteArray>
     /*
     @SerializedName("images")
     val images: List<String>?,

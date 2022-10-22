@@ -56,7 +56,7 @@ class AdoptPagingAdapter(private val callback: (AdoptPostFeed) -> Unit) :
             binding.adoptBreedTv.text = item.animalType.name+"+"+item.species+"+"+item.gender
             binding.adoptDateTv.text = "" //여기도 다 null인 상태라 비워뒀음.
            // binding.announceTv.text = makeProceedingString(item.endDate ?: listOf("2022","10","5","12","00","00"))
-            binding.adoptAgeTv.text = item.age.toString()+"년 출생"
+            binding.adoptAgeTv.text = item.age.toString()+"살"
             binding.adoptDiseaseTv.text = item.disease
 
             Glide.with(binding.root)

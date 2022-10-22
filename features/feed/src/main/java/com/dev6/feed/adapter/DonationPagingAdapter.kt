@@ -61,11 +61,20 @@ class DonationPagingAdapter(private val callback: (DonationPost) -> Unit) :
             binding.itemDonationCl.setOnClickListener {
                 callback(item)
             }
-            Glide.with(binding.root)
-                .load(Uri.parse(item.profileImage))
-                .error(R.mipmap.img_1)
-                .circleCrop()
-                .into(binding.donationFeedIv)
+
+            if(item.images.isEmpty()){
+                Glide.with(binding.root)
+                    .load( "")
+                    .error(R.mipmap.img_1)
+                    .circleCrop()
+                    .into(binding.donationFeedIv)
+            }else{
+                Glide.with(binding.root)
+                    .load( item.images[0])
+                    .error(R.mipmap.img_1)
+                    .circleCrop()
+                    .into(binding.donationFeedIv)
+            }
         }
     }
 }

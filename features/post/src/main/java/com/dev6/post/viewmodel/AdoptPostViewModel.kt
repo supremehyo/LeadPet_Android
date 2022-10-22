@@ -2,6 +2,7 @@ package com.dev6.post.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dev6.core.UserData
 import com.dev6.core.base.UiState
 import com.dev6.core.enum.AnimalType
 import com.dev6.core.enum.Gender
@@ -108,7 +109,9 @@ class AdoptPostViewModel @Inject constructor(
             userId = "",
             imageByteArrayList = listOf(),
             adoptionPostId = "",
-            disease = diseaseStateFlow.value
+            disease = diseaseStateFlow.value,
+            userName = UserData.userName,
+            profileImage = UserData.profileImage ?: ""
         )
 
         InsertAdoptPostUseCase(repo).collect { uiState ->

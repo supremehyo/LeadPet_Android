@@ -27,6 +27,9 @@ class ProfileViewModel
     private val profileRepoUseCase: ProfileRepoUseCase
 ) : ViewModel() {
 
+    private val _postImageFlow = MutableStateFlow<ByteArray>(byteArrayOf())
+    val postImageFlow = _postImageFlow.asStateFlow()
+
     private val _eventProfileDetail = MutableEventFlow<Event>()
     val eventProfileDetail = _eventProfileDetail.asEventFlow()
 
@@ -45,6 +48,10 @@ class ProfileViewModel
 
     private val _cityChoiceStateFlow = MutableStateFlow<String>("서울")
     val cityChoiceStateFlow = _cityChoiceStateFlow.asStateFlow()
+
+    fun setPostImage(imageList: ByteArray) {
+        _postImageFlow.update { imageList }
+    }
 
     ///쉘터 프로필 디테일 이벤트
     fun eventShelterProfileDetailData(event :Event){
@@ -100,7 +107,8 @@ class ProfileViewModel
     }
 
     fun updateShelterProfileData(dto: ProfileUserUpdateRepo ,userId :String) = viewModelScope.launch{
-        profileRepoUseCase.updateShelterProfileDetailData(dto ,userId).collect{ uiState->
+        var tempDto = dto.copy(imageByte = postImageFlow.value)
+        profileRepoUseCase.updateShelterProfileDetailData(tempDto ,userId).collect{ uiState->
             eventUpdateShelterProfileData(Event.ProfileUpdateUiEvent(uiState))
         }
     }
@@ -117,7 +125,8 @@ class ProfileViewModel
     }
 
     fun updateNormalUserProfileData(dto: NormalUserUpdateRepo ,userId :String) = viewModelScope.launch{
-        profileRepoUseCase.updateNormalUserProfileDetailData(dto ,userId).collect{ uiState->
+        var tempDto = dto.copy(imageByte = postImageFlow.value)
+        profileRepoUseCase.updateNormalUserProfileDetailData(tempDto ,userId).collect{ uiState->
             eventUpdateNormalUserProfileData(Event.NormalUserProfileUpdateUiEvent(uiState))
         }
     }

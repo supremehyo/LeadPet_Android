@@ -52,6 +52,7 @@ class LifePostFragment : BindingFragment<FragmentLifePostBinding>(R.layout.fragm
                     is LifePostViewModel.Event.UiEvent -> {
                         when (event.uiState) {
                             is UiState.Success -> {
+                                findNavController().popBackStack()
                                 Toast.makeText(context, "성공 했어여", Toast.LENGTH_SHORT).show()
                             }
 

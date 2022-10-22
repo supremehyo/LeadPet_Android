@@ -54,13 +54,21 @@ class SavedDonationAdapter (private val callback: (SavedDonationData) -> Unit) :
             binding.savedDonationCl.setOnClickListener {
                 callback(item)
             }
-            //binding.savedDonationTitle.text = item.title
-           // binding.savedDonationUserId.text = item.userId
 
-            Glide.with(binding.root)
-                .load(Uri.parse(item.images?.get(0) ?: ""))
-                .error(R.mipmap.img_1)
-                .into(binding.savedDonationIv)
+            if(item.images.isEmpty()){
+                Glide.with(binding.root)
+                    .load( "")
+                    .error(R.mipmap.img_2)
+                    .circleCrop()
+                    .into(binding.savedDonationIv)
+            }else{
+                Glide.with(binding.root)
+                    .load( item.images[0])
+                    .error(R.mipmap.img_2)
+                    .circleCrop()
+                    .into(binding.savedDonationIv)
+            }
+
         }
     }
 }

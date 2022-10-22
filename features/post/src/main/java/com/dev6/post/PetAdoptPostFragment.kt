@@ -144,7 +144,7 @@ class PetAdoptPostFragment :
         val dateRangePicker =
             MaterialDatePicker.Builder.dateRangePicker()
                 .setTheme(R.style.ThemeOverlay_MaterialComponents_MaterialCalendar)
-                .setTitleText("날짜를 골라주세용 응애!!!")
+                .setTitleText("날짜를 골라주세요")
                 .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {

@@ -11,6 +11,7 @@ import com.dev6.core.UserData
 import com.dev6.core.base.BindingFragment
 import com.dev6.core.enums.FeedViewType
 import com.dev6.core.util.ImageUpload
+import com.dev6.core.util.extension.repeatOnStarted
 import com.dev6.domain.model.NormalUserUpdateRepo
 import com.dev6.domain.model.ProfileUserUpdateRepo
 import com.dev6.domain.model.ShelterResopnseEntitiyRepo
@@ -50,13 +51,15 @@ class ShelterProfileUpdateFragment :
         binding.shelterProfileUpdateTv.setOnClickListener {
 
             var shelterResopnseEntitiyRepo = ProfileUserUpdateRepo(
+                "",
                 UserData.shelterAccount?: "",
                 UserData.shelterAddress?: "",
                 UserData.shelterHomepage?: "",
                 UserData.shelterIntro?: "",
                 UserData.shelterManager?: "",
                 UserData.shelterName?: "",
-                UserData.shelterPhoneNumber?: ""
+                UserData.shelterPhoneNumber?: "",
+                byteArrayOf()
             //profileImage 추가 예정
             )
             profileViewModel.updateShelterProfileData(shelterResopnseEntitiyRepo, UserData.userId)
@@ -67,7 +70,10 @@ class ShelterProfileUpdateFragment :
             TedImagePicker.with(requireContext())
                 .max(1, "")
                 .startMultiImage { uriList ->
-                    profileImage = uriList[0].toString()
+                    val imageByte: ByteArray =
+                    ImageUpload.compressBitmap(ImageUpload.convertUrlToBitmap(uriList[0], this.requireContext()))
+                    profileViewModel.setPostImage(imageByte)
+
                     Glide.with(binding.root)
                         .load(uriList[0])
                         .circleCrop()
@@ -78,6 +84,16 @@ class ShelterProfileUpdateFragment :
 
     override fun afterViewCreated() {
         super.afterViewCreated()
+
+        repeatOnStarted {
+            profileViewModel.postImageFlow.collect { urlList ->
+                if (urlList.isNotEmpty()) {
+                    UserData.profileImage = urlList[0].toString()
+                    Glide.with(this@ShelterProfileUpdateFragment).load(urlList[0])
+                        .into(binding.shelterProfileImageIv)
+                }
+            }
+        }
     }
 
 }

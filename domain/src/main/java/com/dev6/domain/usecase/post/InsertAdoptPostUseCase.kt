@@ -19,9 +19,9 @@ class InsertAdoptPostUseCase @Inject constructor(
     override suspend fun invoke(adoptPostFeed: AdoptPostFeed): Flow<UiState<AdoptPostFeed>> = flow {
         emit(UiState.Loding)
         runCatching {
-            repo.insertAdoptPost(
-                adoptPostFeed.copy(images = adoptPostFeed.imageByteArrayList?.map { imageRepository.uploadImage(it) })
-            )
+            val imageUpload = adoptPostFeed.imageByteArrayList.map{imageRepository.uploadImage(it)}[0]
+            val updateDTO = adoptPostFeed.copy(images = listOf(imageRepository.fetchImage(imageUpload)))
+            repo.insertAdoptPost(updateDTO)
         }.onSuccess { result ->
             emit(UiState.Success(result))
         }.onFailure {
