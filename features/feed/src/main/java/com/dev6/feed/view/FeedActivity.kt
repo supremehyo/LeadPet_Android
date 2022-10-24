@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -203,7 +204,8 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
             startPostActivity(PostType.ADOPTION_POST)
         }
         binding.btnDonate.setOnClickListener {
-            startPostActivity(PostType.DONATION_POST)
+//            startPostActivity(PostType.DONATION_POST)
+            Toast.makeText(this, "아직 준비중입니다", Toast.LENGTH_SHORT).show()
         }
         binding.btnLife.setOnClickListener {
             startPostActivity(PostType.NORMAL_POST)
@@ -228,3 +230,5 @@ class FeedActivity : BindingActivity<ActivityFeedBinding>(R.layout.activity_feed
         startActivity(postIntent)
     }
 }
+
+
